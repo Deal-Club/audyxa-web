@@ -3,6 +3,32 @@
 Extraits de `docs/research/amiso/source/script.js` et vérifiés en direct
 (navigateur + console) sur https://www.h-k.com.hk/demo/k/index.html.
 
+## Classes utilitaires Bootstrap fantômes (piège récurrent)
+
+Sur les 18 pages internes, beaucoup de sections utilisent `<section class="">`
+(classe vide, pas de style propre) enveloppant `<div class="container pb-90">`,
+`pb-100`, `pb-70`, `pt-100`, etc. **Ces classes `.pb-90`/`.pt-100`/… n'ont
+AUCUNE règle CSS nulle part** — ni `style.css`, ni `responsive.css`, ni
+`bootstrap.min.css` (Bootstrap 5 stock ne génère que `.pb-0` à `.pb-5`, pas
+de valeurs pixel arbitraires), ni les CSS utilitaires du thème
+(`tm-bs-mp.css`, `tm-utility-classes.css`). Vérifié exhaustivement par grep
+sur les cinq fichiers. Ce sont des classes mortes du thème (bug/oubli des
+auteurs), sans aucun effet visuel réel.
+
+**Seule règle qui s'applique réellement** dans ce cas :
+`section > .container { padding-top: var(--container-pt); padding-bottom:
+var(--container-pt) }` (style.css:320-324, `--container-pt: 120px`) — donc
+**120px en haut ET en bas**, uniformément, quelle que soit la classe `pb-XX`
+présente dans le HTML. Confirmé par `getComputedStyle` en direct sur le site
+source (vérifié sur `/page-projects.html`).
+
+Ne pas reproduire la valeur numérique de la classe fantôme (ex. `pb-[90px]`)
+— utiliser `pt-[120px] pb-[120px]` sauf si la section a sa propre classe
+dédiée avec une vraie règle de padding déclarée (ex. `.about-section`,
+`.features-section`, `.faqs-section`, `.testimonial-section`,
+`.news-section` sur la home : celles-ci ont de vraies valeurs différentes de
+120/120, vérifiées individuellement — ne pas les uniformiser).
+
 ## Header
 
 - **Sticky header** : au-delà de `scrollY > 100px`, un second header

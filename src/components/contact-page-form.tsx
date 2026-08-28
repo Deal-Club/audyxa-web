@@ -27,7 +27,7 @@ export function ContactPageForm() {
   };
 
   return (
-    <section className="bg-[#eef0f6] pt-[120px] pb-[100px]">
+    <section className="bg-[#eef0f6] pt-[120px] pb-[120px]">
       <div className="auto-container">
         <SectionTitle
           center

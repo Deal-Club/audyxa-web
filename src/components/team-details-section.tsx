@@ -57,7 +57,7 @@ export function TeamDetailsSection() {
   const { ref: progressRef, inView } = useInView<HTMLDivElement>(0.4);
 
   return (
-    <section className="pt-[120px] pb-[100px]">
+    <section className="pt-[120px] pb-[120px]">
       <div className="auto-container">
         {/* team-details__top */}
         <div className="mb-[70px] flex flex-wrap -mx-[15px]">
@@ -104,7 +104,7 @@ export function TeamDetailsSection() {
         </div>
 
         {/* team-details__bottom */}
-        <div className="flex flex-wrap -mx-[15px] border-t border-[#e4e5ea] pt-[100px]">
+        <div className="flex flex-wrap -mx-[15px] border-t border-[#e4e5ea] pt-[110px]">
           <div className="w-full px-[15px] [@media(min-width:992px)]:w-1/2">
             <div className="mr-[70px]">
               <h4 className="text-[36px] font-bold leading-[46px] text-theme-1">

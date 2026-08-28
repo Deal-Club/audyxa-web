@@ -53,11 +53,13 @@ const services: ServiceItem[] = [
  * Section unique de `page-services.html` (`<section class="">` sans classe
  * propre, donc pas de scope `.services-section` : la grille utilise le
  * gouttière Bootstrap générique, pas l'override `.services-section .row`
- * à 8px vu sur la home). `<div class="container pb-90">` : le padding-top
- * 120px vient de la règle générique `section > .container { padding:
- * var(--container-pt) 0 }` (style.css:320-324, --container-pt:120px),
- * et `pb-90` surcharge uniquement le padding-bottom à 90px — même lecture
- * que `contact-page-form.tsx` pour `.container.pb-100`.
+ * à 8px vu sur la home). `<div class="container pb-90">` : `.pb-90` n'a
+ * AUCUNE règle dans style.css, responsive.css, bootstrap.min.css ni les
+ * CSS utilitaires du thème (vérifié exhaustivement) — classe fantôme, sans
+ * effet. Seule la règle générique `section > .container { padding-top/
+ * bottom: var(--container-pt) }` (style.css:320-324, 120px) s'applique,
+ * confirmé aussi via getComputedStyle en direct sur /page-projects.html
+ * (même motif `container` sans override réel).
  *
  * Carte `.service-block` : même design que `services-section.tsx` (home)
  * mais avec la fidélité responsive complète documentée dans
@@ -77,7 +79,7 @@ const services: ServiceItem[] = [
  */
 export function ServicesListSection() {
   return (
-    <section className="relative z-1 pt-[120px] pb-[90px]">
+    <section className="relative z-1 pt-[120px] pb-[120px]">
       <div className="auto-container">
         <div className="grid grid-cols-1 gap-x-[30px] gap-y-[30px] md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (

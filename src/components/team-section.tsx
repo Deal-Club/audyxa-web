@@ -51,15 +51,18 @@ const TEAM_DETAILS_HREF = "/team/details";
  * la source ne porte aucune classe `wow`/`data-wow-delay` sur ces blocs :
  * aucun reveal au scroll ici (`<ScrollReveal>` volontairement absent).
  *
- * `<section class="">` dans la source (classe vide) : pas de padding
- * vertical de section, seul `.container.pb-90` apporte un padding-bottom
- * de 90px — les cartes démarrent donc collées à la bannière de titre,
- * fidèle au HTML source.
+ * `<section class="">` dans la source (classe vide) : `.container.pb-90`
+ * — `.pb-90` n'a AUCUNE règle dans style.css, responsive.css,
+ * bootstrap.min.css ni les CSS utilitaires du thème (vérifié
+ * exhaustivement) — classe fantôme, sans effet. Seule la règle générique
+ * `section > .container { padding-top/bottom: var(--container-pt) }`
+ * (style.css:320-324, 120px) s'applique, confirmé via getComputedStyle en
+ * direct sur /page-projects.html (même motif `container` sans override).
  */
 export function TeamSection() {
   return (
     <section className="relative overflow-hidden">
-      <div className="auto-container pb-[90px]">
+      <div className="auto-container pt-[120px] pb-[120px]">
         <div className="grid grid-cols-1 gap-x-[30px] md:grid-cols-2 lg:grid-cols-3">
           {TEAM_MEMBERS.map((member) => (
             <TeamBlock key={member.image} {...member} />
