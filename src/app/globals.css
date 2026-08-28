@@ -217,6 +217,15 @@
   }
   .fadeInRight { animation-name: fadeInRight; }
 
+  /*
+   * Légende du hero (Revolution Slider, data-frames source) :
+   * from y:[-100%] opacity 0, to opacity 1 en place — Power3.easeInOut.
+   */
+  @keyframes heroCaptionIn {
+    from { opacity: 0; transform: translateY(-100%); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   /* Badge flottant "experience" de la section About : rebond vertical continu */
   @keyframes bounceY {
     0%, 100% { transform: translateY(0); }
