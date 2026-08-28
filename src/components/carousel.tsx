@@ -19,11 +19,11 @@ interface CarouselProps {
 }
 
 function useItemsPerView(responsive: Record<number, number>) {
+  const breakpoints = Object.keys(responsive)
+    .map(Number)
+    .sort((a, b) => a - b);
+
   function compute() {
-    const breakpoints = Object.keys(responsive)
-      .map(Number)
-      .sort((a, b) => a - b);
-    if (typeof window === "undefined") return responsive[breakpoints[0]];
     const width = window.innerWidth;
     let current = responsive[breakpoints[0]];
     for (const bp of breakpoints) {
@@ -32,7 +32,10 @@ function useItemsPerView(responsive: Record<number, number>) {
     return current;
   }
 
-  const [items, setItems] = useState(compute);
+  // Le rendu initial (serveur ET premier rendu client, avant hydratation) doit
+  // rester identique : on part toujours du plus petit breakpoint, puis on
+  // ajuste à la vraie largeur dans l'effet ci-dessous, après montage.
+  const [items, setItems] = useState(responsive[breakpoints[0]]);
 
   useEffect(() => {
     const onResize = () => setItems(compute());

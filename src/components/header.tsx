@@ -70,7 +70,7 @@ export function Header() {
             <div className="main-box flex h-[90px] items-center justify-between [@media(min-width:1440px)]:h-[115px]">
               <div className="logo-box">
                 <Link href="/" className="logo block w-[140px]">
-                  <Image src="/images/logo.png" alt="Amiso" width={140} height={35} priority />
+                  <Image src="/images/logo.png" alt="Amiso" width={140} height={35} priority className="h-[35px] w-[140px]" />
                 </Link>
               </div>
 
@@ -122,7 +122,7 @@ export function Header() {
           <div className="auto-container">
             <div className="inner-container flex items-center justify-between py-[10px]">
               <Link href="/" className="logo block w-[110px]">
-                <Image src="/images/logo-2.png" alt="Amiso" width={110} height={28} />
+                <Image src="/images/logo-2.png" alt="Amiso" width={110} height={28} className="h-[28px] w-[110px]" />
               </Link>
               <div className="hidden [@media(min-width:1440px)]:block">
                 <StickyNav />
@@ -196,7 +196,7 @@ export function Header() {
         >
           <div className="upper-box mb-6 flex items-center justify-between">
             <Link href="/" className="nav-logo block w-[110px]" onClick={() => setMobileOpen(false)}>
-              <Image src="/images/logo.png" alt="Amiso" width={110} height={28} />
+              <Image src="/images/logo.png" alt="Amiso" width={110} height={28} className="h-[28px] w-[110px]" />
             </Link>
             <button
               type="button"
