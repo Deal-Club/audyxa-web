@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@/lib/utils";
@@ -19,11 +19,10 @@ interface CarouselProps {
 }
 
 function useItemsPerView(responsive: Record<number, number>) {
-  const breakpoints = Object.keys(responsive)
-    .map(Number)
-    .sort((a, b) => a - b);
-
-  const compute = useCallback(() => {
+  function compute() {
+    const breakpoints = Object.keys(responsive)
+      .map(Number)
+      .sort((a, b) => a - b);
     if (typeof window === "undefined") return responsive[breakpoints[0]];
     const width = window.innerWidth;
     let current = responsive[breakpoints[0]];
@@ -31,8 +30,7 @@ function useItemsPerView(responsive: Record<number, number>) {
       if (width >= bp) current = responsive[bp];
     }
     return current;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(responsive)]);
+  }
 
   const [items, setItems] = useState(compute);
 
@@ -41,7 +39,8 @@ function useItemsPerView(responsive: Record<number, number>) {
     onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [compute]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [responsive]);
 
   return items;
 }

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Copies brutes des fichiers du site source (référence d'extraction, pas notre code).
+    "docs/research/**",
   ]),
 ]);
 
