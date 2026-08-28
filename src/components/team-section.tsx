@@ -1,8 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
 interface TeamMember {
-  image: string;
   name: string;
   designation: string;
 }
@@ -21,16 +19,16 @@ interface SocialLink {
  * Les 3 photos `images/resource/team-{1,2,3}.jpg` sont en 404 confirmé, à
  * la fois sur le serveur source (kodesolution.com) et sur le miroir de
  * démo (h-k.com.hk) — vérifié via curl sur les deux domaines et plusieurs
- * variantes de nom de fichier. Contrairement aux décors `images/icons/*`
- * déjà documentés dans BEHAVIORS.md, il s'agit ici de la photo principale
- * de chaque carte : le chemin est conservé tel quel (comme le fait la page
- * source elle-même) plutôt que remplacé par un visuel inventé — le
- * <Image> pointe vers un fichier absent, exactement comme sur le site réel.
+ * variantes de nom de fichier. Un `<Image>` next/image pointant vers un
+ * fichier local absent échoue à la requête d'optimisation (400, pas un
+ * simple "broken image" gracieux) : panneau neutre `bg-theme-3` à la place,
+ * même traitement que `team-details-section.tsx` et les autres photos
+ * manquantes du projet — aucun visuel inventé, juste un espace réservé.
  */
 const TEAM_MEMBERS: TeamMember[] = [
-  { image: "/images/resource/team-1.jpg", name: "Aleesha brown", designation: "designer" },
-  { image: "/images/resource/team-2.jpg", name: "Kevin martin", designation: "designer" },
-  { image: "/images/resource/team-3.jpg", name: "Christine eve", designation: "designer" },
+  { name: "Aleesha brown", designation: "designer" },
+  { name: "Kevin martin", designation: "designer" },
+  { name: "Christine eve", designation: "designer" },
 ];
 
 const SOCIAL_LINKS: SocialLink[] = [
@@ -65,7 +63,7 @@ export function TeamSection() {
       <div className="auto-container pt-[120px] pb-[120px]">
         <div className="grid grid-cols-1 gap-x-[30px] md:grid-cols-2 lg:grid-cols-3">
           {TEAM_MEMBERS.map((member) => (
-            <TeamBlock key={member.image} {...member} />
+            <TeamBlock key={member.name} {...member} />
           ))}
         </div>
       </div>
@@ -73,7 +71,7 @@ export function TeamSection() {
   );
 }
 
-function TeamBlock({ image, name, designation }: TeamMember) {
+function TeamBlock({ name, designation }: TeamMember) {
   return (
     <div className="team-block-two relative mb-10">
       {/* padding-right: 40px réservait de l'espace au décor .image-box:before
@@ -89,16 +87,8 @@ function TeamBlock({ image, name, designation }: TeamMember) {
             serveur source : décor omis, comme documenté dans BEHAVIORS.md
             pour les autres assets `images/icons/*`.
           */}
-          <figure className="image relative z-1 mb-0 aspect-[4/5] overflow-hidden rounded-[10px]">
-            <Link href={TEAM_DETAILS_HREF} className="absolute inset-0 block">
-              <Image
-                src={image}
-                alt=""
-                fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                className="object-cover transition-transform duration-[400ms] ease-in-out group-hover:scale-110"
-              />
-            </Link>
+          <figure className="image relative z-1 mb-0 aspect-[4/5] overflow-hidden rounded-[10px] bg-theme-3">
+            <Link href={TEAM_DETAILS_HREF} className="absolute inset-0 block" aria-label={name} />
           </figure>
 
           {/* .social-links : masqué (scaleY(0), opacity 0) au repos, déployé
