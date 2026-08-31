@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,7 @@ export function Header() {
   const [isSticky, setIsSticky] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setIsSticky(window.scrollY > 100);
@@ -29,11 +30,26 @@ export function Header() {
     document.body.classList.toggle("mobile-menu-visible", mobileOpen);
   }, [mobileOpen]);
 
+  // Publie la hauteur réelle du header (variable selon les breakpoints) en
+  // variable CSS, pour que le hero puisse remplir exactement le reste de
+  // l'écran (100vh - header) sans jamais dépasser la fenêtre au chargement.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const setVar = () => {
+      document.documentElement.style.setProperty("--header-height", `${el.offsetHeight}px`);
+    };
+    setVar();
+    const observer = new ResizeObserver(setVar);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <header className="main-header header-style-one relative z-30">
+      <header ref={headerRef} className="main-header header-style-one relative z-30">
         <div className="header-top hidden bg-theme-1 lg:block">
-          <div className="inner-container mx-auto flex max-w-none items-center justify-between px-5 py-0 [@media(min-width:1440px)]:px-20">
+          <div className="inner-container mx-auto flex max-w-none items-center justify-between px-5 py-[8px] [@media(min-width:1440px)]:px-20">
             <div className="top-left">
               <ul className="flex items-center">
                 <li className="mr-5 flex items-center gap-2 text-sm text-[#8f8f8f]">
@@ -67,10 +83,10 @@ export function Header() {
 
         <div className="header-lower bg-theme-1">
           <div className="mx-auto px-5 [@media(min-width:1440px)]:px-20">
-            <div className="main-box flex h-[90px] items-center justify-between [@media(min-width:1440px)]:h-[115px]">
+            <div className="main-box flex h-[68px] items-center justify-between [@media(min-width:1440px)]:h-[80px]">
               <div className="logo-box">
-                <Link href="/" className="logo block w-[87px]">
-                  <Image src="/images/logo-mark.png" alt="Audyxa" width={87} height={44} priority className="h-[44px] w-[87px]" />
+                <Link href="/" className="logo block w-[154px]">
+                  <Image src="/images/logo-full-white.png" alt="Audyxa" width={154} height={40} priority className="h-[40px] w-[154px]" />
                 </Link>
               </div>
 
@@ -195,8 +211,8 @@ export function Header() {
           )}
         >
           <div className="upper-box mb-6 flex items-center justify-between">
-            <Link href="/" className="nav-logo block w-[71px]" onClick={() => setMobileOpen(false)}>
-              <Image src="/images/logo-mark.png" alt="Audyxa" width={71} height={36} className="h-[36px] w-[71px]" />
+            <Link href="/" className="nav-logo block w-[123px]" onClick={() => setMobileOpen(false)}>
+              <Image src="/images/logo-full-white.png" alt="Audyxa" width={123} height={32} className="h-[32px] w-[123px]" />
             </Link>
             <button
               type="button"

@@ -45,7 +45,7 @@ export function Footer() {
             <div className="footer-widget about-widget">
               <div className="logo mb-[25px]">
                 <Link href="/">
-                  <Image src="/images/logo-mark.png" alt="Audyxa" width={87} height={44} className="h-[44px] w-[87px]" />
+                  <Image src="/images/logo-full-white.png" alt="Audyxa" width={154} height={40} className="h-[40px] w-[154px]" />
                 </Link>
               </div>
               <div className="text mb-5 text-[15px] leading-[30px] text-[#8f8f8f]">

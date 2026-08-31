@@ -7,19 +7,37 @@ import { cn } from "@/lib/utils";
 
 interface Slide {
   image: string;
+  kicker: string;
+  title: string;
+  highlight: string;
 }
 
 /**
- * Reconstruction du Revolution Slider du site source (plugins/revolution +
- * js/main-slider-script.js) : 2 slides identiques en contenu (seul le fond
- * change, comme sur le site), délai de 10s, transition "zoomout", légende en
- * fade-up (Power3.easeInOut, 1.5s, départ décalé de 1s — reproduit ici via
- * une keyframe CSS locale). Pas de Ken Burns : aucun data-kenburns n'est
- * défini sur les slides source.
+ * Hero Audyxa : 3 slides reprenant la signature de marque
+ * "Transformer • Innover • Exceller" (cf. logo), un mot mis en avant en rouge
+ * par slide. Défilement et animation de légende repris de la reconstruction
+ * du Revolution Slider du thème source (délai 10s, transition fondu/zoom,
+ * légende en fade-up décalée).
  */
 const SLIDES: Slide[] = [
-  { image: "/images/main-slider/1.jpg" },
-  { image: "/images/main-slider/2.jpg" },
+  {
+    image: "/images/main-slider/1.jpg",
+    kicker: "Agence Audyxa",
+    title: "Transformer votre vision en réalité",
+    highlight: "Transformer",
+  },
+  {
+    image: "/images/main-slider/2.jpg",
+    kicker: "Agence Audyxa",
+    title: "Innover pour rester en avance",
+    highlight: "Innover",
+  },
+  {
+    image: "/images/background/2.jpg",
+    kicker: "Agence Audyxa",
+    title: "Exceller dans chaque projet",
+    highlight: "Exceller",
+  },
 ];
 
 const DELAY_MS = 10000;
@@ -38,7 +56,10 @@ export function MainSlider() {
 
   return (
     <section className="main-slider relative overflow-hidden">
-      <div className="relative h-[800px] w-full [@media(min-width:1200px)]:h-[870px]">
+      <div
+        className="relative min-h-[480px] w-full"
+        style={{ height: "calc(100vh - var(--header-height, 120px))" }}
+      >
         {SLIDES.map((slide, i) => (
           <div
             key={i}
@@ -60,18 +81,33 @@ export function MainSlider() {
         ))}
 
         <div className="auto-container relative z-20 flex h-full items-center">
-          <div key={index} className="main-slider-caption max-w-[750px]">
-            <h1 className="animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)] text-[56px] leading-[1.05] font-bold text-white [@media(min-width:1200px)]:text-[90px] [@media(min-width:1200px)]:leading-[1em]">
-              Website <span className="text-theme-2">&amp;</span> <br />
-              applications <br />
-              design agency
-            </h1>
-            <div className="btn-box mt-8 animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)]">
-              <ThemeBtn href="/about" light className="theme-btn min-w-[200px]!">
-                Explore now
-              </ThemeBtn>
-            </div>
-          </div>
+          {SLIDES.map(
+            (slide, i) =>
+              i === index && (
+                <div key={i} className="main-slider-caption max-w-[750px]">
+                  <span
+                    className="animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)] mb-4 inline-block text-sm font-semibold tracking-[0.2em] text-theme-2 uppercase"
+                  >
+                    {slide.kicker}
+                  </span>
+                  <h1 className="animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)] text-[44px] leading-[1.1] font-bold text-white [@media(min-width:1200px)]:text-[64px] [@media(min-width:1200px)]:leading-[1.1em]">
+                    {slide.title.split(slide.highlight).map((part, partIndex, arr) => (
+                      <span key={partIndex}>
+                        {part}
+                        {partIndex < arr.length - 1 ? (
+                          <span className="text-theme-2">{slide.highlight}</span>
+                        ) : null}
+                      </span>
+                    ))}
+                  </h1>
+                  <div className="btn-box mt-8 animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)]">
+                    <ThemeBtn href="/about" light className="theme-btn min-w-[200px]!">
+                      Explore now
+                    </ThemeBtn>
+                  </div>
+                </div>
+              )
+          )}
         </div>
 
         <button
