@@ -49,7 +49,7 @@ export function Header() {
     <>
       <header ref={headerRef} className="main-header header-style-one relative z-30">
         <div className="header-top hidden bg-theme-1 lg:block">
-          <div className="inner-container mx-auto flex max-w-none items-center justify-between px-5 py-[8px] [@media(min-width:1440px)]:px-20">
+          <div className="auto-container flex items-center justify-between py-[8px]">
             <div className="top-left">
               <ul className="flex items-center">
                 <li className="mr-5 flex items-center gap-2 text-sm text-[#8f8f8f]">
@@ -82,7 +82,7 @@ export function Header() {
         </div>
 
         <div className="header-lower bg-theme-1">
-          <div className="mx-auto px-5 [@media(min-width:1440px)]:px-20">
+          <div className="auto-container">
             <div className="main-box flex h-[68px] items-center justify-between [@media(min-width:1440px)]:h-[80px]">
               <div className="logo-box">
                 <Link href="/" className="logo block w-[154px]">
@@ -136,9 +136,9 @@ export function Header() {
           style={{ transform: isSticky ? "translateY(0)" : "translateY(-100%)" }}
         >
           <div className="auto-container">
-            <div className="inner-container flex items-center justify-between py-[10px]">
-              <Link href="/" className="logo block w-[108px]">
-                <Image src="/images/logo-full.png" alt="Audyxa" width={108} height={28} className="h-[28px] w-[108px]" />
+            <div className="inner-container flex items-center justify-between py-[6px]">
+              <Link href="/" className="logo block w-[154px]">
+                <Image src="/images/logo-full.png" alt="Audyxa" width={154} height={40} className="h-[40px] w-[154px]" />
               </Link>
               <div className="hidden [@media(min-width:1440px)]:block">
                 <StickyNav />
