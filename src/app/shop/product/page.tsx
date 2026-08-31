@@ -5,9 +5,9 @@ import { ProductDescriptionTabs } from "@/components/product-description-tabs";
 import { RelatedProductsSection } from "@/components/related-products-section";
 
 export const metadata: Metadata = {
-  title: "Product Details | Amiso",
+  title: "Product Details | Audyxa",
   description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 /**

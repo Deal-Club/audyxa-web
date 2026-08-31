@@ -3,9 +3,9 @@ import { PageTitle } from "@/components/page-title";
 import { TestimonialCarouselSection } from "@/components/testimonial-carousel-section";
 
 export const metadata: Metadata = {
-  title: "Testimonial | Amiso",
+  title: "Testimonial | Audyxa",
   description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 /**

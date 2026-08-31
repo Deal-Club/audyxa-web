@@ -4,9 +4,9 @@ import { TeamDetailsSection } from "@/components/team-details-section";
 import { ContactPageForm } from "@/components/contact-page-form";
 
 export const metadata: Metadata = {
-  title: "Team Details | Amiso",
+  title: "Team Details | Audyxa",
   description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 /**

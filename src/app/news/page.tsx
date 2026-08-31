@@ -3,9 +3,9 @@ import { PageTitle } from "@/components/page-title";
 import { NewsGridSection } from "@/components/news-grid-section";
 
 export const metadata: Metadata = {
-  title: "News Grid | Amiso",
+  title: "News Grid | Audyxa",
   description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 /**

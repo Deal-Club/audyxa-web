@@ -3,9 +3,9 @@ import { PageTitle } from "@/components/page-title";
 import { ServicesListSection } from "@/components/services-list-section";
 
 export const metadata: Metadata = {
-  title: "Services | Amiso",
+  title: "Services | Audyxa",
   description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 /**

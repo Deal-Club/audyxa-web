@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ErrorPageContent } from "@/components/error-page-content";
 
 export const metadata: Metadata = {
-  title: "Page Not Found | Amiso",
+  title: "Page Not Found | Audyxa",
   description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 /**

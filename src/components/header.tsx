@@ -69,8 +69,8 @@ export function Header() {
           <div className="mx-auto px-5 [@media(min-width:1440px)]:px-20">
             <div className="main-box flex h-[90px] items-center justify-between [@media(min-width:1440px)]:h-[115px]">
               <div className="logo-box">
-                <Link href="/" className="logo block w-[140px]">
-                  <Image src="/images/logo.png" alt="Amiso" width={140} height={35} priority className="h-[35px] w-[140px]" />
+                <Link href="/" className="logo block w-[87px]">
+                  <Image src="/images/logo-mark.png" alt="Audyxa" width={87} height={44} priority className="h-[44px] w-[87px]" />
                 </Link>
               </div>
 
@@ -121,8 +121,8 @@ export function Header() {
         >
           <div className="auto-container">
             <div className="inner-container flex items-center justify-between py-[10px]">
-              <Link href="/" className="logo block w-[110px]">
-                <Image src="/images/logo-2.png" alt="Amiso" width={110} height={28} className="h-[28px] w-[110px]" />
+              <Link href="/" className="logo block w-[108px]">
+                <Image src="/images/logo-full.png" alt="Audyxa" width={108} height={28} className="h-[28px] w-[108px]" />
               </Link>
               <div className="hidden [@media(min-width:1440px)]:block">
                 <StickyNav />
@@ -195,8 +195,8 @@ export function Header() {
           )}
         >
           <div className="upper-box mb-6 flex items-center justify-between">
-            <Link href="/" className="nav-logo block w-[110px]" onClick={() => setMobileOpen(false)}>
-              <Image src="/images/logo.png" alt="Amiso" width={110} height={28} className="h-[28px] w-[110px]" />
+            <Link href="/" className="nav-logo block w-[71px]" onClick={() => setMobileOpen(false)}>
+              <Image src="/images/logo-mark.png" alt="Audyxa" width={71} height={36} className="h-[36px] w-[71px]" />
             </Link>
             <button
               type="button"

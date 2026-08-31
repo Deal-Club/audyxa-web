@@ -11,9 +11,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Amiso | Web Design Agency HTML Template",
-  description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+  title: "Audyxa | Transformer, innover, exceller",
+  description: "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

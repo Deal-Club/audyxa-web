@@ -3,9 +3,9 @@ import { PageTitle } from "@/components/page-title";
 import { CheckoutForm } from "@/components/checkout-form";
 
 export const metadata: Metadata = {
-  title: "Checkout | Amiso",
+  title: "Checkout | Audyxa",
   description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 /**

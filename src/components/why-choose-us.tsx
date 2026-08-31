@@ -80,13 +80,13 @@ export function WhyChooseUs() {
                     className="w-full max-w-3xl border-none bg-black p-0 sm:max-w-3xl"
                   >
                     <DialogTitle className="sr-only">
-                      Amiso — few minautes video
+                      Audyxa — few minautes video
                     </DialogTitle>
                     <div className="aspect-video w-full overflow-hidden rounded-xl">
                       {videoOpen ? (
                         <iframe
                           src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1`}
-                          title="Amiso video presentation"
+                          title="Audyxa video presentation"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                           className="h-full w-full"

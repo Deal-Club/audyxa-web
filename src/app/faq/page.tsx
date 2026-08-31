@@ -3,9 +3,9 @@ import { PageTitle } from "@/components/page-title";
 import { FaqPageAccordion } from "@/components/faq-page-accordion";
 
 export const metadata: Metadata = {
-  title: "FAQ | Amiso",
+  title: "FAQ | Audyxa",
   description:
-    "Amiso - agence de design web et applications. Clone fidèle du thème Amiso.",
+    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
 };
 
 /**
