@@ -2,29 +2,16 @@ import Link from "next/link";
 import { ThemeBtn } from "@/components/theme-btn";
 import { cn } from "@/lib/utils";
 
-/**
- * Liste `.sidebar-service-list` de `page-service-details.html` : les 6
- * entrées pointent toutes vers `page-service-details.html` dans la source
- * (un seul gabarit de détail statique, pas une page par service) — reproduit
- * ici vers `/services/details` pour chacune, à l'identique du comportement
- * réel du site.
- *
- * Piège CSS relevé en source : le premier `<a>` porte `class="current"`
- * mais la règle stylée est `.sidebar-service-list li.current a` (classe sur
- * le `<li>`, pas sur le `<a>`) — seul le 2e item ("Web designing"), dont le
- * `<li>` porte `current`, est donc réellement mis en avant visuellement.
- * Reproduit ici avec un seul item actif, celui qui l'est vraiment à l'écran.
- */
 const SIDEBAR_SERVICES = [
-  "Digital Agency",
-  "Web designing",
-  "Web development",
-  "Web application",
-  "Digital Marketing",
-  "App Development",
+  "Audit et diagnostic digital",
+  "Refonte des processus",
+  "Automatisation et intégrations",
+  "IA en entreprise",
+  "Développement d'outils métier",
+  "Pilotage et déploiement",
 ];
 
-const CURRENT_SERVICE = "Web designing";
+const CURRENT_SERVICE = "Automatisation et intégrations";
 
 export function ServiceDetailsSidebar() {
   return (
@@ -45,7 +32,7 @@ export function ServiceDetailsSidebar() {
                   <span>{service}</span>
                   <i
                     className={cn(
-                      "fa fa-angle-right absolute top-1/2 right-5 flex h-8 w-[45px] -translate-y-1/2 items-center justify-center rounded-[15px] bg-white text-base text-[#191825] transition-colors duration-500 ease-[ease]",
+                      "fa fa-angle-right absolute top-1/2 right-5 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white text-base text-[#191825] shadow-[0_10px_25px_rgba(0,0,0,0.08)] transition-colors duration-500 ease-[ease]",
                       isCurrent
                         ? "bg-theme-2 text-white"
                         : "group-hover:bg-theme-2 group-hover:text-white"
@@ -74,30 +61,26 @@ export function ServiceDetailsSidebar() {
           </div>
 
           <h2 className="mb-[21px] text-[38px] leading-[40px] font-bold text-white">
-            Contact with <br /> us for any <br /> advice
+            Parlez avec <br /> Audyxa pour <br /> cadrer votre mission
           </h2>
 
           <div className="mt-[21px]">
             <p className="m-0 text-sm leading-8 font-semibold text-white opacity-70">
-              Need help? Talk to an expert
+              Numéro direct
             </p>
             <a
-              href="tel:+8921231129999"
+              href="tel:+2290195241540"
               className="text-[30px] font-semibold text-white transition-colors duration-500 ease-[ease] hover:text-[#191825]"
             >
-              +892 (123) 112-9999
+              2290195241540
             </a>
           </div>
         </div>
       </div>
 
-      {/* Lien de démonstration : href="#" tel quel en source (aucun fichier
-          PDF réel disponible côté site source, rien à télécharger n'est
-          inventé ici). */}
       <div className="mt-6">
-        <ThemeBtn href="#" className="w-full">
-          <i className="fa fa-file-pdf mr-[10px]" aria-hidden /> Download PDF
-          file
+        <ThemeBtn href="/contact" className="w-full">
+          <i className="fa fa-calendar mr-[10px]" aria-hidden /> Planifier un échange
         </ThemeBtn>
       </div>
     </div>

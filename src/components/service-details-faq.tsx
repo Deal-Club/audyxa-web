@@ -9,31 +9,26 @@ interface FaqItem {
   answer: string;
 }
 
-/**
- * Contenu verbatim de la section FAQ de `page-service-details.html` (texte
- * de réponse identique et dupliqué pour les 4 questions en source — contenu
- * réel du thème, non inventé, distinct du texte de `/faq`).
- */
 const FAQ_ITEMS: FaqItem[] = [
   {
-    question: "Is my technology allowed on tech?",
+    question: "Combien de temps dure une mission de transformation digitale ?",
     answer:
-      "There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.",
+      "Cela dépend du périmètre. Certaines missions commencent par un diagnostic court, puis enchaînent sur des quick wins et une feuille de route plus large.",
   },
   {
-    question: "How to soft launch your business?",
+    question: "Travaillez-vous uniquement sur l'automatisation ?",
     answer:
-      "There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.",
+      "Non. Audyxa intervient aussi sur le cadrage, la refonte des processus, l'IA, les outils métier, le pilotage et l'adoption terrain.",
   },
   {
-    question: "How to turn visitors into contributors",
+    question: "Comment décidez-vous des priorités ?",
     answer:
-      "There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.",
+      "Nous arbitrons selon la valeur métier, le temps gagné, le niveau de risque, la faisabilité technique et la capacité réelle d'adoption des équipes.",
   },
   {
-    question: "How can i find my solutions?",
+    question: "L'IA est-elle toujours nécessaire ?",
     answer:
-      "There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.",
+      "Non. L'IA n'est pertinente que lorsqu'elle sert un besoin clair. Nous évitons d'ajouter de la complexité à un processus déjà instable.",
   },
 ];
 

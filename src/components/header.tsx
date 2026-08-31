@@ -16,7 +16,6 @@ import { MobileNavMenu } from "@/components/mobile-nav-menu";
 export function Header() {
   const [isSticky, setIsSticky] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -54,28 +53,22 @@ export function Header() {
               <ul className="flex items-center">
                 <li className="mr-5 flex items-center gap-2 text-sm text-[#8f8f8f]">
                   <i className="fa fa-envelope text-theme-2" />
-                  <a href="mailto:needhelp@company.com" className="text-[#8f8f8f] hover:text-white">
-                    needhelp@company.com
-                  </a>
+                  <Link href="/contact" className="text-[#8f8f8f] hover:text-white">
+                    Demander un diagnostic
+                  </Link>
                 </li>
                 <li className="flex items-center gap-2 text-sm text-[#8f8f8f]">
                   <i className="fa fa-map-marker text-theme-2" />
-                  88 Broklyn Golden Street. New York
+                  France et Afrique francophone
                 </li>
               </ul>
             </div>
 
             <div className="top-right flex items-center">
               <ul className="flex items-center gap-5 text-sm">
-                <li><a href="#" className="text-[#8f8f8f] hover:text-white">Help</a></li>
-                <li><a href="#" className="text-[#8f8f8f] hover:text-white">Support</a></li>
-                <li><a href="#" className="text-[#8f8f8f] hover:text-white">Contact</a></li>
-              </ul>
-              <ul className="ml-[35px] flex items-center gap-4">
-                <li><a href="#" className="text-[#8f8f8f] hover:text-theme-2"><i className="fab fa-twitter" /></a></li>
-                <li><a href="#" className="text-[#8f8f8f] hover:text-theme-2"><i className="fab fa-facebook-square" /></a></li>
-                <li><a href="#" className="text-[#8f8f8f] hover:text-theme-2"><i className="fab fa-pinterest-p" /></a></li>
-                <li><a href="#" className="text-[#8f8f8f] hover:text-theme-2"><i className="fab fa-instagram" /></a></li>
+                <li><Link href="/about" className="text-[#8f8f8f] hover:text-white">Approche</Link></li>
+                <li><Link href="/services" className="text-[#8f8f8f] hover:text-white">Services</Link></li>
+                <li><Link href="/contact" className="text-[#8f8f8f] hover:text-white">Contact</Link></li>
               </ul>
             </div>
           </div>
@@ -95,25 +88,16 @@ export function Header() {
               </div>
 
               <div className="outer-box flex items-center gap-[15px]">
-                <button
-                  type="button"
-                  aria-label="Ouvrir la recherche"
-                  onClick={() => setSearchOpen(true)}
-                  className="search-btn flex h-[30px] w-[30px] items-center justify-center text-[22px] text-white transition-colors hover:text-theme-2"
-                >
-                  <i className="lnr-icon-search" />
-                </button>
-
-                <a
-                  href="tel:+92(8800)9806"
+                <Link
+                  href="tel:+2290195241540"
                   className="info-btn hidden items-center gap-2 text-sm text-white [@media(min-width:1440px)]:flex"
                 >
                   <i className="fa fa-phone text-theme-2" />
                   <span>
-                    <small className="block text-xs text-[#8f8f8f]">Call Anytime</small>
-                    + 88 ( 9800 ) 6802-00
+                    <small className="block text-xs text-[#8f8f8f]">Audyxa</small>
+                    2290195241540
                   </span>
-                </a>
+                </Link>
 
                 <button
                   type="button"
@@ -156,40 +140,6 @@ export function Header() {
         </div>
       </header>
 
-      {/* Recherche */}
-      <div
-        className={cn(
-          "search-popup fixed inset-0 z-[999999] flex items-center justify-center bg-black/90 transition-opacity duration-300",
-          searchOpen ? "visible opacity-100" : "invisible opacity-0"
-        )}
-      >
-        <button
-          type="button"
-          aria-label="Fermer la recherche"
-          onClick={() => setSearchOpen(false)}
-          className="close-search absolute right-8 top-8 text-3xl text-white"
-        >
-          <i className="fa fa-times" />
-        </button>
-        <div className="search-inner w-full max-w-[700px] px-5">
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="form-group flex border-b-2 border-white pb-3"
-          >
-            <input
-              type="search"
-              name="search-field"
-              placeholder="Search..."
-              required
-              className="w-full bg-transparent text-2xl text-white placeholder:text-white/50 focus:outline-none"
-            />
-            <button type="submit" aria-label="Rechercher" className="text-2xl text-white">
-              <i className="fa fa-search" />
-            </button>
-          </form>
-        </div>
-      </div>
-
       {/* Menu mobile (off-canvas) */}
       <div
         className={cn(
@@ -229,26 +179,19 @@ export function Header() {
           <ul className="contact-list-one mt-6 space-y-4 border-t border-white/10 pt-6">
             <li className="contact-info-box">
               <i className="lnr-icon-phone-handset mr-2 text-theme-2" />
-              <span className="title mr-1 text-white/70">Call Now</span>
-              <a href="tel:+92880098670" className="text-white">+92 (8800) - 98670</a>
+              <span className="title mr-1 text-white/70">Telephone</span>
+              <a href="tel:+2290195241540" className="text-white">2290195241540</a>
             </li>
             <li className="contact-info-box">
               <i className="lnr-icon-envelope1 mr-2 text-theme-2" />
-              <span className="title mr-1 text-white/70">Send Email</span>
-              <a href="mailto:help@company.com" className="text-white">help@company.com</a>
+              <span className="title mr-1 text-white/70">Zone</span>
+              <span className="text-white">France et Afrique francophone</span>
             </li>
             <li className="contact-info-box text-white/70">
               <i className="lnr-icon-clock mr-2 text-theme-2" />
-              <span className="title mr-1">Send Email</span>
-              Mon - Sat 8:00 - 6:30, Sunday - CLOSED
+              <span className="title mr-1">Contact</span>
+              Diagnostic et cadrage sur rendez-vous
             </li>
-          </ul>
-
-          <ul className="social-links mt-6 flex gap-4">
-            <li><a href="#" className="text-white hover:text-theme-2"><i className="fab fa-twitter" /></a></li>
-            <li><a href="#" className="text-white hover:text-theme-2"><i className="fab fa-facebook-f" /></a></li>
-            <li><a href="#" className="text-white hover:text-theme-2"><i className="fab fa-pinterest" /></a></li>
-            <li><a href="#" className="text-white hover:text-theme-2"><i className="fab fa-instagram" /></a></li>
           </ul>
         </nav>
       </div>

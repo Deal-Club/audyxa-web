@@ -67,9 +67,9 @@
   --theme-light-background: #f8f6f1;
   --theme-black: #222429;
 
-  --container-width: 1200px;
-  --small-container-width: 1000px;
-  --large-container-width: 1550px;
+  --container-width: 1320px;
+  --small-container-width: 1120px;
+  --large-container-width: 1680px;
   --container-pt: 120px;
   --container-pb: 120px;
 
@@ -233,5 +233,28 @@
   }
   .bounce-y {
     animation: bounceY 3.5s ease-in-out infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-shell {
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 16px;
+    animation: marquee 52s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
   }
 }

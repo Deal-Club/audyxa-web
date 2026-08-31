@@ -5,6 +5,7 @@ import Image from "next/image";
 import { SectionTitle } from "@/components/section-title";
 import { PieStat } from "@/components/pie-stat";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { imageHoverOverlayClass } from "@/lib/image-hover";
 import { cn } from "@/lib/utils";
 
 interface FaqItem {
@@ -18,19 +19,24 @@ interface FaqItem {
  */
 const FAQ_ITEMS: FaqItem[] = [
   {
-    question: "Interdum et malesuada fames ac ante ipsum",
+    question: "Par où commencer quand tout semble prioritaire ?",
     answer:
-      "Suspendisse finibus urna mauris, vitae consequat quam vel. Vestibulum leo ligula, vit commodo nisl Sed luctus venenatis pellentesque.",
+      "Nous commençons par un diagnostic pour distinguer ce qui relève d'un vrai blocage métier, d'un problème de processus, de donnée ou d'outil. Cela évite de lancer des projets inutiles.",
   },
   {
-    question: "Maecenas condimentum sollicitudin ligula,",
+    question: "Est-ce que vous intervenez seulement sur le conseil ?",
     answer:
-      "Suspendisse finibus urna mauris, vitae consequat quam vel. Vestibulum leo ligula, vit commodo nisl Sed luctus venenatis pellentesque.",
+      "Non. Audyxa combine conseil et exécution : audit, priorisation, automatisation, intégration IA, développement d'outils métier, accompagnement au déploiement et suivi des résultats.",
   },
   {
-    question: "Duis rhoncus orci ut metus rhoncus",
+    question: "Comment savoir si un projet digital sera rentable ?",
     answer:
-      "Suspendisse finibus urna mauris, vitae consequat quam vel. Vestibulum leo ligula, vit commodo nisl Sed luctus venenatis pellentesque.",
+      "Nous relions chaque chantier à des indicateurs concrets : temps gagné, erreurs évitées, capacité libérée, meilleure qualité de donnée, gain commercial ou meilleure visibilité sur l'activité.",
+  },
+  {
+    question: "Travaillez-vous avec des entreprises en France et en Afrique francophone ?",
+    answer:
+      "Oui. Notre positionnement est pensé pour accompagner des entreprises des deux marchés avec un langage simple, des solutions pragmatiques et une logique forte de retour sur investissement.",
   },
 ];
 
@@ -45,20 +51,123 @@ const FAQ_ITEMS: FaqItem[] = [
  * `<div class="bg bg-pattern-4"></div>` du source pointe vers un asset en
  * 404 sur le site live : non reproduit (aucune image de fond de substitution).
  */
-export function FaqSection() {
+interface FaqSectionProps {
+  items?: FaqItem[];
+  subTitle?: string;
+  title?: React.ReactNode;
+  imageSrc?: string;
+  layout?: "with-image" | "two-columns";
+}
+
+function AccordionItem({
+  item,
+  isActive,
+  onToggle,
+}: {
+  item: FaqItem;
+  isActive: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <li
+      className={cn(
+        "accordion block relative mb-5 overflow-hidden rounded-[10px] bg-white",
+        isActive && "shadow-[0_10px_60px_rgba(0,0,0,0.07)]"
+      )}
+    >
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={onToggle}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onToggle();
+          }
+        }}
+        aria-expanded={isActive}
+        className={cn(
+          "acc-btn relative cursor-pointer rounded-xl border border-[#e2e2e2] bg-white py-[25px] pr-[70px] pl-10 text-[18px] leading-[25px] font-bold tracking-[-0.04em] text-theme-1 transition-all duration-500 ease-in-out",
+          isActive && "rounded-t-xl rounded-b-none text-theme-2"
+        )}
+      >
+        {item.question}
+        <div
+          className={cn(
+            "icon absolute top-5 right-5 flex h-[35px] w-[35px] items-center justify-center text-[18px] text-theme-1 transition-all duration-500 ease-in-out",
+            isActive && "rotate-180 text-theme-2"
+          )}
+        >
+          <i className="fa fa-angle-down" />
+        </div>
+      </div>
+      <div className={cn("acc-content relative", isActive ? "block" : "hidden")}>
+        <div className="content rounded-b-[10px] border border-t-0 border-[#e2e2e2] px-10 pt-5 pb-[30px]">
+          <div className="text mb-0 block text-base leading-[30px] text-[#808287]">
+            {item.answer}
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+}
+
+export function FaqSection({
+  items = FAQ_ITEMS,
+  subTitle = "Questions frequentes",
+  title = "Ce que les entreprises nous demandent le plus",
+  imageSrc = "/images/resource/faq.jpg",
+  layout = "with-image",
+}: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index));
   };
 
+  if (layout === "two-columns") {
+    const midpoint = Math.ceil(items.length / 2);
+    const columns = [items.slice(0, midpoint), items.slice(midpoint)];
+
+    return (
+      <section className="faqs-section relative bg-theme-3 pt-[120px] pb-[70px]">
+        <div className="auto-container">
+          <SectionTitle center subTitle={subTitle} title={title} />
+
+          <div className="grid grid-cols-1 gap-x-[30px] lg:grid-cols-2">
+            {columns.map((column, columnIndex) => (
+              <ScrollReveal
+                key={columnIndex}
+                as="ul"
+                animation={columnIndex === 0 ? "fadeInRight" : "fadeInLeft"}
+                className="accordion-box relative mb-[50px] lg:mb-0"
+              >
+                {column.map((item) => {
+                  const globalIndex = items.indexOf(item);
+                  return (
+                    <AccordionItem
+                      key={item.question}
+                      item={item}
+                      isActive={openIndex === globalIndex}
+                      onToggle={() => toggle(globalIndex)}
+                    />
+                  );
+                })}
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="faqs-section relative bg-theme-3 pt-[120px] pb-[70px]">
       <div className="auto-container">
         <SectionTitle
           center
-          subTitle="You’ve have Any Questions?"
-          title="Frequently asked questions"
+          subTitle={subTitle}
+          title={title}
         />
 
         <div className="grid grid-cols-1 gap-x-[30px] gap-y-[50px] lg:grid-cols-2">
@@ -66,57 +175,14 @@ export function FaqSection() {
           <div className="faq-column relative mb-[50px] lg:mb-0">
             <div className="inner-column relative pr-0 lg:pr-[10px]">
               <ScrollReveal as="ul" animation="fadeInRight" className="accordion-box relative">
-                {FAQ_ITEMS.map((item, index) => {
-                  const isActive = openIndex === index;
-                  return (
-                    <li
-                      key={item.question}
-                      className={cn(
-                        "accordion block relative mb-5 overflow-hidden rounded-[10px] bg-white",
-                        isActive && "shadow-[0_10px_60px_rgba(0,0,0,0.07)]"
-                      )}
-                    >
-                      <div
-                        role="button"
-                        tabIndex={0}
-                        onClick={() => toggle(index)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            toggle(index);
-                          }
-                        }}
-                        aria-expanded={isActive}
-                        className={cn(
-                          "acc-btn relative cursor-pointer rounded-xl border border-[#e2e2e2] bg-white py-[25px] pr-[70px] pl-10 text-[18px] leading-[25px] font-bold tracking-[-0.04em] text-theme-1 transition-all duration-500 ease-in-out",
-                          isActive && "rounded-t-xl rounded-b-none text-theme-2"
-                        )}
-                      >
-                        {item.question}
-                        <div
-                          className={cn(
-                            "icon absolute top-5 right-5 flex h-[35px] w-[35px] items-center justify-center text-[18px] text-theme-1 transition-all duration-500 ease-in-out",
-                            isActive && "rotate-180 text-theme-2"
-                          )}
-                        >
-                          <i className="fa fa-angle-down" />
-                        </div>
-                      </div>
-                      <div
-                        className={cn(
-                          "acc-content relative",
-                          isActive ? "block" : "hidden"
-                        )}
-                      >
-                        <div className="content rounded-b-[10px] border border-t-0 border-[#e2e2e2] px-10 pt-5 pb-[30px]">
-                          <div className="text mb-0 block text-base leading-[30px] text-[#808287]">
-                            {item.answer}
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  );
-                })}
+                {items.map((item, index) => (
+                  <AccordionItem
+                    key={item.question}
+                    item={item}
+                    isActive={openIndex === index}
+                    onToggle={() => toggle(index)}
+                  />
+                ))}
               </ScrollReveal>
             </div>
           </div>
@@ -125,9 +191,9 @@ export function FaqSection() {
           <div className="image-column relative">
             <div className="inner-column relative pr-[220px]">
               <div className="image-box relative">
-                <figure className="image relative overflow-hidden rounded-[10px]">
+                <figure className={cn("image rounded-[10px]", imageHoverOverlayClass)}>
                   <Image
-                    src="/images/resource/faq.jpg"
+                    src={imageSrc}
                     alt=""
                     width={480}
                     height={520}
@@ -142,11 +208,11 @@ export function FaqSection() {
               <div className="graph-box absolute top-0 right-0 w-[220px] text-center">
                 <div className="pie-graph relative mb-[25px] border-b border-[#e2e2e2] pb-[25px] last:mb-0 last:border-b-0 last:pb-0">
                   <PieStat
-                    percent={90}
+                    percent={92}
                     label={
                       <>
-                        Affordable <br />
-                        cost
+                        Focus <br />
+                        resultats
                       </>
                     }
                     speed={2000}
@@ -157,11 +223,11 @@ export function FaqSection() {
                 </div>
                 <div className="pie-graph relative mb-[25px] border-b border-[#e2e2e2] pb-[25px] last:mb-0 last:border-b-0 last:pb-0">
                   <PieStat
-                    percent={50}
+                    percent={88}
                     label={
                       <>
-                        Quality <br />
-                        of work
+                        Approche <br />
+                        terrain
                       </>
                     }
                     speed={2000}

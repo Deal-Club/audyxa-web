@@ -8,9 +8,25 @@ import { ScrollReveal } from "@/components/scroll-reveal";
  * (404 confirmé sur le site d'origine) : non reproduit, aucun fond de
  * substitution.
  */
-export function CallToAction() {
+interface CallToActionProps {
+  title?: React.ReactNode;
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+export function CallToAction({
+  title = (
+    <>
+      Vous voulez passer un cap digital
+      <br className="hidden min-[600px]:block" />
+      sans multiplier les outils inutiles ?
+    </>
+  ),
+  ctaHref = "/contact",
+  ctaLabel = "Prendre contact",
+}: CallToActionProps) {
   return (
-    <section className="call-to-action relative z-2 bg-theme-2 py-[90px]">
+    <section className="call-to-action relative z-2 bg-theme-2 py-[68px]">
       <div className="auto-container">
         <ScrollReveal
           animation="fadeIn"
@@ -18,14 +34,12 @@ export function CallToAction() {
         >
           <div className="title-box">
             <h2 className="title mb-5 text-[34px] text-white lg:mb-0 lg:text-[46px]">
-              Looking for the best web design{" "}
-              <br className="hidden min-[600px]:block" />
-              solutions?
+              {title}
             </h2>
           </div>
           <div className="btn-box">
-            <ThemeBtn href="/contact" light>
-              Contact Us
+            <ThemeBtn href={ctaHref} light>
+              {ctaLabel}
             </ThemeBtn>
           </div>
         </ScrollReveal>

@@ -1,29 +1,9 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
-import { ThemeBtn } from "@/components/theme-btn";
+import Link from "next/link";
 import { SectionTitle } from "@/components/section-title";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { imageHoverOverlayClass } from "@/lib/image-hover";
 import { cn } from "@/lib/utils";
-
-// Id de la vidéo YouTube ouverte par le lien "Watch our few minautes video"
-// (https://www.youtube.com/watch?v=Fvae8nxzVz4 dans le HTML source, servie
-// via Fancybox à l'origine).
-const YOUTUBE_VIDEO_ID = "Fvae8nxzVz4";
-
-// `.overlay-anim` du thème : un voile blanc translucide grandit du haut vers
-// le bas au survol (height 0 -> 100%) tout en s'estompant (opacity 1 -> 0),
-// puis disparaît instantanément à la sortie (pas de transition hors hover
-// dans le CSS source — comportement reproduit à l'identique).
-const overlayAnim =
-  "relative overflow-hidden rounded-[10px] after:pointer-events-none after:absolute after:inset-x-0 after:top-0 after:z-[9] after:h-0 after:bg-white/30 after:opacity-100 after:content-[''] hover:after:h-full hover:after:opacity-0 hover:after:transition-all hover:after:duration-400 hover:after:ease-linear";
 
 /**
  * Section `.why-choose-us` du thème Amiso. Colonne texte (citation +
@@ -32,11 +12,29 @@ const overlayAnim =
  * `.bg-shape` (images/icons/shape-1.png) sont en 404 sur le serveur
  * source (cf. BEHAVIORS.md) : ni recréés ni substitués.
  */
-export function WhyChooseUs() {
-  const [videoOpen, setVideoOpen] = useState(false);
+interface WhyChooseUsProps {
+  subTitle?: string;
+  title?: React.ReactNode;
+  text?: string;
+  listItems?: string[];
+  ctaHref?: string;
+  ctaLabel?: string;
+}
 
+export function WhyChooseUs({
+  subTitle = "Pourquoi Audyxa",
+  title = "Une équipe engagée sur l'impact réel de votre transformation",
+  text = "Nous rendons votre organisation plus simple, plus rapide et plus rentable. Conseil et exécution dans la même équipe, vision ROI, productivité et économies réelles, avec une approche concrète pensée pour les PME et les structures en croissance qui veulent mieux structurer leurs opérations, leurs outils et leur trajectoire digitale.",
+  listItems = [
+    "Diagnostic des priorités digitales et des pertes de temps",
+    "Automatisation et intégration des outils métier",
+    "Pilotage des gains, des indicateurs et de l'exécution",
+  ],
+  ctaHref = "/services",
+  ctaLabel = "Voir nos services",
+}: WhyChooseUsProps) {
   return (
-    <section className="relative py-[70px] pt-[120px]">
+    <section className="relative py-[70px] pt-[50px]">
       <div className="auto-container">
         <div className="flex flex-wrap">
           {/* Content column — col-xl-6 col-lg-7 col-md-12, order-2 à partir de lg
@@ -47,58 +45,32 @@ export function WhyChooseUs() {
             delay="600ms"
             className="relative z-1 mb-[50px] w-full lg:order-2 lg:w-7/12 xl:w-1/2"
           >
-            <div className="relative lg:pl-[70px]">
+            <div className="relative lg:pl-[42px]">
               <SectionTitle
-                subTitle="Company Benefits"
-                title="We’re more than an agency"
-                text="There are many variations of passages of available but the majority have suffered. Alteration in some form, lipsum is simply free text by injected humou or randomised words even believable."
-                className="mb-10"
+                subTitle={subTitle}
+                title={title}
+                text={text}
+                className="mb-6"
               />
 
-              <blockquote className="relative mb-[50px] bg-white px-10 py-5 text-base leading-[30px] font-bold text-[#242323] shadow-[0_10px_60px_rgba(0,0,0,0.1)] before:absolute before:inset-y-[10px] before:left-0 before:w-1 before:rounded-[5px] before:bg-theme-2 before:content-['']">
-                Lorem ipsum dolor sit amet, consectetur notted adipisicing elit sed do eiusmod
-              </blockquote>
+              <div className="mb-7">
+                <ul className="space-y-3 text-[15px] leading-8 text-theme-1">
+                  {listItems.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-[10px] h-2.5 w-2.5 shrink-0 rounded-full bg-theme-2" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <div className="flex flex-col items-start gap-y-[30px] sm:flex-row sm:items-center sm:gap-y-0">
-                {/* .play-now-two : order 2 dans le CSS source, alors qu'il précède
-                    le theme-btn dans le DOM — il s'affiche donc après lui. */}
-                <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
-                  <DialogTrigger asChild>
-                    <button
-                      type="button"
-                      className="group order-2 flex cursor-pointer appearance-none items-center border-0 bg-transparent p-0 text-base leading-[23px] font-extrabold text-theme-1 transition-colors duration-300 hover:text-theme-2"
-                    >
-                      <i className="fa fa-play mr-5 flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-theme-2-dark pl-[5px] text-sm text-white transition-colors duration-300 group-hover:bg-theme-1" />
-                      <span>
-                        Watch our <br />
-                        few minautes video
-                      </span>
-                    </button>
-                  </DialogTrigger>
-                  <DialogContent
-                    showCloseButton
-                    className="w-full max-w-3xl border-none bg-black p-0 sm:max-w-3xl"
-                  >
-                    <DialogTitle className="sr-only">
-                      Audyxa — few minautes video
-                    </DialogTitle>
-                    <div className="aspect-video w-full overflow-hidden rounded-xl">
-                      {videoOpen ? (
-                        <iframe
-                          src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1`}
-                          title="Audyxa video presentation"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="h-full w-full"
-                        />
-                      ) : null}
-                    </div>
-                  </DialogContent>
-                </Dialog>
-
-                <ThemeBtn href="/services/details" className="mr-[30px]">
-                  Explore now
-                </ThemeBtn>
+              <div>
+                <Link
+                  href={ctaHref}
+                  className="inline-flex items-center rounded-[10px] bg-theme-2 px-[36px] py-[15px] text-base font-extrabold text-white transition-colors hover:bg-theme-2-dark"
+                >
+                  {ctaLabel}
+                </Link>
               </div>
             </div>
           </ScrollReveal>
@@ -114,10 +86,7 @@ export function WhyChooseUs() {
                 <ScrollReveal
                   as="figure"
                   animation="fadeInUp"
-                  className={cn(
-                    "m-0 mb-5 w-full lg:w-[280px]",
-                    overlayAnim
-                  )}
+                  className={cn("m-0 mb-5 w-full rounded-[10px] lg:w-[280px]", imageHoverOverlayClass)}
                 >
                   <Image
                     src="/images/resource/benefit-1.jpg"
@@ -131,7 +100,7 @@ export function WhyChooseUs() {
                 <ScrollReveal
                   as="figure"
                   animation="fadeInRight"
-                  className={cn("m-0 w-full lg:w-[280px]", overlayAnim)}
+                  className={cn("m-0 w-full rounded-[10px] lg:w-[280px]", imageHoverOverlayClass)}
                 >
                   <Image
                     src="/images/resource/benefit-2.jpg"
@@ -146,8 +115,8 @@ export function WhyChooseUs() {
                   as="figure"
                   animation="fadeInRight"
                   className={cn(
-                    "m-0 mt-5 w-full lg:absolute lg:top-[70px] lg:right-0 lg:mt-0 lg:w-[280px]",
-                    overlayAnim
+                    "m-0 mt-5 w-full rounded-[10px] lg:absolute lg:top-[70px] lg:right-0 lg:mt-0 lg:w-[280px]",
+                    imageHoverOverlayClass
                   )}
                 >
                   <Image
@@ -160,12 +129,13 @@ export function WhyChooseUs() {
                 </ScrollReveal>
 
                 {/* .logo : masqué sous 1200px dans le CSS source (responsive.css) */}
-                <figure className="m-0 hidden xl:absolute xl:top-[185px] xl:left-[170px] xl:block">
+                <figure className="m-0 hidden xl:absolute xl:top-1/2 xl:left-1/2 xl:block xl:-translate-x-1/2 xl:-translate-y-1/2">
                   <Image
-                    src="/images/resource/fav-icon.png"
-                    alt=""
-                    width={190}
-                    height={157}
+                    src="/images/logo-mark.png"
+                    alt="Audyxa"
+                    width={250}
+                    height={126}
+                    className="h-auto w-[250px] object-contain drop-shadow-[0_18px_36px_rgba(0,0,0,0.14)]"
                   />
                 </figure>
               </div>

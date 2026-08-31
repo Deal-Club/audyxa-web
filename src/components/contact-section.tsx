@@ -4,6 +4,7 @@ import type { FormEvent } from "react";
 import Image from "next/image";
 import { SectionTitle } from "@/components/section-title";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { imageHoverOverlayClass } from "@/lib/image-hover";
 import { cn } from "@/lib/utils";
 
 /**
@@ -33,43 +34,48 @@ export function ContactSection() {
       <div className="auto-container">
         <div className="grid grid-cols-1 gap-x-[30px] gap-y-[50px] lg:grid-cols-2 lg:gap-y-0">
           {/* Colonne formulaire */}
-          <div className="relative">
+          <div className="relative pb-[36px] lg:pb-[52px]">
             <ScrollReveal animation="fadeInLeft" className="relative">
-              <SectionTitle subTitle="Contact Now" title="Get in touch with us" />
+              <SectionTitle
+                subTitle="Parlons de votre projet"
+                title="Exposez vos priorites digitales et vos blocages terrain"
+                text="Si vos equipes perdent du temps, ressaisissent la meme information plusieurs fois ou travaillent avec des outils disperses, nous pouvons vous aider a remettre de l'ordre et a prioriser les bons chantiers."
+                className="pt-[38px]"
+              />
 
               <form onSubmit={handleSubmit} className="relative">
                 <div className="grid grid-cols-1 gap-x-[30px] gap-y-5 lg:grid-cols-2">
                   <input
                     type="text"
                     name="full_name"
-                    placeholder="Your name"
+                    placeholder="Votre nom"
                     required
                     className={fieldClass}
                   />
                   <input
                     type="email"
                     name="Email"
-                    placeholder="Email Address"
+                    placeholder="Adresse email"
                     required
                     className={fieldClass}
                   />
                   <input
                     type="text"
                     name="Phone"
-                    placeholder="Phone"
+                    placeholder="Telephone"
                     required
                     className={fieldClass}
                   />
                   <input
                     type="text"
                     name="subject"
-                    placeholder="Subject"
+                    placeholder="Sujet"
                     required
                     className={fieldClass}
                   />
                   <textarea
                     name="message"
-                    placeholder="Write a Message"
+                    placeholder="Decrivez votre besoin"
                     required
                     className={cn(fieldClass, "h-[150px] resize-none lg:col-span-2")}
                   />
@@ -82,7 +88,7 @@ export function ContactSection() {
                       aria-hidden
                       className="absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] bg-theme-2-dark transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full"
                     />
-                    <span className="relative z-[2]">Submit Message</span>
+                    <span className="relative z-[2]">Demander un echange</span>
                   </button>
                 </div>
               </form>
@@ -90,7 +96,7 @@ export function ContactSection() {
           </div>
 
           {/* Colonne image */}
-          <div className="relative">
+          <div className="relative lg:-mb-[52px]">
             {/*
               .contact-section .image-column .inner-column a un margin-right: -375px sur desktop :
               l'image déborde volontairement du conteneur vers le bord du viewport. Reproduit
@@ -105,13 +111,15 @@ export function ContactSection() {
                   aria-hidden
                   className="absolute -left-5 top-[60px] bottom-0 hidden w-5 rounded-tl-[10px] bg-theme-2 lg:block"
                 />
-                <Image
-                  src="/images/resource/contact.jpg"
-                  alt=""
-                  width={862}
-                  height={631}
-                  className="h-auto w-full rounded-tl-[10px] object-cover"
-                />
+                <div className={cn(imageHoverOverlayClass, "rounded-tl-[10px]")}>
+                  <Image
+                    src="/images/resource/contact.jpg"
+                    alt=""
+                    width={862}
+                    height={631}
+                    className="h-auto w-full rounded-tl-[10px] object-cover"
+                  />
+                </div>
               </figure>
             </div>
           </div>

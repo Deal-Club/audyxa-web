@@ -3,10 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const PORTFOLIO_THUMBS = [1, 2, 3, 4, 5, 6].map(
-  (n) => `/images/resource/project-thumb-${n}.jpg`
-);
-
 /** Footer du thème Amiso : formulaire newsletter + 4 colonnes de widgets + bas de page. */
 export function Footer() {
   return (
@@ -15,8 +11,9 @@ export function Footer() {
         <div className="title-column">
           <h5 className="title flex items-center gap-2 text-white">
             <i className="flaticon-open-envelope text-theme-2" />
-            Subscribe now to get <br />
-            latest updates
+            Echangeons sur vos priorites
+            <br />
+            de transformation digitale
           </h5>
         </div>
         <div className="form-column w-full md:w-auto">
@@ -24,7 +21,7 @@ export function Footer() {
             <input
               type="email"
               name="email"
-              placeholder="Email Address"
+              placeholder="Votre adresse email"
               required
               className="w-full rounded-l-[10px] border border-white/10 bg-transparent px-5 py-3 text-white placeholder:text-white/50 focus:outline-none"
             />
@@ -49,23 +46,28 @@ export function Footer() {
                 </Link>
               </div>
               <div className="text mb-5 text-[15px] leading-[30px] text-[#8f8f8f]">
-                Lorem ipsum dolor sit amet, consect etur adi pisicing elit sed do eiusmod tempor
-                incididunt ut labore.
+                Audyxa accompagne les entreprises qui veulent structurer leur croissance, mieux piloter leurs operations et transformer les pertes de temps en gains concrets.
               </div>
-              <ul className="social-icon-two flex gap-3">
+              <div className="rounded-[10px] border border-white/10 px-5 py-4 text-sm leading-7 text-[#8f8f8f]">
+                Conseil, automatisation, IA, developpement d&apos;outils metier et accompagnement au deploiement.
+              </div>
+            </div>
+          </div>
+
+          <div className="footer-column">
+            <div className="footer-widget links-widget">
+              <h6 className="widget-title mb-[15px] font-semibold text-white">Navigation</h6>
+              <ul className="user-links space-y-[10px] text-[15px] text-[#8f8f8f]">
                 {[
-                  ["fa-twitter", "#"],
-                  ["fa-facebook", "#"],
-                  ["fa-pinterest", "#"],
-                  ["fa-instagram", "#"],
-                ].map(([icon, href]) => (
-                  <li key={icon}>
-                    <a
-                      href={href}
-                      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:bg-theme-2 hover:border-theme-2"
-                    >
-                      <i className={`fab ${icon}`} />
-                    </a>
+                  { label: "Accueil", href: "/" },
+                  { label: "A propos", href: "/about" },
+                  { label: "Services", href: "/services" },
+                  { label: "Contact", href: "/contact" },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-[#8f8f8f] hover:text-theme-2">
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -73,49 +75,36 @@ export function Footer() {
           </div>
 
           <div className="footer-column">
-            <div className="footer-widget links-widget">
-              <h6 className="widget-title mb-[15px] font-semibold text-white">Explore</h6>
-              <ul className="user-links space-y-[10px] text-[15px] text-[#8f8f8f]">
-                {["About Company", "Meet the Team", "News & Media", "Our Projects", "Contact"].map(
-                  (label) => (
-                    <li key={label}>
-                      <a href="#" className="hover:text-theme-2">{label}</a>
-                    </li>
-                  )
-                )}
+            <div className="footer-widget gallery-widget">
+              <h6 className="widget-title mb-[15px] font-semibold text-white">Interventions</h6>
+              <ul className="space-y-[10px] text-[15px] leading-7 text-[#8f8f8f]">
+                <li>Audit et diagnostic digital</li>
+                <li>Cartographie et optimisation des processus</li>
+                <li>Automatisation et integrations API</li>
+                <li>IA en entreprise et outils metier</li>
+                <li>Pilotage, adoption et mesure ROI</li>
               </ul>
             </div>
           </div>
 
           <div className="footer-column">
-            <div className="footer-widget gallery-widget">
-              <h6 className="widget-title mb-[15px] font-semibold text-white">Portfolio</h6>
-              <div className="outer -mx-[5px] flex flex-wrap pt-[5px]">
-                {PORTFOLIO_THUMBS.map((src) => (
-                  <figure key={src} className="image mb-[10px] w-1/3 px-[5px]">
-                    <a href="#" className="block overflow-hidden rounded-[10px]">
-                      <Image src={src} alt="" width={100} height={100} className="h-full w-full object-cover" />
-                    </a>
-                  </figure>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="footer-column">
             <div className="footer-widget contacts-widget">
-              <h6 className="widget-title mb-[15px] font-semibold text-white">Contact</h6>
+              <h6 className="widget-title mb-[15px] font-semibold text-white">Perimetre</h6>
               <div className="text mb-[15px] text-[15px] text-[#8f8f8f]">
-                66 Road Broklyn Street, 600 New York, USA
+                France et Afrique francophone
               </div>
               <ul className="contact-info space-y-[10px] text-[15px] text-[#8f8f8f]">
                 <li className="flex items-center gap-2">
                   <i className="fa fa-envelope text-theme-2" />
-                  <a href="mailto:needhelp@potisen.com" className="hover:text-theme-2">needhelp@company.com</a>
+                  <a href="mailto:contact@audyxa.com" className="text-[#8f8f8f] hover:text-theme-2">contact@audyxa.com</a>
                 </li>
                 <li className="flex items-center gap-2">
                   <i className="fa fa-phone-square text-theme-2" />
-                  <a href="tel:+926668880000" className="hover:text-theme-2">+92 666 888 0000</a>
+                  <span>Conseil + execution sur la meme mission</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <i className="fa fa-map-marker-alt text-theme-2" />
+                  <span>Intervention a distance et accompagnement structure</span>
                 </li>
               </ul>
             </div>
@@ -127,7 +116,7 @@ export function Footer() {
         <div className="auto-container">
           <div className="inner-container py-6 text-center">
             <div className="copyright-text text-sm text-[#8f8f8f]">
-              © Copyright 2023 by <Link href="/" className="hover:text-theme-2">Company.com</Link>
+              © 2026 <Link href="/" className="text-[#8f8f8f] hover:text-theme-2">Audyxa</Link>. Transformation digitale des entreprises.
             </div>
           </div>
         </div>

@@ -4,26 +4,16 @@ import { ContactDetailsSection } from "@/components/contact-details-section";
 import { ContactPageForm } from "@/components/contact-page-form";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Audyxa",
+  title: "Contact | Audyxa",
   description:
-    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
+    "Contactez Audyxa pour échanger sur votre transformation digitale, vos processus, vos automatisations et vos priorités de déploiement.",
 };
-
-/**
- * Page `/contact` (page-contact.html côté source). Distincte de la
- * teaser form de la homepage (`contact-section.tsx`) : ici deux sections
- * dédiées, `.contact-details` (coordonnées + carte) puis `.team-contact-form`
- * (formulaire complet), toutes deux déléguées à leurs propres composants.
- *
- * Fil d'ariane à 2 niveaux seulement (Home > Contact), sans maillon "Pages"
- * intermédiaire — contrairement aux autres pages internes du site.
- */
 export default function ContactPage() {
   return (
     <main>
       <PageTitle
-        title="Contact Us"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+        title="Contact"
+        breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
       />
       <ContactDetailsSection />
       <ContactPageForm />

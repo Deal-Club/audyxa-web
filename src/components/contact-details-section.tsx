@@ -15,16 +15,15 @@ import { SectionTitle } from "@/components/section-title";
  */
 export function ContactDetailsSection() {
   return (
-    <section className="py-[120px]">
+    <section className="pt-[120px] pb-[120px]">
       <div className="auto-container">
         <div className="flex flex-wrap">
-          {/* col-xl-5 col-lg-6 mb-md-60 : empilée avec marge basse sous lg,
-              où la colonne carte passe en dessous plutôt qu'à côté. */}
           <div className="mb-[60px] w-full lg:mb-0 lg:w-1/2 xl:w-5/12">
             <SectionTitle
-              subTitle="Need any help?"
-              title="Get in touch with us"
-              text="Lorem ipsum is simply free text available dolor sit amet, consectetur notted adipisicing elit sed do eiusmod tempor incididunt simply free ut labore et dolore magna aliqua."
+              subTitle="Contact Audyxa"
+              title="Parlons de votre projet de transformation digitale"
+              text="Nous intervenons auprès des entreprises qui veulent structurer leur croissance, réduire les pertes de temps et déployer des solutions digitales utiles."
+              className="pt-[44px]"
             />
 
             <ul className="mt-[41px] list-none space-y-[30px]">
@@ -33,9 +32,9 @@ export function ContactDetailsSection() {
                   <span className="lnr-icon-phone-plus text-[25px] text-white" aria-hidden />
                 </div>
                 <div className="ml-[30px]">
-                  <h6>Have any question?</h6>
-                  <a href="tel:980089850" className="text-[18px]">
-                    <span className="text-[20px]">Free</span> +92 (020)-9850
+                  <h6>Numéro direct</h6>
+                  <a href="tel:+2290195241540" className="text-[20px] text-theme-1">
+                    2290195241540
                   </a>
                 </div>
               </li>
@@ -44,9 +43,9 @@ export function ContactDetailsSection() {
                   <span className="lnr-icon-envelope1 text-[25px] text-white" aria-hidden />
                 </div>
                 <div className="ml-[30px]">
-                  <h6>Write email</h6>
-                  <a href="mailto:needhelp@company.com" className="text-[18px]">
-                    needhelp@company.com
+                  <h6>Email</h6>
+                  <a href="mailto:contact@audyxa.com" className="text-[20px] text-theme-1">
+                    contact@audyxa.com
                   </a>
                 </div>
               </li>
@@ -55,25 +54,47 @@ export function ContactDetailsSection() {
                   <span className="lnr-icon-location text-[25px] text-white" aria-hidden />
                 </div>
                 <div className="ml-[30px]">
-                  <h6>Visit anytime</h6>
-                  <span className="text-[20px]">66 broklyn golden street. New York</span>
+                  <h6>Approche</h6>
+                  <span className="text-[18px]">Conseil, exécution et pilotage sur la même mission</span>
                 </div>
               </li>
             </ul>
           </div>
 
-          {/* col-xl-7 col-lg-6 : carte Google Maps. L'URL d'embed provient
-              telle quelle du HTML source (localisation générique fournie
-              par l'auteur du thème, jamais remplacée). */}
           <div className="w-full lg:w-1/2 xl:w-7/12">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.843149788316!2d144.9537131159042!3d-37.81714274201087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sbn!2sbd!4v1583760510840!5m2!1sbn!2sbd"
-              width="100%"
-              height={550}
-              className="border-0"
-              allowFullScreen
-              title="Localisation"
-            />
+            <div className="rounded-[24px] bg-[#f5f7fb] px-8 py-9 shadow-[0_15px_60px_rgba(0,0,0,0.05)] lg:min-h-[550px]">
+              <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.22em] text-theme-2 uppercase">
+                Ce que nous cadrons d&apos;abord
+              </span>
+              <h3 className="mb-6 text-[34px] leading-[1.15em] font-bold text-theme-1">
+                Avant de parler outil, nous cherchons les vraies sources de valeur
+              </h3>
+              <div className="grid gap-5 md:grid-cols-2">
+                {[
+                  "Quels résultats métier voulez-vous améliorer ?",
+                  "Où perdez-vous du temps ou de la qualité ?",
+                  "Quels outils ou flux posent problème aujourd&apos;hui ?",
+                  "Quelles économies ou gains sont réellement attendus ?",
+                ].map((item) => (
+                  <div key={item} className="rounded-[16px] bg-white px-5 py-5">
+                    <div className="flex items-start gap-3">
+                      <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-theme-2 text-white">
+                        <i className="fa fa-check" />
+                      </span>
+                      <p className="mb-0 text-sm leading-7 text-theme-1">{item}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 rounded-[16px] bg-theme-1 px-6 py-6 text-white">
+                <p className="mb-2 text-sm font-semibold tracking-[0.16em] text-white/55 uppercase">
+                  Résultat attendu
+                </p>
+                <p className="mb-0 text-base leading-8 text-white/85">
+                  Une lecture claire de vos priorités, des quick wins, des prérequis et de la trajectoire de transformation à suivre.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

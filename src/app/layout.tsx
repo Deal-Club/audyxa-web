@@ -11,13 +11,14 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Audyxa | Transformer, innover, exceller",
-  description: "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
+  title: "Audyxa | Transformation digitale des entreprises",
+  description:
+    "Audyxa accompagne les entreprises en France et en Afrique francophone avec une approche conseil + services pour transformer les pertes de temps en gains réels.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${manrope.variable} antialiased`}>
+    <html lang="fr" className={`${manrope.variable} antialiased`}>
       <body className="page-wrapper">
         <Header />
         {children}

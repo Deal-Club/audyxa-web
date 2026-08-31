@@ -1,28 +1,24 @@
 import type { Metadata } from "next";
 import { PageTitle } from "@/components/page-title";
 import { ServicesListSection } from "@/components/services-list-section";
+import { ServicesSeoSection } from "@/components/services-seo-section";
+import { CallToAction } from "@/components/call-to-action";
 
 export const metadata: Metadata = {
   title: "Services | Audyxa",
   description:
-    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
+    "Audyxa propose des services de diagnostic, automatisation, IA, développement d'outils métier et pilotage de transformation digitale.",
 };
-
-/**
- * Page `/services` (`page-services.html` côté source) : liste complète des
- * 6 services, à la différence de la teaser à 3 cartes de la home
- * (`services-section.tsx`, réutilisée telle quelle sur `/about`). Une seule
- * section après la bannière de titre, voir `services-list-section.tsx`
- * pour le détail des écarts de fidélité responsive avec la variante home.
- */
 export default function ServicesPage() {
   return (
     <main>
       <PageTitle
-        title="Services"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Pages" }, { label: "Services" }]}
+        title="Nos services"
+        breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Services" }]}
       />
       <ServicesListSection />
+      <ServicesSeoSection />
+      <CallToAction />
     </main>
   );
 }

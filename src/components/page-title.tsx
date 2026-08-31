@@ -12,14 +12,14 @@ interface PageTitleProps {
 
 /**
  * Bannière `.page-title` répétée en tête des 18 pages internes du thème.
- * Le fond `images/background/page-title.jpg` est en 404 sur le site source
- * ET sur le site vendeur (kodesolution.com) — le calque sombre `::before`
- * (80% opacité) reste seul visible, comme sur le site réel.
  */
 export function PageTitle({ title, breadcrumbs }: PageTitleProps) {
   return (
-    <section className="page-title relative bg-cover bg-center pt-[200px] pb-[110px] min-h-[250px] [@media(min-width:769px)]:pt-[230px]">
-      <div className="absolute inset-0 bg-[#131313] opacity-80" />
+    <section
+      className="page-title relative bg-cover bg-center pt-[120px] pb-[60px] min-h-[160px] [@media(min-width:769px)]:pt-[140px]"
+      style={{ backgroundImage: "url(/page-title-bg.png)" }}
+    >
+      <div className="absolute inset-0 bg-[#131313] opacity-60" />
       <div className="auto-container relative">
         <div className="title-outer">
           <h1 className="title mb-[17px] text-[40px] text-white [@media(min-width:600px)]:text-[64px]">

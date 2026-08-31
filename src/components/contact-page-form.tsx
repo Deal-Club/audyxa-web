@@ -31,12 +31,13 @@ export function ContactPageForm() {
       <div className="auto-container">
         <SectionTitle
           center
-          subTitle="Contact With Us Now"
+          subTitle="Échange stratégique"
           title={
             <>
-              Feel Free to Write Our <br /> Tecnology Experts
+              Décrivez votre contexte, vos <br /> blocages et vos objectifs
             </>
           }
+          text="Plus votre brief est concret, plus nous pouvons cadrer rapidement les bons leviers de transformation."
         />
 
         <div className="mx-auto w-full sm:w-10/12 lg:w-8/12">
@@ -45,32 +46,32 @@ export function ContactPageForm() {
               <input
                 name="form_name"
                 type="text"
-                placeholder="Enter Name"
+                placeholder="Nom"
                 className={fieldClass}
               />
               <input
                 name="form_email"
                 type="email"
-                placeholder="Enter Email"
+                placeholder="Email"
                 required
                 className={fieldClass}
               />
               <input
                 name="form_subject"
                 type="text"
-                placeholder="Enter Subject"
+                placeholder="Sujet"
                 required
                 className={fieldClass}
               />
               <input
                 name="form_phone"
                 type="text"
-                placeholder="Enter Phone"
+                placeholder="Téléphone"
                 className={fieldClass}
               />
               <textarea
                 name="form_message"
-                placeholder="Enter Message"
+                placeholder="Décrivez votre besoin, vos outils actuels, vos pertes de temps ou le projet à cadrer"
                 rows={5}
                 required
                 className={`${fieldClass} h-[180px] resize-none sm:col-span-2`}
@@ -85,17 +86,7 @@ export function ContactPageForm() {
                     aria-hidden
                     className="absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] bg-theme-2-dark transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full"
                   />
-                  <span className="relative z-[2]">Send message</span>
-                </button>
-                <button
-                  type="reset"
-                  className="group relative z-0 inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-[10px] bg-theme-2 px-[50px] py-[15px] text-base font-extrabold leading-7 text-white transition-all duration-500"
-                >
-                  <span
-                    aria-hidden
-                    className="absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] bg-theme-2-dark transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full"
-                  />
-                  <span className="relative z-[2]">Reset</span>
+                  <span className="relative z-[2]">Envoyer la demande</span>
                 </button>
               </div>
             </div>
