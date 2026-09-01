@@ -37,7 +37,7 @@ const services: ServiceItem[] = [
  */
 export function ServicesSection() {
   return (
-    <section className="relative z-1 pb-[120px]">
+    <section className="relative z-1 pb-[90px]">
       <div className="auto-container">
         <SectionTitle
           subTitle="Nos expertises"
@@ -89,11 +89,11 @@ export function ServicesSection() {
           ))}
         </div>
 
-        <div className="mt-[30px] flex items-center justify-center">
-          <div className="bg-theme-3 px-[30px] py-[15px] leading-[28px]">
+        <div className="mt-[30px] flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+          <div className="rounded-[10px] bg-theme-3 px-[30px] py-[15px] text-center leading-[28px] sm:text-left">
             Audyxa vous accompagne du diagnostic jusqu&apos;au déploiement terrain.
           </div>
-          <ThemeBtn href="/services" className="ml-[10px]">
+          <ThemeBtn href="/services" className="w-full justify-center text-center sm:ml-[10px] sm:w-auto">
             Voir tous les services
           </ThemeBtn>
         </div>

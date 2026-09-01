@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -16,7 +16,6 @@ import { MobileNavMenu } from "@/components/mobile-nav-menu";
 export function Header() {
   const [isSticky, setIsSticky] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setIsSticky(window.scrollY > 100);
@@ -29,25 +28,11 @@ export function Header() {
     document.body.classList.toggle("mobile-menu-visible", mobileOpen);
   }, [mobileOpen]);
 
-  // Publie la hauteur réelle du header (variable selon les breakpoints) en
-  // variable CSS, pour que le hero puisse remplir exactement le reste de
-  // l'écran (100vh - header) sans jamais dépasser la fenêtre au chargement.
-  useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    const setVar = () => {
-      document.documentElement.style.setProperty("--header-height", `${el.offsetHeight}px`);
-    };
-    setVar();
-    const observer = new ResizeObserver(setVar);
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
-      <header ref={headerRef} className="main-header header-style-one relative z-30">
-        <div className="header-top hidden bg-theme-1 lg:block">
+      <header className="main-header header-style-one absolute inset-x-0 top-0 z-30">
+        <div className="header-top hidden lg:block">
           <div className="auto-container flex items-center justify-between py-[8px]">
             <div className="top-left">
               <ul className="flex items-center">
@@ -74,7 +59,7 @@ export function Header() {
           </div>
         </div>
 
-        <div className="header-lower bg-theme-1">
+        <div className="header-lower">
           <div className="auto-container">
             <div className="main-box flex h-[68px] items-center justify-between [@media(min-width:1440px)]:h-[80px]">
               <div className="logo-box">
@@ -174,7 +159,7 @@ export function Header() {
             </button>
           </div>
 
-          <MobileNavMenu items={NAVIGATION} />
+          <MobileNavMenu items={NAVIGATION} onNavigate={() => setMobileOpen(false)} />
 
           <ul className="contact-list-one mt-6 space-y-4 border-t border-white/10 pt-6">
             <li className="contact-info-box">

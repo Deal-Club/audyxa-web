@@ -33,7 +33,7 @@ const APPROACH: ApproachItem[] = [
  */
 export function AboutApproachSection() {
   return (
-    <section className="relative overflow-hidden bg-theme-1 pt-[110px] pb-[110px]">
+    <section className="relative overflow-hidden bg-theme-1 pt-[90px] pb-[90px]">
       <div className="auto-container">
         <SectionTitle
           center

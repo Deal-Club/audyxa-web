@@ -130,7 +130,7 @@ export function FaqSection({
     const columns = [items.slice(0, midpoint), items.slice(midpoint)];
 
     return (
-      <section className="faqs-section relative bg-theme-3 pt-[120px] pb-[70px]">
+      <section className="faqs-section relative bg-theme-3 pt-[90px] pb-[60px]">
         <div className="auto-container">
           <SectionTitle center subTitle={subTitle} title={title} />
 
@@ -162,7 +162,7 @@ export function FaqSection({
   }
 
   return (
-    <section className="faqs-section relative bg-theme-3 pt-[120px] pb-[70px]">
+    <section className="faqs-section relative bg-theme-3 pt-[90px] pb-[60px]">
       <div className="auto-container">
         <SectionTitle
           center

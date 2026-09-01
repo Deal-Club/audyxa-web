@@ -1,11 +1,28 @@
 import Link from "next/link";
 import Script from "next/script";
+import { DECISION_PAGES } from "@/lib/decision-content";
+import { SECTOR_PAGES } from "@/lib/sector-content";
+import { GEO_COUNTRIES } from "@/lib/geo-content";
 
 interface ServiceDetail {
   id: string;
   title: string;
   paragraphs: string[];
 }
+
+/** id (local à cette section) -> slug réel de la page /services/[slug]. */
+const SERVICE_SLUG_MAP: Record<string, string> = {
+  "audit-diagnostic": "audit-diagnostic-digital",
+  "refonte-processus": "refonte-processus",
+  "automatisation-integrations": "automatisation-integrations",
+  "ia-entreprise": "ia-entreprise",
+  "outils-metier": "developpement-outils-metier",
+  "pilotage-deploiement": "pilotage-deploiement",
+};
+
+const DECISION_LINKS = DECISION_PAGES.slice(0, 4).map((d) => ({ slug: d.slug, title: d.title }));
+const SECTOR_LINKS = SECTOR_PAGES.slice(0, 8).map((s) => ({ slug: s.slug, name: s.name }));
+const COUNTRY_LINKS = GEO_COUNTRIES.map((c) => ({ slug: c.slug, name: c.name }));
 
 const SERVICE_DETAILS: ServiceDetail[] = [
   {
@@ -107,7 +124,7 @@ const FAQ_JSON_LD = {
  */
 export function ServicesSeoSection() {
   return (
-    <section className="relative bg-theme-3 pt-[100px] pb-[110px]">
+    <section className="relative bg-theme-3 pt-[80px] pb-[90px]">
       <Script
         id="services-faq-schema"
         type="application/ld+json"
@@ -176,6 +193,65 @@ export function ServicesSeoSection() {
                   ))}
                 </div>
               ))}
+            </div>
+
+            <div className="mt-[50px]">
+              <h3 className="mb-5 text-[18px] font-extrabold text-theme-1">
+                Aller plus loin sur chaque service
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {SERVICE_DETAILS.map((service) => (
+                  <Link
+                    key={service.id}
+                    href={`/services/${SERVICE_SLUG_MAP[service.id]}`}
+                    className="rounded-full border border-[#e2e2e2] bg-white px-5 py-2 text-sm font-semibold text-theme-1 transition-colors hover:border-theme-2 hover:text-theme-2"
+                  >
+                    {service.title} →
+                  </Link>
+                ))}
+              </div>
+              <h3 className="mt-8 mb-5 text-[18px] font-extrabold text-theme-1">
+                Des questions pour vous aider à choisir
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {DECISION_LINKS.map((d) => (
+                  <Link
+                    key={d.slug}
+                    href={`/comparatifs/${d.slug}`}
+                    className="rounded-full border border-[#e2e2e2] bg-white px-5 py-2 text-sm font-semibold text-theme-1 transition-colors hover:border-theme-2 hover:text-theme-2"
+                  >
+                    {d.title} →
+                  </Link>
+                ))}
+              </div>
+              <h3 className="mt-8 mb-5 text-[18px] font-extrabold text-theme-1">
+                Par secteur d&apos;activité
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {SECTOR_LINKS.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/secteurs/${s.slug}`}
+                    className="rounded-full border border-[#e2e2e2] bg-white px-5 py-2 text-sm font-semibold text-theme-1 transition-colors hover:border-theme-2 hover:text-theme-2"
+                  >
+                    {s.name} →
+                  </Link>
+                ))}
+              </div>
+              <h3 className="mt-8 mb-5 text-[18px] font-extrabold text-theme-1">
+                Zones desservies
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {COUNTRY_LINKS.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={`/pays/${c.slug}`}
+                    className="rounded-full border border-[#e2e2e2] bg-white px-5 py-2 text-sm font-semibold text-theme-1 transition-colors hover:border-theme-2 hover:text-theme-2"
+                  >
+                    {c.name} →
+                  </Link>
+                ))}
+              </div>
             </div>
 
             <div className="mt-[50px] rounded-[16px] bg-white px-7 py-7 text-center shadow-[0_10px_60px_rgba(0,0,0,0.05)]">

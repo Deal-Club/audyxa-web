@@ -44,7 +44,7 @@ export function AboutSection({
   logoMode = false,
 }: AboutSectionProps) {
   return (
-    <section className="about-section relative pt-[120px] pb-[70px]">
+    <section className="about-section relative pt-[90px] pb-[60px]">
       <div className="auto-container">
         <div className="row flex flex-wrap items-center -mx-[15px]">
           <ScrollReveal

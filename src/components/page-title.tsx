@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Script from "next/script";
+import { SITE_URL } from "@/lib/site-config";
 
 interface Crumb {
   label: string;
@@ -8,17 +10,39 @@ interface Crumb {
 interface PageTitleProps {
   title: string;
   breadcrumbs: Crumb[];
+  /** Chemin canonique de la page courante (ex: "/about"), pour générer le schema BreadcrumbList. */
+  currentPath?: string;
 }
 
 /**
  * Bannière `.page-title` répétée en tête des 18 pages internes du thème.
  */
-export function PageTitle({ title, breadcrumbs }: PageTitleProps) {
+export function PageTitle({ title, breadcrumbs, currentPath }: PageTitleProps) {
+  const breadcrumbJsonLd = currentPath
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumbs.map((crumb, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: crumb.label,
+          item: `${SITE_URL}${crumb.href ?? currentPath}`,
+        })),
+      }
+    : null;
+
   return (
     <section
       className="page-title relative bg-cover bg-center pt-[120px] pb-[60px] min-h-[160px] [@media(min-width:769px)]:pt-[140px]"
       style={{ backgroundImage: "url(/page-title-bg.png)" }}
     >
+      {breadcrumbJsonLd ? (
+        <Script
+          id="breadcrumb-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+      ) : null}
       <div className="absolute inset-0 bg-[#131313] opacity-60" />
       <div className="auto-container relative">
         <div className="title-outer">

@@ -6,6 +6,7 @@ import { SectionTitle } from "@/components/section-title";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { imageHoverOverlayClass } from "@/lib/image-hover";
 import { cn } from "@/lib/utils";
+import { useContactForm } from "@/lib/use-contact-form";
 
 /**
  * Style commun aux champs `.contact-form .form-group input/textarea` du
@@ -20,9 +21,21 @@ const fieldClass =
 // décor non reproduit, comme pour le pattern équivalent de FaqSection.
 
 export function ContactSection() {
+  const { status, submit } = useContactForm();
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    // Formulaire statique : pas de backend réel dans ce clone (hors périmètre, cf. PAGE_TOPOLOGY.md).
     event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    submit({
+      name: String(data.get("full_name") ?? ""),
+      email: String(data.get("Email") ?? ""),
+      phone: String(data.get("Phone") ?? ""),
+      subject: String(data.get("subject") ?? ""),
+      message: String(data.get("message") ?? ""),
+    }).then((result) => {
+      if (result === "success") form.reset();
+    });
   };
 
   return (
@@ -82,14 +95,27 @@ export function ContactSection() {
 
                   <button
                     type="submit"
-                    className="group relative z-0 mt-[5px] inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-[10px] bg-theme-2 px-[50px] py-[15px] text-base font-extrabold leading-7 text-white transition-all duration-500 lg:col-span-2"
+                    disabled={status === "submitting"}
+                    className="group relative z-0 mt-[5px] inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-[10px] bg-theme-2 px-[50px] py-[15px] text-base font-extrabold leading-7 text-white transition-all duration-500 disabled:cursor-not-allowed disabled:opacity-60 lg:col-span-2"
                   >
                     <span
                       aria-hidden
                       className="absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] bg-theme-2-dark transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full"
                     />
-                    <span className="relative z-[2]">Demander un echange</span>
+                    <span className="relative z-[2]">
+                      {status === "submitting" ? "Envoi en cours..." : "Demander un echange"}
+                    </span>
                   </button>
+                  {status === "success" ? (
+                    <p className="mb-0 text-sm font-semibold text-green-600 lg:col-span-2">
+                      Message envoyé. Nous revenons vers vous rapidement.
+                    </p>
+                  ) : null}
+                  {status === "error" ? (
+                    <p className="mb-0 text-sm font-semibold text-red-600 lg:col-span-2">
+                      L&apos;envoi a échoué. Réessayez ou écrivez-nous à contact@audyxa.com.
+                    </p>
+                  ) : null}
                 </div>
               </form>
             </ScrollReveal>

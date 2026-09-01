@@ -17,7 +17,7 @@ export default function Home() {
       <FeaturesSection />
       <HomeQuoteBanner />
       <WhyChooseUs />
-      <FaqSection />
+      <FaqSection layout="two-columns" />
       <ContactSection />
       <CallToAction />
     </main>

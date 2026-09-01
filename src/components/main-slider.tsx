@@ -65,10 +65,7 @@ export function MainSlider() {
 
   return (
     <section className="main-slider relative overflow-hidden bg-[#0f0f0f]">
-      <div
-        className="relative min-h-[480px] w-full"
-        style={{ height: "calc(100vh - var(--header-height, 120px))" }}
-      >
+      <div className="relative min-h-[480px] w-full h-screen">
         {SLIDES.map((slide, i) => (
           <div
             key={i}

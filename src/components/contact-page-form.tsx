@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import { SectionTitle } from "@/components/section-title";
+import { useContactForm } from "@/lib/use-contact-form";
 
 /**
  * Champs `.team-contact-form .form-control` : fond blanc (surchargé depuis
@@ -14,16 +15,25 @@ const fieldClass =
 
 /**
  * Section `.team-contact-form` de page-contact.html : formulaire de contact
- * complet (nom/email/sujet/téléphone/message). Aucune classe `wow` sur ces
- * éléments en source : pas d'animation d'entrée ajoutée.
- *
- * Formulaire statique : pas de backend réel dans ce clone (hors périmètre,
- * cf. PAGE_TOPOLOGY.md) — `onSubmit` se contente d'un `preventDefault`,
- * sans état de succès ni endpoint inventé.
+ * complet (nom/email/sujet/téléphone/message), envoyé via /api/contact
+ * (Resend) vers contact@audyxa.com.
  */
 export function ContactPageForm() {
+  const { status, submit } = useContactForm();
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    submit({
+      name: String(data.get("form_name") ?? ""),
+      email: String(data.get("form_email") ?? ""),
+      subject: String(data.get("form_subject") ?? ""),
+      phone: String(data.get("form_phone") ?? ""),
+      message: String(data.get("form_message") ?? ""),
+    }).then((result) => {
+      if (result === "success") form.reset();
+    });
   };
 
   return (
@@ -77,17 +87,30 @@ export function ContactPageForm() {
                 className={`${fieldClass} h-[180px] resize-none sm:col-span-2`}
               />
 
-              <div className="flex flex-wrap justify-center gap-[15px] sm:col-span-2">
+              <div className="flex flex-col items-center gap-[15px] sm:col-span-2">
                 <button
                   type="submit"
-                  className="group relative z-0 inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-[10px] bg-theme-2 px-[50px] py-[15px] text-base font-extrabold leading-7 text-white transition-all duration-500"
+                  disabled={status === "submitting"}
+                  className="group relative z-0 inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-[10px] bg-theme-2 px-[50px] py-[15px] text-base font-extrabold leading-7 text-white transition-all duration-500 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <span
                     aria-hidden
                     className="absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] bg-theme-2-dark transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full"
                   />
-                  <span className="relative z-[2]">Envoyer la demande</span>
+                  <span className="relative z-[2]">
+                    {status === "submitting" ? "Envoi en cours..." : "Envoyer la demande"}
+                  </span>
                 </button>
+                {status === "success" ? (
+                  <p className="mb-0 text-sm font-semibold text-green-600">
+                    Message envoyé. Nous revenons vers vous rapidement.
+                  </p>
+                ) : null}
+                {status === "error" ? (
+                  <p className="mb-0 text-sm font-semibold text-red-600">
+                    L&apos;envoi a échoué. Réessayez ou écrivez-nous directement à contact@audyxa.com.
+                  </p>
+                ) : null}
               </div>
             </div>
           </form>

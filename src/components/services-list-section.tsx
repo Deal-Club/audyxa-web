@@ -3,6 +3,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { cn } from "@/lib/utils";
 
 interface ServiceItem {
+  slug: string;
   icon: string;
   title: string;
   text: string;
@@ -11,36 +12,42 @@ interface ServiceItem {
 
 const services: ServiceItem[] = [
   {
+    slug: "audit-diagnostic-digital",
     icon: "flaticon-color-sample",
     title: "Audit et diagnostic digital",
     text: "Nous clarifions votre niveau de maturité, vos blocages métier, vos outils existants et les chantiers à plus fort retour.",
     bullets: ["Maturité digitale", "Cartographie des irritants", "Priorités à fort impact"],
   },
   {
+    slug: "refonte-processus",
     icon: "flaticon-front-end",
     title: "Refonte des processus",
     text: "Nous simplifions les étapes inutiles, les doubles saisies et les ruptures de flux avant toute automatisation.",
     bullets: ["AS-IS / TO-BE", "Réduction des frictions", "Processus plus simples"],
   },
   {
+    slug: "automatisation-integrations",
     icon: "flaticon-online-shopping",
     title: "Automatisation et intégrations",
     text: "Nous connectons vos outils, vos données et vos workflows pour gagner du temps utile et réduire les erreurs.",
     bullets: ["n8n / Make", "API et synchronisations", "Workflows métier"],
   },
   {
+    slug: "ia-entreprise",
     icon: "flaticon-front-end",
     title: "IA en entreprise",
     text: "Nous déployons des cas d'usage IA concrets : assistants internes, qualification, synthèse, recherche documentaire et support.",
     bullets: ["Assistants métier", "RAG et bases de connaissance", "Garde-fous et validation"],
   },
   {
+    slug: "developpement-outils-metier",
     icon: "flaticon-color-sample",
     title: "Développement d'outils métier",
     text: "Nous concevons les interfaces, portails et tableaux de bord qui manquent à votre pilotage opérationnel.",
     bullets: ["Apps web sur mesure", "Dashboards", "Portails internes et clients"],
   },
   {
+    slug: "pilotage-deploiement",
     icon: "flaticon-online-shopping",
     title: "Pilotage et déploiement",
     text: "Nous accompagnons la mise en œuvre, l'adoption terrain, les indicateurs et la montée en charge de la transformation.",
@@ -78,7 +85,7 @@ const services: ServiceItem[] = [
  */
 export function ServicesListSection() {
   return (
-    <section className="relative z-1 pt-[120px] pb-[120px]">
+    <section className="relative z-1 pt-[90px] pb-[90px]">
       <div className="auto-container">
         <div className="mx-auto mb-[50px] max-w-[860px] text-center">
           <span className="mb-4 inline-block text-[15px] font-semibold tracking-[0.18em] text-theme-2 uppercase">
@@ -111,7 +118,7 @@ export function ServicesListSection() {
 
                 <h5 className="relative mb-[14px] font-extrabold">
                   <Link
-                    href="/services/details"
+                    href={`/services/${service.slug}`}
                     className="transition-colors hover:text-theme-2"
                   >
                     {service.title}
@@ -129,7 +136,7 @@ export function ServicesListSection() {
                   ))}
                 </ul>
                 <Link
-                  href="/services/details"
+                  href={`/services/${service.slug}`}
                   className="relative inline-flex items-center rounded-[10px] text-body-text transition-all duration-100 ease-linear"
                 >
                   <span className="mr-5 flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-white text-base text-theme-1 shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-100 ease-linear group-hover:bg-theme-2 group-hover:text-white">

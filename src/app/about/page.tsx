@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Notre approche | Audyxa",
   description:
     "Découvrez l'approche Audyxa : diagnostic, priorisation, déploiement et mesure pour réussir la transformation digitale des entreprises.",
+  alternates: { canonical: "/about" },
 };
 
 const ABOUT_FAQ_ITEMS = [
@@ -54,6 +55,7 @@ export default function AboutPage() {
       <PageTitle
         title="À propos d'Audyxa"
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "À propos" }]}
+        currentPath="/about"
       />
       <AboutSection
         subTitle="Qui est Audyxa"

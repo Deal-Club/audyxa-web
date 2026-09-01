@@ -9,7 +9,7 @@ import { ThemeBtn } from "@/components/theme-btn";
  */
 export function AboutStorySection() {
   return (
-    <section className="relative overflow-hidden bg-theme-1 pt-[110px] pb-[110px]">
+    <section className="relative overflow-hidden bg-theme-1 pt-[90px] pb-[90px]">
       <div className="auto-container">
         <div className="flex flex-wrap gap-y-10">
           <div className="w-full lg:w-5/12">

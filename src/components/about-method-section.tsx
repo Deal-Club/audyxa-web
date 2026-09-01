@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SectionTitle } from "@/components/section-title";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { cn } from "@/lib/utils";
@@ -37,7 +38,7 @@ const PILLARS: Pillar[] = [
  */
 export function AboutMethodSection() {
   return (
-    <section className="relative pt-[110px] pb-[90px]">
+    <section className="relative pt-[90px] pb-[70px]">
       <div className="auto-container">
         <SectionTitle
           center
@@ -67,6 +68,12 @@ export function AboutMethodSection() {
               </div>
             </ScrollReveal>
           ))}
+        </div>
+
+        <div className="mt-[40px] flex justify-center">
+          <Link href="/methode" className="font-semibold text-theme-2 hover:underline">
+            Découvrir la méthode complète, chapitre par chapitre →
+          </Link>
         </div>
       </div>
     </section>

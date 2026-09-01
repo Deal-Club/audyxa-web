@@ -7,7 +7,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
  */
 export function HomeQuoteBanner() {
   return (
-    <section className="relative overflow-hidden bg-theme-1 py-[80px]">
+    <section className="relative overflow-hidden bg-theme-1 py-[60px]">
       <div className="auto-container">
         <ScrollReveal animation="fadeIn" className="mx-auto max-w-[860px] text-center">
           <span className="mb-5 inline-block text-sm font-semibold tracking-[0.28em] text-theme-2 uppercase">

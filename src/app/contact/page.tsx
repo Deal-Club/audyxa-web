@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Contact | Audyxa",
   description:
     "Contactez Audyxa pour échanger sur votre transformation digitale, vos processus, vos automatisations et vos priorités de déploiement.",
+  alternates: { canonical: "/contact" },
 };
 export default function ContactPage() {
   return (
@@ -14,6 +15,7 @@ export default function ContactPage() {
       <PageTitle
         title="Contact"
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
+        currentPath="/contact"
       />
       <ContactDetailsSection />
       <ContactPageForm />

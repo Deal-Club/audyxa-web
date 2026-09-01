@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Services | Audyxa",
   description:
     "Audyxa propose des services de diagnostic, automatisation, IA, développement d'outils métier et pilotage de transformation digitale.",
+  alternates: { canonical: "/services" },
 };
 export default function ServicesPage() {
   return (
@@ -15,6 +16,7 @@ export default function ServicesPage() {
       <PageTitle
         title="Nos services"
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Services" }]}
+        currentPath="/services"
       />
       <ServicesListSection />
       <ServicesSeoSection />

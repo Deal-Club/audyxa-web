@@ -33,7 +33,7 @@ const SCOPE: ScopeItem[] = [
  */
 export function AboutServicesContentSection() {
   return (
-    <section className="relative bg-theme-3 pt-[110px] pb-[110px]">
+    <section className="relative bg-theme-3 pt-[90px] pb-[90px]">
       <div className="auto-container">
         <SectionTitle
           center

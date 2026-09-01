@@ -1,24 +1,10 @@
-import type { Metadata } from "next";
-import { PageTitle } from "@/components/page-title";
-import { ServiceDetailsSection } from "@/components/service-details-section";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Détail service | Audyxa",
-  description:
-    "Découvrez comment Audyxa structure une mission de transformation digitale : cadrage, priorisation, automatisation, IA et pilotage des résultats.",
-};
-export default function ServiceDetailsPage() {
-  return (
-    <main>
-      <PageTitle
-        title="Détail service"
-        breadcrumbs={[
-          { label: "Accueil", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Détail service" },
-        ]}
-      />
-      <ServiceDetailsSection />
-    </main>
-  );
+/**
+ * Ancienne page générique de détail service, remplacée par les pages
+ * dédiées `/services/[slug]` (cf. seo/implementation-plan.md, Lot 2).
+ * Redirigée pour éviter la cannibalisation et le contenu dupliqué.
+ */
+export default function ServiceDetailsRedirect() {
+  redirect("/services");
 }

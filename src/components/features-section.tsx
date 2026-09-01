@@ -38,7 +38,7 @@ const FEATURES: FeatureBlockData[] = [
  */
 export function FeaturesSection() {
   return (
-    <section className="relative overflow-hidden pt-[80px] pb-[70px]">
+    <section className="relative overflow-hidden pt-[60px] pb-[60px]">
       {/*
         .bg.bg-pattern-1 : pointe vers images/icons/pattern-1.jpg en source,
         fichier qui répond 404 sur le serveur source lui-même. Div gardé
