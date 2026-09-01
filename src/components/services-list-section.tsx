@@ -84,7 +84,7 @@ export function ServicesListSection() {
           <span className="mb-4 inline-block text-[15px] font-semibold tracking-[0.18em] text-theme-2 uppercase">
             Conseil + services
           </span>
-          <h2 className="mb-4 text-theme-1">
+          <h2 className="mb-4 text-[28px] text-theme-1 [@media(min-width:600px)]:text-[36px] [@media(min-width:992px)]:text-[46px]">
             Un accompagnement complet pour transformer vos opérations sans perdre du temps sur les mauvais chantiers
           </h2>
           <p className="mb-0 text-base leading-[30px] text-body-text">

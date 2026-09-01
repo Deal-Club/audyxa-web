@@ -118,7 +118,7 @@ export function ServicesSeoSection() {
           <span className="mb-4 inline-block text-[15px] font-semibold tracking-[0.18em] text-theme-2 uppercase">
             Comprendre nos services
           </span>
-          <h2 className="mb-4 text-theme-1">
+          <h2 className="mb-4 text-[26px] text-theme-1 [@media(min-width:600px)]:text-[34px] [@media(min-width:992px)]:text-[46px]">
             Le détail de chaque service de transformation digitale Audyxa
           </h2>
           <p className="mb-0 text-base leading-[30px] text-body-text">
@@ -168,7 +168,7 @@ export function ServicesSeoSection() {
             <div className="space-y-[50px]">
               {SERVICE_DETAILS.map((service) => (
                 <div key={service.id} id={service.id} className="scroll-mt-[120px]">
-                  <h3 className="mb-4 font-extrabold text-theme-1">{service.title}</h3>
+                  <h3 className="mb-4 text-[22px] font-extrabold text-theme-1 [@media(min-width:600px)]:text-[28px] [@media(min-width:992px)]:text-[36px]">{service.title}</h3>
                   {service.paragraphs.map((paragraph, index) => (
                     <p key={index} className="mb-4 text-base leading-[30px] text-body-text last:mb-0">
                       {paragraph}
@@ -193,7 +193,7 @@ export function ServicesSeoSection() {
 
             {/* FAQ */}
             <div id="questions-frequentes" className="mt-[60px] scroll-mt-[120px]">
-              <h3 className="mb-6 font-extrabold text-theme-1">
+              <h3 className="mb-6 text-[22px] font-extrabold text-theme-1 [@media(min-width:600px)]:text-[28px] [@media(min-width:992px)]:text-[36px]">
                 Questions fréquentes sur nos services
               </h3>
               <div className="space-y-4">

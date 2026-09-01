@@ -33,7 +33,7 @@ export function SectionTitle({
       </span>
       <h2
         className={cn(
-          "relative mt-[-5px] mb-0 text-[46px] font-bold",
+          "relative mt-[-5px] mb-0 text-[28px] font-bold [@media(min-width:600px)]:text-[36px] [@media(min-width:992px)]:text-[46px]",
           light ? "text-white" : "text-theme-1"
         )}
       >
