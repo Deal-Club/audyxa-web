@@ -23,6 +23,15 @@ export interface Histoire {
   tagline: string;
   /** Icône Font Awesome (classe complète, ex. "fa fa-film") pour l'image mise en avant */
   icon: string;
+  /** Dégradé de couleurs inspiré de l'identité visuelle réelle de l'entreprise */
+  heroFrom: string;
+  heroTo: string;
+  /**
+   * Chemin vers le vrai logo de la marque (self-hosted sous /public/images/brands),
+   * uniquement quand une version librement réutilisable à titre éditorial existe
+   * (ex. simple-icons). Sinon, l'image mise en avant retombe sur icon + nom typographié.
+   */
+  logoSrc?: string;
   summary: string;
   /** Texte avec syntaxe **gras** légère (voir composant BoldText) */
   contextBefore: string;
@@ -60,6 +69,8 @@ export const HISTOIRES: Histoire[] = [
     title: "Blockbuster face à Netflix",
     tagline: "Refuser de racheter un concurrent jugé trop petit pour être une menace",
     icon: "fa fa-film",
+    heroFrom: "#1E3A8A",
+    heroTo: "#2563EB",
     summary:
       "En 2000, Blockbuster refuse de racheter Netflix, alors une jeune entreprise déficitaire. Dix ans plus tard, Blockbuster dépose le bilan ; Netflix devient un géant mondial.",
     contextBefore:
@@ -97,6 +108,9 @@ export const HISTOIRES: Histoire[] = [
     title: "Kodak et l'appareil photo numérique",
     tagline: "Inventer la rupture technologique et refuser de l'exploiter",
     icon: "fa fa-camera-retro",
+    logoSrc: "/images/brands/kodak.svg",
+    heroFrom: "#FFCC00",
+    heroTo: "#ED1C24",
     summary:
       "Kodak a inventé le premier appareil photo numérique dès 1975, mais a refusé de l'exploiter commercialement pour protéger son activité pellicule. L'entreprise dépose le bilan en 2012.",
     contextBefore:
@@ -132,6 +146,9 @@ export const HISTOIRES: Histoire[] = [
     title: "Nokia face à l'iPhone",
     tagline: "Dominer un marché ne protège pas d'un changement de paradigme",
     icon: "fa fa-mobile-alt",
+    logoSrc: "/images/brands/nokia.svg",
+    heroFrom: "#124191",
+    heroTo: "#1A56DB",
     summary:
       "Leader mondial incontesté de la téléphonie mobile jusqu'en 2007, Nokia n'a pas su réagir à temps à l'arrivée de l'iPhone et d'Android, et a fini par céder sa division mobile à Microsoft.",
     contextBefore:
@@ -169,6 +186,8 @@ export const HISTOIRES: Histoire[] = [
     title: "Toys R Us et la sous-traitance à Amazon",
     tagline: "Confier sa présence digitale à un concurrent potentiel",
     icon: "fa fa-shopping-basket",
+    heroFrom: "#B91C1C",
+    heroTo: "#7C2D12",
     summary:
       "En 2000, Toys R Us confie l'exclusivité de sa vente en ligne à Amazon pour dix ans. Amazon ne respecte pas pleinement l'accord ; Toys R Us perd une décennie de développement e-commerce et dépose le bilan en 2017.",
     contextBefore:
@@ -205,6 +224,9 @@ export const HISTOIRES: Histoire[] = [
     title: "Netflix : cannibaliser son propre modèle",
     tagline: "Passer du DVD par courrier au streaming avant qu'un concurrent ne le fasse",
     icon: "fa fa-play-circle",
+    logoSrc: "/images/brands/netflix.svg",
+    heroFrom: "#B1060F",
+    heroTo: "#831010",
     summary:
       "Netflix a lancé le streaming en 2007 en pleine activité DVD rentable — un pari risqué qui a cannibalisé son propre modèle, mais qui l'a transformé en leader mondial du divertissement.",
     contextBefore:
@@ -239,6 +261,8 @@ export const HISTOIRES: Histoire[] = [
     title: "Domino's Pizza, « une tech company qui vend des pizzas »",
     tagline: "Une entreprise traditionnelle devenue leader technologique de son secteur",
     icon: "fa fa-pizza-slice",
+    heroFrom: "#0078AE",
+    heroTo: "#0A3D62",
     summary:
       "Après une crise de réputation en 2008, Domino's a engagé une transformation digitale massive (suivi de commande en temps réel, application mobile) qui a fait grimper son action de 3 $ à plus de 252 $ en dix ans.",
     contextBefore:
@@ -274,6 +298,9 @@ export const HISTOIRES: Histoire[] = [
     title: "Adobe : du logiciel en boîte à l'abonnement Creative Cloud",
     tagline: "Accepter un creux de rentabilité à court terme pour sécuriser l'avenir",
     icon: "fa fa-cloud",
+    logoSrc: "/images/brands/adobe.svg",
+    heroFrom: "#FA0F00",
+    heroTo: "#B30B00",
     summary:
       "Adobe a basculé du modèle de licence perpétuelle vers l'abonnement Creative Cloud en 2012-2013, au prix d'un recul temporaire du chiffre d'affaires, avant de quadrupler la valeur de son segment logiciel créatif.",
     contextBefore:
@@ -306,6 +333,8 @@ export const HISTOIRES: Histoire[] = [
     title: "LEGO : recentrer avant de digitaliser",
     tagline: "Le préalable à toute transformation digitale efficace : la discipline stratégique",
     icon: "fa fa-cube",
+    heroFrom: "#D01012",
+    heroTo: "#B8860B",
     summary:
       "Au bord de la faillite en 2003-2004, LEGO s'est redressé non pas en innovant davantage, mais en digitalisant son infrastructure interne (données, logistique, production) après avoir radicalement simplifié son catalogue.",
     contextBefore:
@@ -341,6 +370,8 @@ export const HISTOIRES: Histoire[] = [
     title: "Wave : bousculer les opérateurs télécoms avec un prix cassé",
     tagline: "Devenir la première licorne d'Afrique francophone en cassant les frais du secteur",
     icon: "fa fa-wallet",
+    heroFrom: "#0A2540",
+    heroTo: "#1D4ED8",
     summary:
       "Fondée à Dakar en 2018, Wave a imposé des frais de transfert fixes à 1 % face aux 5-10 % pratiqués par les opérateurs télécoms, conquérant en quelques années des dizaines de millions d'utilisateurs en Afrique de l'Ouest.",
     contextBefore:
@@ -379,6 +410,8 @@ export const HISTOIRES: Histoire[] = [
     title: "Jumia : l'e-commerce panafricain, cinq ans de pertes avant le redressement",
     tagline: "Une entrée en bourse retentissante ne suffit pas — l'exécution prend des années",
     icon: "fa fa-shopping-cart",
+    heroFrom: "#F68B1E",
+    heroTo: "#C2410C",
     summary:
       "Première entreprise tech africaine cotée au NYSE en 2019, Jumia a traversé cinq années de pertes et de retraits de marchés avant d'amorcer un redressement en 2024-2025 — la preuve que la digitalisation à grande échelle se heurte à la logistique, pas qu'à la technologie.",
     contextBefore:
@@ -415,6 +448,8 @@ export const HISTOIRES: Histoire[] = [
     title: "M-Pesa : le mobile money devenu infrastructure nationale",
     tagline: "D'un lancement modeste à un service qui pèse plus que le PIB en volume de transactions",
     icon: "fa fa-money-bill-wave",
+    heroFrom: "#00A651",
+    heroTo: "#00703C",
     summary:
       "Lancé en 2007 par Safaricom pour toucher les Kényans non bancarisés, M-Pesa a explosé dès sa première année et représente aujourd'hui près d'un tiers des revenus du groupe — la référence mondiale que les fintechs africaines citent comme modèle.",
     contextBefore:
@@ -451,8 +486,10 @@ export const HISTOIRES: Histoire[] = [
     title: "ANIP Bénin : digitaliser l'identité, sans effacer les erreurs du départ",
     tagline: "Numériser 210+ services publics tout en composant avec une dette de données héritée",
     icon: "fa fa-id-card",
+    heroFrom: "#008751",
+    heroTo: "#CE1126",
     summary:
-      "L'Agence Nationale d'Identification des Personnes a dématérialisé plus de 210 services publics béninois d'ici fin 2024, mais les erreurs de l'enrôlement biométrique initial (2017-2018) continuent de bloquer certains usagers des années après.",
+      "L'Agence Nationale d'Identification des Personnes a dématérialisé plus de 210 services publics béninois depuis fin 2024, mais les erreurs de l'enrôlement biométrique initial (2017-2018) continuent de bloquer certains usagers des années après.",
     contextBefore:
       "Avant 2017, l'**identification des personnes physiques au Bénin** est fragmentée entre plusieurs administrations, **sans registre unique**.",
     actions: [
@@ -486,4 +523,16 @@ export function getHistoire(slug: string): Histoire | undefined {
 
 export function getHistoiresByType(type: Histoire["type"]): Histoire[] {
   return HISTOIRES.filter((h) => h.type === type);
+}
+
+/**
+ * Photo d'illustration réelle (libre de droit, Unsplash) associée à
+ * l'histoire — self-hosted sous /public/images/histoires. Une photo
+ * générique et thématique (jamais une photo de presse protégée montrant
+ * la marque elle-même en contexte éditorial tiers) : par exemple des
+ * rouleaux de pellicule Kodak, des briques LEGO, un rayon de vidéoclub —
+ * jamais une capture d'écran ou un visuel appartenant à un tiers non libre.
+ */
+export function getHistoirePhoto(slug: string): string {
+  return `/images/histoires/${slug}.jpg`;
 }

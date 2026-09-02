@@ -120,10 +120,15 @@
     font-weight: var(--body-font-weight);
     line-height: var(--body-line-height);
     -webkit-font-smoothing: antialiased;
+    /* Empêche les animations d'entrée (translateX via ScrollReveal) de créer
+       un scroll horizontal temporaire pendant leur transition, sur mobile
+       en particulier. */
+    overflow-x: hidden;
   }
 
   html {
     @apply font-sans;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {

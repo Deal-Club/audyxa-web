@@ -95,7 +95,7 @@ export default function ChatbotWhatsappPage() {
       />
 
       {/* Réponse directe — asymétrique */}
-      <section className="pt-[90px] pb-[60px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -119,7 +119,7 @@ export default function ChatbotWhatsappPage() {
       </section>
 
       {/* Problèmes résolus */}
-      <section className="bg-theme-3 pt-[60px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Pour qui"
@@ -140,7 +140,7 @@ export default function ChatbotWhatsappPage() {
       </section>
 
       {/* Approche — colonne latérale + étapes */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -166,7 +166,7 @@ export default function ChatbotWhatsappPage() {
       </section>
 
       {/* Lien vers le cœur de l'offre — asymétrique */}
-      <section className="bg-theme-1 pt-[70px] pb-[70px]">
+      <section className="bg-theme-1 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -192,7 +192,7 @@ export default function ChatbotWhatsappPage() {
       </section>
 
       {/* FAQ */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Questions fréquentes"
@@ -219,7 +219,7 @@ export default function ChatbotWhatsappPage() {
       </section>
 
       {/* Autres services */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Voir aussi"

@@ -88,7 +88,7 @@ export default async function GuidePage({
       />
 
       {/* 2. Résumé */}
-      <section className="pt-[90px] pb-[60px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -107,7 +107,7 @@ export default async function GuidePage({
       </section>
 
       {/* 3. Contenu */}
-      <section className="bg-theme-3 pt-[60px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="mx-auto max-w-[900px] rounded-[16px] bg-white p-8 [@media(min-width:768px)]:p-12">
             {guide.sections.map((section, i) => (
@@ -129,7 +129,7 @@ export default async function GuidePage({
 
       {/* 4. Services liés */}
       {relatedServices.length > 0 ? (
-        <section className="pt-[70px] pb-[70px]">
+        <section className="pt-[50px] pb-[50px]">
           <div className="auto-container">
             <SectionTitle subTitle="Services liés" title="Nos services associés à ce sujet" className="mb-[40px] max-w-[760px]" />
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -152,7 +152,7 @@ export default async function GuidePage({
 
       {/* 5. Chapitres méthode liés */}
       {relatedChapters.length > 0 ? (
-        <section className="bg-theme-1 pt-[70px] pb-[70px]">
+        <section className="bg-theme-1 pt-[50px] pb-[50px]">
           <div className="auto-container">
             <SectionTitle
               light
@@ -181,7 +181,7 @@ export default async function GuidePage({
       ) : null}
 
       {/* 6. FAQ */}
-      <section className="bg-theme-3 pt-[90px] pb-[70px]">
+      <section className="bg-theme-3 pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle subTitle="Questions fréquentes" title="Pour aller plus loin sur ce sujet" className="mb-[50px] max-w-[820px]" />
           <div className="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-2">
@@ -204,7 +204,7 @@ export default async function GuidePage({
       </section>
 
       {/* 7. Autres guides */}
-      <section className="pt-[70px] pb-[70px]">
+      <section className="pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle subTitle="Voir aussi" title="D'autres guides pratiques" className="mb-[40px] max-w-[760px]" />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">

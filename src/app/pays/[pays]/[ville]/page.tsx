@@ -92,7 +92,7 @@ export default async function CityHubPage({
       />
 
       {/* 2. Réponse directe — asymétrique */}
-      <section className="pt-[90px] pb-[60px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -117,7 +117,7 @@ export default async function CityHubPage({
       </section>
 
       {/* 3. Nos services */}
-      <section className="bg-theme-3 pt-[60px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Nos services"
@@ -142,7 +142,7 @@ export default async function CityHubPage({
       </section>
 
       {/* 4. Pourquoi passer par le hub pays — asymétrique */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8 rounded-[14px] bg-theme-1 p-8 lg:p-10">
             <div className="w-full lg:w-7/12 lg:pr-[30px]">
@@ -168,7 +168,7 @@ export default async function CityHubPage({
       </section>
 
       {/* 5. FAQ */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Questions fréquentes"
@@ -204,7 +204,7 @@ export default async function CityHubPage({
 
       {/* 6. Autres villes du pays */}
       {otherCities.length > 0 ? (
-        <section className="pt-[70px] pb-[70px]">
+        <section className="pt-[50px] pb-[50px]">
           <div className="auto-container">
             <SectionTitle
               subTitle="Zone desservie"

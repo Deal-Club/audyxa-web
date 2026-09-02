@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
-import { HISTOIRES, getHistoiresByType } from "@/lib/histoires-content";
+import { HISTOIRES, getHistoiresByType, getHistoirePhoto } from "@/lib/histoires-content";
 import { SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -20,15 +21,24 @@ function HistoireCard({ histoire }: { histoire: (typeof HISTOIRES)[number] }) {
       href={`/histoires/${histoire.slug}`}
       className="group flex flex-col overflow-hidden rounded-[14px] border border-[#e2e2e2] bg-white transition-all duration-300 hover:-translate-y-[6px] hover:border-theme-2 hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
     >
-      {/* Image mise en avant (icône stylisée, pas de photo/logo de marque tierce) */}
-      <div
-        className={`relative flex h-[150px] items-center justify-center ${
-          isEchec ? "bg-gradient-to-br from-red-500 to-rose-700" : "bg-gradient-to-br from-theme-2 to-theme-1"
-        }`}
-      >
-        <i className={`${histoire.icon} text-[52px] text-white/90`} />
-        <span className="absolute top-4 left-4 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold tracking-[0.1em] text-white uppercase backdrop-blur-sm">
+      {/* Image mise en avant : photo réelle (libre de droit) illustrant le thème, jamais une photo de presse protégée */}
+      <div className="relative h-[150px] overflow-hidden">
+        <Image
+          src={getHistoirePhoto(histoire.slug)}
+          alt={`Illustration — ${histoire.title}`}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(to top, ${histoire.heroFrom}dd, ${histoire.heroTo}55 55%, transparent 100%)` }}
+        />
+        <span className="absolute top-4 left-4 rounded-full bg-black/30 px-3 py-1 text-[11px] font-bold tracking-[0.1em] text-white uppercase backdrop-blur-sm">
           {isEchec ? "Occasion manquée" : "Virage réussi"}
+        </span>
+        <span className="absolute bottom-3 left-4 text-[18px] font-extrabold tracking-tight text-white drop-shadow-sm">
+          {histoire.company}
         </span>
       </div>
       <div className="flex flex-1 flex-col p-6">
@@ -76,7 +86,7 @@ export default function HistoiresHubPage() {
       />
 
       {/* Intro + disclaimer explicite */}
-      <section className="pt-[90px] pb-[50px]">
+      <section className="pt-[60px] pb-[40px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -104,12 +114,12 @@ export default function HistoiresHubPage() {
       </section>
 
       {/* Échecs */}
-      <section className="bg-theme-3 pt-[50px] pb-[70px]">
+      <section className="bg-theme-3 pt-[40px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Occasions manquées"
             title="Des entreprises qui ont perdu leur place"
-            className="mb-[40px] max-w-[760px]"
+            className="mb-[40px] max-w-[1040px] [text-wrap:balance]"
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {echecs.map((histoire) => (
@@ -120,12 +130,12 @@ export default function HistoiresHubPage() {
       </section>
 
       {/* Réussites */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Virages réussis"
             title="Des entreprises qui ont pris de l'avance"
-            className="mb-[40px] max-w-[760px]"
+            className="mb-[40px] max-w-[1040px] [text-wrap:balance]"
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {reussites.map((histoire) => (

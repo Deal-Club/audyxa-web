@@ -108,7 +108,7 @@ export default async function ServiceDetailPage({
       />
 
       {/* 2. Réponse directe — asymétrique pleine largeur */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-10">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -136,7 +136,7 @@ export default async function ServiceDetailPage({
       </section>
 
       {/* 3. Problèmes résolus */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Pour qui"
@@ -163,7 +163,7 @@ export default async function ServiceDetailPage({
 
       {/* 3bis. Contexte marché sourcé */}
       {service.marketContext ? (
-        <section className="pt-[90px] pb-[20px]">
+        <section className="pt-[60px] pb-[20px]">
           <div className="auto-container">
             <div className="flex flex-wrap gap-y-8">
               <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -191,7 +191,7 @@ export default async function ServiceDetailPage({
       ) : null}
 
       {/* 4. Notre approche — colonne latérale + étapes pleine largeur */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-10">
             <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -227,7 +227,7 @@ export default async function ServiceDetailPage({
       </section>
 
       {/* 5. En résumé — section riche en contenu, pleine largeur */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-10">
             <div className="w-full lg:w-5/12 lg:pr-[40px]">
@@ -257,7 +257,7 @@ export default async function ServiceDetailPage({
       </section>
 
       {/* 6. Ce que ça couvre */}
-      <section className="bg-theme-1 pt-[70px] pb-[70px]">
+      <section className="bg-theme-1 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             light
@@ -278,7 +278,7 @@ export default async function ServiceDetailPage({
 
       {/* 7. Approfondir la méthode */}
       {relatedChapters.length > 0 ? (
-        <section className="pt-[70px] pb-[70px]">
+        <section className="pt-[50px] pb-[50px]">
           <div className="auto-container">
             <SectionTitle
               subTitle="Pour aller plus loin"
@@ -304,7 +304,7 @@ export default async function ServiceDetailPage({
       ) : null}
 
       {/* 8. FAQ — deux colonnes */}
-      <section className="bg-theme-3 pt-[90px] pb-[70px]">
+      <section className="bg-theme-3 pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Questions fréquentes"
@@ -331,7 +331,7 @@ export default async function ServiceDetailPage({
       </section>
 
       {/* 9. Autres services */}
-      <section className="pt-[70px] pb-[70px]">
+      <section className="pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Voir aussi"

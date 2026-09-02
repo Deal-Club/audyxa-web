@@ -6,14 +6,23 @@ import { Fragment } from "react";
  * et chiffres importants dans le contenu éditorial (ex. pages /histoires),
  * sans dépendre d'un parseur Markdown complet ni de `dangerouslySetInnerHTML`.
  */
-export function BoldText({ text, className }: { text: string; className?: string }) {
+export function BoldText({
+  text,
+  className,
+  light = false,
+}: {
+  text: string;
+  className?: string;
+  /** true = texte affiché sur fond sombre (bascule le <strong> en blanc plutôt qu'en text-theme-1) */
+  light?: boolean;
+}) {
   const segments = text.split(/(\*\*[^*]+\*\*)/g);
   return (
     <span className={className}>
       {segments.map((segment, i) => {
         if (segment.startsWith("**") && segment.endsWith("**")) {
           return (
-            <strong key={i} className="font-extrabold text-theme-1">
+            <strong key={i} className={light ? "font-extrabold text-white" : "font-extrabold text-theme-1"}>
               {segment.slice(2, -2)}
             </strong>
           );

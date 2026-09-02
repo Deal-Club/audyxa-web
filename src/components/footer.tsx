@@ -78,7 +78,10 @@ export function Footer() {
           <div className="footer-column">
             <div className="footer-widget about-widget">
               <div className="logo mb-[25px]">
-                <Link href="/">
+                <Link
+                  href="/"
+                  className="inline-block transition-transform duration-[400ms] ease-[ease] hover:scale-105"
+                >
                   <Image src="/images/logo-full-white.png" alt="Audyxa" width={154} height={40} className="h-[40px] w-[154px]" />
                 </Link>
               </div>

@@ -93,7 +93,7 @@ export default async function SectorPage({
       />
 
       {/* 2. Réponse directe — asymétrique */}
-      <section className="pt-[90px] pb-[60px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -113,7 +113,7 @@ export default async function SectorPage({
       </section>
 
       {/* 3. Défis du secteur */}
-      <section className="bg-theme-3 pt-[60px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Ce que nous observons"
@@ -140,7 +140,7 @@ export default async function SectorPage({
 
       {/* 3bis. Contexte marché sourcé */}
       {sector.marketContext ? (
-        <section className="pt-[90px] pb-[70px]">
+        <section className="pt-[60px] pb-[50px]">
           <div className="auto-container">
             <div className="flex flex-wrap gap-y-8">
               <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -173,7 +173,7 @@ export default async function SectorPage({
       ) : null}
 
       {/* 4. Notre approche pour ce secteur — asymétrique */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -191,7 +191,7 @@ export default async function SectorPage({
       </section>
 
       {/* 5. En résumé — section riche en contenu */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
             <div className="w-full lg:w-5/12 lg:pr-[40px]">
@@ -227,7 +227,7 @@ export default async function SectorPage({
       </section>
 
       {/* 6. Services pertinents pour ce secteur */}
-      <section className="bg-theme-1 pt-[70px] pb-[70px]">
+      <section className="bg-theme-1 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             light
@@ -253,7 +253,7 @@ export default async function SectorPage({
       </section>
 
       {/* 7. FAQ — deux colonnes */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Questions fréquentes"
@@ -280,7 +280,7 @@ export default async function SectorPage({
       </section>
 
       {/* 8. Autres secteurs */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Voir aussi"

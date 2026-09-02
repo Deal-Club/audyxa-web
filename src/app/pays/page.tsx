@@ -27,7 +27,7 @@ export default function CountriesHubPage() {
         currentPath="/pays"
       />
 
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -51,7 +51,7 @@ export default function CountriesHubPage() {
       {REGIONS.map((region, index) => {
         const countries = getCountriesByRegion(region);
         return (
-          <section key={region} className={index % 2 === 0 ? "bg-theme-3 pt-[70px] pb-[70px]" : "pt-[70px] pb-[70px]"}>
+          <section key={region} className={index % 2 === 0 ? "bg-theme-3 pt-[50px] pb-[50px]" : "pt-[50px] pb-[50px]"}>
             <div className="auto-container">
               <SectionTitle subTitle="Zone" title={region} className="mb-[40px] max-w-[760px]" />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

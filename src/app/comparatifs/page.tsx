@@ -21,7 +21,7 @@ export default function DecisionsHubPage() {
         currentPath="/comparatifs"
       />
 
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -43,7 +43,7 @@ export default function DecisionsHubPage() {
         </div>
       </section>
 
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle subTitle="Tous les comparatifs" title="Parcourir par question" className="mb-[40px] max-w-[760px]" />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

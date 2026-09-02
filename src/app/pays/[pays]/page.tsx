@@ -98,7 +98,7 @@ export default async function CountryPage({
       />
 
       {/* 2. Réponse directe — asymétrique */}
-      <section className="pt-[90px] pb-[60px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -123,7 +123,7 @@ export default async function CountryPage({
       </section>
 
       {/* 3. Zone couverte, sans fausse implantation — asymétrique */}
-      <section className="bg-theme-3 pt-[60px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -144,7 +144,7 @@ export default async function CountryPage({
 
       {/* 3bis. Contexte marché sourcé */}
       {country.marketContext ? (
-        <section className="pt-[90px] pb-[70px]">
+        <section className="pt-[60px] pb-[50px]">
           <div className="auto-container">
             <div className="flex flex-wrap gap-y-8">
               <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -177,7 +177,7 @@ export default async function CountryPage({
       ) : null}
 
       {/* 4. Nos services — recap riche en contenu */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[40px]">
@@ -205,7 +205,7 @@ export default async function CountryPage({
       </section>
 
       {/* 5. Ville phare */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Ville principale"
@@ -230,7 +230,7 @@ export default async function CountryPage({
       </section>
 
       {/* 6. Autres villes */}
-      <section className="bg-theme-1 pt-[70px] pb-[70px]">
+      <section className="bg-theme-1 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             light
@@ -253,7 +253,7 @@ export default async function CountryPage({
       </section>
 
       {/* 7. FAQ — deux colonnes */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Questions fréquentes"
@@ -313,7 +313,7 @@ export default async function CountryPage({
 
       {/* 8. Autres pays de la région */}
       {sameRegion.length > 0 ? (
-        <section className="bg-theme-3 pt-[70px] pb-[70px]">
+        <section className="bg-theme-3 pt-[50px] pb-[50px]">
           <div className="auto-container">
             <SectionTitle
               subTitle="Voir aussi"

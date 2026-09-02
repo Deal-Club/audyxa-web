@@ -86,7 +86,7 @@ export default async function DecisionPage({
       />
 
       {/* 2. Conclusion courte — asymétrique */}
-      <section className="pt-[90px] pb-[60px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -106,7 +106,7 @@ export default async function DecisionPage({
       </section>
 
       {/* 3. Tableau comparatif — pleine largeur */}
-      <section className="bg-theme-3 pt-[60px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Méthode de comparaison"
@@ -137,7 +137,7 @@ export default async function DecisionPage({
       </section>
 
       {/* 4 & 5. Analyse option par option — pleine largeur */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Analyse détaillée"
@@ -170,7 +170,7 @@ export default async function DecisionPage({
       </section>
 
       {/* 6. Comment Audyxa se positionne */}
-      <section className="bg-theme-1 pt-[70px] pb-[70px]">
+      <section className="bg-theme-1 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -189,7 +189,7 @@ export default async function DecisionPage({
       </section>
 
       {/* 7. FAQ — deux colonnes */}
-      <section className="pt-[90px] pb-[70px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Questions fréquentes"
@@ -216,7 +216,7 @@ export default async function DecisionPage({
       </section>
 
       {/* 8. Autres comparatifs */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Voir aussi"

@@ -47,7 +47,7 @@ export default function GlossaryPage() {
       />
 
       {/* 2. Intro */}
-      <section className="pt-[90px] pb-[60px]">
+      <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
@@ -90,7 +90,7 @@ export default function GlossaryPage() {
       </section>
 
       {/* 4. Glossaire complet */}
-      <section className="pt-[70px] pb-[70px]">
+      <section className="pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="grid grid-cols-1 gap-x-10 gap-y-10 lg:grid-cols-2">
             {sorted.map((item, index) => {
@@ -124,7 +124,7 @@ export default function GlossaryPage() {
       </section>
 
       {/* 5. Liens connexes */}
-      <section className="bg-theme-3 pt-[70px] pb-[70px]">
+      <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
             subTitle="Aller plus loin"
