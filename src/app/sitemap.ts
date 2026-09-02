@@ -6,6 +6,7 @@ import { DECISION_PAGES } from "@/lib/decision-content";
 import { SECTOR_PAGES } from "@/lib/sector-content";
 import { GEO_COUNTRIES, getFlagshipCity } from "@/lib/geo-content";
 import { GUIDES } from "@/lib/guide-content";
+import { HISTOIRES } from "@/lib/histoires-content";
 
 /**
  * Sitemap des pages réelles Audyxa (hors pages de démo du thème non liées
@@ -24,8 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/secteurs",
     "/comparatifs",
     "/pays",
+    "/histoires",
   ];
   const guideRoutes = GUIDES.map((g) => `/guides/${g.slug}`);
+  const histoireRoutes = HISTOIRES.map((h) => `/histoires/${h.slug}`);
   const chapterRoutes = getPublishedMethodChapters().map((c) => `/methode/${c.slug}`);
   const serviceRoutes = SERVICES_DETAIL.map((s) => `/services/${s.slug}`);
   const decisionRoutes = DECISION_PAGES.map((d) => `/comparatifs/${d.slug}`);
@@ -50,6 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...secondaryCityRoutes,
     ...flagshipServiceRoutes,
     ...guideRoutes,
+    ...histoireRoutes,
   ].map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: new Date(),

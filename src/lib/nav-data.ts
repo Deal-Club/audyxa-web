@@ -13,5 +13,6 @@ export const NAVIGATION: NavItem[] = [
       href: `/methode/${c.slug}`,
     })),
   },
+  { label: "Histoires", href: "/histoires" },
   { label: "Contact", href: "/contact" },
 ];
