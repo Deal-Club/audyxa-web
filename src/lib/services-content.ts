@@ -8,6 +8,21 @@ export interface ServiceApproachStep {
   text: string;
 }
 
+export interface ServiceMarketStat {
+  /** Chiffre affiché ("26 %", "138 M€"...) */
+  value: string;
+  /** Ce que représente le chiffre, phrase courte */
+  label: string;
+  /** Organisme + année, tel qu'à citer */
+  source: string;
+}
+
+export interface ServiceMarketContext {
+  /** Paragraphe de contexte sourcé (2-3 phrases), sans chiffre inventé */
+  intro: string;
+  stats: ServiceMarketStat[];
+}
+
 export interface ServiceDetail {
   slug: string;
   icon: string;
@@ -19,6 +34,8 @@ export interface ServiceDetail {
   bullets: string[];
   relatedMethodSlugs: string[];
   faq: ServiceFaqItem[];
+  /** Contexte marché sourcé, issu de seo/analyses/veille-marches-secteurs.md */
+  marketContext?: ServiceMarketContext;
 }
 
 export const SERVICES_DETAIL: ServiceDetail[] = [
@@ -62,6 +79,14 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
           "Non. Nous intervenons aussi bien pour structurer une organisation qui démarre sa transformation digitale que pour clarifier un environnement déjà équipé mais devenu difficile à piloter.",
       },
     ],
+    marketContext: {
+      intro:
+        "En France, la majorité des dirigeants de TPE-PME perçoivent déjà un bénéfice concret du numérique, mais une part significative reste préoccupée par la sécurité des données sans en avoir forcément fait le diagnostic — un signal clair que l'audit doit précéder l'investissement, pas le suivre.",
+      stats: [
+        { value: "79 %", label: "des dirigeants de TPE-PME françaises jugent le digital bénéfique pour leur activité", source: "Baromètre France Num, DGE, 2024 (10 125 entreprises interrogées)" },
+        { value: "49 %", label: "des TPE-PME françaises s'inquiètent du piratage de leurs données ; 81 % disposent déjà d'une solution de cybersécurité", source: "Baromètre France Num, DGE, 2024" },
+      ],
+    },
   },
   {
     slug: "refonte-processus",
@@ -103,6 +128,14 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
           "Nous utilisons BPMN lorsque la complexité le justifie ; pour une mission plus légère, un diagramme en couloirs suffit souvent. Le bon niveau de détail est celui qui permet de décider, pas celui qui impressionne.",
       },
     ],
+    marketContext: {
+      intro:
+        "Le retard de productivité documenté dans des secteurs comme la construction (à peine 1 % de croissance annuelle sur vingt ans) illustre ce que révèle systématiquement une refonte de processus : le problème est rarement le manque d'outils, mais des étapes qui n'apportent plus de valeur et qu'aucune automatisation ne corrige tant qu'elles n'ont pas été supprimées ou simplifiées.",
+      stats: [
+        { value: "~1 %/an", label: "croissance de la productivité du secteur de la construction sur 20 ans, contre 2,8 % pour l'économie mondiale", source: "McKinsey Global Institute, 2017" },
+        { value: "1 600 Md$", label: "potentiel de gain de valeur ajoutée estimé pour le secteur construction via une adoption plus large de la digitalisation", source: "McKinsey Global Institute, 2017" },
+      ],
+    },
   },
   {
     slug: "automatisation-integrations",
@@ -144,6 +177,14 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
           "À partir du volume traité, du temps manuel économisé, du coût horaire, du taux d'erreur évité et du coût de mise en œuvre et d'exploitation — avec un scénario prudent, pas optimiste par défaut.",
       },
     ],
+    marketContext: {
+      intro:
+        "L'automatisation progresse en France mais reste très inégale selon la taille de l'entreprise — un écart de capacité et de méthode, pas de volonté, qui rejoint exactement ce que nous constatons en mission : les TPE ont autant à gagner que les grandes structures, mais démarrent rarement de la même manière.",
+      stats: [
+        { value: "26 %", label: "des TPE-PME françaises utilisent déjà l'IA en 2025, contre 13 % en 2024", source: "France Num, Baromètre du numérique dans les TPE-PME, 6ᵉ édition, 2025" },
+        { value: "42 % vs 23 %", label: "taux d'usage de l'IA dans les entreprises de 50-249 salariés contre les structures de 1-4 salariés", source: "France Num, Baromètre 2025" },
+      ],
+    },
   },
   {
     slug: "ia-entreprise",
@@ -185,6 +226,14 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
           "Sur un jeu de cas réels incluant des situations normales, difficiles et hors périmètre, avec des critères de réussite définis à l'avance — pas uniquement sur une démonstration qui fonctionne une fois.",
       },
     ],
+    marketContext: {
+      intro:
+        "L'adoption de l'IA en entreprise progresse vite mais reste hétérogène selon le marché : la France avance à un rythme plus lent que certains pays limitrophes, ce qui confirme l'intérêt de cadrer chaque cas d'usage avec méthode plutôt que de suivre un effet de mode générique.",
+      stats: [
+        { value: "26 %", label: "des TPE-PME françaises utilisent déjà l'IA en 2025 (13 % en 2024)", source: "France Num, Baromètre du numérique dans les TPE-PME, 6ᵉ édition, 2025" },
+        { value: "20-28 %", label: "taux d'adoption de l'IA par les entreprises luxembourgeoises, un des plus élevés d'Europe du Nord", source: "Eurostat / STATEC, 2024" },
+      ],
+    },
   },
   {
     slug: "developpement-outils-metier",
@@ -226,6 +275,13 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
           "Le transfert de mission inclut documentation technique et fonctionnelle, accès et procédures — pour que l'outil reste opérationnel avec ou sans notre présence continue, selon ce qui est convenu.",
       },
     ],
+    marketContext: {
+      intro:
+        "L'écart d'équipement entre PME et ETI françaises illustre bien pourquoi le choix entre acheter, configurer ou développer ne peut pas être générique : une PME industrielle sur quatre seulement a franchi le pas de l'outil connecté, contre une ETI sur deux, un écart de méthode et de compétences plus que de budget.",
+      stats: [
+        { value: "1 sur 4", label: "PME industrielle française a adopté l'usine connectée, contre près de 60 % des ETI en phase de déploiement", source: "La Fabrique de l'industrie / McKinsey, novembre 2025" },
+      ],
+    },
   },
   {
     slug: "pilotage-deploiement",
@@ -270,6 +326,13 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
           "Non. Nous recommandons des revues rapprochées après deux semaines, puis à 30 et 90 jours, pour vérifier que les bénéfices attendus se concrétisent réellement et ajuster si besoin.",
       },
     ],
+    marketContext: {
+      intro:
+        "Même avec un budget en forte hausse, les grands projets numériques publics français ont connu des dérives de délai et de coût significatives — la preuve chiffrée que le financement seul ne garantit pas l'adoption, et que le pilotage après livraison compte autant que la conception initiale.",
+      stats: [
+        { value: "24 % / 26 %", label: "dérive budgétaire moyenne et retard calendaire moyen sur les grands projets numériques de l'État français audités en 2023", source: "Cour des comptes, 2024" },
+      ],
+    },
   },
 ];
 

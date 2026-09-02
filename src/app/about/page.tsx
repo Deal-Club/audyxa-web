@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { AboutSection } from "@/components/about-section";
 import { AboutStorySection } from "@/components/about-story-section";
@@ -8,6 +9,7 @@ import { AboutApproachSection } from "@/components/about-approach-section";
 import { WhyChooseUs } from "@/components/why-choose-us";
 import { FaqSection } from "@/components/faq-section";
 import { CallToAction } from "@/components/call-to-action";
+import { buildFaqJsonLd } from "@/lib/faq-schema";
 
 export const metadata: Metadata = {
   title: "Notre approche | Audyxa",
@@ -52,6 +54,11 @@ const ABOUT_FAQ_ITEMS = [
 export default function AboutPage() {
   return (
     <main>
+      <Script
+        id="about-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqJsonLd(ABOUT_FAQ_ITEMS)) }}
+      />
       <PageTitle
         title="À propos d'Audyxa"
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "À propos" }]}

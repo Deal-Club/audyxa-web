@@ -1,0 +1,31 @@
+# Audyxa
+
+> Audyxa accompagne les entreprises en France et en Afrique francophone (16 pays) : audit et diagnostic digital, refonte des processus, automatisation et intégrations, intelligence artificielle en entreprise, développement d'outils métier, pilotage et déploiement de la transformation digitale. Conseil et exécution sur la même mission, intervention à distance avec les mêmes standards sur tous les marchés.
+
+## Méthode et preuve
+
+- [Méthode complète](https://audyxa.com/methode) : approche en 17 chapitres, de l'audit au déploiement.
+- [Glossaire](https://audyxa.com/glossaire) : définitions des termes techniques utilisés (RAG, MCP, BPMN, ROI, TCO...).
+- [Guides pratiques](https://audyxa.com/guides) : guides d'approfondissement liés à chaque chapitre de méthode.
+
+## Services
+
+- [Audit et diagnostic digital](https://audyxa.com/services/audit-diagnostic-digital)
+- [Refonte des processus](https://audyxa.com/services/refonte-processus)
+- [Automatisation et intégrations](https://audyxa.com/services/automatisation-integrations)
+- [Intelligence artificielle en entreprise](https://audyxa.com/services/ia-entreprise)
+- [Développement d'outils métier](https://audyxa.com/services/developpement-outils-metier)
+- [Pilotage et déploiement](https://audyxa.com/services/pilotage-deploiement)
+
+## Secteurs accompagnés
+
+- [Tous les secteurs](https://audyxa.com/secteurs) : banque et finance, santé, industrie, retail, transport et logistique, télécoms, énergie, éducation, BTP, hôtellerie, immobilier, assurance, agroalimentaire, ONG, secteur public.
+
+## Zones d'intervention
+
+- [Toutes les zones](https://audyxa.com/pays) : France, Afrique de l'Ouest francophone (Bénin, Côte d'Ivoire, Sénégal, Togo, Burkina Faso, Mali, Niger, Guinée), Afrique centrale et Madagascar (Cameroun, Gabon, RD Congo, Congo-Brazzaville, Madagascar), Europe francophone (Belgique, Suisse, Luxembourg).
+
+## Comparatifs et FAQ
+
+- [Comparatifs](https://audyxa.com/comparatifs) : arbitrages fréquents entre approches ou outils.
+- [Contact](https://audyxa.com/contact)

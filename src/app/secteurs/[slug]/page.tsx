@@ -138,6 +138,40 @@ export default async function SectorPage({
         </div>
       </section>
 
+      {/* 3bis. Contexte marché sourcé */}
+      {sector.marketContext ? (
+        <section className="pt-[90px] pb-[70px]">
+          <div className="auto-container">
+            <div className="flex flex-wrap gap-y-8">
+              <div className="w-full lg:w-4/12 lg:pr-[40px]">
+                <SectionTitle
+                  subTitle="État du marché"
+                  title={`Ce que disent les études sur ${sectorNameLower}`}
+                  className="mb-0"
+                />
+              </div>
+              <div className="w-full lg:w-8/12">
+                <p className="mb-8 text-base leading-8 text-body-text">{sector.marketContext.intro}</p>
+                <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {sector.marketContext.stats.map((stat) => (
+                    <div key={stat.label} className="rounded-[14px] border border-[#e2e2e2] bg-theme-3 p-5">
+                      <div className="mb-2 text-[26px] font-extrabold leading-none text-theme-2">{stat.value}</div>
+                      <p className="mb-2 text-sm leading-6 text-theme-1">{stat.label}</p>
+                      <p className="mb-0 text-xs italic text-body-text">{stat.source}</p>
+                    </div>
+                  ))}
+                </div>
+                {sector.marketContext.obstacle ? (
+                  <p className="mb-0 border-l-[3px] border-theme-2 bg-theme-3 px-5 py-4 text-sm leading-7 text-theme-1">
+                    {sector.marketContext.obstacle}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {/* 4. Notre approche pour ce secteur — asymétrique */}
       <section className="pt-[90px] pb-[70px]">
         <div className="auto-container">

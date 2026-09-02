@@ -14,6 +14,7 @@ import {
 } from "@/lib/geo-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
+import { buildFaqJsonLd } from "@/lib/faq-schema";
 
 export function generateStaticParams() {
   return GEO_COUNTRIES.map((c) => ({ pays: c.slug }));
@@ -57,12 +58,36 @@ export default async function CountryPage({
     url: `${SITE_URL}/pays/${country.slug}`,
   };
 
+  const faqJsonLd = buildFaqJsonLd([
+    {
+      question: `Audyxa a-t-il une équipe présente au ${country.name} ?`,
+      answer: "Non, nous intervenons à distance depuis notre équipe centrale, avec la même méthode que sur nos autres marchés. Cela nous permet de garantir une qualité constante sans multiplier les partenaires locaux.",
+    },
+    {
+      question: `Dans quelle monnaie sont établis les devis pour le ${country.name} ?`,
+      answer: `Nous en discutons directement avec vous selon votre contexte — le ${country.name} utilise le ${country.currency}, ce point est cadré dès le premier échange.`,
+    },
+    {
+      question: `Intervenez-vous dans toutes les villes du ${country.name} ?`,
+      answer: `Notre intervention à distance couvre l'ensemble du ${country.name}, avec un point de référence sur ${flagship.name} où se concentre le plus de demandes.`,
+    },
+    {
+      question: "Par quel service commencer ?",
+      answer: "Généralement par un audit et diagnostic digital, qui permet de savoir si le besoin réel relève d'une automatisation, d'un développement d'outil ou d'un cas d'usage IA.",
+    },
+  ]);
+
   return (
     <main>
       <Script
         id="country-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <Script
+        id="country-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* 1. Bannière */}
@@ -116,6 +141,40 @@ export default async function CountryPage({
           </div>
         </div>
       </section>
+
+      {/* 3bis. Contexte marché sourcé */}
+      {country.marketContext ? (
+        <section className="pt-[90px] pb-[70px]">
+          <div className="auto-container">
+            <div className="flex flex-wrap gap-y-8">
+              <div className="w-full lg:w-4/12 lg:pr-[40px]">
+                <SectionTitle
+                  subTitle="État du marché"
+                  title={`Ce que disent les études sur le ${country.name}`}
+                  className="mb-0"
+                />
+              </div>
+              <div className="w-full lg:w-8/12">
+                <p className="mb-8 text-base leading-8 text-body-text">{country.marketContext.intro}</p>
+                <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  {country.marketContext.stats.map((stat) => (
+                    <div key={stat.label} className="rounded-[14px] border border-[#e2e2e2] bg-theme-3 p-5">
+                      <div className="mb-2 text-[26px] font-extrabold leading-none text-theme-2">{stat.value}</div>
+                      <p className="mb-2 text-sm leading-6 text-theme-1">{stat.label}</p>
+                      <p className="mb-0 text-xs italic text-body-text">{stat.source}</p>
+                    </div>
+                  ))}
+                </div>
+                {country.marketContext.obstacle ? (
+                  <p className="mb-0 border-l-[3px] border-theme-2 bg-theme-3 px-5 py-4 text-sm leading-7 text-theme-1">
+                    {country.marketContext.obstacle}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 4. Nos services — recap riche en contenu */}
       <section className="pt-[90px] pb-[70px]">

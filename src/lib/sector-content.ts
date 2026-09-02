@@ -3,6 +3,23 @@ export interface SectorFaqItem {
   answer: string;
 }
 
+export interface SectorMarketStat {
+  /** Chiffre affiché ("26 %", "587 M€"...) */
+  value: string;
+  /** Ce que représente le chiffre, phrase courte */
+  label: string;
+  /** Organisme + année, tel qu'à citer */
+  source: string;
+}
+
+export interface SectorMarketContext {
+  /** Paragraphe de contexte sourcé (2-4 phrases), sans chiffre inventé */
+  intro: string;
+  stats: SectorMarketStat[];
+  /** Phrase sur le principal obstacle/écart identifié par les études citées */
+  obstacle?: string;
+}
+
 export interface SectorPage {
   slug: string;
   name: string;
@@ -12,6 +29,8 @@ export interface SectorPage {
   relevantServiceSlugs: string[];
   approach: string;
   faq: SectorFaqItem[];
+  /** Contexte marché sourcé, issu de seo/analyses/veille-marches-secteurs.md */
+  marketContext?: SectorMarketContext;
 }
 
 export const SECTOR_PAGES: SectorPage[] = [
@@ -41,6 +60,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "Nous intervenons en intégration autour de ces systèmes plutôt qu'en remplacement, en clarifiant systématiquement la source de vérité de chaque donnée avant toute synchronisation.",
       },
     ],
+    marketContext: {
+      intro:
+        "La zone UEMOA a généralisé en 2025 une plateforme de paiement instantané interopérable entre banques et établissements de monnaie électronique, tandis que le mobile money reste le principal moteur de l'inclusion financière digitale en Afrique francophone, porté davantage par les opérateurs télécom que par les banques elles-mêmes.",
+      stats: [
+        { value: "80 participants", label: "connectés à la plateforme de paiement instantané PI-SPI en zone UEMOA au 2 avril 2026 (59 banques, 9 établissements de monnaie électronique, 11 IMF)", source: "BCEAO, généralisation prévue au 30 juin 2026" },
+        { value: "1,2 milliard", label: "de comptes mobile money enregistrés en Afrique (subsaharienne et du Nord), 66 % de la valeur mondiale mobile money", source: "GSMA, State of the Industry Report on Mobile Money, 2025" },
+      ],
+      obstacle: "Le mobile money, souvent porté par les opérateurs télécom plutôt que par les banques, crée une concurrence inédite ailleurs entre banques traditionnelles et telcos sur la digitalisation des paiements.",
+    },
   },
   {
     slug: "retail-et-distribution",
@@ -68,6 +96,16 @@ export const SECTOR_PAGES: SectorPage[] = [
           "En identifiant en amont les processus qui deviennent des goulots d'étranglement sous forte charge, pour les automatiser ou les simplifier avant la période critique, pas pendant.",
       },
     ],
+    marketContext: {
+      intro:
+        "Le e-commerce français continue sa progression régulière mais reste minoritaire dans le commerce de détail global, porté de plus en plus par les marketplaces plutôt que par les boutiques en ligne classiques — la vraie bataille du secteur se joue dans la cohérence omnicanale, pas dans la simple présence en ligne.",
+      stats: [
+        { value: "196,4 Md€", label: "de chiffre d'affaires e-commerce en France en 2025 (+7 % vs 2024)", source: "FEVAD, Chiffres clés du e-commerce, édition 2025" },
+        { value: "11 %", label: "seulement : part du e-commerce dans le commerce de détail français en 2024 (hors carburant, pharmacie, dispositifs médicaux)", source: "FEVAD, 2025" },
+        { value: "31 %", label: "du volume de ventes produits en ligne passe désormais par les marketplaces (vs 29 % en 2023)", source: "FEVAD, 2025" },
+      ],
+      obstacle: "Le e-commerce ne représente qu'une part minoritaire du commerce de détail — la vraie priorité est l'orchestration entre canaux (stock, prix, statut commande), pas la simple mise en ligne d'une boutique.",
+    },
   },
   {
     slug: "sante",
@@ -95,6 +133,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "C'est un cas d'usage fréquent, à condition de garder un chemin simple vers un contact humain pour les cas qui ne rentrent pas dans un parcours standard.",
       },
     ],
+    marketContext: {
+      intro:
+        "En France, la téléconsultation reste un usage minoritaire malgré sa forte médiatisation post-Covid, et profite surtout à un public urbain, jeune et diplômé — l'inverse de l'objectif initial de désenclavement médical. Le frein n'est pas technologique mais relationnel et réglementaire : confidentialité des données, confiance dans l'écran.",
+      stats: [
+        { value: "15 %", label: "des Français de 18 ans et plus ont eu recours à la téléconsultation au moins une fois en 2024", source: "DREES/Insee, Études et Résultats n°1366, février 2026" },
+        { value: "8 sur 10", label: "Français jugent que l'écran \"déshumanise\" la relation médecin-patient ; 60 % craignent pour la confidentialité des données", source: "DREES/Insee, février 2026" },
+      ],
+      obstacle: "La téléconsultation profite 4 fois plus aux moins de 45 ans et 2 fois plus aux diplômés du supérieur — elle n'a pas encore comblé la fracture d'accès aux soins qu'elle était censée réduire.",
+    },
   },
   {
     slug: "agroalimentaire",
@@ -122,6 +169,14 @@ export const SECTOR_PAGES: SectorPage[] = [
           "En s'appuyant sur des scénarios et des marges de sécurité adaptées au coût d'une rupture comparé au coût de stockage, plutôt que sur une prévision unique traitée comme une certitude.",
       },
     ],
+    marketContext: {
+      intro:
+        "En France, la digitalisation de l'agroalimentaire est surtout tirée par la réglementation (traçabilité, information produit) plutôt que par une demande spontanée des entreprises, portée notamment par une plateforme de données ouvertes construite par la filière elle-même.",
+      stats: [
+        { value: "6,2 M€", label: "budget de NUM-ALIM, plateforme de données produits alimentaires portée par l'ANIA, la FFAS, la Fondation Avril et GS1, en partenariat public-privé 50/50", source: "ANIA, communiqué officiel" },
+      ],
+      obstacle: "La fragmentation de la donnée entre les multiples acteurs de la chaîne (producteur, transformateur, distributeur) reste l'obstacle le plus cité, avant même le manque d'outils.",
+    },
   },
   {
     slug: "telecoms",
@@ -149,6 +204,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "En croisant les signaux déjà disponibles (usage, tickets support, historique de paiement) pour prioriser les actions de rétention, plutôt qu'en achetant un nouvel outil de scoring sans data fiable en entrée.",
       },
     ],
+    marketContext: {
+      intro:
+        "Les télécoms sont à la fois le secteur le plus avancé d'Afrique francophone en infrastructure et celui qui révèle le mieux l'écart entre couverture réseau et usage réel — la majorité de la population africaine vit en zone couverte sans pour autant utiliser internet mobile, ce qui déplace le problème vers l'accessibilité économique plutôt que la disponibilité technique.",
+      stats: [
+        { value: "56/100", label: "score moyen africain de l'ICT Development Index en 2025 (53 en 2024), loin des standards européens", source: "UIT, ICT Development Index 2025" },
+        { value: "75 %", label: "de la population africaine non connectée à internet mobile malgré une couverture réseau souvent disponible (64 % en zone couverte mais non utilisatrice)", source: "GSMA, The Mobile Economy Africa 2025" },
+      ],
+      obstacle: "Le vrai enjeu télécom en Afrique francophone n'est plus le réseau lui-même mais l'activation de l'usage — coût des terminaux et de la data, compétences numériques.",
+    },
   },
   {
     slug: "education-et-formation",
@@ -176,6 +240,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "En automatisant les tâches répétitives de cette période (confirmations, relances, contrôles de dossier) pour que les équipes se concentrent sur les cas qui demandent réellement une décision humaine.",
       },
     ],
+    marketContext: {
+      intro:
+        "En Afrique subsaharienne, la fracture numérique éducative constatée pendant la période Covid reste la référence la plus citée sur le sujet : l'obstacle principal est l'accès matériel et réseau, avant même la question de l'organisation pédagogique — l'inverse de la situation française où le budget existe mais reste mal fléché vers le numérique.",
+      stats: [
+        { value: "89 % / 82 %", label: "des apprenants d'Afrique subsaharienne sans accès à un ordinateur familial / sans accès à internet", source: "UNESCO, communiqué du 21 avril 2020" },
+        { value: "180,1 Md€", label: "dépense intérieure d'éducation en France en 2022, soit 6,8 % du PIB", source: "Ministère de l'Éducation nationale, édition 2024" },
+      ],
+      obstacle: "En Afrique francophone, la digitalisation de l'éducation reste bloquée par l'accès physique (matériel, réseau) ; en France, le budget existe mais l'usage réel du numérique pédagogique reste mal documenté par une source officielle unique.",
+    },
   },
   {
     slug: "assurance",
@@ -203,6 +276,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "En intégrant la traçabilité et la justification des décisions dès la conception des automatisations, pas comme un contrôle ajouté après coup.",
       },
     ],
+    marketContext: {
+      intro:
+        "L'assurance française affiche une maturité digitale supérieure à la moyenne européenne, tandis qu'en Afrique francophone (zone CIMA) un cadre réglementaire récent commence tout juste à encadrer la distribution digitale de l'assurance — deux marchés à des stades très différents, mais tous deux moteurs par la réglementation plus que par la seule concurrence commerciale.",
+      stats: [
+        { value: "67 %", label: "de couverture fonctionnelle digitale des assureurs français, contre 52,3 % de moyenne EMEA — la France se classe 4ᵉ en expérience utilisateur en Europe", source: "Deloitte, Digital Insurance Maturity 2025, juillet 2025" },
+        { value: "84 %", label: "des assurés français veulent un accès digital facile tout en gardant un accompagnement humain", source: "Deloitte, juillet 2025" },
+      ],
+      obstacle: "En zone CIMA, la réglementation n°01/2024 encadre depuis 2024 la distribution digitale de l'assurance dans 14 pays — un cadre juridique posé avant que l'adoption opérationnelle des compagnies ne suive réellement.",
+    },
   },
   {
     slug: "transport-et-logistique",
@@ -230,6 +312,14 @@ export const SECTOR_PAGES: SectorPage[] = [
           "Oui, via des intégrations ou un portail dédié, à condition de clarifier au préalable quelle donnée fait autorité en cas d'écart entre les systèmes des différents acteurs.",
       },
     ],
+    marketContext: {
+      intro:
+        "En France, la logistique dispose d'une feuille de route publique et d'un budget national dédiés à l'IA et à l'IoT, mais l'adoption réelle par les entreprises du secteur reste documentée comme inférieure à celle des autres secteurs économiques — un écart net entre stratégie annoncée et déploiement terrain.",
+      stats: [
+        { value: "3 M€", label: "fléchés sur 2 ans pour des projets IA générative/robotique en logistique, dans une stratégie IA nationale de 2,5 Md€", source: "France 2030 / DGE, feuille de route Logistique et transport de marchandises 2025-2026" },
+      ],
+      obstacle: "France Logistique confirme un \"taux d'adoption de l'IA inférieur aux autres secteurs économiques\" en France, sans chiffre précis publié — signe d'un secteur encore en phase d'expérimentation malgré le soutien public.",
+    },
   },
   {
     slug: "immobilier",
@@ -257,6 +347,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "En définissant des étapes de pipeline avec des critères de passage vérifiables, plutôt que des statuts déclaratifs qui ne reflètent pas la réalité de la négociation.",
       },
     ],
+    marketContext: {
+      intro:
+        "La digitalisation immobilière française est un chantier ancien mais inachevé sur les fonctions à faible valeur perçue par l'agent : la diffusion d'annonces en ligne est acquise depuis longtemps, tandis que la signature électronique et le paiement en ligne progressent plus lentement dans un secteur très fragmenté (majoritairement des TPE).",
+      stats: [
+        { value: "1,208 million", label: "de transactions immobilières en France en 2021 ; 46 % des Français utilisent des outils digitaux pour leurs transactions", source: "Notaires de France / Observatoire de la Proptech, cités par Septeo" },
+        { value: "100 M€", label: "Fonds Propulse, lancé en décembre 2024 par la FNAIM et la French Proptech pour financer l'innovation immobilière", source: "FNAIM / French Proptech, décembre 2024" },
+      ],
+      obstacle: "La profession elle-même (FNAIM) juge le retard de digitalisation des processus suffisamment sérieux pour financer un fonds dédié plutôt que d'attendre le marché — signal fort de priorité, au-delà du discours marketing habituel.",
+    },
   },
   {
     slug: "industrie-et-manufacturing",
@@ -284,6 +383,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "Seulement si l'information recherchée et l'action déclenchée sont clairement définies au préalable — digitaliser d'abord les ordres de travail donne souvent un gain plus rapide et moins coûteux.",
       },
     ],
+    marketContext: {
+      intro:
+        "L'industrie française progresse sur l'IA en usage individuel, mais son adoption dans le pilotage de production reste marginale et très inégale entre PME et ETI — un écart de capacité d'investissement et de compétences plus que de volonté.",
+      stats: [
+        { value: "26 %", label: "des TPE-PME françaises utilisent déjà l'IA en 2025 (13 % en 2024) ; écart marqué par taille : 42 % des 50-249 salariés contre 23 % des 1-4 salariés", source: "France Num, Baromètre du numérique dans les TPE-PME, 6ᵉ édition, 2025" },
+        { value: "1 sur 4", label: "PME industrielle a adopté l'usine connectée, contre près de 60 % des ETI en phase de déploiement", source: "La Fabrique de l'industrie / McKinsey, novembre 2025" },
+      ],
+      obstacle: "L'écart entre PME et ETI sur l'usine connectée est avant tout un problème de méthode et de compétences internes, pas seulement de budget disponible.",
+    },
   },
   {
     slug: "secteur-public",
@@ -311,6 +419,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "Oui, les principes d'accessibilité (navigation, contrastes, structure sémantique) font partie de notre méthode UX, particulièrement pertinents pour des services destinés à un large public.",
       },
     ],
+    marketContext: {
+      intro:
+        "L'e-gouvernement progresse nettement à l'échelle mondiale, mais en France la Cour des comptes documente des dérives récurrentes sur les grands projets numériques publics malgré un budget en forte hausse — signe que l'obstacle est la gouvernance de projet, pas le financement.",
+      stats: [
+        { value: "45,0 % → 22,4 %", label: "part de la population mondiale vivant dans des pays \"en retard\" en e-gouvernement, entre 2022 et 2024", source: "ONU DESA, UN E-Government Survey 2024" },
+        { value: "24 % / 26 %", label: "dérive budgétaire moyenne et retard calendaire moyen sur les grands projets numériques de l'État français audités en 2023", source: "Cour des comptes, 2024" },
+      ],
+      obstacle: "Le budget de la DINUM a été multiplié par 5 entre 2019 et 2022, mais les dérives constatées par la Cour des comptes montrent que l'argent seul ne résout pas les problèmes de gouvernance interministérielle.",
+    },
   },
   {
     slug: "ong-et-associations",
@@ -338,6 +455,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "En documentant systématiquement les processus et en évitant les solutions qui dépendent d'une seule personne pour fonctionner — un principe central de notre méthode de transfert.",
       },
     ],
+    marketContext: {
+      intro:
+        "Le secteur associatif français progresse lentement mais réellement en maturité numérique, porté par la nécessité opérationnelle plus que par une contrainte réglementaire — le vrai frein n'est pas la volonté mais le fait que le numérique associatif repose trop souvent sur une seule personne.",
+      stats: [
+        { value: "47 % / 23 %", label: "des dirigeants associatifs se disent \"en bonne voie\" numériquement, contre 23 % \"encore éloignés\" du sujet", source: "Baromètre Solidatech x Recherches & Solidarités, 5ᵉ édition, novembre 2025 (2 285 responsables interrogés)" },
+        { value: "18 %", label: "des associations utilisent déjà des outils d'intelligence artificielle en 2025", source: "Baromètre Solidatech x Recherches & Solidarités, novembre 2025" },
+      ],
+      obstacle: "Le numérique associatif dépend très souvent d'une seule personne (bénévole ou salariée), ce qui rend les pratiques fragiles en cas de départ — l'enjeu est la pérennisation, pas l'ajout d'outils.",
+    },
   },
   {
     slug: "hotellerie-et-tourisme",
@@ -365,6 +491,14 @@ export const SECTOR_PAGES: SectorPage[] = [
           "En automatisant les tâches répétitives de cette période (confirmations, rappels, check-in) pour que les équipes se concentrent sur la qualité du service pendant les moments les plus chargés.",
       },
     ],
+    marketContext: {
+      intro:
+        "Dans l'hôtellerie, l'outillage de base (PMS, channel manager) est largement adopté en Europe, mais son exploitation stratégique via l'IA reste minoritaire — un problème de mise en œuvre plus que de volonté, aggravé par une forte fragmentation des systèmes utilisés.",
+      stats: [
+        { value: "75 % / 41 %", label: "des hôteliers européens utilisent un PMS, mais seuls 41 % utilisent l'IA aujourd'hui (68 % la jugent utile pour les réservations)", source: "Étude HES-SO Valais-Wallis, 1 500+ hôtels dans 6 pays européens, août 2025" },
+      ],
+      obstacle: "Plus de 70 systèmes PMS différents sont recensés en Europe, ce qui nuit à l'interopérabilité et complique le pilotage par la donnée, en particulier pour les établissements indépendants.",
+    },
   },
   {
     slug: "btp-et-construction",
@@ -392,6 +526,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "Oui, selon leur niveau d'équipement — nous évaluons le juste niveau d'intégration technique proportionné à la réalité de chaque partenaire.",
       },
     ],
+    marketContext: {
+      intro:
+        "Le BTP français sait que le numérique est stratégique, mais l'usage réel du BIM reste à mi-chemin de la conviction affichée — un décalage classique entre discours et déploiement, dans un secteur historiquement en retard de productivité par rapport à l'industrie manufacturière.",
+      stats: [
+        { value: "72 % / 33-56 %", label: "des professionnels du BTP jugent le BIM \"essentiel\", mais son usage réel varie de 33 % à 56 % selon l'indicateur retenu", source: "Baromètre numérique et BIM, ministère de la Transition écologique, 2024" },
+        { value: "~1 %/an", label: "croissance de la productivité du secteur construction sur 20 ans, contre 2,8 % pour l'économie mondiale — potentiel de gain estimé à 1 600 Md$", source: "McKinsey Global Institute, 2017" },
+      ],
+      obstacle: "Le retard de productivité documenté par McKinsey depuis 2017 reste largement inexploité près de dix ans après, signe d'obstacles non technologiques : fragmentation des chantiers, dépendance à la commande publique.",
+    },
   },
   {
     slug: "energie",
@@ -419,6 +562,15 @@ export const SECTOR_PAGES: SectorPage[] = [
           "Non, elle est intégrée dès le diagnostic et le portefeuille d'initiatives, conformément à notre méthode — particulièrement important pour des infrastructures énergétiques sensibles.",
       },
     ],
+    marketContext: {
+      intro:
+        "En France, la digitalisation de l'énergie est la plus achevée sur son cas d'usage principal — le comptage intelligent — mais reste concentrée sur ce périmètre : la maintenance prédictive et le pilotage des renouvelables sont beaucoup moins documentés.",
+      stats: [
+        { value: "95-97 %", label: "des foyers français équipés en compteurs communicants Linky, objectif 100 % fin 2026", source: "Enedis / CRE" },
+        { value: "350 M€/an", label: "gains économiques générés par le déploiement Linky depuis 2025 (après 1 Md€ cumulé sur 2021-2024)", source: "Enedis / CRE" },
+      ],
+      obstacle: "La digitalisation énergétique française s'est concentrée sur le comptage ; au-delà de Linky, la maintenance prédictive et le pilotage des renouvelables restent un chantier ouvert et peu mesuré publiquement.",
+    },
   },
 ];
 

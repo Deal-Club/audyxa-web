@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!service) return {};
 
   return {
-    title: `${service.title} | Audyxa`,
+    title: `${service.title} pour entreprises | Audyxa`,
     description: service.directAnswer,
     alternates: { canonical: `/services/${service.slug}` },
   };
@@ -66,6 +66,18 @@ export default async function ServiceDetailPage({
     })),
   };
 
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `Notre méthode pour ${service.title.toLowerCase()}`,
+    description: service.directAnswer,
+    step: service.approachSteps.map((step) => ({
+      "@type": "HowToStep",
+      name: step.title,
+      text: step.text,
+    })),
+  };
+
   return (
     <main>
       <Script
@@ -77,6 +89,11 @@ export default async function ServiceDetailPage({
         id="service-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="service-howto-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
 
       {/* 1. Bannière */}
@@ -143,6 +160,35 @@ export default async function ServiceDetailPage({
           </div>
         </div>
       </section>
+
+      {/* 3bis. Contexte marché sourcé */}
+      {service.marketContext ? (
+        <section className="pt-[90px] pb-[20px]">
+          <div className="auto-container">
+            <div className="flex flex-wrap gap-y-8">
+              <div className="w-full lg:w-4/12 lg:pr-[40px]">
+                <SectionTitle
+                  subTitle="État du marché"
+                  title={`Ce que disent les études sur ${service.title.toLowerCase()}`}
+                  className="mb-0"
+                />
+              </div>
+              <div className="w-full lg:w-8/12">
+                <p className="mb-8 text-base leading-8 text-body-text">{service.marketContext.intro}</p>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {service.marketContext.stats.map((stat) => (
+                    <div key={stat.label} className="rounded-[14px] border border-[#e2e2e2] bg-theme-3 p-5">
+                      <div className="mb-2 text-[26px] font-extrabold leading-none text-theme-2">{stat.value}</div>
+                      <p className="mb-2 text-sm leading-6 text-theme-1">{stat.label}</p>
+                      <p className="mb-0 text-xs italic text-body-text">{stat.source}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 4. Notre approche — colonne latérale + étapes pleine largeur */}
       <section className="pt-[90px] pb-[70px]">

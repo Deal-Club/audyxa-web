@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Project Details | Audyxa",
   description:
     "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
+  robots: { index: false, follow: false },
 };
 
 /**

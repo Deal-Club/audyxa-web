@@ -9,6 +9,7 @@ import { CallToAction } from "@/components/call-to-action";
 import { GEO_COUNTRIES, getCountry, getCity, getFlagshipCity } from "@/lib/geo-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
+import { buildFaqJsonLd } from "@/lib/faq-schema";
 
 export function generateStaticParams() {
   return GEO_COUNTRIES.flatMap((country) =>
@@ -55,12 +56,28 @@ export default async function CityHubPage({
     url: `${SITE_URL}/pays/${country.slug}/${city.slug}`,
   };
 
+  const faqJsonLd = buildFaqJsonLd([
+    {
+      question: `Comment se déroule une mission à ${city.name} ?`,
+      answer: `Exactement comme sur nos autres marchés : un diagnostic à distance, une note de cadrage, puis un déploiement suivi de points réguliers, sans nécessiter de présence physique à ${city.name}.`,
+    },
+    {
+      question: `Pourquoi consulter la page ${country.name} en plus de celle-ci ?`,
+      answer: `La page ${country.name} détaille chaque service individuellement pour ${flagship.name} ; cette page-ci sert de point d'entrée pour ${city.name} et le reste de la zone desservie.`,
+    },
+  ]);
+
   return (
     <main>
       <Script
         id="city-service-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <Script
+        id="city-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* 1. Bannière */}

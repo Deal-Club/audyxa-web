@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Product Details | Audyxa",
   description:
     "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
+  robots: { index: false, follow: false },
 };
 
 /**
