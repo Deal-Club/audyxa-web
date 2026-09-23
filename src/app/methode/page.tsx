@@ -370,7 +370,7 @@ export default function MethodePage() {
               </Link>
               <Link
                 href="/services"
-                className="rounded-[6px] bg-theme-2 px-6 py-3 text-center text-[14px] font-bold text-white transition-colors duration-200 hover:bg-theme-2-dark"
+                className="rounded-[6px] bg-theme-2-cta px-6 py-3 text-center text-[14px] font-bold text-white transition-colors duration-200 hover:bg-theme-2-cta-dark"
               >
                 Voir nos services
               </Link>

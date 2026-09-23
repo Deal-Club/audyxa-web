@@ -265,7 +265,7 @@ export default async function MethodChapterPage({
                 </ul>
                 <Link
                   href="/contact"
-                  className="inline-block rounded-[6px] bg-theme-2 px-6 py-3 text-[14px] font-bold text-white transition-colors duration-200 hover:bg-theme-2-dark"
+                  className="inline-block rounded-[6px] bg-theme-2-cta px-6 py-3 text-[14px] font-bold text-white transition-colors duration-200 hover:bg-theme-2-cta-dark"
                 >
                   Demander un diagnostic
                 </Link>

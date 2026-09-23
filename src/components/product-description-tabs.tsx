@@ -202,11 +202,11 @@ export function ProductDescriptionTabs() {
                     <div className="mt-[15px]">
                       <button
                         type="submit"
-                        className="group relative z-0 inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-[10px] bg-theme-2 px-[50px] py-[15px] text-base font-extrabold leading-7 text-white transition-all duration-500"
+                        className="group relative z-0 inline-flex items-center justify-center overflow-hidden whitespace-nowrap rounded-[10px] bg-theme-2-cta px-[50px] py-[15px] text-base font-extrabold leading-7 text-white transition-all duration-500"
                       >
                         <span
                           aria-hidden
-                          className="absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] bg-theme-2-dark transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full"
+                          className="absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] bg-theme-2-cta-dark transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full"
                         />
                         <span className="relative z-[2]">Submit Comment</span>
                       </button>

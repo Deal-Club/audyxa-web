@@ -34,12 +34,15 @@ export function Footer() {
     <footer className="main-footer relative bg-[#181818] pt-[30px]">
       <div className="subscribe-form auto-container flex flex-col items-center justify-between gap-6 bg-theme-1 px-[30px] py-8 md:flex-row md:px-[60px]">
         <div className="title-column">
-          <h5 className="title flex items-center gap-2 text-white">
+          {/* h2 : le footer suit toujours un h1/h2 de page, jamais plus profond
+             (voir note heading-order plus bas). Taille visuelle inchangée
+             (22px, ex-h5) via l'utilitaire text-[22px]. */}
+          <h2 className="title flex items-center gap-2 text-[22px] text-white">
             <i className="flaticon-open-envelope text-theme-2" />
             Echangeons sur vos priorites
             <br />
             de transformation digitale
-          </h5>
+          </h2>
         </div>
         <div className="form-column w-full md:w-auto">
           <form onSubmit={handleNewsletterSubmit} className="flex w-full max-w-[400px]">
@@ -96,7 +99,7 @@ export function Footer() {
 
           <div className="footer-column">
             <div className="footer-widget links-widget">
-              <h6 className="widget-title mb-[15px] font-semibold text-white">Navigation</h6>
+              <h3 className="widget-title mb-[15px] text-[20px] leading-[1.4em] font-semibold text-white">Navigation</h3>
               <ul className="user-links space-y-[10px] text-[15px] text-[#8f8f8f]">
                 {[
                   { label: "Accueil", href: "/" },
@@ -117,7 +120,7 @@ export function Footer() {
 
           <div className="footer-column">
             <div className="footer-widget gallery-widget">
-              <h6 className="widget-title mb-[15px] font-semibold text-white">Interventions</h6>
+              <h3 className="widget-title mb-[15px] text-[20px] leading-[1.4em] font-semibold text-white">Interventions</h3>
               <ul className="space-y-[10px] text-[15px] leading-7 text-[#8f8f8f]">
                 {SERVICES_DETAIL.map((service) => (
                   <li key={service.slug}>
@@ -132,7 +135,7 @@ export function Footer() {
 
           <div className="footer-column">
             <div className="footer-widget links-widget">
-              <h6 className="widget-title mb-[15px] font-semibold text-white">Ressources</h6>
+              <h3 className="widget-title mb-[15px] text-[20px] leading-[1.4em] font-semibold text-white">Ressources</h3>
               <ul className="user-links space-y-[10px] text-[15px] text-[#8f8f8f]">
                 {[
                   { label: "Glossaire", href: "/glossaire" },
@@ -153,7 +156,7 @@ export function Footer() {
 
           <div className="footer-column">
             <div className="footer-widget contacts-widget">
-              <h6 className="widget-title mb-[15px] font-semibold text-white">Perimetre</h6>
+              <h3 className="widget-title mb-[15px] text-[20px] leading-[1.4em] font-semibold text-white">Perimetre</h3>
               <div className="text mb-[15px] text-[15px] text-[#8f8f8f]">
                 France et Afrique francophone
               </div>

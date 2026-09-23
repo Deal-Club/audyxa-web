@@ -160,7 +160,7 @@ export function ServicesListSection() {
           </div>
           <Link
             href="/contact"
-            className="mt-5 inline-flex items-center rounded-full bg-theme-2 px-7 py-4 text-base font-bold text-white transition-colors hover:bg-theme-2-dark md:mt-0"
+            className="mt-5 inline-flex items-center rounded-full bg-theme-2-cta px-7 py-4 text-base font-bold text-white transition-colors hover:bg-theme-2-cta-dark md:mt-0"
           >
             Parler à Audyxa
           </Link>

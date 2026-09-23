@@ -29,7 +29,9 @@ export function ThemeBtn({
         variant === "one" && [
           light
             ? "bg-white text-theme-1"
-            : "bg-theme-2 text-white",
+            // bg-theme-2-cta (pas bg-theme-2) : contraste AA (~5:1) avec le
+            // texte blanc du bouton, cf. globals.css.
+            : "bg-theme-2-cta text-white",
         ],
         className
       )}
@@ -38,7 +40,7 @@ export function ThemeBtn({
         aria-hidden
         className={cn(
           "absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full",
-          light ? "bg-[#e8e8e8]" : "bg-theme-2-dark"
+          light ? "bg-[#e8e8e8]" : "bg-theme-2-cta-dark"
         )}
       />
       <span className="btn-title relative z-[2] transition-colors duration-300">

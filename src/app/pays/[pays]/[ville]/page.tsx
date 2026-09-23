@@ -158,7 +158,7 @@ export default async function CityHubPage({
             <div className="w-full lg:w-5/12 lg:pl-[20px]">
               <Link
                 href={`/pays/${country.slug}`}
-                className="inline-flex items-center rounded-[10px] bg-theme-2 px-[36px] py-[15px] text-base font-extrabold text-white transition-colors hover:bg-theme-2-dark"
+                className="inline-flex items-center rounded-[10px] bg-theme-2-cta px-[36px] py-[15px] text-base font-extrabold text-white transition-colors hover:bg-theme-2-cta-dark"
               >
                 Voir la page {country.name}
               </Link>
