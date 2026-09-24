@@ -10,6 +10,7 @@ import {
 } from "@/components/methode/method-ui";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
 import { SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { truncateForMeta } from "@/lib/text-utils";
 
 /**
  * Page auteur de Paul Maxime Dossou, fondateur d'Audyxa : page qui porte le
@@ -28,8 +29,9 @@ import { SITE_NAME, SITE_URL } from "@/lib/site-config";
  */
 
 const AUTEUR_TITLE = "Paul Maxime Dossou | Consultant en transformation digitale";
-const AUTEUR_DESCRIPTION =
-  "Paul Maxime Dossou, consultant en transformation digitale et fondateur d'Audyxa : développeur full stack, spécialiste automatisation et IA, auteur du cours Digitalisation des Entreprises.";
+const AUTEUR_DESCRIPTION = truncateForMeta(
+  "Paul Maxime Dossou, consultant en transformation digitale et fondateur d'Audyxa : développeur full stack, spécialiste automatisation et IA, auteur du cours Digitalisation des Entreprises."
+);
 
 export const metadata: Metadata = {
   title: AUTEUR_TITLE,

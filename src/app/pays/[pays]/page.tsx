@@ -14,6 +14,7 @@ import {
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
+import { truncateForMeta } from "@/lib/text-utils";
 
 export function generateStaticParams() {
   return GEO_COUNTRIES.map((c) => ({ pays: c.slug }));
@@ -29,9 +30,10 @@ export async function generateMetadata({
   if (!country) return {};
 
   const preposition = country.preposition ?? "au";
-  const description =
+  const description = truncateForMeta(
     country.metaDescription ??
-    `Audyxa accompagne les entreprises ${preposition} ${country.name} en conseil, automatisation, IA et développement d'outils métier, avec la même méthode appliquée partout en Afrique francophone.`;
+      `Audyxa accompagne les entreprises ${preposition} ${country.name} en conseil, automatisation, IA et développement d'outils métier, avec la même méthode appliquée partout en Afrique francophone.`
+  );
 
   const title = `Transformation digitale ${preposition} ${country.name} | Conseil, audit et automatisation`;
   return {

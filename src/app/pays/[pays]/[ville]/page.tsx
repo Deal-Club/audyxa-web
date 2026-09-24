@@ -9,6 +9,7 @@ import { GEO_COUNTRIES, getCountry, getCity, getFlagshipCity } from "@/lib/geo-c
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
+import { truncateForMeta } from "@/lib/text-utils";
 import { VILLES_CONTENT, getVilleContent } from "./villes-content";
 
 /**
@@ -54,26 +55,29 @@ export async function generateMetadata({
 
   if (curated) {
     const title = `Consultant en transformation digitale à ${city.name} | Audit, automatisation, IA`;
+    const metaDescription = truncateForMeta(curated.metaDescription);
     return {
       title,
-      description: curated.metaDescription,
+      description: metaDescription,
       alternates: { canonical: `/pays/${country.slug}/${city.slug}` },
       openGraph: {
         title,
-        description: curated.metaDescription,
+        description: metaDescription,
         url: `${SITE_URL}/pays/${country.slug}/${city.slug}`,
         type: "website",
       },
       twitter: {
         card: "summary_large_image",
         title,
-        description: curated.metaDescription,
+        description: metaDescription,
       },
     };
   }
 
   const genericTitle = `Transformation digitale à ${city.name}`;
-  const genericDescription = `Audyxa accompagne les entreprises à ${city.name} (${country.name}) en conseil, automatisation, IA et développement d'outils métier, à distance, avec la même méthode qu'ailleurs.`;
+  const genericDescription = truncateForMeta(
+    `Audyxa accompagne les entreprises à ${city.name} (${country.name}) en conseil, automatisation, IA et développement d'outils métier, à distance, avec la même méthode qu'ailleurs.`
+  );
   return {
     title: genericTitle,
     description: genericDescription,

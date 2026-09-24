@@ -10,6 +10,7 @@ import { RichText } from "@/components/rich-text";
 import { SECTOR_PAGES, getSectorPage } from "@/lib/sector-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
+import { truncateForMeta } from "@/lib/text-utils";
 
 export function generateStaticParams() {
   return SECTOR_PAGES.map((s) => ({ slug: s.slug }));
@@ -25,20 +26,21 @@ export async function generateMetadata({
   if (!sector) return {};
 
   const title = `Transformation digitale ${sector.name}`;
+  const metaDescription = truncateForMeta(sector.directAnswer);
   return {
     title,
-    description: sector.directAnswer,
+    description: metaDescription,
     alternates: { canonical: `/secteurs/${sector.slug}` },
     openGraph: {
       title,
-      description: sector.directAnswer,
+      description: metaDescription,
       url: `${SITE_URL}/secteurs/${sector.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: sector.directAnswer,
+      description: metaDescription,
     },
   };
 }

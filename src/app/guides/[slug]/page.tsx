@@ -9,6 +9,7 @@ import { GUIDES, getGuide } from "@/lib/guide-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
+import { truncateForMeta } from "@/lib/text-utils";
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
@@ -24,20 +25,21 @@ export async function generateMetadata({
   if (!guide) return {};
 
   const title = guide.title;
+  const metaDescription = truncateForMeta(guide.summary);
   return {
     title,
-    description: guide.summary,
+    description: metaDescription,
     alternates: { canonical: `/guides/${guide.slug}` },
     openGraph: {
       title,
-      description: guide.summary,
+      description: metaDescription,
       url: `${SITE_URL}/guides/${guide.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: guide.summary,
+      description: metaDescription,
     },
   };
 }

@@ -9,6 +9,7 @@ import { CallToAction } from "@/components/call-to-action";
 import { DECISION_PAGES, getDecisionPage } from "@/lib/decision-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
 import { SITE_URL } from "@/lib/site-config";
+import { truncateForMeta } from "@/lib/text-utils";
 
 export function generateStaticParams() {
   return DECISION_PAGES.map((d) => ({ slug: d.slug }));
@@ -24,20 +25,21 @@ export async function generateMetadata({
   if (!page) return {};
 
   const title = page.title;
+  const metaDescription = truncateForMeta(page.conclusion);
   return {
     title,
-    description: page.conclusion,
+    description: metaDescription,
     alternates: { canonical: `/comparatifs/${page.slug}` },
     openGraph: {
       title,
-      description: page.conclusion,
+      description: metaDescription,
       url: `${SITE_URL}/comparatifs/${page.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description: page.conclusion,
+      description: metaDescription,
     },
   };
 }

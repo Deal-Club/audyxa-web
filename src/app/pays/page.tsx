@@ -5,10 +5,12 @@ import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
 import { GEO_COUNTRIES, getCountriesByRegion } from "@/lib/geo-content";
 import { SITE_URL } from "@/lib/site-config";
+import { truncateForMeta } from "@/lib/text-utils";
 
 const PAYS_TITLE = "Zones d'intervention";
-const PAYS_DESCRIPTION =
-  "Audyxa accompagne les entreprises en France, en Afrique de l'Ouest, en Afrique centrale et en Europe francophone, avec la même méthode de transformation digitale partout.";
+const PAYS_DESCRIPTION = truncateForMeta(
+  "Audyxa accompagne les entreprises en France, en Afrique de l'Ouest, en Afrique centrale et en Europe francophone, avec la même méthode de transformation digitale partout."
+);
 
 export const metadata: Metadata = {
   title: PAYS_TITLE,

@@ -23,6 +23,7 @@ import {
 } from "@/lib/methode-content";
 import { METHOD_EXTRAS, PILLARS } from "@/lib/methode-extras";
 import { SITE_URL, METHODE_LAST_REVISION } from "@/lib/site-config";
+import { truncateForMeta } from "@/lib/text-utils";
 
 export function generateStaticParams() {
   return getPublishedMethodChapters().map((chapter) => ({ slug: chapter.slug }));
@@ -39,17 +40,21 @@ export async function generateMetadata({
   const readingMinutes = estimateReadingMinutes(chapter);
 
   const title = `${chapter.title} | Méthode`;
+  // Description courte pour les moteurs de recherche (~160 caractères) :
+  // le résumé complet reste affiché sur la page (intro du bloc "résumé"),
+  // seule la version tronquée sert aux balises meta/OG/Twitter.
+  const metaDescription = truncateForMeta(chapter.summary);
 
   return {
     title,
-    description: chapter.summary,
+    description: metaDescription,
     alternates: { canonical: `/methode/${chapter.slug}` },
     // openGraph/twitter par page (pas de valeurs copiées de la home, cf.
     // §2.3) ; l'image est générée dynamiquement par opengraph-image.tsx
     // co-localisé dans ce même dossier (détecté automatiquement par Next.js).
     openGraph: {
       title,
-      description: chapter.summary,
+      description: metaDescription,
       url: `${SITE_URL}/methode/${chapter.slug}`,
       type: "article",
     },
@@ -65,7 +70,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title,
-      description: chapter.summary,
+      description: metaDescription,
     },
   };
 }
