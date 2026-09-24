@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
+import { RichText } from "@/components/rich-text";
 import { GUIDES, getGuide } from "@/lib/guide-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
@@ -23,10 +23,22 @@ export async function generateMetadata({
   const guide = getGuide(slug);
   if (!guide) return {};
 
+  const title = guide.title;
   return {
-    title: `${guide.title} | Audyxa`,
+    title,
     description: guide.summary,
     alternates: { canonical: `/guides/${guide.slug}` },
+    openGraph: {
+      title,
+      description: guide.summary,
+      url: `${SITE_URL}/guides/${guide.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: guide.summary,
+    },
   };
 }
 
@@ -69,14 +81,16 @@ export default async function GuidePage({
 
   return (
     <main>
-      <Script
+      <script
         id="guide-article-schema"
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      <Script
+      <script
         id="guide-faq-schema"
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
@@ -95,9 +109,9 @@ export default async function GuidePage({
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 Guide pratique
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[28px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[28px]">
                 {guide.title}
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-0 text-[19px] leading-9 text-theme-1">{guide.summary}</p>
@@ -117,9 +131,40 @@ export default async function GuidePage({
                 </h2>
                 {section.paragraphs.map((paragraph, j) => (
                   <p key={j} className="mb-4 text-base leading-8 text-body-text last:mb-0">
-                    {paragraph}
+                    <RichText text={paragraph} />
                   </p>
                 ))}
+                {section.table ? (
+                  <div className="mt-6 overflow-x-auto rounded-[12px] border border-[#e2e2e2]">
+                    {section.table.caption ? (
+                      <p className="mb-0 border-b border-[#e2e2e2] bg-theme-3 px-5 py-3 text-sm font-semibold text-theme-1">
+                        {section.table.caption}
+                      </p>
+                    ) : null}
+                    <table className="w-full border-collapse text-left text-sm">
+                      <thead>
+                        <tr className="border-b border-[#e2e2e2] bg-theme-1">
+                          {section.table.headers.map((header) => (
+                            <th key={header} className="px-4 py-3 font-extrabold text-white">
+                              {header}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.table.rows.map((row, rowIndex) => (
+                          <tr key={rowIndex} className="border-b border-[#e2e2e2] last:border-b-0 even:bg-theme-3/40">
+                            {row.map((cell, cellIndex) => (
+                              <td key={cellIndex} className="px-4 py-3 align-top text-body-text">
+                                {cell}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : null}
                 {i < guide.sections.length - 1 ? <div className="mt-10 border-b border-[#e2e2e2]" /> : null}
               </div>
             ))}

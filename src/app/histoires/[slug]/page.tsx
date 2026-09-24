@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
@@ -24,11 +23,25 @@ export async function generateMetadata({
   const { slug } = await params;
   const histoire = getHistoire(slug);
   if (!histoire) return {};
+  const title = `${histoire.title} | Histoires`;
 
   return {
-    title: `${histoire.title} | Histoires | Audyxa`,
-    description: histoire.summary,
+    title,
+    description: histoire.metaDescription,
     alternates: { canonical: `/histoires/${histoire.slug}` },
+    // openGraph/twitter par page ; image générée dynamiquement par
+    // opengraph-image.tsx co-localisé dans ce même dossier.
+    openGraph: {
+      title,
+      description: histoire.metaDescription,
+      url: `${SITE_URL}/histoires/${histoire.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: histoire.metaDescription,
+    },
   };
 }
 
@@ -59,9 +72,9 @@ export default async function HistoireDetailPage({
 
   return (
     <main>
-      <Script
-        id="histoire-article-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
@@ -76,13 +89,13 @@ export default async function HistoireDetailPage({
         currentPath={`/histoires/${histoire.slug}`}
       />
 
-      {/* 2. Image mise en avant, pleine largeur — photo réelle (libre de droit) illustrant le thème */}
+      {/* 2. Image mise en avant, pleine largeur : photo réelle (libre de droit) illustrant le thème */}
       <section className="pt-[60px]">
         <div className="auto-container">
           <div className="relative h-[260px] overflow-hidden rounded-[18px] sm:h-[340px]">
             <Image
               src={getHistoirePhoto(histoire.slug)}
-              alt={`Illustration — ${histoire.title}`}
+              alt={`Illustration : ${histoire.title}`}
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 1200px"
@@ -120,9 +133,9 @@ export default async function HistoireDetailPage({
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 {histoire.tagline}
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-4 text-[19px] leading-9 text-theme-1">{histoire.summary}</p>
@@ -130,7 +143,7 @@ export default async function HistoireDetailPage({
                 <i className="fa fa-info-circle mt-1 shrink-0 text-theme-2" />
                 <span>
                   {histoire.company} n&apos;est pas un client d&apos;Audyxa. Cette page est une étude de cas
-                  externe, construite à partir de sources publiques citées en bas de page — elle sert
+                  externe, construite à partir de sources publiques citées en bas de page, elle sert
                   d&apos;illustration pédagogique, pas de référence commerciale.
                 </span>
               </p>
@@ -233,7 +246,7 @@ export default async function HistoireDetailPage({
         </section>
       ) : null}
 
-      {/* 7. La leçon — mise en avant forte */}
+      {/* 7. La leçon, mise en avant forte */}
       <section className="pt-[10px] pb-[30px]">
         <div className="auto-container">
           <div className="relative overflow-hidden rounded-[18px] bg-theme-1 px-8 py-12 sm:px-14 sm:py-16">

@@ -4,28 +4,34 @@
 
 ## Méthode et preuve
 
-- [Méthode complète](https://audyxa.com/methode) : approche en 17 chapitres, de l'audit au déploiement.
-- [Glossaire](https://audyxa.com/glossaire) : définitions des termes techniques utilisés (RAG, MCP, BPMN, ROI, TCO...).
-- [Guides pratiques](https://audyxa.com/guides) : guides d'approfondissement liés à chaque chapitre de méthode.
+- [Méthode complète](https://www.audyxa.com/methode) : approche en 17 chapitres, de l'audit au déploiement.
+- [Glossaire](https://www.audyxa.com/glossaire) : définitions des termes techniques utilisés (RAG, MCP, BPMN, ROI, TCO...).
+- [Guides pratiques](https://www.audyxa.com/guides) : guides d'approfondissement liés à chaque chapitre de méthode.
+- [Histoires de transformation digitale](https://www.audyxa.com/histoires) : études de cas externes et sourcées (Blockbuster, Kodak, Nokia, Netflix, Wave, M-Pesa...).
 
 ## Services
 
-- [Audit et diagnostic digital](https://audyxa.com/services/audit-diagnostic-digital)
-- [Refonte des processus](https://audyxa.com/services/refonte-processus)
-- [Automatisation et intégrations](https://audyxa.com/services/automatisation-integrations)
-- [Intelligence artificielle en entreprise](https://audyxa.com/services/ia-entreprise)
-- [Développement d'outils métier](https://audyxa.com/services/developpement-outils-metier)
-- [Pilotage et déploiement](https://audyxa.com/services/pilotage-deploiement)
+- [Audit et diagnostic digital](https://www.audyxa.com/services/audit-diagnostic-digital)
+- [Refonte des processus](https://www.audyxa.com/services/refonte-processus)
+- [Automatisation et intégrations](https://www.audyxa.com/services/automatisation-integrations)
+- [Intelligence artificielle en entreprise](https://www.audyxa.com/services/ia-entreprise)
+- [Développement d'outils métier](https://www.audyxa.com/services/developpement-outils-metier)
+- [Pilotage et déploiement](https://www.audyxa.com/services/pilotage-deploiement)
 
 ## Secteurs accompagnés
 
-- [Tous les secteurs](https://audyxa.com/secteurs) : banque et finance, santé, industrie, retail, transport et logistique, télécoms, énergie, éducation, BTP, hôtellerie, immobilier, assurance, agroalimentaire, ONG, secteur public.
+- [Tous les secteurs](https://www.audyxa.com/secteurs) : banque et finance, santé, industrie, retail, transport et logistique, télécoms, énergie, éducation, BTP, hôtellerie, immobilier, assurance, agroalimentaire, ONG, secteur public.
 
 ## Zones d'intervention
 
-- [Toutes les zones](https://audyxa.com/pays) : France, Afrique de l'Ouest francophone (Bénin, Côte d'Ivoire, Sénégal, Togo, Burkina Faso, Mali, Niger, Guinée), Afrique centrale et Madagascar (Cameroun, Gabon, RD Congo, Congo-Brazzaville, Madagascar), Europe francophone (Belgique, Suisse, Luxembourg).
+- [Toutes les zones](https://www.audyxa.com/pays) : France, Afrique de l'Ouest francophone (Bénin, Côte d'Ivoire, Sénégal, Togo, Burkina Faso, Mali, Niger, Guinée), Afrique centrale et Madagascar (Cameroun, Gabon, RD Congo, Congo-Brazzaville, Madagascar), Europe francophone (Belgique, Suisse, Luxembourg).
 
-## Comparatifs et FAQ
+## Comparatifs
 
-- [Comparatifs](https://audyxa.com/comparatifs) : arbitrages fréquents entre approches ou outils.
-- [Contact](https://audyxa.com/contact)
+- [Comparatifs](https://www.audyxa.com/comparatifs) : arbitrages fréquents entre approches ou outils.
+
+## À propos
+
+- [Fondateur : Paul Maxime Dossou](https://www.audyxa.com/auteur/paul-maxime-dossou)
+- [À propos d'Audyxa](https://www.audyxa.com/about)
+- [Contact](https://www.audyxa.com/contact) : contact@audyxa.com

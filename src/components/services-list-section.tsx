@@ -61,7 +61,7 @@ const services: ServiceItem[] = [
  * gouttière Bootstrap générique, pas l'override `.services-section .row`
  * à 8px vu sur la home). `<div class="container pb-90">` : `.pb-90` n'a
  * AUCUNE règle dans style.css, responsive.css, bootstrap.min.css ni les
- * CSS utilitaires du thème (vérifié exhaustivement) — classe fantôme, sans
+ * CSS utilitaires du thème (vérifié exhaustivement) : classe fantôme, sans
  * effet. Seule la règle générique `section > .container { padding-top/
  * bottom: var(--container-pt) }` (style.css:320-324, 120px) s'applique,
  * confirmé aussi via getComputedStyle en direct sur /page-projects.html

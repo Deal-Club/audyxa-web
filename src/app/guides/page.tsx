@@ -4,12 +4,27 @@ import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
 import { GUIDES } from "@/lib/guide-content";
+import { SITE_URL } from "@/lib/site-config";
+
+const GUIDES_TITLE = "Guides transformation digitale";
+const GUIDES_DESCRIPTION =
+  "Guides pratiques sur la transformation digitale : maturité numérique, ROI, gouvernance IA, sécurité, conduite du changement, KPI et priorisation de portefeuille.";
 
 export const metadata: Metadata = {
-  title: "Guides transformation digitale | Audyxa",
-  description:
-    "Guides pratiques sur la transformation digitale : maturité numérique, ROI, gouvernance IA, sécurité, conduite du changement, KPI et priorisation de portefeuille.",
+  title: GUIDES_TITLE,
+  description: GUIDES_DESCRIPTION,
   alternates: { canonical: "/guides" },
+  openGraph: {
+    title: GUIDES_TITLE,
+    description: GUIDES_DESCRIPTION,
+    url: `${SITE_URL}/guides`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: GUIDES_TITLE,
+    description: GUIDES_DESCRIPTION,
+  },
 };
 
 export default function GuidesHubPage() {
@@ -28,9 +43,9 @@ export default function GuidesHubPage() {
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {GUIDES.length} guides publiés
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 Des guides pratiques, pas du contenu générique
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-0 text-[19px] leading-9 text-theme-1">

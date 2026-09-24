@@ -2,7 +2,7 @@ import type { FaqItem } from "@/lib/faq-schema";
 
 /**
  * Contenu verbatim de la section FAQ source (3 réponses identiques dans le
- * thème d'origine — contenu de démo réel, on ne diversifie pas).
+ * thème d'origine, contenu de démo réel, on ne diversifie pas).
  */
 export const FAQ_ITEMS: FaqItem[] = [
   {

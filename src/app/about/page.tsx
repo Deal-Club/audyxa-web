@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { AboutSection } from "@/components/about-section";
 import { AboutStorySection } from "@/components/about-story-section";
@@ -10,12 +9,30 @@ import { WhyChooseUs } from "@/components/why-choose-us";
 import { FaqSection } from "@/components/faq-section";
 import { CallToAction } from "@/components/call-to-action";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
+import { SITE_URL } from "@/lib/site-config";
+
+const TITLE = "Notre approche";
+const DESCRIPTION =
+  "Découvrez l'approche Audyxa : diagnostic, priorisation, déploiement et mesure pour réussir la transformation digitale des entreprises.";
 
 export const metadata: Metadata = {
-  title: "Notre approche | Audyxa",
-  description:
-    "Découvrez l'approche Audyxa : diagnostic, priorisation, déploiement et mesure pour réussir la transformation digitale des entreprises.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/about" },
+  // Sans ce bloc, la page hérite des valeurs Open Graph/Twitter de la home
+  // (bug sitewide identifié en §2.3 du plan SEO/GEO/AEO) : chaque page doit
+  // exporter ses propres title/description ici pour l'aperçu de partage.
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_URL}/about`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 const ABOUT_FAQ_ITEMS = [
@@ -54,9 +71,9 @@ const ABOUT_FAQ_ITEMS = [
 export default function AboutPage() {
   return (
     <main>
-      <Script
-        id="about-faq-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqJsonLd(ABOUT_FAQ_ITEMS)) }}
       />
       <PageTitle

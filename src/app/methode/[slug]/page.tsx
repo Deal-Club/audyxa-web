@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { CallToAction } from "@/components/call-to-action";
+import { RichText } from "@/components/rich-text";
 import {
   ChapterCard,
   CheckList,
@@ -22,7 +22,7 @@ import {
   slugifyHeading,
 } from "@/lib/methode-content";
 import { METHOD_EXTRAS, PILLARS } from "@/lib/methode-extras";
-import { SITE_URL } from "@/lib/site-config";
+import { SITE_URL, METHODE_LAST_REVISION } from "@/lib/site-config";
 
 export function generateStaticParams() {
   return getPublishedMethodChapters().map((chapter) => ({ slug: chapter.slug }));
@@ -36,11 +36,37 @@ export async function generateMetadata({
   const { slug } = await params;
   const chapter = getMethodChapter(slug);
   if (!chapter || !chapter.sections) return {};
+  const readingMinutes = estimateReadingMinutes(chapter);
+
+  const title = `${chapter.title} | Méthode`;
 
   return {
-    title: `${chapter.title} | Méthode Audyxa`,
+    title,
     description: chapter.summary,
     alternates: { canonical: `/methode/${chapter.slug}` },
+    // openGraph/twitter par page (pas de valeurs copiées de la home, cf.
+    // §2.3) ; l'image est générée dynamiquement par opengraph-image.tsx
+    // co-localisé dans ce même dossier (détecté automatiquement par Next.js).
+    openGraph: {
+      title,
+      description: chapter.summary,
+      url: `${SITE_URL}/methode/${chapter.slug}`,
+      type: "article",
+    },
+    other: {
+      "article:published_time": METHODE_LAST_REVISION,
+      "article:modified_time": METHODE_LAST_REVISION,
+      // Temps de lecture réel (mots ÷ 200), cf. §2.12 du plan SEO/GEO/AEO.
+      // `twitter:label1`/`twitter:data1` ne font plus partie du type Metadata
+      // "twitter" de Next.js : injectés en balises brutes via `other`.
+      "twitter:label1": "Temps de lecture",
+      "twitter:data1": `${readingMinutes} min`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: chapter.summary,
+    },
   };
 }
 
@@ -79,10 +105,16 @@ export default async function MethodChapterPage({
     "@type": "Article",
     headline: chapter.title,
     description: chapter.summary,
-    author: { "@type": "Person", name: "Paul Maxime Dossou" },
+    author: {
+      "@type": "Person",
+      name: "Paul Maxime Dossou",
+      url: `${SITE_URL}/auteur/paul-maxime-dossou`,
+    },
     publisher: { "@type": "Organization", name: "Audyxa" },
     mainEntityOfPage: `${SITE_URL}/methode/${chapter.slug}`,
     articleSection: pillar?.title,
+    datePublished: METHODE_LAST_REVISION,
+    dateModified: METHODE_LAST_REVISION,
   };
 
   const faqJsonLd = extras
@@ -99,15 +131,15 @@ export default async function MethodChapterPage({
 
   return (
     <main>
-      <Script
-        id="article-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       {faqJsonLd ? (
-        <Script
-          id="chapter-faq-schema"
+        <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       ) : null}
@@ -182,7 +214,7 @@ export default async function MethodChapterPage({
                           : "mb-5 text-base leading-8 text-body-text last:mb-0"
                       }
                     >
-                      {paragraph}
+                      <RichText text={paragraph} />
                     </p>
                   ))}
                 </div>
@@ -231,7 +263,9 @@ export default async function MethodChapterPage({
                   title="Comment Audyxa applique ce chapitre"
                   as="h2"
                 />
-                <p className="mb-0 text-[17px] leading-8 text-body-text">{extras.application}</p>
+                <p className="mb-0 text-[17px] leading-8 text-body-text">
+                  <RichText text={extras.application} />
+                </p>
               </div>
               <aside className="rounded-[14px] bg-theme-3 p-8">
                 <h3 className="mb-4 text-[18px] font-extrabold text-theme-1">
@@ -350,8 +384,14 @@ export default async function MethodChapterPage({
 
           <div className="mt-10 rounded-[12px] border border-[#e6e3dc] bg-[#faf8f4] px-7 py-6 text-[14px] leading-7 text-body-text">
             Contenu issu et reformulé du cours{" "}
-            <span className="font-semibold text-theme-1">Digitalisation des Entreprises</span>, Paul
-            Maxime Dossou, édition août 2026 — fondateur d&apos;Audyxa.{" "}
+            <span className="font-semibold text-theme-1">Digitalisation des Entreprises</span>,{" "}
+            <Link
+              href="/auteur/paul-maxime-dossou"
+              className="font-semibold text-theme-1 hover:text-theme-2 hover:underline"
+            >
+              Paul Maxime Dossou
+            </Link>
+            , édition août 2026, fondateur d&apos;Audyxa.{" "}
             <Link href="/methode" className="font-semibold text-theme-2 hover:underline">
               Revenir à la méthode complète
             </Link>

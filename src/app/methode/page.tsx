@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { CallToAction } from "@/components/call-to-action";
 import {
@@ -13,11 +12,25 @@ import { METHOD_CHAPTERS, getPublishedMethodChapters } from "@/lib/methode-conte
 import { METHOD_EXTRAS, PILLARS } from "@/lib/methode-extras";
 import { SITE_NAME, SITE_URL } from "@/lib/site-config";
 
+const METHODE_TITLE = "Notre méthode";
+const METHODE_DESCRIPTION =
+  "La méthode Audyxa de transformation digitale : diagnostic de maturité, business case, architecture, automatisation, IA et pilotage, en 17 chapitres.";
+
 export const metadata: Metadata = {
-  title: "Notre méthode | Audyxa",
-  description:
-    "La méthode Audyxa pour la transformation digitale des entreprises : diagnostic de maturité, business case, architecture, automatisation, IA et pilotage — issue du cours de référence de Paul Maxime Dossou.",
+  title: METHODE_TITLE,
+  description: METHODE_DESCRIPTION,
   alternates: { canonical: "/methode" },
+  openGraph: {
+    title: METHODE_TITLE,
+    description: METHODE_DESCRIPTION,
+    url: `${SITE_URL}/methode`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: METHODE_TITLE,
+    description: METHODE_DESCRIPTION,
+  },
 };
 
 const PERSON_JSON_LD = {
@@ -25,7 +38,7 @@ const PERSON_JSON_LD = {
   "@type": "Person",
   name: "Paul Maxime Dossou",
   jobTitle: "Consultant en transformation digitale, fondateur d'Audyxa",
-  url: `${SITE_URL}/methode`,
+  url: `${SITE_URL}/auteur/paul-maxime-dossou`,
   worksFor: { "@type": "Organization", name: SITE_NAME },
   knowsAbout: [
     "Transformation digitale",
@@ -57,7 +70,7 @@ const NIVEAUX = [
 /** Les six étapes de mission, chapitre 2. */
 const ETAPES = [
   { titre: "Cadrer", detail: "Objectifs, périmètre, sponsor, critères de succès, accès nécessaires." },
-  { titre: "Diagnostiquer", detail: "Processus réels, outils, données, risques — appuyés sur des preuves." },
+  { titre: "Diagnostiquer", detail: "Processus réels, outils, données, risques, appuyés sur des preuves." },
   { titre: "Prioriser", detail: "Valeur, effort, risque et dépendances, comparés sur une grille commune." },
   { titre: "Concevoir", detail: "Architecture cible, processus TO-BE, business cases avec plusieurs options." },
   { titre: "Déployer", detail: "Pilotes à critères Go / No-Go, migration, formation et adoption." },
@@ -133,14 +146,14 @@ export default function MethodePage() {
 
   return (
     <main>
-      <Script
-        id="person-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
       />
-      <Script
-        id="methode-faq-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <PageTitle
@@ -163,14 +176,27 @@ export default function MethodePage() {
           <SectionHead
             kicker="Une méthode documentée, pas un slogan"
             title="Un expert en digitalisation ne commence jamais par choisir un logiciel"
-            intro="Notre approche s'appuie sur une méthodologie écrite et publiée : « Digitalisation des Entreprises », le cours professionnel de Paul Maxime Dossou, fondateur d'Audyxa. Chaque chapitre développe une étape concrète de la démarche, avec ses livrables et ses points de contrôle."
+            intro={
+              <>
+                Notre approche s&apos;appuie sur une méthodologie écrite et publiée : «
+                Digitalisation des Entreprises », le cours professionnel de{" "}
+                <Link
+                  href="/auteur/paul-maxime-dossou"
+                  className="font-semibold text-theme-1 hover:text-theme-2 hover:underline"
+                >
+                  Paul Maxime Dossou
+                </Link>
+                , fondateur d&apos;Audyxa. Chaque chapitre développe une étape concrète de la
+                démarche, avec ses livrables et ses points de contrôle.
+              </>
+            }
           />
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div className="rounded-[14px] bg-theme-1 p-9">
               <h2 className="mb-4 text-[20px] font-extrabold text-white">Le principe directeur</h2>
               <p className="mb-0 text-[15px] leading-8 text-[#c9c9c9]">
                 Il commence par comprendre les résultats attendus, les processus, les données, les
-                contraintes et les risques. Le choix technologique vient ensuite — et il se justifie
+                contraintes et les risques. Le choix technologique vient ensuite, et il se justifie
                 par le coût total de possession, l&apos;exportabilité des données et le niveau de
                 contrôle nécessaire, pas par la préférence de l&apos;intervenant.
               </p>
@@ -200,7 +226,7 @@ export default function MethodePage() {
           <SectionHead
             kicker="Le vocabulaire"
             title="Numériser, digitaliser, transformer : trois choses différentes"
-            intro="Confondre ces trois niveaux conduit à surdimensionner un projet — ou à croire qu'un document scanné constitue une transformation."
+            intro="Confondre ces trois niveaux conduit à surdimensionner un projet, ou à croire qu'un document scanné constitue une transformation."
           />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {NIVEAUX.map((niveau, i) => (
@@ -334,6 +360,34 @@ export default function MethodePage() {
         </div>
       </section>
 
+      {/* 6bis. Ce que montre l'expérience */}
+      <section className="bg-white py-[70px]">
+        <div className="auto-container">
+          <SectionHead
+            kicker="Ce que montre l'expérience"
+            title="Ignorer cette méthode a un coût réel, documenté ailleurs"
+            intro={
+              <>
+                Cadrer avant de choisir un outil n&apos;est pas une posture théorique :{" "}
+                <Link href="/histoires/kodak" className="font-semibold text-theme-2 hover:underline">
+                  Kodak
+                </Link>{" "}
+                a inventé le premier appareil photo numérique sans jamais l&apos;exploiter, et{" "}
+                <Link href="/histoires/blockbuster-netflix" className="font-semibold text-theme-2 hover:underline">
+                  Blockbuster a refusé de racheter Netflix
+                </Link>
+                . Ces{" "}
+                <Link href="/histoires" className="font-semibold text-theme-2 hover:underline">
+                  histoires de transformation digitale
+                </Link>{" "}
+                (échecs et réussites) illustrent concrètement les pièges que cette méthode cherche à
+                éviter.
+              </>
+            }
+          />
+        </div>
+      </section>
+
       {/* 7. FAQ */}
       <section className="bg-white py-[70px]">
         <div className="auto-container">
@@ -356,9 +410,16 @@ export default function MethodePage() {
               />
               <p className="mb-0 text-[15px] leading-8 text-body-text">
                 Les 17 chapitres publiés ici sont issus et reformulés du cours professionnel
-                « Digitalisation des Entreprises », Paul Maxime Dossou, édition août 2026, fondateur
-                d&apos;Audyxa. Les exemples chiffrés, les grilles de notation et les formules
-                proviennent du cours — rien n&apos;y est ajouté pour les besoins de la page.
+                « Digitalisation des Entreprises »,{" "}
+                <Link
+                  href="/auteur/paul-maxime-dossou"
+                  className="font-semibold text-theme-1 hover:text-theme-2 hover:underline"
+                >
+                  Paul Maxime Dossou
+                </Link>
+                , édition août 2026, fondateur d&apos;Audyxa. Les exemples chiffrés, les grilles de
+                notation et les formules proviennent du cours. Rien n&apos;y est ajouté pour les
+                besoins de la page.
               </p>
             </div>
             <div className="flex flex-col gap-3">

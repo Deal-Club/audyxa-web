@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
@@ -15,6 +14,36 @@ export function generateStaticParams() {
   return SERVICES_DETAIL.map((s) => ({ slug: s.slug }));
 }
 
+/**
+ * Une histoire de transformation (réussie ou ratée) directement illustrative
+ * de ce service, pour un maillage interne contextuel bidirectionnel avec
+ * /histoires (cf. §3 du plan SEO : chaque page stratégique doit recevoir des
+ * liens entrants contextuels, pas seulement des liens de menu). Alimenté par
+ * `relatedServiceSlug` dans histoires-content.ts.
+ */
+const ILLUSTRATIVE_HISTOIRE: Record<string, { slug: string; anchor: string }> = {
+  "audit-diagnostic-digital": {
+    slug: "blockbuster-netflix",
+    anchor: "le refus de Blockbuster de racheter Netflix",
+  },
+  "refonte-processus": {
+    slug: "nokia",
+    anchor: "la chute de Nokia face à l'iPhone et Android",
+  },
+  "automatisation-integrations": {
+    slug: "dominos-pizza",
+    anchor: "la transformation digitale de Domino's Pizza",
+  },
+  "developpement-outils-metier": {
+    slug: "toys-r-us",
+    anchor: "la dépendance de Toys R Us à Amazon",
+  },
+  "pilotage-deploiement": {
+    slug: "kodak",
+    anchor: "l'inaction de Kodak face à sa propre invention",
+  },
+};
+
 export async function generateMetadata({
   params,
 }: {
@@ -23,11 +52,25 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getServiceDetail(slug);
   if (!service) return {};
+  const title = `${service.title} pour entreprises`;
 
   return {
-    title: `${service.title} pour entreprises | Audyxa`,
-    description: service.directAnswer,
+    title,
+    description: service.metaDescription,
     alternates: { canonical: `/services/${service.slug}` },
+    // openGraph/twitter par page (pas de valeurs copiées de la home, cf.
+    // §2.3) ; image générée dynamiquement par opengraph-image.tsx co-localisé.
+    openGraph: {
+      title,
+      description: service.metaDescription,
+      url: `${SITE_URL}/services/${service.slug}`,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: service.metaDescription,
+    },
   };
 }
 
@@ -80,19 +123,19 @@ export default async function ServiceDetailPage({
 
   return (
     <main>
-      <Script
-        id="service-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
-      <Script
-        id="service-faq-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Script
-        id="service-howto-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
 
@@ -107,7 +150,7 @@ export default async function ServiceDetailPage({
         currentPath={`/services/${service.slug}`}
       />
 
-      {/* 2. Réponse directe — asymétrique pleine largeur */}
+      {/* 2. Réponse directe, asymétrique pleine largeur */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-10">
@@ -118,9 +161,9 @@ export default async function ServiceDetailPage({
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {service.tagline}
               </span>
-              <h1 className="mb-0 text-[26px] font-extrabold leading-[1.2em] text-theme-1 [@media(min-width:768px)]:text-[32px]">
+              <h2 className="mb-0 text-[26px] font-extrabold leading-[1.2em] text-theme-1 [@media(min-width:768px)]:text-[32px]">
                 {service.title} pour entreprises en France et en Afrique francophone
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-8 text-[19px] leading-9 text-theme-1">{service.directAnswer}</p>
@@ -190,7 +233,7 @@ export default async function ServiceDetailPage({
         </section>
       ) : null}
 
-      {/* 4. Notre approche — colonne latérale + étapes pleine largeur */}
+      {/* 4. Notre approche : colonne latérale + étapes pleine largeur */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-10">
@@ -226,7 +269,7 @@ export default async function ServiceDetailPage({
         </div>
       </section>
 
-      {/* 5. En résumé — section riche en contenu, pleine largeur */}
+      {/* 5. En résumé : section riche en contenu, pleine largeur */}
       <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-10">
@@ -245,12 +288,24 @@ export default async function ServiceDetailPage({
                 conseil et exécution évite la rupture fréquente entre la recommandation et sa mise en
                 œuvre réelle.
               </p>
-              <p className="mb-0 text-base leading-8 text-body-text">
+              <p className={ILLUSTRATIVE_HISTOIRE[service.slug] ? "mb-4 text-base leading-8 text-body-text" : "mb-0 text-base leading-8 text-body-text"}>
                 Que votre entreprise soit basée en France ou en Afrique francophone, notre équipe
                 applique la même rigueur méthodologique : comprendre le résultat métier visé avant de
                 choisir un outil, mesurer plutôt que supposer, et rester impliqué jusqu&apos;à ce que le
                 bénéfice attendu soit réellement constaté.
               </p>
+              {ILLUSTRATIVE_HISTOIRE[service.slug] ? (
+                <p className="mb-0 text-base leading-8 text-body-text">
+                  Pour mesurer le coût réel de l&apos;inaction sur ce terrain, voir{" "}
+                  <Link
+                    href={`/histoires/${ILLUSTRATIVE_HISTOIRE[service.slug].slug}`}
+                    className="font-semibold text-theme-2 hover:underline"
+                  >
+                    {ILLUSTRATIVE_HISTOIRE[service.slug].anchor}
+                  </Link>
+                  , une étude de cas externe qui illustre cet enjeu.
+                </p>
+              ) : null}
             </div>
           </div>
         </div>
@@ -303,7 +358,7 @@ export default async function ServiceDetailPage({
         </section>
       ) : null}
 
-      {/* 8. FAQ — deux colonnes */}
+      {/* 8. FAQ, deux colonnes */}
       <section className="bg-theme-3 pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle

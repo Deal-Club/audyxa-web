@@ -4,12 +4,27 @@ import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
 import { SECTOR_PAGES } from "@/lib/sector-content";
+import { SITE_URL } from "@/lib/site-config";
+
+const SECTEURS_TITLE = "Transformation digitale par secteur";
+const SECTEURS_DESCRIPTION =
+  "Découvrez comment Audyxa adapte son approche de transformation digitale à votre secteur d'activité : banque, retail, santé, industrie, secteur public et plus.";
 
 export const metadata: Metadata = {
-  title: "Transformation digitale par secteur | Audyxa",
-  description:
-    "Découvrez comment Audyxa adapte son approche de transformation digitale à votre secteur d'activité : banque, retail, santé, industrie, secteur public et plus.",
+  title: SECTEURS_TITLE,
+  description: SECTEURS_DESCRIPTION,
   alternates: { canonical: "/secteurs" },
+  openGraph: {
+    title: SECTEURS_TITLE,
+    description: SECTEURS_DESCRIPTION,
+    url: `${SITE_URL}/secteurs`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SECTEURS_TITLE,
+    description: SECTEURS_DESCRIPTION,
+  },
 };
 
 export default function SectorsHubPage() {
@@ -28,9 +43,9 @@ export default function SectorsHubPage() {
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {SECTOR_PAGES.length} secteurs accompagnés
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 Une méthode identique, adaptée à chaque secteur
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-0 text-[19px] leading-9 text-theme-1">
@@ -39,7 +54,16 @@ export default function SectorsHubPage() {
                 <Link href="/methode" className="font-semibold text-theme-2 hover:underline">
                   méthode de diagnostic
                 </Link>{" "}
-                partout, en l&apos;adaptant au contexte réel de votre secteur.
+                partout, en l&apos;adaptant au contexte réel de votre secteur : cabinets comptables
+                du{" "}
+                <Link href="/pays/senegal" className="font-semibold text-theme-2 hover:underline">
+                  Sénégal
+                </Link>
+                , acteurs de l&apos;import-export en{" "}
+                <Link href="/pays/cote-divoire" className="font-semibold text-theme-2 hover:underline">
+                  Côte d&apos;Ivoire
+                </Link>{" "}
+                ou écoles privées ailleurs en Afrique de l&apos;Ouest francophone.
               </p>
             </div>
           </div>

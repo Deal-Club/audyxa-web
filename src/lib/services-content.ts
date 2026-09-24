@@ -29,6 +29,10 @@ export interface ServiceDetail {
   title: string;
   tagline: string;
   directAnswer: string;
+  /** Meta description dédiée (150-160 caractères), distincte de directAnswer
+   * qui sert de contenu de page et dépasse souvent la longueur recommandée
+   * pour une balise <meta name="description">. */
+  metaDescription: string;
   problems: string[];
   approachSteps: ServiceApproachStep[];
   bullets: string[];
@@ -45,7 +49,9 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     title: "Audit et diagnostic digital",
     tagline: "Le point de départ de toute transformation digitale sérieuse",
     directAnswer:
-      "L'audit et diagnostic digital Audyxa consiste à cartographier vos processus, outils et données réels avant toute recommandation, pour identifier les chantiers de transformation digitale qui produisent un impact mesurable — pas une liste générique de logiciels à acheter.",
+      "L'audit et diagnostic digital Audyxa consiste à cartographier vos processus, outils et données réels avant toute recommandation, pour identifier les chantiers de transformation digitale qui produisent un impact mesurable, pas une liste générique de logiciels à acheter.",
+    metaDescription:
+      "Audit et diagnostic digital Audyxa : cartographie de vos processus et outils pour identifier les chantiers de transformation à impact mesurable.",
     problems: [
       "Vous ne savez pas par où commencer votre transformation digitale, tout semble prioritaire.",
       "Vous avez déjà investi dans des outils numériques sans gain de temps visible.",
@@ -53,7 +59,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     ],
     approachSteps: [
       { title: "Cinq questions avant tout diagnostic", text: "Nous partons des cinq questions qui structurent tout diagnostic sérieux : quel résultat métier voulons-nous modifier, comment est-il produit aujourd'hui, quelles données mesurent la situation actuelle, quelles contraintes limitent les options, qui devra changer sa façon de travailler." },
-      { title: "Quatre preuves, pas des opinions", text: "Le diagnostic s'appuie sur quatre formes de preuve — entretien, observation, données et documentation — et non sur les seules déclarations de la direction. Chaque constat suit une structure vérifiable : fait, impact, cause probable, preuve, risque, action de vérification." },
+      { title: "Quatre preuves, pas des opinions", text: "Le diagnostic s'appuie sur quatre formes de preuve (entretien, observation, données et documentation) et non sur les seules déclarations de la direction. Chaque constat suit une structure vérifiable : fait, impact, cause probable, preuve, risque, action de vérification." },
       { title: "Une notation sur dix dimensions", text: "Nous notons la maturité numérique sur dix dimensions (stratégie, processus, données, applications, automatisation, sécurité...) plutôt qu'un score global qui masque des situations très différentes." },
     ],
     bullets: [
@@ -71,7 +77,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       {
         question: "L'audit débouche-t-il forcément sur un projet ?",
         answer:
-          "Non. Si le diagnostic ne révèle aucun besoin justifiant un investissement à ce moment-là, nous le disons simplement — plutôt que de proposer une solution qui ne servirait pas votre activité.",
+          "Non. Si le diagnostic ne révèle aucun besoin justifiant un investissement à ce moment-là, nous le disons simplement, plutôt que de proposer une solution qui ne servirait pas votre activité.",
       },
       {
         question: "Faut-il déjà avoir des outils numériques en place ?",
@@ -81,7 +87,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     ],
     marketContext: {
       intro:
-        "En France, la majorité des dirigeants de TPE-PME perçoivent déjà un bénéfice concret du numérique, mais une part significative reste préoccupée par la sécurité des données sans en avoir forcément fait le diagnostic — un signal clair que l'audit doit précéder l'investissement, pas le suivre.",
+        "En France, la majorité des dirigeants de TPE-PME perçoivent déjà un bénéfice concret du numérique, mais une part significative reste préoccupée par la sécurité des données sans en avoir forcément fait le diagnostic, un signal clair que l'audit doit précéder l'investissement, pas le suivre.",
       stats: [
         { value: "79 %", label: "des dirigeants de TPE-PME françaises jugent le digital bénéfique pour leur activité", source: "Baromètre France Num, DGE, 2024 (10 125 entreprises interrogées)" },
         { value: "49 %", label: "des TPE-PME françaises s'inquiètent du piratage de leurs données ; 81 % disposent déjà d'une solution de cybersécurité", source: "Baromètre France Num, DGE, 2024" },
@@ -94,16 +100,18 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     title: "Refonte des processus métier",
     tagline: "Simplifier avant de digitaliser",
     directAnswer:
-      "La refonte des processus métier consiste à cartographier le fonctionnement actuel (AS-IS) puis à concevoir une version simplifiée (TO-BE) avant toute automatisation — pour éviter d'automatiser un processus inefficace et de reproduire le problème plus vite.",
+      "La refonte des processus métier consiste à cartographier le fonctionnement actuel (AS-IS) puis à concevoir une version simplifiée (TO-BE) avant toute automatisation, pour éviter d'automatiser un processus inefficace et de reproduire le problème plus vite.",
+    metaDescription:
+      "Refonte des processus métier Audyxa : cartographie AS-IS, conception TO-BE simplifiée, avant automatisation, pour éviter de reproduire l'inefficacité.",
     problems: [
       "Vos équipes ressaisissent la même information à plusieurs étapes d'un même processus.",
       "Des validations ou des transferts n'apportent plus de valeur mais ralentissent le travail.",
       "Vous voulez automatiser mais ne savez pas quelles étapes simplifier d'abord.",
     ],
     approachSteps: [
-      { title: "Cartographier de bout en bout", text: "Nous cartographions le processus de bout en bout — pas service par service — car c'est le délai total que subit le client, interne ou externe. Chaque processus reçoit un owner capable d'arbitrer ce flux complet." },
-      { title: "Mesurer avant de refaire", text: "Avant de refaire, nous mesurons : volume, temps de travail actif, temps d'attente, taux d'erreur, nombre de transferts et de ressaisies. Le temps de cycle inclut les attentes ; le temps de traitement ne mesure que le travail actif — la différence révèle souvent l'essentiel du problème." },
-      { title: "Supprimer avant d'automatiser", text: "La séquence appliquée est celle du Lean numérique : supprimer, simplifier, standardiser, instrumenter, automatiser, mesurer — dans cet ordre, jamais l'inverse." },
+      { title: "Cartographier de bout en bout", text: "Nous cartographions le processus de bout en bout (pas service par service) car c'est le délai total que subit le client, interne ou externe. Chaque processus reçoit un owner capable d'arbitrer ce flux complet." },
+      { title: "Mesurer avant de refaire", text: "Avant de refaire, nous mesurons : volume, temps de travail actif, temps d'attente, taux d'erreur, nombre de transferts et de ressaisies. Le temps de cycle inclut les attentes ; le temps de traitement ne mesure que le travail actif, la différence révèle souvent l'essentiel du problème." },
+      { title: "Supprimer avant d'automatiser", text: "La séquence appliquée est celle du Lean numérique : supprimer, simplifier, standardiser, instrumenter, automatiser, mesurer, dans cet ordre, jamais l'inverse." },
     ],
     bullets: [
       "Cartographie AS-IS / TO-BE",
@@ -144,6 +152,8 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     tagline: "Moins de saisie manuelle, plus de temps utile",
     directAnswer:
       "L'automatisation et l'intégration d'outils consistent à connecter vos systèmes (CRM, ERP, messagerie, outils métier) pour supprimer les transferts manuels de données et les tâches répétitives, via des workflows robustes plutôt que des scripts fragiles.",
+    metaDescription:
+      "Automatisation et intégrations Audyxa : connexion de vos outils (CRM, ERP) via n8n, Make ou API, pour des workflows robustes et un ROI mesuré.",
     problems: [
       "Vos équipes recopient manuellement des données d'un outil à un autre chaque semaine.",
       "Des automatisations existantes tombent en panne sans que personne ne le remarque.",
@@ -151,7 +161,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     ],
     approachSteps: [
       { title: "Identifier les bons candidats", text: "Nous identifions les candidats réels à l'automatisation à partir d'un score objectif : volume, répétitivité, stabilité des règles, gestion des exceptions, qualité des données disponibles." },
-      { title: "Privilégier l'API, concevoir pour la robustesse", text: "Nous privilégions les intégrations par API lorsqu'elles existent — plus robustes qu'une automatisation qui clique sur une interface — et concevons chaque workflow avec les garanties que les démonstrations oublient souvent : idempotence, reprise automatique après échec, file d'échec visible, traçabilité par identifiant, et possibilité de reprise manuelle." },
+      { title: "Privilégier l'API, concevoir pour la robustesse", text: "Nous privilégions les intégrations par API lorsqu'elles existent (plus robustes qu'une automatisation qui clique sur une interface) et concevons chaque workflow avec les garanties que les démonstrations oublient souvent : idempotence, reprise automatique après échec, file d'échec visible, traçabilité par identifiant, et possibilité de reprise manuelle." },
       { title: "Un owner et une revue pour chaque automatisation", text: "Chaque automatisation reçoit un owner métier et technique, un coût connu et une revue régulière : un workflow abandonné est une dette, pas un acquis." },
     ],
     bullets: [
@@ -164,7 +174,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       {
         question: "Quels processus sont les meilleurs candidats à l'automatisation ?",
         answer:
-          "Les tâches répétitives, à volume significatif, avec des règles stables et des exceptions gérables — pas une décision stratégique unique ni un processus jamais exécuté deux fois de la même façon.",
+          "Les tâches répétitives, à volume significatif, avec des règles stables et des exceptions gérables, pas une décision stratégique unique ni un processus jamais exécuté deux fois de la même façon.",
       },
       {
         question: "Utilisez-vous n8n, Make ou du code sur mesure ?",
@@ -174,12 +184,12 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       {
         question: "Comment calculez-vous le retour sur investissement d'une automatisation ?",
         answer:
-          "À partir du volume traité, du temps manuel économisé, du coût horaire, du taux d'erreur évité et du coût de mise en œuvre et d'exploitation — avec un scénario prudent, pas optimiste par défaut.",
+          "À partir du volume traité, du temps manuel économisé, du coût horaire, du taux d'erreur évité et du coût de mise en œuvre et d'exploitation, avec un scénario prudent, pas optimiste par défaut.",
       },
     ],
     marketContext: {
       intro:
-        "L'automatisation progresse en France mais reste très inégale selon la taille de l'entreprise — un écart de capacité et de méthode, pas de volonté, qui rejoint exactement ce que nous constatons en mission : les TPE ont autant à gagner que les grandes structures, mais démarrent rarement de la même manière.",
+        "L'automatisation progresse en France mais reste très inégale selon la taille de l'entreprise, un écart de capacité et de méthode, pas de volonté, qui rejoint exactement ce que nous constatons en mission : les TPE ont autant à gagner que les grandes structures, mais démarrent rarement de la même manière.",
       stats: [
         { value: "26 %", label: "des TPE-PME françaises utilisent déjà l'IA en 2025, contre 13 % en 2024", source: "France Num, Baromètre du numérique dans les TPE-PME, 6ᵉ édition, 2025" },
         { value: "42 % vs 23 %", label: "taux d'usage de l'IA dans les entreprises de 50-249 salariés contre les structures de 1-4 salariés", source: "France Num, Baromètre 2025" },
@@ -192,7 +202,9 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     title: "Intelligence artificielle en entreprise",
     tagline: "De l'IA utile, pas de l'IA pour l'image",
     directAnswer:
-      "L'intégration de l'intelligence artificielle en entreprise chez Audyxa consiste à déployer des cas d'usage IA ciblés — assistants internes, recherche documentaire, qualification, synthèse — avec des garde-fous et une validation humaine sur les actions sensibles, pas une IA généraliste sans contrôle.",
+      "L'intégration de l'intelligence artificielle en entreprise chez Audyxa consiste à déployer des cas d'usage IA ciblés (assistants internes, recherche documentaire, qualification, synthèse) avec des garde-fous et une validation humaine sur les actions sensibles, pas une IA généraliste sans contrôle.",
+    metaDescription:
+      "IA en entreprise avec Audyxa : cas d'usage ciblés (assistants, RAG, qualification), garde-fous et validation humaine sur les actions sensibles.",
     problems: [
       "Vous voulez utiliser l'IA mais ne savez pas par quel cas d'usage commencer.",
       "Un projet IA pilote a été lancé sans mesure claire de sa fiabilité.",
@@ -201,7 +213,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     approachSteps: [
       { title: "Cadrer chaque cas d'usage avant la technique", text: "Chaque cas d'usage IA est défini avant tout choix technique : utilisateur, problème, entrée, sortie, niveau de risque, métrique d'évaluation, coût maximum et procédure d'escalade. Les cas sensibles (décision financière, données personnelles) reçoivent des contrôles renforcés." },
       { title: "Choisir la bonne architecture IA", text: "Nous distinguons prompting, RAG et fine-tuning selon le besoin réel, et privilégions un agent unique avec des outils explicites plutôt qu'une architecture multi-agent choisie pour l'effet de démonstration." },
-      { title: "Valider avant de déployer", text: "Toute action sensible (paiement, suppression, envoi massif) reste soumise à une validation humaine informée — jamais un simple bouton \"approuver\" sans contexte. Nous évaluons chaque système avant déploiement sur un jeu de cas réels, pas seulement sur une démonstration réussie." },
+      { title: "Valider avant de déployer", text: "Toute action sensible (paiement, suppression, envoi massif) reste soumise à une validation humaine informée, jamais un simple bouton \"approuver\" sans contexte. Nous évaluons chaque système avant déploiement sur un jeu de cas réels, pas seulement sur une démonstration réussie." },
     ],
     bullets: [
       "Cas d'usage IA cadrés : utilisateur, risque, métrique, coût",
@@ -218,12 +230,12 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       {
         question: "Par quel cas d'usage IA commencer ?",
         answer:
-          "Généralement un cas à risque limité et à valeur claire : résumé, recherche documentaire, classification ou extraction de données — pas une décision financière ou réglementée en premier déploiement.",
+          "Généralement un cas à risque limité et à valeur claire : résumé, recherche documentaire, classification ou extraction de données, pas une décision financière ou réglementée en premier déploiement.",
       },
       {
         question: "Comment évaluez-vous la fiabilité d'un système IA avant de le déployer ?",
         answer:
-          "Sur un jeu de cas réels incluant des situations normales, difficiles et hors périmètre, avec des critères de réussite définis à l'avance — pas uniquement sur une démonstration qui fonctionne une fois.",
+          "Sur un jeu de cas réels incluant des situations normales, difficiles et hors périmètre, avec des critères de réussite définis à l'avance, pas uniquement sur une démonstration qui fonctionne une fois.",
       },
     ],
     marketContext: {
@@ -241,14 +253,16 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     title: "Développement d'outils métier",
     tagline: "L'outil qui manque, pas un de plus",
     directAnswer:
-      "Le développement d'outils métier chez Audyxa consiste à concevoir l'interface, le tableau de bord ou le portail qui manque à votre pilotage — uniquement quand aucun logiciel du marché ne couvre correctement le besoin, avec un choix explicite entre acheter, configurer, intégrer ou développer.",
+      "Le développement d'outils métier chez Audyxa consiste à concevoir l'interface, le tableau de bord ou le portail qui manque à votre pilotage, uniquement quand aucun logiciel du marché ne couvre correctement le besoin, avec un choix explicite entre acheter, configurer, intégrer ou développer.",
+    metaDescription:
+      "Développement d'outils métier Audyxa : interfaces, tableaux de bord et portails sur mesure, quand aucun logiciel du marché ne couvre le besoin.",
     problems: [
       "Aucun logiciel du marché ne correspond exactement à votre façon de travailler.",
       "Vous pilotez votre activité avec des fichiers Excel dispersés faute d'outil adapté.",
       "Un développement sur mesure existant est devenu difficile à maintenir.",
     ],
     approachSteps: [
-      { title: "Acheter, configurer, intégrer ou développer", text: "Avant tout développement, nous évaluons les quatre options réelles : acheter un SaaS standard, configurer une plateforme existante, intégrer plusieurs outils spécialisés, ou développer — en calculant le coût total de possession sur plusieurs années, pas seulement le coût initial." },
+      { title: "Acheter, configurer, intégrer ou développer", text: "Avant tout développement, nous évaluons les quatre options réelles : acheter un SaaS standard, configurer une plateforme existante, intégrer plusieurs outils spécialisés, ou développer, en calculant le coût total de possession sur plusieurs années, pas seulement le coût initial." },
       { title: "Une architecture cible sur des principes simples", text: "Développer se justifie quand la capacité crée un avantage spécifique ou nécessite un contrôle que le marché ne couvre pas raisonnablement. L'architecture cible reste construite sur des principes simples : identité centralisée, API documentées, donnée exportable, environnements séparés, sauvegardes testées." },
       { title: "Des outils pensés pour durer", text: "Nous concevons des outils pensés pour rester simples à utiliser et à maintenir, en priorité sur la fonctionnalité réellement utile plutôt que l'accumulation de fonctionnalités secondaires jamais utilisées." },
     ],
@@ -267,12 +281,12 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       {
         question: "Quelles technologies utilisez-vous pour développer un outil métier ?",
         answer:
-          "Le choix dépend du besoin, de l'équipe qui devra le maintenir et des intégrations nécessaires — nous privilégions des architectures documentées et exportables, jamais un verrouillage propriétaire non justifié.",
+          "Le choix dépend du besoin, de l'équipe qui devra le maintenir et des intégrations nécessaires, nous privilégions des architectures documentées et exportables, jamais un verrouillage propriétaire non justifié.",
       },
       {
         question: "Assurez-vous la maintenance après le développement ?",
         answer:
-          "Le transfert de mission inclut documentation technique et fonctionnelle, accès et procédures — pour que l'outil reste opérationnel avec ou sans notre présence continue, selon ce qui est convenu.",
+          "Le transfert de mission inclut documentation technique et fonctionnelle, accès et procédures, pour que l'outil reste opérationnel avec ou sans notre présence continue, selon ce qui est convenu.",
       },
     ],
     marketContext: {
@@ -289,16 +303,18 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     title: "Pilotage et déploiement",
     tagline: "Une solution non adoptée n'a aucune valeur",
     directAnswer:
-      "Le pilotage et déploiement de la transformation digitale consiste à accompagner la mise en œuvre, l'adoption terrain et le suivi des indicateurs après le lancement d'un projet — parce qu'une solution non adoptée n'a aucune valeur, quelle que soit sa qualité technique.",
+      "Le pilotage et déploiement de la transformation digitale consiste à accompagner la mise en œuvre, l'adoption terrain et le suivi des indicateurs après le lancement d'un projet, parce qu'une solution non adoptée n'a aucune valeur, quelle que soit sa qualité technique.",
+    metaDescription:
+      "Pilotage et déploiement Audyxa : adoption terrain, feuille de route 30-60-90 jours et suivi des indicateurs après le lancement du projet.",
     problems: [
       "Un projet a été livré techniquement mais les équipes continuent d'utiliser l'ancien système.",
       "Vous n'avez pas de visibilité claire sur les résultats réels de vos investissements digitaux.",
       "Vous ne savez pas comment prioriser un portefeuille de plusieurs chantiers en parallèle.",
     ],
     approachSteps: [
-      { title: "Comprendre ce qui bloque réellement l'adoption", text: "L'adoption dépend de la compréhension du besoin, de la capacité des équipes, des incitations et du support — pas uniquement de la qualité technique de la solution. Nous cartographions les parties prenantes et identifions ce qui rend le changement réellement difficile, au-delà des objections de surface." },
+      { title: "Comprendre ce qui bloque réellement l'adoption", text: "L'adoption dépend de la compréhension du besoin, de la capacité des équipes, des incitations et du support, pas uniquement de la qualité technique de la solution. Nous cartographions les parties prenantes et identifions ce qui rend le changement réellement difficile, au-delà des objections de surface." },
       { title: "Une feuille de route 30-60-90 jours", text: "Chaque feuille de route suit un rythme 30-60-90 jours (comprendre et sécuriser, simplifier et connecter, prouver et industrialiser), organisée par capacités plutôt que par fournisseurs, avec des résultats observables chaque trimestre." },
-      { title: "Mesurer la valeur réellement produite", text: "Après mise en production, nous comparons systématiquement baseline, cible et résultat réel, avec un owner métier responsable de chaque bénéfice attendu — le business case initial reste une hypothèse tant qu'il n'est pas vérifié." },
+      { title: "Mesurer la valeur réellement produite", text: "Après mise en production, nous comparons systématiquement baseline, cible et résultat réel, avec un owner métier responsable de chaque bénéfice attendu, le business case initial reste une hypothèse tant qu'il n'est pas vérifié." },
     ],
     bullets: [
       "Feuille de route 30-60-90 jours puis 12 mois",
@@ -313,12 +329,12 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       {
         question: "Que faites-vous si un projet livré n'est pas adopté par les équipes ?",
         answer:
-          "Nous diagnostiquons la cause réelle — incompréhension, capacité, charge de travail, défaut de la solution — avant toute sanction ou nouvelle formation générique, puis ajustons le plan d'adoption en conséquence.",
+          "Nous diagnostiquons la cause réelle (incompréhension, capacité, charge de travail, défaut de la solution) avant toute sanction ou nouvelle formation générique, puis ajustons le plan d'adoption en conséquence.",
       },
       {
         question: "Comment priorisez-vous plusieurs chantiers en parallèle ?",
         answer:
-          "Avec un portefeuille d'initiatives noté sur la valeur, l'effort, le risque et les dépendances — pour éviter que chaque équipe présente son projet comme urgent sans comparaison commune.",
+          "Avec un portefeuille d'initiatives noté sur la valeur, l'effort, le risque et les dépendances, pour éviter que chaque équipe présente son projet comme urgent sans comparaison commune.",
       },
       {
         question: "Le suivi s'arrête-t-il à la mise en production ?",
@@ -328,7 +344,7 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     ],
     marketContext: {
       intro:
-        "Même avec un budget en forte hausse, les grands projets numériques publics français ont connu des dérives de délai et de coût significatives — la preuve chiffrée que le financement seul ne garantit pas l'adoption, et que le pilotage après livraison compte autant que la conception initiale.",
+        "Même avec un budget en forte hausse, les grands projets numériques publics français ont connu des dérives de délai et de coût significatives, la preuve chiffrée que le financement seul ne garantit pas l'adoption, et que le pilotage après livraison compte autant que la conception initiale.",
       stats: [
         { value: "24 % / 26 %", label: "dérive budgétaire moyenne et retard calendaire moyen sur les grands projets numériques de l'État français audités en 2023", source: "Cour des comptes, 2024" },
       ],

@@ -9,16 +9,34 @@ export interface DecisionFaqItem {
   answer: string;
 }
 
+export interface DecisionTableRow {
+  criterion: string;
+  /** Une valeur par option, dans le même ordre que `options`. */
+  values: string[];
+}
+
+export interface DecisionOptionProfile {
+  label: string;
+  paragraphs: string[];
+}
+
 export interface DecisionPage {
   slug: string;
   title: string;
   tagline: string;
   conclusion: string;
-  optionALabel: string;
-  optionBLabel: string;
-  criteria: DecisionCriterion[];
-  optionAText: string[];
-  optionBText: string[];
+  /** Format historique à deux options (comparatifs de modèles/positionnement). */
+  optionALabel?: string;
+  optionBLabel?: string;
+  criteria?: DecisionCriterion[];
+  optionAText?: string[];
+  optionBText?: string[];
+  /** Format tableau à N options (comparatifs d'outils tiers : n8n/Make/Zapier, Odoo/Zoho/Salesforce...). */
+  options?: string[];
+  comparisonTable?: DecisionTableRow[];
+  optionProfiles?: DecisionOptionProfile[];
+  /** Maillage interne optionnel vers les chapitres méthode concernés. */
+  relatedMethodSlugs?: string[];
   limits: string;
   faq: DecisionFaqItem[];
 }
@@ -47,7 +65,7 @@ export const DECISION_PAGES: DecisionPage[] = [
       "Le risque est une profondeur inégale : un sujet aussi structurant qu'un diagnostic de transformation digitale mérite une méthode dédiée, pas un traitement parmi dix autres prestations.",
     ],
     limits:
-      "Cette page compare deux modèles d'organisation, pas des prestataires nommés. Audyxa se positionne comme un consultant spécialisé en transformation digitale (conseil et exécution réunis) — ce choix de modèle est assumé, pas présenté comme la seule option valable pour toutes les situations.",
+      "Cette page compare deux modèles d'organisation, pas des prestataires nommés. Audyxa se positionne comme un consultant spécialisé en transformation digitale (conseil et exécution réunis). Ce choix de modèle est assumé, pas présenté comme la seule option valable pour toutes les situations.",
     faq: [
       {
         question: "Une agence généraliste peut-elle faire de la transformation digitale ?",
@@ -76,7 +94,7 @@ export const DECISION_PAGES: DecisionPage[] = [
       { label: "Coordination nécessaire", a: "Faible (un seul interlocuteur)", b: "Plus élevée (cabinet + intégrateur)" },
     ],
     optionAText: [
-      "Quand la même équipe conseille et exécute, elle est directement confrontée aux conséquences de ses propres recommandations — ce qui pousse naturellement vers des préconisations réalistes plutôt que théoriques.",
+      "Quand la même équipe conseille et exécute, elle est directement confrontée aux conséquences de ses propres recommandations. Ce qui pousse naturellement vers des préconisations réalistes plutôt que théoriques.",
       "Cette continuité facilite aussi le suivi après déploiement : pas de nouvelle passation de contexte à une équipe qui découvre le dossier.",
     ],
     optionBText: [
@@ -131,7 +149,7 @@ export const DECISION_PAGES: DecisionPage[] = [
       {
         question: "Le prix est-il toujours plus bas hors des grands cabinets ?",
         answer:
-          "Généralement oui pour des structures plus légères, mais ce n'est pas systématique — cela dépend du positionnement et de la complexité de la mission.",
+          "Généralement oui pour des structures plus légères, mais ce n'est pas systématique. Cela dépend du positionnement et de la complexité de la mission.",
       },
     ],
   },
@@ -163,7 +181,7 @@ export const DECISION_PAGES: DecisionPage[] = [
       {
         question: "Un freelance peut-il gérer conseil et exécution comme un cabinet ?",
         answer:
-          "Oui si son périmètre de compétences le permet réellement — la question à poser reste la même : quelle méthode, quelles preuves de résultats, quelle disponibilité garantie.",
+          "Oui si son périmètre de compétences le permet réellement. La question à poser reste la même : quelle méthode, quelles preuves de résultats, quelle disponibilité garantie.",
       },
       {
         question: "Que se passe-t-il si le freelance n'est plus disponible en cours de mission ?",
@@ -192,7 +210,7 @@ export const DECISION_PAGES: DecisionPage[] = [
     ],
     optionBText: [
       "Un discours qui reste au niveau des promesses (\"on transforme votre entreprise\") sans jamais détailler la méthode est un signal à prendre au sérieux.",
-      "L'absence de clarté sur qui exécute réellement après la recommandation — le même prestataire ou un tiers non identifié — mérite d'être clarifiée avant signature.",
+      "L'absence de clarté sur qui exécute réellement après la recommandation (le même prestataire ou un tiers non identifié) mérite d'être clarifiée avant signature.",
     ],
     limits:
       "Cette page décrit des critères d'évaluation généraux, pas un classement de prestataires. Elle ne prétend pas remplacer une mise en concurrence réelle adaptée à votre contexte.",
@@ -200,7 +218,7 @@ export const DECISION_PAGES: DecisionPage[] = [
       {
         question: "Faut-il toujours demander des références clients ?",
         answer:
-          "C'est une bonne pratique, mais l'absence de références ne disqualifie pas automatiquement un consultant récent — la méthode et la clarté du raisonnement restent les signaux les plus fiables.",
+          "C'est une bonne pratique, mais l'absence de références ne disqualifie pas automatiquement un consultant récent. La méthode et la clarté du raisonnement restent les signaux les plus fiables.",
       },
       {
         question: "Un prix bas est-il un bon ou un mauvais signe ?",
@@ -214,7 +232,7 @@ export const DECISION_PAGES: DecisionPage[] = [
     title: "Audit digital vs audit informatique classique",
     tagline: "Deux angles différents, deux objectifs différents",
     conclusion:
-      "Un audit informatique classique évalue principalement l'infrastructure technique (sécurité, performance, conformité). Un audit digital, tel que pratiqué par Audyxa, part des résultats métier et de la maturité organisationnelle avant d'examiner la technique — les deux se complètent mais ne répondent pas à la même question.",
+      "Un audit informatique classique évalue principalement l'infrastructure technique (sécurité, performance, conformité). Un audit digital, tel que pratiqué par Audyxa, part des résultats métier et de la maturité organisationnelle avant d'examiner la technique. Les deux se complètent mais ne répondent pas à la même question.",
     optionALabel: "Audit digital (orienté métier)",
     optionBLabel: "Audit informatique (orienté technique)",
     criteria: [
@@ -228,7 +246,7 @@ export const DECISION_PAGES: DecisionPage[] = [
       "Il aboutit à une priorisation de chantiers business, pas seulement à une liste de vulnérabilités techniques.",
     ],
     optionBText: [
-      "Un audit informatique classique se concentre sur l'état du système : sécurité, performance, dette technique, conformité — une analyse indispensable mais qui ne questionne pas nécessairement l'alignement avec les résultats métier.",
+      "Un audit informatique classique se concentre sur l'état du système : sécurité, performance, dette technique, conformité. Une analyse indispensable mais qui ne questionne pas nécessairement l'alignement avec les résultats métier.",
       "Sans être relié à un objectif métier explicite, un audit purement technique peut déboucher sur des recommandations correctes mais mal priorisées du point de vue business.",
     ],
     limits:
@@ -262,11 +280,11 @@ export const DECISION_PAGES: DecisionPage[] = [
     ],
     optionAText: [
       "Un processus stable, répétitif et bien défini est le candidat naturel de l'automatisation classique : transfert de données, workflow, intégration API. Le résultat reste prévisible et contrôlable.",
-      "Automatiser en premier permet aussi de nettoyer et structurer les données — un prérequis souvent indispensable avant tout projet IA sérieux.",
+      "Automatiser en premier permet aussi de nettoyer et structurer les données. Un prérequis souvent indispensable avant tout projet IA sérieux.",
     ],
     optionBText: [
       "L'IA devient pertinente quand la tâche demande une interprétation que des règles fixes ne peuvent pas couvrir : résumé, classification nuancée, recherche documentaire, assistance conversationnelle.",
-      "Déployer l'IA sur un processus mal défini ou sur des données de mauvaise qualité produit rarement un résultat fiable — d'où l'intérêt de traiter d'abord l'automatisation et la qualité des données.",
+      "Déployer l'IA sur un processus mal défini ou sur des données de mauvaise qualité produit rarement un résultat fiable. D'où l'intérêt de traiter d'abord l'automatisation et la qualité des données.",
     ],
     limits:
       "Automatisation et IA se combinent souvent dans un même workflow (ex. extraction automatique + classification IA + validation humaine). Cette page aide à cadrer la priorité initiale, pas à opposer les deux durablement.",
@@ -316,7 +334,7 @@ export const DECISION_PAGES: DecisionPage[] = [
       {
         question: "Comment se passe le pilotage à distance concrètement ?",
         answer:
-          "Via des points réguliers, des livrables partagés et une communication structurée dès la note de cadrage — les mêmes principes de gouvernance que pour une mission locale, adaptés au distanciel.",
+          "Via des points réguliers, des livrables partagés et une communication structurée dès la note de cadrage. Les mêmes principes de gouvernance que pour une mission locale, adaptés au distanciel.",
       },
     ],
   },
@@ -329,7 +347,7 @@ export const DECISION_PAGES: DecisionPage[] = [
     optionALabel: "Critères qui comptent",
     optionBLabel: "Critères qui ne suffisent pas seuls",
     criteria: [
-      { label: "Méthode documentée et vérifiable", a: "Oui — critère déterminant", b: "Notoriété seule, sans méthode visible" },
+      { label: "Méthode documentée et vérifiable", a: "Oui, critère déterminant", b: "Notoriété seule, sans méthode visible" },
       { label: "Continuité conseil/exécution", a: "Clarifiée dès le départ", b: "Taille de l'entreprise seule" },
       { label: "Couverture géographique réelle", a: "Confirmée pour votre zone", b: "Nombre d'années d'existence seul" },
       { label: "Preuves d'expertise concrètes", a: "Contenu, méthodologie, auteur identifiable", b: "Avis non vérifiables ou génériques" },
@@ -339,7 +357,7 @@ export const DECISION_PAGES: DecisionPage[] = [
       "Demander à un consultant d'expliquer sa méthode avant de parler d'outils reste le test le plus fiable, quel que soit le classement ou la notoriété affichée.",
     ],
     optionBText: [
-      "La taille de l'entreprise, son ancienneté ou sa notoriété ne garantissent pas, seules, l'adéquation avec votre besoin spécifique — ce sont des indices, pas des preuves.",
+      "La taille de l'entreprise, son ancienneté ou sa notoriété ne garantissent pas, seules, l'adéquation avec votre besoin spécifique. Ce sont des indices, pas des preuves.",
       "Des avis non vérifiables ou des classements sans méthodologie publiée doivent être pris avec prudence : ils ne remplacent pas une vérification directe de la méthode et des preuves d'expertise.",
     ],
     limits:
@@ -348,12 +366,12 @@ export const DECISION_PAGES: DecisionPage[] = [
       {
         question: "Pourquoi Audyxa ne publie-t-il pas de classement des meilleurs consultants ?",
         answer:
-          "Parce qu'un tel classement nécessiterait des données comparatives vérifiées sur des prestataires tiers que nous ne possédons pas — nous préférons donner des critères de sélection utilisables directement.",
+          "Parce qu'un tel classement nécessiterait des données comparatives vérifiées sur des prestataires tiers que nous ne possédons pas. Nous préférons donner des critères de sélection utilisables directement.",
       },
       {
         question: "Comment vérifier la méthode d'un consultant avant de le choisir ?",
         answer:
-          "En lui demandant d'expliquer concrètement comment il diagnostique, priorise et mesure les résultats — une méthode réelle se décrit précisément, un discours commercial reste généralement vague.",
+          "En lui demandant d'expliquer concrètement comment il diagnostique, priorise et mesure les résultats. Une méthode réelle se décrit précisément, un discours commercial reste généralement vague.",
       },
     ],
   },
@@ -362,7 +380,7 @@ export const DECISION_PAGES: DecisionPage[] = [
     title: "Quand faire appel à un consultant en digitalisation",
     tagline: "Les signaux qui indiquent le bon moment",
     conclusion:
-      "Faire appel à un consultant en digitalisation est pertinent quand des symptômes précis apparaissent (pertes de temps répétées, données peu fiables, outils qui ne communiquent pas entre eux, décisions bloquées faute de visibilité) — pas simplement parce qu'une échéance ou une mode technologique approche.",
+      "Faire appel à un consultant en digitalisation est pertinent quand des symptômes précis apparaissent (pertes de temps répétées, données peu fiables, outils qui ne communiquent pas entre eux, décisions bloquées faute de visibilité), pas simplement parce qu'une échéance ou une mode technologique approche.",
     optionALabel: "Signes qu'il est temps d'agir",
     optionBLabel: "Cas où ce n'est pas encore le bon moment",
     criteria: [
@@ -385,12 +403,191 @@ export const DECISION_PAGES: DecisionPage[] = [
       {
         question: "Faut-il attendre d'avoir un gros budget pour commencer ?",
         answer:
-          "Non. Un premier diagnostic ciblé peut être proportionné à un budget limité — l'important est de commencer par identifier les priorités réelles avant d'investir davantage.",
+          "Non. Un premier diagnostic ciblé peut être proportionné à un budget limité. L'important est de commencer par identifier les priorités réelles avant d'investir davantage.",
       },
       {
         question: "Un petit problème justifie-t-il déjà un consultant ?",
         answer:
-          "Si le problème est récurrent et mesurable (temps perdu chaque semaine, erreurs répétées), oui — la taille du problème compte moins que sa répétition et son impact cumulé.",
+          "Si le problème est récurrent et mesurable (temps perdu chaque semaine, erreurs répétées), oui. La taille du problème compte moins que sa répétition et son impact cumulé.",
+      },
+    ],
+  },
+  {
+    slug: "n8n-vs-make-vs-zapier",
+    title: "n8n vs Make vs Zapier : comparatif 2026",
+    tagline: "Trois modèles différents, pas trois versions du même outil",
+    conclusion:
+      "n8n, Make et Zapier sont trois plateformes d'automatisation reposant sur des modèles distincts : n8n est open source et auto-hébergeable, Make et Zapier sont des services cloud facturés respectivement en crédits et en tâches. Aucun des trois n'est objectivement supérieur aux deux autres : le bon choix dépend du volume d'automatisations prévu, du besoin d'auto-hébergement et de la devise de facturation acceptée par l'entreprise.",
+    options: ["n8n", "Make", "Zapier"],
+    comparisonTable: [
+      { criterion: "Modèle", values: ["Open source, auto-hébergeable ou cloud", "Cloud uniquement", "Cloud uniquement"] },
+      { criterion: "Palier gratuit", values: ["Version communautaire gratuite, auto-hébergée, exécutions illimitées", "1 000 crédits/mois, 2 scénarios actifs", "100 tâches/mois, Zap à 2 étapes maximum"] },
+      { criterion: "Premier palier cloud payant", values: ["20 €/mois (annuel), 2 500 exécutions/mois", "9 $/mois (annuel), 10 000 crédits/mois", "19,99 $/mois (annuel), 750 tâches/mois"] },
+      { criterion: "Palier supérieur", values: ["667 €/mois (annuel), 40 000 exécutions/mois, self-hosted", "29 $/mois (annuel), palier Teams, 10 000 crédits/mois", "69 $/mois (annuel), palier Team, 2 000 tâches, 25 utilisateurs"] },
+      { criterion: "Unité facturée", values: ["Exécution de workflow", "Crédit par module exécuté", "Tâche par étape réussie"] },
+      { criterion: "Devise de facturation", values: ["Euro", "Dollar US", "Dollar US"] },
+      { criterion: "Bibliothèque d'intégrations", values: ["Plus de 400 intégrations natives", "Large bibliothèque d'applications", "La plus large bibliothèque du marché"] },
+      { criterion: "Auto-hébergement possible", values: ["Oui", "Non", "Non"] },
+    ],
+    optionProfiles: [
+      {
+        label: "n8n",
+        paragraphs: [
+          "n8n est distribué sous licence fair-code : le code source est public et la version communautaire, auto-hébergée sur un serveur choisi par l'entreprise, reste gratuite avec un nombre illimité d'exécutions (n8n.io, page tarifs consultée en septembre 2026).",
+          "Cette formule convient aux entreprises qui disposent d'un minimum de compétence technique et veulent maîtriser où sont hébergées leurs données, au prix d'une responsabilité d'administration serveur assumée en interne.",
+        ],
+      },
+      {
+        label: "Make",
+        paragraphs: [
+          "Make (anciennement Integromat) propose un éditeur visuel de scénarios facturé en crédits, avec un palier gratuit de 1 000 crédits par mois et des paliers payants à partir de 9 $/mois en facturation annuelle (make.com, page tarifs consultée en septembre 2026).",
+          "Le système de crédits, qui a remplacé les anciennes « opérations » en août 2025, facture chaque module exécuté : le coût réel dépend donc de la complexité de chaque scénario, pas seulement de son nombre d'exécutions.",
+        ],
+      },
+      {
+        label: "Zapier",
+        paragraphs: [
+          "Zapier facture à la tâche (chaque étape réussie d'un Zap), avec un palier gratuit de 100 tâches par mois et un palier Professionnel à partir de 19,99 $/mois pour 750 tâches en facturation annuelle (zapier.com/pricing, consulté en septembre 2026).",
+          "Sa bibliothèque d'applications préconnectées reste la plus étendue des trois outils, un atout pour une équipe qui veut connecter rapidement des services grand public sans développement.",
+        ],
+      },
+    ],
+    limits:
+      "Ce comparatif présente des caractéristiques techniques et tarifaires publiques des trois éditeurs, sans lien commercial d'Audyxa avec aucun d'entre eux. Audyxa n'est ni éditeur ni revendeur de ces outils : notre rôle consiste à aider une entreprise à choisir et à configurer l'outil le plus adapté à son contexte, pas à promouvoir l'un plutôt que l'autre.",
+    relatedMethodSlugs: ["automatisation-api-rpa-low-code"],
+    faq: [
+      {
+        question: "Quel est le moins cher des trois outils pour une PME ?",
+        answer:
+          "Cela dépend entièrement du volume d'automatisations prévu : sur un volume faible, les trois paliers gratuits ou d'entrée de gamme sont comparables. n8n auto-hébergé devient généralement le plus économique à volume élevé, au prix d'une administration technique interne.",
+      },
+      {
+        question: "Ces outils fonctionnent-ils sans compétence en programmation ?",
+        answer:
+          "Oui pour la majorité des cas d'usage : les trois proposent un éditeur visuel sans code. Une compétence technique devient utile surtout pour l'auto-hébergement de n8n ou des scénarios avancés.",
+      },
+      {
+        question: "Peut-on payer ces outils en monnaie locale ouest-africaine ?",
+        answer:
+          "D'après leurs pages tarifaires officielles, les trois plateformes facturent en euro (n8n) ou en dollar américain (Make, Zapier), généralement via une carte bancaire internationale, à vérifier au moment de la souscription.",
+      },
+    ],
+  },
+  {
+    slug: "odoo-vs-zoho-vs-salesforce",
+    title: "Odoo vs Zoho vs Salesforce : quel ERP/CRM pour une PME ouest-africaine",
+    tagline: "Trois logiques de produit, trois publics cibles différents",
+    conclusion:
+      "Odoo, Zoho et Salesforce répondent à des besoins ERP/CRM avec des logiques de produit différentes : Odoo propose une suite modulaire avec une édition open source auto-hébergeable, Zoho une gamme d'applications à tarification progressive pensée pour les PME, et Salesforce une plateforme CRM haut de gamme surtout dimensionnée pour des organisations plus grandes ou en forte croissance. Le bon choix dépend du nombre de modules réellement nécessaires, du budget par utilisateur et du besoin ou non de personnalisation poussée.",
+    options: ["Odoo", "Zoho", "Salesforce"],
+    comparisonTable: [
+      { criterion: "Positionnement", values: ["Suite modulaire ERP+CRM, open source", "Suite d'applications CRM/bureautique, orientée PME", "Plateforme CRM haut de gamme, orientée grande entreprise"] },
+      { criterion: "Palier gratuit", values: ["Une application gratuite, utilisateurs illimités", "Gratuit jusqu'à 3 utilisateurs", "Free Suite à 0 $/utilisateur/mois"] },
+      { criterion: "Premier palier payant", values: ["7,95 €/utilisateur/mois (annuel), toutes les applications", "Tarification par palier (Standard, Professional...), montant variable selon la devise de facturation", "25 $/utilisateur/mois (Starter Suite, annuel)"] },
+      { criterion: "Palier avancé", values: ["10,90 €/utilisateur/mois (annuel), auto-hébergement et API externe inclus", "Paliers Enterprise/Ultimate, avec IA et gestion multi-équipe", "Jusqu'à 550 $/utilisateur/mois (palier Max, annuel)"] },
+      { criterion: "Auto-hébergement / open source", values: ["Oui, édition Community open source téléchargeable", "Non", "Non"] },
+      { criterion: "Étendue fonctionnelle", values: ["Plusieurs centaines d'applications (CRM, ventes, stock, comptabilité, RH...)", "Suite d'applications CRM et bureautique interconnectées", "Modules CRM, avec extensions payantes (IA, analyse de revenu...)"] },
+    ],
+    optionProfiles: [
+      {
+        label: "Odoo",
+        paragraphs: [
+          "Odoo propose une suite modulaire couvrant CRM, ventes, e-commerce, comptabilité, stock, ressources humaines et gestion de projet, avec une édition Community open source téléchargeable et auto-hébergeable, en plus des offres cloud payantes à partir de 7,95 euros par utilisateur et par mois en facturation annuelle (odoo.com/pricing, consulté en septembre 2026).",
+          "Cette modularité convient à une PME qui veut faire évoluer son système par étapes, module par module, plutôt que de payer pour des fonctions inutilisées dès le départ.",
+        ],
+      },
+      {
+        label: "Zoho",
+        paragraphs: [
+          "Zoho propose une gamme de paliers (Free, Standard, Professional, Enterprise, Ultimate) avec un niveau gratuit permanent limité à 3 utilisateurs, incluant la gestion de contacts, l'automatisation de workflows et des rapports standards (zoho.com/crm, consulté en septembre 2026).",
+          "Les tarifs précis dépendent de la devise et de la région de facturation affichées sur le site officiel : mieux vaut demander un devis dans la devise réellement facturée à l'entreprise plutôt que de se fier à un montant affiché par défaut sur une version régionale du site.",
+        ],
+      },
+      {
+        label: "Salesforce",
+        paragraphs: [
+          "Salesforce propose six paliers pour son Sales Cloud, de Free Suite (0 $/utilisateur/mois) jusqu'à Max (550 $/utilisateur/mois en facturation annuelle), avec des modules d'intelligence artificielle et d'analyse de revenu vendus séparément (salesforce.com/editions-pricing, consulté en septembre 2026).",
+          "Ce niveau de prix et de sophistication cible surtout des organisations avec un budget IT structuré et des processus commerciaux complexes à plusieurs équipes, plus qu'une petite structure démarrant sa digitalisation commerciale.",
+        ],
+      },
+    ],
+    limits:
+      "Ce comparatif présente des caractéristiques publiques des trois éditeurs à la date de consultation, sans lien commercial d'Audyxa avec aucun d'entre eux. Les tarifs affichés varient selon la devise, la région de facturation et les promotions en cours : ils doivent être vérifiés directement auprès de chaque éditeur avant toute décision d'achat, pas déduits de ce tableau seul.",
+    relatedMethodSlugs: ["operations-erp-supply-chain-iot", "crm-vente-service-client-omnicanal"],
+    faq: [
+      {
+        question: "Odoo est-il vraiment gratuit ?",
+        answer:
+          "L'édition Community est open source et gratuite en auto-hébergement, mais l'entreprise doit alors gérer elle-même l'hébergement, les mises à jour et la sécurité. L'offre cloud « One App Free » reste, elle, limitée à une seule application.",
+      },
+      {
+        question: "Salesforce est-il adapté à une petite PME ouest-africaine ?",
+        answer:
+          "Cela dépend du budget et de la complexité réelle des processus commerciaux à gérer : sa tarification et ses fonctions avancées ciblent surtout des organisations avec plusieurs équipes commerciales structurées, pas une très petite structure qui démarre sa digitalisation commerciale.",
+      },
+      {
+        question: "Peut-on migrer d'un outil à l'autre facilement ?",
+        answer:
+          "Techniquement oui, via des outils d'export et d'import de données, mais chaque migration demande de revalider les workflows, automatisations et intégrations existantes : mieux vaut choisir avec un horizon de plusieurs années plutôt que de prévoir de changer fréquemment.",
+      },
+    ],
+  },
+  {
+    slug: "consultant-independant-vs-cabinet-vs-agence-digitale",
+    title: "Consultant indépendant vs cabinet de conseil vs agence digitale : que choisir",
+    tagline: "Trois modèles d'accompagnement, un choix qui dépend de votre besoin réel",
+    conclusion:
+      "Un consultant indépendant offre proximité et coût maîtrisé mais dépend d'une seule personne. Un cabinet de conseil classique apporte plusieurs profils et une méthode structurée mais sépare souvent le diagnostic de l'exécution. Une agence digitale exécute des livrables techniques mais approfondit rarement le diagnostic de transformation en amont. Le modèle conseil et exécution réunis, que revendique Audyxa, cherche à combiner la continuité d'une petite structure avec la diversité de compétences d'une équipe, sans que ce choix soit le seul valable pour toutes les situations.",
+    options: ["Consultant indépendant", "Cabinet de conseil classique", "Agence digitale"],
+    comparisonTable: [
+      { criterion: "Coût typique", values: ["Généralement le plus accessible", "Généralement plus élevé", "Variable selon le livrable technique demandé"] },
+      { criterion: "Diversité de compétences", values: ["Limitée à une seule personne", "Plusieurs profils complémentaires", "Souvent orientée exécution technique (développement, design, publicité)"] },
+      { criterion: "Continuité de la mission", values: ["Risque de rupture en cas d'indisponibilité", "Peut rompre entre diagnostic et exécution", "Rarement structurée autour d'un diagnostic amont"] },
+      { criterion: "Profondeur du diagnostic initial", values: ["Variable selon l'expérience de la personne", "Généralement approfondie", "Souvent limitée, le projet démarre du besoin déjà exprimé"] },
+      { criterion: "Exécution technique incluse", values: ["Variable selon les compétences propres", "Souvent déléguée à un tiers", "Oui, c'est le cœur de l'offre"] },
+      { criterion: "Adapté pour", values: ["Mission ciblée et bien cadrée", "Diagnostic structurant multi-sujets", "Livrable technique précis déjà cadré en interne"] },
+    ],
+    optionProfiles: [
+      {
+        label: "Consultant indépendant",
+        paragraphs: [
+          "Un consultant indépendant expérimenté offre un contact direct et un coût généralement inférieur à celui d'une structure, avec une décision rapide sans coordination interne à gérer.",
+          "La limite structurelle reste la dépendance à une seule personne : disponibilité, absence, et étendue réelle des compétences maîtrisées, à vérifier avant d'engager une mission critique.",
+        ],
+      },
+      {
+        label: "Cabinet de conseil classique",
+        paragraphs: [
+          "Un cabinet de conseil classique mobilise plusieurs profils complémentaires et une méthode généralement documentée, un atout pour un diagnostic structurant impliquant plusieurs fonctions de l'entreprise à la fois.",
+          "La limite fréquemment observée : la recommandation est produite par une équipe qui ne l'exécute pas toujours elle-même, ce qui peut faire perdre du contexte au moment du passage de relais vers l'exécution.",
+        ],
+      },
+      {
+        label: "Agence digitale",
+        paragraphs: [
+          "Une agence digitale excelle sur l'exécution d'un livrable technique précis (site web, campagne publicitaire, identité visuelle) quand le besoin est déjà clairement défini en amont par l'entreprise.",
+          "Sa limite structurelle : elle part généralement du besoin exprimé par le client plutôt que de le challenger par un diagnostic de transformation digitale approfondi, ce qui peut faire exécuter une bonne solution à un mauvais problème.",
+        ],
+      },
+    ],
+    limits:
+      "Cette page compare des modèles d'organisation, pas des prestataires nommés individuellement : chacun de ces trois modèles reste légitime selon le contexte. Audyxa se positionne sur le modèle conseil et exécution réunis (proche du consultant indépendant sur la continuité, proche du cabinet sur la diversité de compétences mobilisées), un choix assumé et expliqué ici en toute transparence, pas présenté comme le seul modèle valable pour toutes les situations.",
+    relatedMethodSlugs: ["mission-de-lexpert"],
+    faq: [
+      {
+        question: "Le modèle conseil et exécution réunis convient-il à toutes les tailles d'entreprise ?",
+        answer:
+          "Il convient particulièrement aux PME et structures en croissance qui veulent éviter de coordonner plusieurs prestataires distincts. De grandes organisations peuvent aussi le choisir pour des chantiers ciblés, en complément d'autres partenaires.",
+      },
+      {
+        question: "Une agence digitale peut-elle remplacer un diagnostic de transformation digitale ?",
+        answer:
+          "Rarement à elle seule : son cœur de métier reste l'exécution d'un livrable défini, pas la remise en question du besoin initial. Un diagnostic préalable, mené par un consultant ou un cabinet, reste utile avant de lancer une exécution technique coûteuse.",
+      },
+      {
+        question: "Faut-il toujours choisir le modèle le moins cher ?",
+        answer:
+          "Non. Le coût doit se comparer au périmètre réel couvert et à la continuité assurée entre les phases, pas être jugé isolément : une mission mal cadrée coûte souvent plus cher à corriger ensuite qu'un accompagnement initial légèrement plus complet.",
       },
     ],
   },

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { CallToAction } from "@/components/call-to-action";
 import { DECISION_PAGES, getDecisionPage } from "@/lib/decision-content";
+import { METHOD_CHAPTERS } from "@/lib/methode-content";
 import { SITE_URL } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -23,10 +23,22 @@ export async function generateMetadata({
   const page = getDecisionPage(slug);
   if (!page) return {};
 
+  const title = page.title;
   return {
-    title: `${page.title} | Audyxa`,
+    title,
     description: page.conclusion,
     alternates: { canonical: `/comparatifs/${page.slug}` },
+    openGraph: {
+      title,
+      description: page.conclusion,
+      url: `${SITE_URL}/comparatifs/${page.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: page.conclusion,
+    },
   };
 }
 
@@ -40,6 +52,14 @@ export default async function DecisionPage({
   if (!page) notFound();
 
   const otherPages = DECISION_PAGES.filter((d) => d.slug !== page.slug).slice(0, 3);
+  const relatedChapters = (page.relatedMethodSlugs ?? [])
+    .map((s) => METHOD_CHAPTERS.find((c) => c.slug === s))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c?.sections?.length));
+
+  // Deux formats de comparatif : historique à deux options (`criteria`/`optionAText`/`optionBText`)
+  // ou tableau à N options (`options`/`comparisonTable`/`optionProfiles`), utilisé pour les
+  // comparatifs d'outils tiers où un simple A/B ne suffit pas (cf. §7.3 du plan SEO/GEO/AEO).
+  const isMultiOption = Boolean(page.options?.length && page.comparisonTable?.length);
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -63,14 +83,16 @@ export default async function DecisionPage({
 
   return (
     <main>
-      <Script
+      <script
         id="decision-article-schema"
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      <Script
+      <script
         id="decision-faq-schema"
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
@@ -85,7 +107,7 @@ export default async function DecisionPage({
         currentPath={`/comparatifs/${page.slug}`}
       />
 
-      {/* 2. Conclusion courte — asymétrique */}
+      {/* 2. Conclusion courte (asymétrique) */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
@@ -93,9 +115,9 @@ export default async function DecisionPage({
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {page.tagline}
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 {page.title}
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-6 text-[19px] leading-9 text-theme-1">{page.conclusion}</p>
@@ -105,7 +127,7 @@ export default async function DecisionPage({
         </div>
       </section>
 
-      {/* 3. Tableau comparatif — pleine largeur */}
+      {/* 3. Tableau comparatif : pleine largeur */}
       <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
@@ -118,25 +140,47 @@ export default async function DecisionPage({
               <thead>
                 <tr className="border-b border-[#e2e2e2] bg-theme-1">
                   <th className="px-5 py-4 font-semibold text-white/70">Critère</th>
-                  <th className="px-5 py-4 font-extrabold text-white">{page.optionALabel}</th>
-                  <th className="px-5 py-4 font-extrabold text-white/85">{page.optionBLabel}</th>
+                  {isMultiOption
+                    ? page.options!.map((option, i) => (
+                        <th
+                          key={option}
+                          className={i === 0 ? "px-5 py-4 font-extrabold text-white" : "px-5 py-4 font-extrabold text-white/85"}
+                        >
+                          {option}
+                        </th>
+                      ))
+                    : (
+                      <>
+                        <th className="px-5 py-4 font-extrabold text-white">{page.optionALabel}</th>
+                        <th className="px-5 py-4 font-extrabold text-white/85">{page.optionBLabel}</th>
+                      </>
+                    )}
                 </tr>
               </thead>
               <tbody>
-                {page.criteria.map((row) => (
-                  <tr key={row.label} className="border-b border-[#e2e2e2] last:border-b-0">
-                    <td className="px-5 py-4 font-semibold text-theme-1">{row.label}</td>
-                    <td className="px-5 py-4 text-body-text">{row.a}</td>
-                    <td className="px-5 py-4 text-body-text">{row.b}</td>
-                  </tr>
-                ))}
+                {isMultiOption
+                  ? page.comparisonTable!.map((row) => (
+                      <tr key={row.criterion} className="border-b border-[#e2e2e2] last:border-b-0">
+                        <td className="px-5 py-4 font-semibold text-theme-1">{row.criterion}</td>
+                        {row.values.map((value, i) => (
+                          <td key={i} className="px-5 py-4 text-body-text">{value}</td>
+                        ))}
+                      </tr>
+                    ))
+                  : page.criteria!.map((row) => (
+                      <tr key={row.label} className="border-b border-[#e2e2e2] last:border-b-0">
+                        <td className="px-5 py-4 font-semibold text-theme-1">{row.label}</td>
+                        <td className="px-5 py-4 text-body-text">{row.a}</td>
+                        <td className="px-5 py-4 text-body-text">{row.b}</td>
+                      </tr>
+                    ))}
               </tbody>
             </table>
           </div>
         </div>
       </section>
 
-      {/* 4 & 5. Analyse option par option — pleine largeur */}
+      {/* 4 & 5. Analyse option par option : pleine largeur */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle
@@ -144,28 +188,49 @@ export default async function DecisionPage({
             title="Ce que chaque option implique concrètement"
             className="mb-[40px] max-w-[820px]"
           />
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-            <ScrollReveal animation="fadeInRight" className="rounded-[14px] border border-[#e2e2e2] bg-white p-8">
-              <span className="mb-4 inline-block rounded-full bg-theme-2 px-4 py-1 text-xs font-bold text-white">
-                {page.optionALabel}
-              </span>
-              {page.optionAText.map((paragraph, i) => (
-                <p key={i} className="mb-4 text-base leading-7 text-body-text last:mb-0">
-                  {paragraph}
-                </p>
+          {isMultiOption ? (
+            <div className={`grid grid-cols-1 gap-8 ${page.optionProfiles!.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+              {page.optionProfiles!.map((profile) => (
+                <ScrollReveal
+                  key={profile.label}
+                  animation="fadeInUp"
+                  className="rounded-[14px] border border-[#e2e2e2] bg-white p-8"
+                >
+                  <span className="mb-4 inline-block rounded-full bg-theme-2 px-4 py-1 text-xs font-bold text-white">
+                    {profile.label}
+                  </span>
+                  {profile.paragraphs.map((paragraph, i) => (
+                    <p key={i} className="mb-4 text-base leading-7 text-body-text last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))}
+                </ScrollReveal>
               ))}
-            </ScrollReveal>
-            <ScrollReveal animation="fadeInLeft" className="rounded-[14px] border border-[#e2e2e2] bg-white p-8">
-              <span className="mb-4 inline-block rounded-full bg-theme-3 px-4 py-1 text-xs font-bold text-theme-1">
-                {page.optionBLabel}
-              </span>
-              {page.optionBText.map((paragraph, i) => (
-                <p key={i} className="mb-4 text-base leading-7 text-body-text last:mb-0">
-                  {paragraph}
-                </p>
-              ))}
-            </ScrollReveal>
-          </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+              <ScrollReveal animation="fadeInRight" className="rounded-[14px] border border-[#e2e2e2] bg-white p-8">
+                <span className="mb-4 inline-block rounded-full bg-theme-2 px-4 py-1 text-xs font-bold text-white">
+                  {page.optionALabel}
+                </span>
+                {page.optionAText!.map((paragraph, i) => (
+                  <p key={i} className="mb-4 text-base leading-7 text-body-text last:mb-0">
+                    {paragraph}
+                  </p>
+                ))}
+              </ScrollReveal>
+              <ScrollReveal animation="fadeInLeft" className="rounded-[14px] border border-[#e2e2e2] bg-white p-8">
+                <span className="mb-4 inline-block rounded-full bg-theme-3 px-4 py-1 text-xs font-bold text-theme-1">
+                  {page.optionBLabel}
+                </span>
+                {page.optionBText!.map((paragraph, i) => (
+                  <p key={i} className="mb-4 text-base leading-7 text-body-text last:mb-0">
+                    {paragraph}
+                  </p>
+                ))}
+              </ScrollReveal>
+            </div>
+          )}
         </div>
       </section>
 
@@ -188,7 +253,36 @@ export default async function DecisionPage({
         </div>
       </section>
 
-      {/* 7. FAQ — deux colonnes */}
+      {/* 6bis. Chapitres méthode liés */}
+      {relatedChapters.length > 0 ? (
+        <section className="bg-white pt-[50px] pb-[50px]">
+          <div className="auto-container">
+            <SectionTitle
+              subTitle="Pour aller plus loin"
+              title="Approfondir dans la méthode Audyxa"
+              className="mb-[40px] max-w-[760px]"
+            />
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {relatedChapters.map((chapter) => (
+                <Link
+                  key={chapter.slug}
+                  href={`/methode/${chapter.slug}`}
+                  className="group rounded-[14px] border border-[#e2e2e2] bg-theme-3 p-6 transition-all duration-300 hover:-translate-y-[4px] hover:border-theme-2"
+                >
+                  <span className="mb-2 block text-[13px] font-bold tracking-[0.14em] text-theme-2 uppercase">
+                    Chapitre {chapter.number}
+                  </span>
+                  <h3 className="mb-0 text-[18px] font-extrabold text-theme-1 group-hover:text-theme-2">
+                    {chapter.title}
+                  </h3>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* 7. FAQ : deux colonnes */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle

@@ -20,6 +20,11 @@ export interface SectorMarketContext {
   obstacle?: string;
 }
 
+export interface SectorUseCase {
+  title: string;
+  description: string;
+}
+
 export interface SectorPage {
   slug: string;
   name: string;
@@ -31,6 +36,8 @@ export interface SectorPage {
   faq: SectorFaqItem[];
   /** Contexte marché sourcé, issu de seo/analyses/veille-marches-secteurs.md */
   marketContext?: SectorMarketContext;
+  /** 3 cas d'usage concrets et réalistes (illustratifs, pas des études de cas clients réelles). */
+  useCases?: SectorUseCase[];
 }
 
 export const SECTOR_PAGES: SectorPage[] = [
@@ -52,7 +59,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         question: "L'automatisation est-elle compatible avec les exigences de conformité bancaire ?",
         answer:
-          "Oui, à condition que chaque automatisation soit traçable, journalisée et dotée d'un point de validation humaine sur les décisions sensibles — c'est un prérequis de conception, pas une option ajoutée après coup.",
+          "Oui, à condition que chaque automatisation soit traçable, journalisée et dotée d'un point de validation humaine sur les décisions sensibles. C'est un prérequis de conception, pas une option ajoutée après coup.",
       },
       {
         question: "Travaillez-vous avec des systèmes bancaires existants (core banking) ?",
@@ -83,12 +90,12 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     relevantServiceSlugs: ["refonte-processus", "automatisation-integrations", "developpement-outils-metier"],
     approach:
-      "Nous distinguons stock physique, disponible, réservé et théorique avant toute promesse client — une confusion fréquente qui génère des ruptures perçues. L'automatisation cible en priorité la synchronisation entre canaux et la réduction des ressaisies entre outils de caisse, e-commerce et ERP.",
+      "Nous distinguons stock physique, disponible, réservé et théorique avant toute promesse client. Une confusion fréquente qui génère des ruptures perçues. L'automatisation cible en priorité la synchronisation entre canaux et la réduction des ressaisies entre outils de caisse, e-commerce et ERP.",
     faq: [
       {
         question: "Pouvez-vous connecter notre boutique en ligne à notre système de caisse ?",
         answer:
-          "Oui, c'est un cas d'automatisation et d'intégration courant — nous évaluons d'abord quel système doit faire autorité sur chaque donnée (stock, prix, statut commande) avant de synchroniser.",
+          "Oui, c'est un cas d'automatisation et d'intégration courant. Nous évaluons d'abord quel système doit faire autorité sur chaque donnée (stock, prix, statut commande) avant de synchroniser.",
       },
       {
         question: "Comment gérez-vous les pics d'activité saisonniers ?",
@@ -98,13 +105,13 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     marketContext: {
       intro:
-        "Le e-commerce français continue sa progression régulière mais reste minoritaire dans le commerce de détail global, porté de plus en plus par les marketplaces plutôt que par les boutiques en ligne classiques — la vraie bataille du secteur se joue dans la cohérence omnicanale, pas dans la simple présence en ligne.",
+        "Le e-commerce français continue sa progression régulière mais reste minoritaire dans le commerce de détail global, porté de plus en plus par les marketplaces plutôt que par les boutiques en ligne classiques. La vraie bataille du secteur se joue dans la cohérence omnicanale, pas dans la simple présence en ligne.",
       stats: [
         { value: "196,4 Md€", label: "de chiffre d'affaires e-commerce en France en 2025 (+7 % vs 2024)", source: "FEVAD, Chiffres clés du e-commerce, édition 2025" },
         { value: "11 %", label: "seulement : part du e-commerce dans le commerce de détail français en 2024 (hors carburant, pharmacie, dispositifs médicaux)", source: "FEVAD, 2025" },
         { value: "31 %", label: "du volume de ventes produits en ligne passe désormais par les marketplaces (vs 29 % en 2023)", source: "FEVAD, 2025" },
       ],
-      obstacle: "Le e-commerce ne représente qu'une part minoritaire du commerce de détail — la vraie priorité est l'orchestration entre canaux (stock, prix, statut commande), pas la simple mise en ligne d'une boutique.",
+      obstacle: "Le e-commerce ne représente qu'une part minoritaire du commerce de détail. La vraie priorité est l'orchestration entre canaux (stock, prix, statut commande), pas la simple mise en ligne d'une boutique.",
     },
   },
   {
@@ -135,12 +142,12 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     marketContext: {
       intro:
-        "En France, la téléconsultation reste un usage minoritaire malgré sa forte médiatisation post-Covid, et profite surtout à un public urbain, jeune et diplômé — l'inverse de l'objectif initial de désenclavement médical. Le frein n'est pas technologique mais relationnel et réglementaire : confidentialité des données, confiance dans l'écran.",
+        "En France, la téléconsultation reste un usage minoritaire malgré sa forte médiatisation post-Covid, et profite surtout à un public urbain, jeune et diplômé. L'inverse de l'objectif initial de désenclavement médical. Le frein n'est pas technologique mais relationnel et réglementaire : confidentialité des données, confiance dans l'écran.",
       stats: [
         { value: "15 %", label: "des Français de 18 ans et plus ont eu recours à la téléconsultation au moins une fois en 2024", source: "DREES/Insee, Études et Résultats n°1366, février 2026" },
         { value: "8 sur 10", label: "Français jugent que l'écran \"déshumanise\" la relation médecin-patient ; 60 % craignent pour la confidentialité des données", source: "DREES/Insee, février 2026" },
       ],
-      obstacle: "La téléconsultation profite 4 fois plus aux moins de 45 ans et 2 fois plus aux diplômés du supérieur — elle n'a pas encore comblé la fracture d'accès aux soins qu'elle était censée réduire.",
+      obstacle: "La téléconsultation profite 4 fois plus aux moins de 45 ans et 2 fois plus aux diplômés du supérieur. Elle n'a pas encore comblé la fracture d'accès aux soins qu'elle était censée réduire.",
     },
   },
   {
@@ -156,7 +163,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     relevantServiceSlugs: ["audit-diagnostic-digital", "automatisation-integrations", "pilotage-deploiement"],
     approach:
-      "Nous cartographions la chaîne procure-to-pay et order-to-cash pour identifier où l'information se perd entre les acteurs, avant de choisir le niveau de traçabilité adapté (codes-barres, QR, événements système) selon le risque et la valeur du produit — pas un système générique surdimensionné.",
+      "Nous cartographions la chaîne procure-to-pay et order-to-cash pour identifier où l'information se perd entre les acteurs, avant de choisir le niveau de traçabilité adapté (codes-barres, QR, événements système) selon le risque et la valeur du produit, pas un système générique surdimensionné.",
     faq: [
       {
         question: "Pouvez-vous mettre en place une traçabilité produit complète ?",
@@ -191,12 +198,12 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     relevantServiceSlugs: ["ia-entreprise", "automatisation-integrations", "pilotage-deploiement"],
     approach:
-      "Nous structurons d'abord le pipeline de support et de vente (catégorie, priorité, SLA, cause racine) avant d'introduire l'IA sur des tâches définies : résumé, classification, suggestion de réponse — avec sortie systématique vers un humain pour les cas sensibles ou les résiliations.",
+      "Nous structurons d'abord le pipeline de support et de vente (catégorie, priorité, SLA, cause racine) avant d'introduire l'IA sur des tâches définies : résumé, classification, suggestion de réponse, avec sortie systématique vers un humain pour les cas sensibles ou les résiliations.",
     faq: [
       {
         question: "L'IA peut-elle traiter les demandes de résiliation automatiquement ?",
         answer:
-          "Non, ce type d'action reste soumis à validation humaine dans notre méthode — l'IA peut préparer et qualifier la demande, pas décider seule d'une résiliation ou d'un remboursement.",
+          "Non, ce type d'action reste soumis à validation humaine dans notre méthode. L'IA peut préparer et qualifier la demande, pas décider seule d'une résiliation ou d'un remboursement.",
       },
       {
         question: "Comment réduire le churn avec la donnée existante ?",
@@ -206,12 +213,12 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     marketContext: {
       intro:
-        "Les télécoms sont à la fois le secteur le plus avancé d'Afrique francophone en infrastructure et celui qui révèle le mieux l'écart entre couverture réseau et usage réel — la majorité de la population africaine vit en zone couverte sans pour autant utiliser internet mobile, ce qui déplace le problème vers l'accessibilité économique plutôt que la disponibilité technique.",
+        "Les télécoms sont à la fois le secteur le plus avancé d'Afrique francophone en infrastructure et celui qui révèle le mieux l'écart entre couverture réseau et usage réel. La majorité de la population africaine vit en zone couverte sans pour autant utiliser internet mobile, ce qui déplace le problème vers l'accessibilité économique plutôt que la disponibilité technique.",
       stats: [
         { value: "56/100", label: "score moyen africain de l'ICT Development Index en 2025 (53 en 2024), loin des standards européens", source: "UIT, ICT Development Index 2025" },
         { value: "75 %", label: "de la population africaine non connectée à internet mobile malgré une couverture réseau souvent disponible (64 % en zone couverte mais non utilisatrice)", source: "GSMA, The Mobile Economy Africa 2025" },
       ],
-      obstacle: "Le vrai enjeu télécom en Afrique francophone n'est plus le réseau lui-même mais l'activation de l'usage — coût des terminaux et de la data, compétences numériques.",
+      obstacle: "Le vrai enjeu télécom en Afrique francophone n'est plus le réseau lui-même mais l'activation de l'usage : coût des terminaux et de la data, compétences numériques.",
     },
   },
   {
@@ -227,7 +234,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     relevantServiceSlugs: ["refonte-processus", "developpement-outils-metier", "pilotage-deploiement"],
     approach:
-      "Nous cartographions le parcours de chaque public séparément avant de chercher une plateforme unique — un portail pensé pour les familles ne répond pas aux mêmes besoins qu'un outil de suivi pédagogique pour les équipes. La priorité va aux processus qui se répètent chaque cycle (inscription, relance, évaluation).",
+      "Nous cartographions le parcours de chaque public séparément avant de chercher une plateforme unique. Un portail pensé pour les familles ne répond pas aux mêmes besoins qu'un outil de suivi pédagogique pour les équipes. La priorité va aux processus qui se répètent chaque cycle (inscription, relance, évaluation).",
     faq: [
       {
         question: "Faut-il un seul outil pour tous les publics ?",
@@ -242,7 +249,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     marketContext: {
       intro:
-        "En Afrique subsaharienne, la fracture numérique éducative constatée pendant la période Covid reste la référence la plus citée sur le sujet : l'obstacle principal est l'accès matériel et réseau, avant même la question de l'organisation pédagogique — l'inverse de la situation française où le budget existe mais reste mal fléché vers le numérique.",
+        "En Afrique subsaharienne, la fracture numérique éducative constatée pendant la période Covid reste la référence la plus citée sur le sujet : l'obstacle principal est l'accès matériel et réseau, avant même la question de l'organisation pédagogique. L'inverse de la situation française où le budget existe mais reste mal fléché vers le numérique.",
       stats: [
         { value: "89 % / 82 %", label: "des apprenants d'Afrique subsaharienne sans accès à un ordinateur familial / sans accès à internet", source: "UNESCO, communiqué du 21 avril 2020" },
         { value: "180,1 Md€", label: "dépense intérieure d'éducation en France en 2022, soit 6,8 % du PIB", source: "Ministère de l'Éducation nationale, édition 2024" },
@@ -263,12 +270,12 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     relevantServiceSlugs: ["audit-diagnostic-digital", "automatisation-integrations", "ia-entreprise"],
     approach:
-      "Nous cartographions le parcours sinistre de bout en bout pour identifier les étapes à règles stables (automatisables) et celles qui exigent une expertise humaine. L'IA, quand elle intervient, prépare et qualifie les dossiers — la décision finale sur un sinistre reste tracée et validée selon une politique explicite.",
+      "Nous cartographions le parcours sinistre de bout en bout pour identifier les étapes à règles stables (automatisables) et celles qui exigent une expertise humaine. L'IA, quand elle intervient, prépare et qualifie les dossiers. La décision finale sur un sinistre reste tracée et validée selon une politique explicite.",
     faq: [
       {
         question: "Peut-on automatiser le traitement des sinistres simples ?",
         answer:
-          "Oui, pour les cas standards et bien définis, avec des critères de validation clairs — les cas complexes ou litigieux restent orientés vers une expertise humaine.",
+          "Oui, pour les cas standards et bien définis, avec des critères de validation clairs. Les cas complexes ou litigieux restent orientés vers une expertise humaine.",
       },
       {
         question: "Comment restez-vous conformes aux exigences réglementaires du secteur ?",
@@ -278,12 +285,12 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     marketContext: {
       intro:
-        "L'assurance française affiche une maturité digitale supérieure à la moyenne européenne, tandis qu'en Afrique francophone (zone CIMA) un cadre réglementaire récent commence tout juste à encadrer la distribution digitale de l'assurance — deux marchés à des stades très différents, mais tous deux moteurs par la réglementation plus que par la seule concurrence commerciale.",
+        "L'assurance française affiche une maturité digitale supérieure à la moyenne européenne, tandis qu'en Afrique francophone (zone CIMA) un cadre réglementaire récent commence tout juste à encadrer la distribution digitale de l'assurance. Deux marchés à des stades très différents, mais tous deux moteurs par la réglementation plus que par la seule concurrence commerciale.",
       stats: [
-        { value: "67 %", label: "de couverture fonctionnelle digitale des assureurs français, contre 52,3 % de moyenne EMEA — la France se classe 4ᵉ en expérience utilisateur en Europe", source: "Deloitte, Digital Insurance Maturity 2025, juillet 2025" },
+        { value: "67 %", label: "de couverture fonctionnelle digitale des assureurs français, contre 52,3 % de moyenne EMEA. La France se classe 4ᵉ en expérience utilisateur en Europe", source: "Deloitte, Digital Insurance Maturity 2025, juillet 2025" },
         { value: "84 %", label: "des assurés français veulent un accès digital facile tout en gardant un accompagnement humain", source: "Deloitte, juillet 2025" },
       ],
-      obstacle: "En zone CIMA, la réglementation n°01/2024 encadre depuis 2024 la distribution digitale de l'assurance dans 14 pays — un cadre juridique posé avant que l'adoption opérationnelle des compagnies ne suive réellement.",
+      obstacle: "En zone CIMA, la réglementation n°01/2024 encadre depuis 2024 la distribution digitale de l'assurance dans 14 pays. Un cadre juridique posé avant que l'adoption opérationnelle des compagnies ne suive réellement.",
     },
   },
   {
@@ -299,7 +306,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     relevantServiceSlugs: ["automatisation-integrations", "refonte-processus", "developpement-outils-metier"],
     approach:
-      "Nous cartographions les chaînes procure-to-pay et order-to-cash pour identifier où l'information se perd, puis évaluons si l'IoT (capteurs de position, état véhicule) apporte une valeur proportionnée à son coût — un projet IoT commence par l'information et l'action recherchées, pas par le choix d'un capteur.",
+      "Nous cartographions les chaînes procure-to-pay et order-to-cash pour identifier où l'information se perd, puis évaluons si l'IoT (capteurs de position, état véhicule) apporte une valeur proportionnée à son coût. Un projet IoT commence par l'information et l'action recherchées, pas par le choix d'un capteur.",
     faq: [
       {
         question: "Faut-il des capteurs IoT pour améliorer le suivi logistique ?",
@@ -314,11 +321,11 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     marketContext: {
       intro:
-        "En France, la logistique dispose d'une feuille de route publique et d'un budget national dédiés à l'IA et à l'IoT, mais l'adoption réelle par les entreprises du secteur reste documentée comme inférieure à celle des autres secteurs économiques — un écart net entre stratégie annoncée et déploiement terrain.",
+        "En France, la logistique dispose d'une feuille de route publique et d'un budget national dédiés à l'IA et à l'IoT, mais l'adoption réelle par les entreprises du secteur reste documentée comme inférieure à celle des autres secteurs économiques. Un écart net entre stratégie annoncée et déploiement terrain.",
       stats: [
         { value: "3 M€", label: "fléchés sur 2 ans pour des projets IA générative/robotique en logistique, dans une stratégie IA nationale de 2,5 Md€", source: "France 2030 / DGE, feuille de route Logistique et transport de marchandises 2025-2026" },
       ],
-      obstacle: "France Logistique confirme un \"taux d'adoption de l'IA inférieur aux autres secteurs économiques\" en France, sans chiffre précis publié — signe d'un secteur encore en phase d'expérimentation malgré le soutien public.",
+      obstacle: "France Logistique confirme un \"taux d'adoption de l'IA inférieur aux autres secteurs économiques\" en France, sans chiffre précis publié. Signe d'un secteur encore en phase d'expérimentation malgré le soutien public.",
     },
   },
   {
@@ -354,7 +361,7 @@ export const SECTOR_PAGES: SectorPage[] = [
         { value: "1,208 million", label: "de transactions immobilières en France en 2021 ; 46 % des Français utilisent des outils digitaux pour leurs transactions", source: "Notaires de France / Observatoire de la Proptech, cités par Septeo" },
         { value: "100 M€", label: "Fonds Propulse, lancé en décembre 2024 par la FNAIM et la French Proptech pour financer l'innovation immobilière", source: "FNAIM / French Proptech, décembre 2024" },
       ],
-      obstacle: "La profession elle-même (FNAIM) juge le retard de digitalisation des processus suffisamment sérieux pour financer un fonds dédié plutôt que d'attendre le marché — signal fort de priorité, au-delà du discours marketing habituel.",
+      obstacle: "La profession elle-même (FNAIM) juge le retard de digitalisation des processus suffisamment sérieux pour financer un fonds dédié plutôt que d'attendre le marché. Signal fort de priorité, au-delà du discours marketing habituel.",
     },
   },
   {
@@ -370,7 +377,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     relevantServiceSlugs: ["audit-diagnostic-digital", "developpement-outils-metier", "automatisation-integrations"],
     approach:
-      "Avant toute migration ou optimisation ERP, nous nettoyons les référentiels et clarifions les règles de validation. Pour la maintenance, nous digitalisons d'abord les ordres de travail (création, priorité, résolution) — souvent plus rentable qu'un projet IoT complexe en première étape.",
+      "Avant toute migration ou optimisation ERP, nous nettoyons les référentiels et clarifions les règles de validation. Pour la maintenance, nous digitalisons d'abord les ordres de travail (création, priorité, résolution). Souvent plus rentable qu'un projet IoT complexe en première étape.",
     faq: [
       {
         question: "Un ERP suffit-il à digitaliser notre production ?",
@@ -380,12 +387,12 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         question: "Faut-il investir dans l'IoT pour la maintenance ?",
         answer:
-          "Seulement si l'information recherchée et l'action déclenchée sont clairement définies au préalable — digitaliser d'abord les ordres de travail donne souvent un gain plus rapide et moins coûteux.",
+          "Seulement si l'information recherchée et l'action déclenchée sont clairement définies au préalable. Digitaliser d'abord les ordres de travail donne souvent un gain plus rapide et moins coûteux.",
       },
     ],
     marketContext: {
       intro:
-        "L'industrie française progresse sur l'IA en usage individuel, mais son adoption dans le pilotage de production reste marginale et très inégale entre PME et ETI — un écart de capacité d'investissement et de compétences plus que de volonté.",
+        "L'industrie française progresse sur l'IA en usage individuel, mais son adoption dans le pilotage de production reste marginale et très inégale entre PME et ETI. Un écart de capacité d'investissement et de compétences plus que de volonté.",
       stats: [
         { value: "26 %", label: "des TPE-PME françaises utilisent déjà l'IA en 2025 (13 % en 2024) ; écart marqué par taille : 42 % des 50-249 salariés contre 23 % des 1-4 salariés", source: "France Num, Baromètre du numérique dans les TPE-PME, 6ᵉ édition, 2025" },
         { value: "1 sur 4", label: "PME industrielle a adopté l'usine connectée, contre près de 60 % des ETI en phase de déploiement", source: "La Fabrique de l'industrie / McKinsey, novembre 2025" },
@@ -421,7 +428,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     marketContext: {
       intro:
-        "L'e-gouvernement progresse nettement à l'échelle mondiale, mais en France la Cour des comptes documente des dérives récurrentes sur les grands projets numériques publics malgré un budget en forte hausse — signe que l'obstacle est la gouvernance de projet, pas le financement.",
+        "L'e-gouvernement progresse nettement à l'échelle mondiale, mais en France la Cour des comptes documente des dérives récurrentes sur les grands projets numériques publics malgré un budget en forte hausse. Signe que l'obstacle est la gouvernance de projet, pas le financement.",
       stats: [
         { value: "45,0 % → 22,4 %", label: "part de la population mondiale vivant dans des pays \"en retard\" en e-gouvernement, entre 2022 et 2024", source: "ONU DESA, UN E-Government Survey 2024" },
         { value: "24 % / 26 %", label: "dérive budgétaire moyenne et retard calendaire moyen sur les grands projets numériques de l'État français audités en 2023", source: "Cour des comptes, 2024" },
@@ -447,22 +454,22 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         question: "Travaillez-vous avec des budgets réduits ?",
         answer:
-          "Oui, notre méthode reste proportionnée à la taille de l'organisation — un diagnostic ciblé et des automatisations simples peuvent produire un impact réel sans budget important.",
+          "Oui, notre méthode reste proportionnée à la taille de l'organisation. Un diagnostic ciblé et des automatisations simples peuvent produire un impact réel sans budget important.",
       },
       {
         question: "Comment assurer la continuité si les bénévoles changent souvent ?",
         answer:
-          "En documentant systématiquement les processus et en évitant les solutions qui dépendent d'une seule personne pour fonctionner — un principe central de notre méthode de transfert.",
+          "En documentant systématiquement les processus et en évitant les solutions qui dépendent d'une seule personne pour fonctionner. Un principe central de notre méthode de transfert.",
       },
     ],
     marketContext: {
       intro:
-        "Le secteur associatif français progresse lentement mais réellement en maturité numérique, porté par la nécessité opérationnelle plus que par une contrainte réglementaire — le vrai frein n'est pas la volonté mais le fait que le numérique associatif repose trop souvent sur une seule personne.",
+        "Le secteur associatif français progresse lentement mais réellement en maturité numérique, porté par la nécessité opérationnelle plus que par une contrainte réglementaire. Le vrai frein n'est pas la volonté mais le fait que le numérique associatif repose trop souvent sur une seule personne.",
       stats: [
         { value: "47 % / 23 %", label: "des dirigeants associatifs se disent \"en bonne voie\" numériquement, contre 23 % \"encore éloignés\" du sujet", source: "Baromètre Solidatech x Recherches & Solidarités, 5ᵉ édition, novembre 2025 (2 285 responsables interrogés)" },
         { value: "18 %", label: "des associations utilisent déjà des outils d'intelligence artificielle en 2025", source: "Baromètre Solidatech x Recherches & Solidarités, novembre 2025" },
       ],
-      obstacle: "Le numérique associatif dépend très souvent d'une seule personne (bénévole ou salariée), ce qui rend les pratiques fragiles en cas de départ — l'enjeu est la pérennisation, pas l'ajout d'outils.",
+      obstacle: "Le numérique associatif dépend très souvent d'une seule personne (bénévole ou salariée), ce qui rend les pratiques fragiles en cas de départ. L'enjeu est la pérennisation, pas l'ajout d'outils.",
     },
   },
   {
@@ -483,7 +490,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         question: "Pouvez-vous synchroniser plusieurs plateformes de réservation ?",
         answer:
-          "Oui, c'est un cas d'automatisation fréquent — l'enjeu principal est de définir quel système fait autorité sur la disponibilité réelle pour éviter les surventes.",
+          "Oui, c'est un cas d'automatisation fréquent. L'enjeu principal est de définir quel système fait autorité sur la disponibilité réelle pour éviter les surventes.",
       },
       {
         question: "Comment gérer les pics de la haute saison ?",
@@ -493,7 +500,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     marketContext: {
       intro:
-        "Dans l'hôtellerie, l'outillage de base (PMS, channel manager) est largement adopté en Europe, mais son exploitation stratégique via l'IA reste minoritaire — un problème de mise en œuvre plus que de volonté, aggravé par une forte fragmentation des systèmes utilisés.",
+        "Dans l'hôtellerie, l'outillage de base (PMS, channel manager) est largement adopté en Europe, mais son exploitation stratégique via l'IA reste minoritaire. Un problème de mise en œuvre plus que de volonté, aggravé par une forte fragmentation des systèmes utilisés.",
       stats: [
         { value: "75 % / 41 %", label: "des hôteliers européens utilisent un PMS, mais seuls 41 % utilisent l'IA aujourd'hui (68 % la jugent utile pour les réservations)", source: "Étude HES-SO Valais-Wallis, 1 500+ hôtels dans 6 pays européens, août 2025" },
       ],
@@ -513,7 +520,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     ],
     relevantServiceSlugs: ["refonte-processus", "developpement-outils-metier", "pilotage-deploiement"],
     approach:
-      "Nous cartographions le processus de bout en bout, du devis à la réception de chantier, en identifiant les étapes qui gagneraient à être digitalisées via une application mobile plutôt qu'un outil de bureau — les équipes terrain travaillent souvent avec une connectivité intermittente.",
+      "Nous cartographions le processus de bout en bout, du devis à la réception de chantier, en identifiant les étapes qui gagneraient à être digitalisées via une application mobile plutôt qu'un outil de bureau. Les équipes terrain travaillent souvent avec une connectivité intermittente.",
     faq: [
       {
         question: "Vos outils fonctionnent-ils sans connexion internet sur chantier ?",
@@ -523,15 +530,15 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         question: "Pouvez-vous connecter nos sous-traitants à notre suivi de chantier ?",
         answer:
-          "Oui, selon leur niveau d'équipement — nous évaluons le juste niveau d'intégration technique proportionné à la réalité de chaque partenaire.",
+          "Oui, selon leur niveau d'équipement. Nous évaluons le juste niveau d'intégration technique proportionné à la réalité de chaque partenaire.",
       },
     ],
     marketContext: {
       intro:
-        "Le BTP français sait que le numérique est stratégique, mais l'usage réel du BIM reste à mi-chemin de la conviction affichée — un décalage classique entre discours et déploiement, dans un secteur historiquement en retard de productivité par rapport à l'industrie manufacturière.",
+        "Le BTP français sait que le numérique est stratégique, mais l'usage réel du BIM reste à mi-chemin de la conviction affichée. Un décalage classique entre discours et déploiement, dans un secteur historiquement en retard de productivité par rapport à l'industrie manufacturière.",
       stats: [
         { value: "72 % / 33-56 %", label: "des professionnels du BTP jugent le BIM \"essentiel\", mais son usage réel varie de 33 % à 56 % selon l'indicateur retenu", source: "Baromètre numérique et BIM, ministère de la Transition écologique, 2024" },
-        { value: "~1 %/an", label: "croissance de la productivité du secteur construction sur 20 ans, contre 2,8 % pour l'économie mondiale — potentiel de gain estimé à 1 600 Md$", source: "McKinsey Global Institute, 2017" },
+        { value: "~1 %/an", label: "croissance de la productivité du secteur construction sur 20 ans, contre 2,8 % pour l'économie mondiale. Potentiel de gain estimé à 1 600 Md$", source: "McKinsey Global Institute, 2017" },
       ],
       obstacle: "Le retard de productivité documenté par McKinsey depuis 2017 reste largement inexploité près de dix ans après, signe d'obstacles non technologiques : fragmentation des chantiers, dépendance à la commande publique.",
     },
@@ -554,22 +561,180 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         question: "Comment choisissez-vous les capteurs à déployer ?",
         answer:
-          "En partant de l'information et de l'action recherchées plutôt que du capteur disponible sur le marché — un projet IoT mal cadré génère des données inexploitées.",
+          "En partant de l'information et de l'action recherchées plutôt que du capteur disponible sur le marché. Un projet IoT mal cadré génère des données inexploitées.",
       },
       {
         question: "La sécurité est-elle traitée comme un sujet à part ?",
         answer:
-          "Non, elle est intégrée dès le diagnostic et le portefeuille d'initiatives, conformément à notre méthode — particulièrement important pour des infrastructures énergétiques sensibles.",
+          "Non, elle est intégrée dès le diagnostic et le portefeuille d'initiatives, conformément à notre méthode. Particulièrement important pour des infrastructures énergétiques sensibles.",
       },
     ],
     marketContext: {
       intro:
-        "En France, la digitalisation de l'énergie est la plus achevée sur son cas d'usage principal — le comptage intelligent — mais reste concentrée sur ce périmètre : la maintenance prédictive et le pilotage des renouvelables sont beaucoup moins documentés.",
+        "En France, la digitalisation de l'énergie est la plus achevée sur son cas d'usage principal (le comptage intelligent) mais reste concentrée sur ce périmètre : la maintenance prédictive et le pilotage des renouvelables sont beaucoup moins documentés.",
       stats: [
         { value: "95-97 %", label: "des foyers français équipés en compteurs communicants Linky, objectif 100 % fin 2026", source: "Enedis / CRE" },
         { value: "350 M€/an", label: "gains économiques générés par le déploiement Linky depuis 2025 (après 1 Md€ cumulé sur 2021-2024)", source: "Enedis / CRE" },
       ],
       obstacle: "La digitalisation énergétique française s'est concentrée sur le comptage ; au-delà de Linky, la maintenance prédictive et le pilotage des renouvelables restent un chantier ouvert et peu mesuré publiquement.",
+    },
+  },
+  {
+    slug: "cabinets-comptables",
+    name: "Cabinets comptables",
+    tagline: "Conformité SYSCOHADA, télédéclaration et volume de pièces à traiter",
+    directAnswer:
+      "Pour un cabinet comptable d'Afrique de l'Ouest francophone, la transformation digitale porte d'abord sur la fiabilisation de la collecte des pièces clients et la conformité au référentiel SYSCOHADA révisé, avant tout choix de logiciel. Plusieurs administrations fiscales de la région ont déjà généralisé la télédéclaration, ce qui rend la digitalisation moins optionnelle qu'il y a dix ans.",
+    challenges: [
+      "Une collecte de pièces justificatives dispersée entre email, WhatsApp et papier, source d'erreurs et de retards.",
+      "Un référentiel SYSCOHADA révisé qui impose des états financiers et une traçabilité numérique renforcée depuis 2018.",
+      "Plusieurs calendriers fiscaux et parfois plusieurs devises à suivre pour les cabinets qui accompagnent des clients dans plusieurs pays.",
+    ],
+    relevantServiceSlugs: ["audit-diagnostic-digital", "refonte-processus", "automatisation-integrations"],
+    approach:
+      "Nous commençons systématiquement par structurer le canal de collecte des pièces avant de discuter du choix d'un logiciel comptable, puis identifions les cycles (achats, ventes, paie, fiscal) où l'automatisation apporte un gain réel sans jamais retirer la validation humaine sur les opérations inhabituelles ou litigieuses. Cette méthode reprend les principes détaillés dans nos chapitres [mission de l'expert](/methode/mission-de-lexpert) et [automatisation, API, RPA et low-code](/methode/automatisation-api-rpa-low-code).",
+    useCases: [
+      {
+        title: "Automatiser la collecte des pièces justificatives",
+        description:
+          "Un client dépose ses factures via un canal structuré (portail ou dossier partagé), avec accusé de réception automatique et relance uniquement sur les pièces manquantes, plutôt que par échanges d'emails dispersés.",
+      },
+      {
+        title: "Rapprocher automatiquement les encaissements mobile money et bancaires",
+        description:
+          "Les encaissements reçus par mobile money ou virement bancaire sont rapprochés automatiquement des factures émises, avec remontée des seuls écarts à traiter manuellement par le comptable.",
+      },
+      {
+        title: "Préparer les données de télédéclaration fiscale",
+        description:
+          "Les données comptables du mois sont préparées automatiquement dans le format attendu par le portail de télédéclaration du pays concerné, avec vérification humaine avant validation finale.",
+      },
+    ],
+    faq: [
+      {
+        question: "Un cabinet comptable doit-il digitaliser tous ses cycles en même temps ?",
+        answer:
+          "Non. Commencer par un seul cycle, mesuré avant et après, donne un résultat rapide et évite de perturber l'ensemble du cabinet en une seule fois.",
+      },
+      {
+        question: "Le mobile money complique-t-il le rapprochement comptable ?",
+        answer:
+          "Il ajoute un canal d'encaissement à intégrer dès la conception du processus de rapprochement, ce qui évite les ressaisies manuelles répétées propres à ce canal.",
+      },
+    ],
+    marketContext: {
+      intro:
+        "Le référentiel SYSCOHADA révisé a durci les exigences de traçabilité numérique pour les cabinets comptables de la région depuis son entrée en vigueur, tandis que plusieurs administrations fiscales ont généralisé en parallèle la télédéclaration et le télépaiement (par exemple e-impots.gouv.ci en Côte d'Ivoire et e-services.impots.bj au Bénin).",
+        stats: [
+        { value: "2018", label: "entrée en vigueur du SYSCOHADA révisé pour les comptes personnels des entités", source: "OHADA, Acte uniforme adopté le 26 janvier 2017, publié au Journal officiel le 15 février 2017" },
+        { value: "17 États", label: "membres de l'espace OHADA appliquant ce référentiel comptable commun", source: "OHADA, Acte uniforme relatif au droit comptable et à l'information financière" },
+      ],
+      obstacle: "Le principal obstacle observé n'est pas réglementaire mais organisationnel : la collecte désordonnée des pièces auprès des clients, qui limite l'intérêt de tout logiciel comptable tant qu'elle n'est pas fiabilisée en amont.",
+    },
+  },
+  {
+    slug: "import-export-distribution",
+    name: "Import-export et distribution",
+    tagline: "Dédouanement numérique, traçabilité et rapprochement multi-devises",
+    directAnswer:
+      "Pour les entreprises d'import-export et de distribution d'Afrique de l'Ouest francophone, la transformation digitale porte sur la dématérialisation des procédures douanières, la traçabilité des marchandises et la fiabilité des stocks entre plusieurs points de vente ou entrepôts. Plusieurs pays de la zone ont déjà digitalisé leurs procédures douanières via un guichet unique du commerce extérieur.",
+    challenges: [
+      "Des procédures douanières encore partiellement documentées sur papier malgré la digitalisation des guichets officiels.",
+      "Une traçabilité des marchandises difficile à maintenir entre plusieurs intermédiaires et modes de transport.",
+      "Des stocks répartis entre plusieurs entrepôts ou points de vente, avec des écarts fréquents entre stock théorique et stock réel.",
+    ],
+    relevantServiceSlugs: ["automatisation-integrations", "refonte-processus", "audit-diagnostic-digital"],
+    approach:
+      "Nous cartographions les chaînes procure-to-pay et order-to-cash de bout en bout pour identifier où l'information se perd entre les acteurs (fournisseur, transitaire, douane, entrepôt, client), avant de connecter les systèmes existants aux guichets uniques du commerce extérieur déjà en place dans plusieurs pays de la zone. Cette cartographie s'appuie sur la méthode détaillée dans nos chapitres [opérations, ERP, supply chain et IoT](/methode/operations-erp-supply-chain-iot) et [automatisation, API, RPA et low-code](/methode/automatisation-api-rpa-low-code).",
+    useCases: [
+      {
+        title: "Suivre un dossier d'import du fournisseur à l'entrepôt",
+        description:
+          "Chaque étape d'un dossier d'importation (commande, expédition, dédouanement, réception) est journalisée dans un même système, avec alerte automatique en cas de retard à une étape critique.",
+      },
+      {
+        title: "Synchroniser les stocks entre plusieurs points de vente",
+        description:
+          "Le stock disponible affiché à la vente reflète en temps réel les mouvements entre entrepôt central et points de vente, pour éviter de vendre un produit déjà épuisé ailleurs. [Jumia](/histoires/jumia) a mis plusieurs années à stabiliser ce type de logistique à l'échelle panafricaine, la preuve que l'exécution opérationnelle prend du temps, pas seulement la levée de fonds.",
+      },
+      {
+        title: "Automatiser les relances fournisseurs et clients",
+        description:
+          "Les relances de paiement fournisseur et les rappels de livraison client sont déclenchés automatiquement selon des règles définies, avec remontée des cas exceptionnels à un responsable.",
+      },
+    ],
+    faq: [
+      {
+        question: "Les procédures douanières sont-elles déjà digitalisées dans la région ?",
+        answer:
+          "Plusieurs pays de la zone, dont la Côte d'Ivoire, disposent d'un guichet unique du commerce extérieur qui dématérialise déclarations et paiements douaniers ; le niveau d'avancement varie cependant d'un pays à l'autre, à vérifier au cas par cas.",
+      },
+      {
+        question: "Comment fiabiliser un stock réparti entre plusieurs entrepôts ?",
+        answer:
+          "En distinguant stock physique, disponible, réservé et théorique avant toute promesse client, et en synchronisant ces statuts entre les systèmes de caisse, e-commerce et de gestion d'entrepôt.",
+      },
+    ],
+    marketContext: {
+      intro:
+        "Le commerce extérieur ouest-africain s'appuie sur une infrastructure douanière commune historique : le système ASYCUDA, né dans les années 1980 d'une demande de la CEDEAO à la CNUCED, reste aujourd'hui une base logicielle de référence des douanes dans la région, complété localement par des guichets uniques du commerce extérieur.",
+      stats: [
+        { value: "102 pays", label: "utilisent le système douanier ASYCUDA dans le monde, contre une cinquantaine en 2004", source: "CNUCED (UNCTAD), chiffres ASYCUDA" },
+        { value: "depuis 2000", label: "le Tarif extérieur commun (TEC) UEMOA harmonise les droits de douane entre pays membres, base du TEC CEDEAO plus récent", source: "UEMOA, e-docucenter" },
+      ],
+      obstacle: "L'harmonisation douanière régionale (TEC UEMOA puis CEDEAO) avance, mais son application reste inégale d'un pays à l'autre, ce qui impose de vérifier les règles réellement en vigueur pays par pays plutôt que de supposer une application uniforme.",
+    },
+  },
+  {
+    slug: "ecoles-privees-universites",
+    name: "Écoles privées et universités",
+    tagline: "Inscriptions, suivi pédagogique et communication à plusieurs publics",
+    directAnswer:
+      "Pour les écoles privées et universités d'Afrique de l'Ouest francophone, la transformation digitale doit gérer plusieurs publics à la fois (apprenants, familles, équipes pédagogiques et administratives) autour de cycles récurrents : inscription, suivi, évaluation, facturation. Le secteur privé pèse déjà une part importante des effectifs dans plusieurs pays de la région, ce qui en fait un marché structuré, pas un marché de niche.",
+    challenges: [
+      "Des inscriptions et paiements de frais de scolarité encore largement gérés manuellement, avec des pics de charge en début d'année.",
+      "Un suivi pédagogique dispersé entre plusieurs outils non connectés (notes, présence, communication aux familles).",
+      "Une communication différenciée à adresser à plusieurs publics (apprenants, familles, équipes) sans dupliquer le travail de saisie.",
+    ],
+    relevantServiceSlugs: ["refonte-processus", "developpement-outils-metier", "automatisation-integrations"],
+    approach:
+      "Nous cartographions le parcours de chaque public séparément (famille, apprenant, équipe pédagogique) avant de proposer une plateforme unique, et priorisons l'automatisation des tâches qui reviennent chaque cycle : confirmation d'inscription, relance de paiement, notification de résultat. Cette approche s'appuie sur les principes détaillés dans nos chapitres [UX, produit et expérience client numérique](/methode/ux-produit-experience-client) et [CRM, vente et service client omnicanal](/methode/crm-vente-service-client-omnicanal).",
+    useCases: [
+      {
+        title: "Automatiser le suivi des inscriptions et de leur paiement",
+        description:
+          "Chaque dossier d'inscription suit un statut clair (déposé, validé, payé, complet), avec relance automatique des dossiers incomplets ou des paiements en attente avant la date limite.",
+      },
+      {
+        title: "Centraliser la communication aux familles",
+        description:
+          "Les notifications de résultats, d'absences ou d'événements sont envoyées automatiquement aux familles sur le canal qu'elles utilisent réellement (SMS, WhatsApp, email), sans ressaisie manuelle par les équipes.",
+      },
+      {
+        title: "Fiabiliser le suivi pédagogique entre plusieurs outils",
+        description:
+          "Notes, présence et communication aux familles s'appuient sur une même source de données par élève, plutôt que sur plusieurs tableurs ou cahiers séparés selon la matière ou l'enseignant.",
+      },
+    ],
+    faq: [
+      {
+        question: "Le secteur privé pèse-t-il vraiment dans l'éducation de la région ?",
+        answer:
+          "Oui, dans plusieurs pays de la zone l'enseignement privé représente déjà une part significative des effectifs du secondaire, ce qui en fait un acteur économique structuré et pas un marché marginal.",
+      },
+      {
+        question: "Faut-il un seul logiciel pour gérer inscriptions, notes et paiements ?",
+        answer:
+          "Pas nécessairement dès le départ : mieux vaut fiabiliser un cycle, par exemple les inscriptions et leur paiement, avant d'étendre à un système plus large couvrant aussi le suivi pédagogique.",
+      },
+    ],
+    marketContext: {
+      intro:
+        "L'enseignement privé occupe une place croissante dans le secondaire de plusieurs pays de la région, ce qui en fait un secteur économique à part entière avec ses propres besoins de gestion, d'inscription et de suivi pédagogique.",
+      stats: [
+        { value: "62 % / 69 %", label: "part des établissements privés dans les effectifs du premier cycle et du second cycle du secondaire en Côte d'Ivoire, en 2024-2025", source: "Rapport GEM 2026 de l'UNESCO, cité par Forbes Afrique, 21 septembre 2026" },
+      ],
+      obstacle: "Un secteur privé aussi structuré ne peut plus se contenter d'une gestion artisanale des inscriptions et de la facturation : la taille du marché justifie désormais des outils dédiés plutôt qu'un simple tableur partagé.",
     },
   },
 ];

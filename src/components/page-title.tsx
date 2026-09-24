@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import { SITE_URL } from "@/lib/site-config";
 
 interface Crumb {
@@ -37,9 +36,9 @@ export function PageTitle({ title, breadcrumbs, currentPath }: PageTitleProps) {
       style={{ backgroundImage: "url(/page-title-bg.png)" }}
     >
       {breadcrumbJsonLd ? (
-        <Script
-          id="breadcrumb-schema"
+        <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
       ) : null}

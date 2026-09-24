@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
@@ -31,11 +30,24 @@ export async function generateMetadata({
   const service = getServiceDetail(slug);
   if (!country || !service) return {};
   const city = getFlagshipCity(country);
+  const title = `${service.title} à ${city.name}`;
+  const description = `${service.title} à ${city.name} (${country.name}) : intervention à distance avec la méthode Audyxa, diagnostic sur mesure.`;
 
   return {
-    title: `${service.title} à ${city.name} | Audyxa`,
-    description: `${service.title} pour les entreprises de ${city.name} (${country.name}) : ${service.directAnswer}`,
+    title,
+    description,
     alternates: { canonical: `/services/${service.slug}/${country.slug}/${city.slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/services/${service.slug}/${country.slug}/${city.slug}`,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 
@@ -75,14 +87,14 @@ export default async function ServiceCityPage({
 
   return (
     <main>
-      <Script
-        id="service-city-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
-      <Script
-        id="service-city-faq-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
@@ -97,7 +109,7 @@ export default async function ServiceCityPage({
         currentPath={`/services/${service.slug}/${country.slug}/${city.slug}`}
       />
 
-      {/* 2. Réponse directe — asymétrique */}
+      {/* 2. Réponse directe, asymétrique */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
@@ -106,11 +118,11 @@ export default async function ServiceCityPage({
                 <i className={`${service.icon} text-[38px] text-theme-2`} />
               </div>
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
-                {city.name} — {country.name}
+                {city.name}, {country.name}
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 {service.title} à {city.name}
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-6 text-[19px] leading-9 text-theme-1">
@@ -144,7 +156,7 @@ export default async function ServiceCityPage({
         </div>
       </section>
 
-      {/* 4. Notre approche — colonne latérale + étapes */}
+      {/* 4. Notre approche : colonne latérale + étapes */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
@@ -170,7 +182,7 @@ export default async function ServiceCityPage({
         </div>
       </section>
 
-      {/* 5. En résumé — section riche en contenu */}
+      {/* 5. En résumé : section riche en contenu */}
       <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
@@ -189,7 +201,7 @@ export default async function ServiceCityPage({
               </p>
               <p className="mb-0 text-base leading-8 text-body-text">
                 Pour {city.name} comme pour le reste du {country.name}, ce service s&apos;inscrit dans
-                notre méthode complète de transformation digitale — voir aussi{" "}
+                notre méthode complète de transformation digitale, voir aussi{" "}
                 <Link href={`/pays/${country.slug}`} className="font-semibold text-theme-2 hover:underline">
                   notre couverture au {country.name}
                 </Link>{" "}

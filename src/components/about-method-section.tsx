@@ -70,9 +70,12 @@ export function AboutMethodSection() {
           ))}
         </div>
 
-        <div className="mt-[40px] flex justify-center">
+        <div className="mt-[40px] flex flex-wrap justify-center gap-x-8 gap-y-3">
           <Link href="/methode" className="font-semibold text-theme-2 hover:underline">
             Découvrir la méthode complète, chapitre par chapitre →
+          </Link>
+          <Link href="/glossaire" className="font-semibold text-theme-2 hover:underline">
+            Consulter le glossaire des termes techniques →
           </Link>
         </div>
       </div>

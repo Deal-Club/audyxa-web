@@ -13,10 +13,10 @@ import { FAQ_ITEMS } from "@/lib/faq-data";
 export type { FaqItem };
 /**
  * Contenu verbatim de la section FAQ source (3 réponses identiques dans le
- * thème d'origine — contenu de démo réel, on ne diversifie pas).
+ * thème d'origine, contenu de démo réel, on ne diversifie pas).
  * Défini dans un module non "use client" (faq-data.ts) pour rester
  * consommable tel quel (array simple) depuis les Server Components qui
- * génèrent le JSON-LD — un export de données depuis un module "use client"
+ * génèrent le JSON-LD : un export de données depuis un module "use client"
  * devient une référence opaque côté serveur et casse `.map()`.
  */
 export { FAQ_ITEMS };

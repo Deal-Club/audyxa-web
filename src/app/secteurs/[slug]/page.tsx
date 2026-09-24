@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { CallToAction } from "@/components/call-to-action";
+import { RichText } from "@/components/rich-text";
 import { SECTOR_PAGES, getSectorPage } from "@/lib/sector-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
@@ -24,10 +24,22 @@ export async function generateMetadata({
   const sector = getSectorPage(slug);
   if (!sector) return {};
 
+  const title = `Transformation digitale ${sector.name}`;
   return {
-    title: `Transformation digitale ${sector.name} | Audyxa`,
+    title,
     description: sector.directAnswer,
     alternates: { canonical: `/secteurs/${sector.slug}` },
+    openGraph: {
+      title,
+      description: sector.directAnswer,
+      url: `${SITE_URL}/secteurs/${sector.slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: sector.directAnswer,
+    },
   };
 }
 
@@ -70,20 +82,22 @@ export default async function SectorPage({
 
   return (
     <main>
-      <Script
+      <script
         id="sector-service-schema"
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
-      <Script
+      <script
         id="sector-faq-schema"
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* 1. Bannière */}
       <PageTitle
-        title={`Transformation digitale — ${sector.name}`}
+        title={`Transformation digitale : ${sector.name}`}
         breadcrumbs={[
           { label: "Accueil", href: "/" },
           { label: "Secteurs", href: "/secteurs" },
@@ -92,7 +106,7 @@ export default async function SectorPage({
         currentPath={`/secteurs/${sector.slug}`}
       />
 
-      {/* 2. Réponse directe — asymétrique */}
+      {/* 2. Réponse directe (asymétrique) */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
@@ -100,9 +114,9 @@ export default async function SectorPage({
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {sector.tagline}
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 Transformation digitale {sectorNameLower}
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-6 text-[19px] leading-9 text-theme-1">{sector.directAnswer}</p>
@@ -172,7 +186,7 @@ export default async function SectorPage({
         </section>
       ) : null}
 
-      {/* 4. Notre approche pour ce secteur — asymétrique */}
+      {/* 4. Notre approche pour ce secteur (asymétrique) */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
@@ -184,13 +198,43 @@ export default async function SectorPage({
               />
             </div>
             <div className="w-full lg:w-8/12">
-              <p className="mb-0 text-base leading-8 text-body-text">{sector.approach}</p>
+              <p className="mb-0 text-base leading-8 text-body-text">
+                <RichText text={sector.approach} />
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. En résumé — section riche en contenu */}
+      {/* 4bis. Cas d'usage concrets */}
+      {sector.useCases && sector.useCases.length > 0 ? (
+        <section className="bg-theme-3 pt-[50px] pb-[50px]">
+          <div className="auto-container">
+            <SectionTitle
+              subTitle="Cas d'usage"
+              title={`Ce que nous digitalisons concrètement pour ${sectorNameLower}`}
+              className="mb-[40px] max-w-[820px]"
+            />
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {sector.useCases.map((useCase, index) => (
+                <ScrollReveal
+                  key={useCase.title}
+                  animation="fadeInUp"
+                  delay={`${index * 150}ms`}
+                  className="rounded-[14px] bg-white p-7"
+                >
+                  <h3 className="mb-3 text-[17px] font-extrabold text-theme-1">{useCase.title}</h3>
+                  <p className="mb-0 text-base leading-7 text-body-text">
+                    <RichText text={useCase.description} />
+                  </p>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* 5. En résumé : section riche en contenu */}
       <section className="bg-theme-3 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
@@ -209,7 +253,7 @@ export default async function SectorPage({
                 numérique reste la première étape, quel que soit le secteur d&apos;activité.
               </p>
               <p className="mb-0 text-base leading-8 text-body-text">
-                Les services les plus fréquemment mobilisés pour {sectorNameLower} —{" "}
+                Les services les plus fréquemment mobilisés pour {sectorNameLower} ({" "}
                 {relevantServices.map((s, i) => (
                   <span key={s.slug}>
                     {i > 0 ? (i === relevantServices.length - 1 ? " et " : ", ") : ""}
@@ -218,7 +262,7 @@ export default async function SectorPage({
                     </Link>
                   </span>
                 ))}{" "}
-                — s&apos;inscrivent dans notre méthode complète de transformation digitale, présentée
+                ) s&apos;inscrivent dans notre méthode complète de transformation digitale, présentée
                 en détail sur notre <Link href="/methode" className="font-semibold text-theme-2 hover:underline">page méthode</Link>.
               </p>
             </div>
@@ -252,7 +296,7 @@ export default async function SectorPage({
         </div>
       </section>
 
-      {/* 7. FAQ — deux colonnes */}
+      {/* 7. FAQ : deux colonnes */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <SectionTitle

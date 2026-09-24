@@ -4,12 +4,27 @@ import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
 import { GEO_COUNTRIES, getCountriesByRegion } from "@/lib/geo-content";
+import { SITE_URL } from "@/lib/site-config";
+
+const PAYS_TITLE = "Zones d'intervention";
+const PAYS_DESCRIPTION =
+  "Audyxa accompagne les entreprises en France, en Afrique de l'Ouest, en Afrique centrale et en Europe francophone, avec la même méthode de transformation digitale partout.";
 
 export const metadata: Metadata = {
-  title: "Zones d'intervention | Audyxa",
-  description:
-    "Audyxa accompagne les entreprises en France, en Afrique de l'Ouest, en Afrique centrale et en Europe francophone, avec la même méthode de transformation digitale partout.",
+  title: PAYS_TITLE,
+  description: PAYS_DESCRIPTION,
   alternates: { canonical: "/pays" },
+  openGraph: {
+    title: PAYS_TITLE,
+    description: PAYS_DESCRIPTION,
+    url: `${SITE_URL}/pays`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAYS_TITLE,
+    description: PAYS_DESCRIPTION,
+  },
 };
 
 const REGIONS: Array<"Afrique de l'Ouest" | "Afrique centrale" | "Europe francophone"> = [
@@ -34,14 +49,14 @@ export default function CountriesHubPage() {
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {GEO_COUNTRIES.length} pays couverts
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 France, Afrique francophone et Europe francophone
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-0 text-[19px] leading-9 text-theme-1">
                 Audyxa intervient à distance sur l&apos;ensemble de ces marchés, avec la même méthode
-                de transformation digitale partout — pas de partenaire local différent selon le pays.
+                de transformation digitale partout, sans dépendre d'un partenaire local différent selon le pays.
               </p>
             </div>
           </div>

@@ -7,7 +7,7 @@ const CONTACT_EMAIL = "contact@audyxa.com";
 export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.error("RESEND_API_KEY manquante — impossible d'envoyer l'email de contact.");
+    console.error("RESEND_API_KEY manquante : impossible d'envoyer l'email de contact.");
     return NextResponse.json({ error: "server_misconfigured" }, { status: 500 });
   }
 

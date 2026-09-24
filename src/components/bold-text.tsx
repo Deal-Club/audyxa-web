@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 /**
  * Rend un texte contenant des segments `**gras**` (syntaxe légère façon
- * Markdown) en `<strong>` réels — utilisé pour mettre en valeur les mots-clés
+ * Markdown) en `<strong>` réels : utilisé pour mettre en valeur les mots-clés
  * et chiffres importants dans le contenu éditorial (ex. pages /histoires),
  * sans dépendre d'un parseur Markdown complet ni de `dangerouslySetInnerHTML`.
  */

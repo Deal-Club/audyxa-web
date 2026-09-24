@@ -109,7 +109,7 @@ export function renderContactEmail(data: ContactEmailData): string {
             <tr>
               <td style="padding:20px 32px;background-color:${BG};border-top:1px solid ${BORDER};">
                 <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#9a9a9a;">
-                  Reçu via le formulaire de contact sur audyxa.com — France et Afrique francophone.
+                  Reçu via le formulaire de contact sur audyxa.com, France et Afrique francophone.
                 </p>
               </td>
             </tr>

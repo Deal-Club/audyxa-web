@@ -4,12 +4,27 @@ import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
 import { DECISION_PAGES } from "@/lib/decision-content";
+import { SITE_URL } from "@/lib/site-config";
+
+const COMPARATIFS_TITLE = "Comparatifs et guides de décision";
+const COMPARATIFS_DESCRIPTION =
+  "Consultant vs agence, freelance vs cabinet, automatisation vs IA : des comparatifs transparents pour vous aider à choisir votre approche de transformation digitale.";
 
 export const metadata: Metadata = {
-  title: "Comparatifs et guides de décision | Audyxa",
-  description:
-    "Consultant vs agence, freelance vs cabinet, automatisation vs IA : des comparatifs transparents pour vous aider à choisir votre approche de transformation digitale.",
+  title: COMPARATIFS_TITLE,
+  description: COMPARATIFS_DESCRIPTION,
   alternates: { canonical: "/comparatifs" },
+  openGraph: {
+    title: COMPARATIFS_TITLE,
+    description: COMPARATIFS_DESCRIPTION,
+    url: `${SITE_URL}/comparatifs`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: COMPARATIFS_TITLE,
+    description: COMPARATIFS_DESCRIPTION,
+  },
 };
 
 export default function DecisionsHubPage() {
@@ -28,14 +43,14 @@ export default function DecisionsHubPage() {
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {DECISION_PAGES.length} comparatifs
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 Des critères transparents, jamais un classement fabriqué
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-0 text-[19px] leading-9 text-theme-1">
                 Chaque comparatif présente une méthodologie claire, un tableau de critères factuels et
-                les limites de la comparaison — pas un classement où Audyxa se place premier sans
+                les limites de la comparaison, sans classement où Audyxa se placerait premier sans
                 justification.
               </p>
             </div>

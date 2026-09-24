@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import { DECISION_PAGES } from "@/lib/decision-content";
 import { SECTOR_PAGES } from "@/lib/sector-content";
 import { GEO_COUNTRIES } from "@/lib/geo-content";
@@ -125,9 +124,9 @@ const FAQ_JSON_LD = {
 export function ServicesSeoSection() {
   return (
     <section className="relative bg-theme-3 pt-[80px] pb-[90px]">
-      <Script
-        id="services-faq-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }}
       />
       <div className="auto-container">
@@ -145,6 +144,14 @@ export function ServicesSeoSection() {
             dans notre démarche globale, consultez{" "}
             <Link href="/about" className="font-semibold text-theme-2 hover:underline">
               notre approche de la transformation digitale
+            </Link>
+            . Cette méthode reste la même que nous intervenions en{" "}
+            <Link href="/pays/benin" className="font-semibold text-theme-2 hover:underline">
+              transformation digitale au Bénin
+            </Link>{" "}
+            ou pour la{" "}
+            <Link href="/pays/togo" className="font-semibold text-theme-2 hover:underline">
+              transformation digitale au Togo
             </Link>
             .
           </p>

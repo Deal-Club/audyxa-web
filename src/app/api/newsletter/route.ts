@@ -15,7 +15,7 @@ function escapeHtml(value: string): string {
 export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.error("RESEND_API_KEY manquante — impossible d'envoyer la notification d'inscription.");
+    console.error("RESEND_API_KEY manquante : impossible d'envoyer la notification d'inscription.");
     return NextResponse.json({ error: "server_misconfigured" }, { status: 500 });
   }
 

@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
 import { GLOSSARY_TERMS } from "@/lib/glossary-content";
 import { SITE_URL } from "@/lib/site-config";
 
+const GLOSSAIRE_TITLE = "Glossaire de la transformation digitale";
+const GLOSSAIRE_DESCRIPTION =
+  "Les termes clés de la transformation digitale et de l'IA en entreprise, définis simplement : ROI, TCO, RAG, MCP, BPMN, RGPD, KYC, MFA.";
+
 export const metadata: Metadata = {
-  title: "Glossaire de la transformation digitale | Audyxa",
-  description:
-    "Les termes clés de la transformation digitale, de l'automatisation et de l'IA en entreprise, définis simplement : ROI, TCO, RAG, MCP, BPMN, RGPD, KYC, MFA et plus.",
+  title: GLOSSAIRE_TITLE,
+  description: GLOSSAIRE_DESCRIPTION,
   alternates: { canonical: "/glossaire" },
+  openGraph: {
+    title: GLOSSAIRE_TITLE,
+    description: GLOSSAIRE_DESCRIPTION,
+    url: `${SITE_URL}/glossaire`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: GLOSSAIRE_TITLE,
+    description: GLOSSAIRE_DESCRIPTION,
+  },
 };
 
 export default function GlossaryPage() {
@@ -21,7 +34,7 @@ export default function GlossaryPage() {
   const definedTermSetJsonLd = {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
-    name: "Glossaire de la transformation digitale — Audyxa",
+    name: "Glossaire de la transformation digitale, Audyxa",
     url: `${SITE_URL}/glossaire`,
     hasDefinedTerm: sorted.map((t) => ({
       "@type": "DefinedTerm",
@@ -33,9 +46,9 @@ export default function GlossaryPage() {
 
   return (
     <main>
-      <Script
-        id="glossary-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermSetJsonLd) }}
       />
 
@@ -54,9 +67,9 @@ export default function GlossaryPage() {
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {sorted.length} termes définis
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 Le vocabulaire de la transformation digitale, sans jargon inutile
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-0 text-[19px] leading-9 text-theme-1">

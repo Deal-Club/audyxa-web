@@ -7,11 +7,25 @@ import { CallToAction } from "@/components/call-to-action";
 import { HISTOIRES, getHistoiresByType, getHistoirePhoto } from "@/lib/histoires-content";
 import { SITE_URL } from "@/lib/site-config";
 
+const HISTOIRES_TITLE = "Histoires de transformation digitale";
+const HISTOIRES_DESCRIPTION =
+  "Des entreprises connues qui ont raté ou réussi leur transformation digitale : Blockbuster, Kodak, Nokia, Netflix, LEGO. Études de cas publiques et sourcées.";
+
 export const metadata: Metadata = {
-  title: "Histoires de transformation digitale | Audyxa",
-  description:
-    "Des entreprises connues qui ont perdu leur place faute de digitalisation à temps, et d'autres qui ont pris de l'avance : Blockbuster, Kodak, Nokia, Toys R Us, Netflix, Domino's Pizza, Adobe, LEGO. Études de cas publiques et sourcées.",
+  title: HISTOIRES_TITLE,
+  description: HISTOIRES_DESCRIPTION,
   alternates: { canonical: "/histoires" },
+  openGraph: {
+    title: HISTOIRES_TITLE,
+    description: HISTOIRES_DESCRIPTION,
+    url: `${SITE_URL}/histoires`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: HISTOIRES_TITLE,
+    description: HISTOIRES_DESCRIPTION,
+  },
 };
 
 function HistoireCard({ histoire }: { histoire: (typeof HISTOIRES)[number] }) {
@@ -25,7 +39,7 @@ function HistoireCard({ histoire }: { histoire: (typeof HISTOIRES)[number] }) {
       <div className="relative h-[150px] overflow-hidden">
         <Image
           src={getHistoirePhoto(histoire.slug)}
-          alt={`Illustration — ${histoire.title}`}
+          alt={`Illustration : ${histoire.title}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -93,16 +107,16 @@ export default function HistoiresHubPage() {
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 {HISTOIRES.length} histoires documentées
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 Ce que le temps a fait aux entreprises qui n&apos;ont pas pris le virage à temps
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-4 text-[19px] leading-9 text-theme-1">
                 Certaines entreprises ont perdu leur position dominante faute d&apos;avoir pris la
                 transformation digitale au sérieux à temps. D&apos;autres ont vite compris et en ont fait
                 un avantage décisif. Ces histoires sont publiques et largement documentées dans la presse
-                économique — sources citées sur chaque page.
+                économique, sources citées sur chaque page.
               </p>
               <p className="mb-0 rounded-[10px] border-l-[3px] border-theme-2 bg-theme-3 px-5 py-4 text-sm leading-7 text-theme-1">
                 Il ne s&apos;agit pas de missions ou de clients d&apos;Audyxa : ce sont des exemples
@@ -148,7 +162,7 @@ export default function HistoiresHubPage() {
       <CallToAction
         title={
           <>
-            La leçon vaut aussi pour vous —
+            La leçon vaut aussi pour vous,
             <br className="hidden min-[600px]:block" />
             parlons de votre contexte réel.
           </>

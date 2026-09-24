@@ -24,7 +24,7 @@ function isInViewport(el: Element) {
  * puis joue l'animation "fadeIn*" une seule fois.
  *
  * Un élément déjà visible au chargement (au-dessus de la ligne de flottaison)
- * est révélé immédiatement via une vérification synchrone de sa position —
+ * est révélé immédiatement via une vérification synchrone de sa position :
  * c'est aussi le comportement réel de WOW.js sur le site source. Pour le
  * reste, un IntersectionObserver prend le relais au scroll.
  */

@@ -1,4 +1,3 @@
-import Script from "next/script";
 import { MainSlider } from "@/components/main-slider";
 import { AboutSection } from "@/components/about-section";
 import { ServicesSection } from "@/components/services-section";
@@ -14,9 +13,9 @@ import { FAQ_ITEMS } from "@/lib/faq-data";
 export default function Home() {
   return (
     <main>
-      <Script
-        id="home-faq-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqJsonLd(FAQ_ITEMS)) }}
       />
       <MainSlider />

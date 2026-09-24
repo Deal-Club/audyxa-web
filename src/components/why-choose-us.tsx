@@ -37,7 +37,7 @@ export function WhyChooseUs({
     <section className="relative pt-[50px] pb-[60px]">
       <div className="auto-container">
         <div className="flex flex-wrap">
-          {/* Content column — col-xl-6 col-lg-7 col-md-12, order-2 à partir de lg
+          {/* Content column : col-xl-6 col-lg-7 col-md-12, order-2 à partir de lg
               (le lien vidéo passe alors visuellement à droite de la colonne image) */}
           <ScrollReveal
             as="div"
@@ -75,7 +75,7 @@ export function WhyChooseUs({
             </div>
           </ScrollReveal>
 
-          {/* Image column — col-xl-6 col-lg-5 col-md-12, masquée sur mobile/tablette */}
+          {/* Image column : col-xl-6 col-lg-5 col-md-12, masquée sur mobile/tablette */}
           <div className="relative mb-[50px] hidden w-full lg:block lg:w-5/12 xl:w-1/2">
             <ScrollReveal
               as="div"

@@ -22,14 +22,40 @@ export interface CountryMarketContext {
   obstacle?: string;
 }
 
+export interface CountryMobileMoney {
+  /** Constat sourcé sur l'acteur mobile money dominant du pays, sans chiffre inventé */
+  text: string;
+  /** Organisme/média + année, tel qu'à citer */
+  source: string;
+}
+
+export interface CountrySectorHighlights {
+  /** Contexte local pour /secteurs/banque-et-finance, sans chiffre inventé */
+  comptables: string;
+  /** Contexte local pour /secteurs/retail-et-distribution */
+  importExport: string;
+  /** Contexte local pour /secteurs/education-et-formation */
+  education: string;
+}
+
 export interface GeoCountry {
   slug: string;
   name: string;
   region: "Afrique de l'Ouest" | "Afrique centrale" | "Europe francophone";
   currency: string;
   cities: GeoCity[];
-  /** Contexte marché sourcé, issu de la veille seo/veille-*.md — optionnel tant que non vérifié */
+  /** Contexte marché sourcé, issu de la veille seo/veille-*.md (optionnel tant que non vérifié) */
   marketContext?: CountryMarketContext;
+  /** "au Bénin", "en Côte d'Ivoire"... (par défaut "au" si absent, pays non prioritaires) */
+  preposition?: "au" | "en";
+  /** Adjectif de nationalité, accordé au féminin pluriel ("entreprises béninoises") */
+  gentileAdj?: string;
+  /** Meta description dédiée 150-160 caractères, jamais un gabarit identique d'un pays à l'autre */
+  metaDescription?: string;
+  /** Constat sourcé sur le mobile money dominant, cf. §4.4 du plan SEO/GEO/AEO */
+  mobileMoney?: CountryMobileMoney;
+  /** Contextualisation des 3 pages /secteurs pour ce pays */
+  sectorHighlights?: CountrySectorHighlights;
 }
 
 function slugify(value: string): string {
@@ -48,23 +74,48 @@ function makeCities(names: string[]): GeoCity[] {
 export const GEO_COUNTRIES: GeoCountry[] = [
   {
     slug: "benin", name: "Bénin", region: "Afrique de l'Ouest", currency: "franc CFA (XOF)",
+    preposition: "au",
+    gentileAdj: "béninoises",
+    metaDescription: "Audyxa accompagne les PME béninoises en transformation digitale : audit, automatisation, IA, CRM/ERP, de Cotonou à tout le Bénin. Diagnostic sur mesure.",
     cities: makeCities(["Cotonou", "Porto-Novo", "Parakou", "Abomey-Calavi", "Djougou", "Bohicon", "Kandi", "Lokossa", "Ouidah", "Abomey"]),
+    mobileMoney: {
+      text: "MTN Mobile Money captait 83 % de la valeur du marché du mobile money béninois en 2025, loin devant Moov Money et Celtiis Cash (respectivement 8,24 % et 20,87 % des comptes actifs à la mi-2025).",
+      source: "La Marina Bénin, mai 2026",
+    },
+    sectorHighlights: {
+      comptables: "De nombreux cabinets comptables béninois accompagnent les PME de Cotonou et d'Abomey-Calavi sur leur mise en conformité fiscale, identifiée comme un frein direct à l'accès aux marchés publics.",
+      importExport: "Le port autonome de Cotonou reste le principal point d'entrée du commerce extérieur béninois, ce qui concentre une grande partie des acteurs de l'import-export et de la distribution autour de la capitale économique.",
+      education: "Abomey-Calavi concentre plusieurs établissements d'enseignement supérieur privé, un secteur en recherche d'outils de gestion académique et administrative adaptés à sa croissance.",
+    },
     marketContext: {
-      intro: "Selon une étude de terrain menée en 2023 auprès de 98 entreprises digitales béninoises, seule une minorité d'entre elles a déjà collaboré avec l'administration publique — la majorité souhaite le faire mais n'y parvient pas, freinée par l'accès au financement et la capacité fiduciaire de l'entreprise. Une étude complémentaire recense 102 entreprises digitales dans l'écosystème national, très concentrées sur Cotonou.",
+      intro: "Selon une étude de terrain menée en 2023 auprès de 98 entreprises digitales béninoises, seule une minorité d'entre elles a déjà collaboré avec l'administration publique : la majorité souhaite le faire mais n'y parvient pas, freinée par l'accès au financement et la capacité fiduciaire de l'entreprise. Une étude complémentaire recense 102 entreprises digitales dans l'écosystème national, très concentrées sur Cotonou.",
       stats: [
         { value: "37 %", label: "des entreprises digitales béninoises ont déjà fourni un service à l'administration publique", source: "GIZ / Centre de Transformation Digitale du Bénin, 2023" },
         { value: "48 %", label: "des entreprises digitales du pays sont concentrées à Cotonou", source: "ADPME Bénin, étude ACED-ACUMEN 2023" },
         { value: "93 %", label: "des entreprises digitales se financent uniquement sur fonds propres", source: "ADPME Bénin, étude ACED-ACUMEN 2023" },
       ],
-      obstacle: "Le principal frein identifié par l'étude GIZ est la capacité fiduciaire des entreprises locales (structuration, conformité fiscale), qui les exclut d'une partie des marchés publics — davantage qu'un manque de volonté ou de compétence technique.",
+      obstacle: "Le principal frein identifié par l'étude GIZ est la capacité fiduciaire des entreprises locales (structuration, conformité fiscale), qui les exclut d'une partie des marchés publics, davantage qu'un manque de volonté ou de compétence technique.",
     },
   },
   {
     slug: "cote-divoire", name: "Côte d'Ivoire", region: "Afrique de l'Ouest", currency: "franc CFA (XOF)",
+    preposition: "en",
+    gentileAdj: "ivoiriennes",
+    metaDescription: "Audyxa accompagne les entreprises ivoiriennes dans leur transformation digitale : audit, automatisation, IA, CRM/ERP, d'Abidjan à toute la Côte d'Ivoire.",
     cities: makeCities(["Abidjan", "Bouaké", "Daloa", "Yamoussoukro", "Korhogo", "San-Pédro", "Man", "Divo", "Gagnoa", "Abengourou"]),
+    mobileMoney: {
+      text: "Fin 2024, plus de 26 millions de comptes mobile money étaient actifs en Côte d'Ivoire (environ 13,8 millions chez Orange Money, 8,5 millions chez MTN MoMo et 2,9 millions chez Moov Money), ce qui fait du pays le premier marché de la monnaie électronique de l'UEMOA.",
+      source: "Données BCEAO citées par Sikafinance et Koaci, 2025",
+    },
+    sectorHighlights: {
+      comptables: "Abidjan concentre une grande partie des principaux cabinets comptables et d'audit de la zone UEMOA, un positionnement qui en fait aussi un marché exigeant sur la conformité et la digitalisation des process.",
+      importExport: "Le port autonome d'Abidjan, premier port de la région, fait de l'import-export et de la distribution un secteur central de l'économie ivoirienne, avec le cacao et l'anacarde parmi les filières d'exportation majeures.",
+      education: "Abidjan et Yamoussoukro rassemblent une large offre d'enseignement supérieur privé, en croissance rapide et en recherche d'outils numériques pour gérer les effectifs.",
+    },
     marketContext: {
-      intro: "La maturité numérique ivoirienne est estimée à 28 %, contre 72 % en France, dans un pays qui compte pourtant plus de 37 millions d'internautes. Abidjan est devenue un pôle régional d'événements dédiés à la transformation digitale des entreprises, comme le B2B Digital Day.",
+      intro: "Selon DataReportal, la Côte d'Ivoire comptait 12,8 millions d'internautes en janvier 2025, soit un taux de pénétration de 39,6 % de la population. La maturité numérique des entreprises reste, elle, nettement en retrait par rapport aux marchés européens. Abidjan est devenue un pôle régional d'événements dédiés à la transformation digitale des entreprises, comme le B2B Digital Day.",
       stats: [
+        { value: "12,8 M", label: "internautes en Côte d'Ivoire en janvier 2025, soit 39,6 % de la population", source: "DataReportal, Digital 2025: Côte d'Ivoire" },
         { value: "28 %", label: "de maturité numérique estimée en Côte d'Ivoire, contre 72 % en France", source: "Smart Africa / agences onusiennes, cité par CIOMAG" },
         { value: "90 %", label: "des PME ivoiriennes sont conscientes du risque cyber, mais 67 % d'entre elles ne l'anticipent pas", source: "CIOMAG" },
       ],
@@ -73,7 +124,19 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
   {
     slug: "senegal", name: "Sénégal", region: "Afrique de l'Ouest", currency: "franc CFA (XOF)",
+    preposition: "au",
+    gentileAdj: "sénégalaises",
+    metaDescription: "Audyxa accompagne les entreprises sénégalaises en transformation digitale : audit, automatisation, IA, CRM/ERP, de Dakar à tout le Sénégal. Diagnostic.",
     cities: makeCities(["Dakar", "Touba", "Thiès", "Kaolack", "M'bour", "Saint-Louis", "Rufisque", "Ziguinchor", "Diourbel", "Louga"]),
+    mobileMoney: {
+      text: "Wave s'est imposé comme l'acteur mobile money le plus utilisé au Sénégal grâce à une tarification proche de 1 %, devant Orange Money (réseau d'agents historique) et Free Money.",
+      source: "Presse spécialisée (Seneweb, Riverpe), 2025, à recouper avec les données BCEAO",
+    },
+    sectorHighlights: {
+      comptables: "L'Ordre des experts-comptables et comptables agréés du Sénégal structure une profession active à Dakar, en première ligne pour accompagner la mise en conformité des PME.",
+      importExport: "Le port de Dakar reste une porte d'entrée logistique majeure pour le Sénégal et une partie du Mali, ce qui concentre une bonne part des acteurs de l'import-export autour de la capitale.",
+      education: "Dakar concentre la majorité des établissements d'enseignement supérieur privé sénégalais, un secteur déjà largement digitalisé sur les paiements mais moins sur le pilotage pédagogique.",
+    },
     marketContext: {
       intro: "Le Sénégal vise 95 % d'entreprises à maturité digitale d'ici 2034 via son \"New Deal Technologique\", mais la situation actuelle des PME reste en retrait, avec une fracture nette entre Dakar et le reste du pays.",
       stats: [
@@ -85,7 +148,19 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
   {
     slug: "togo", name: "Togo", region: "Afrique de l'Ouest", currency: "franc CFA (XOF)",
+    preposition: "au",
+    gentileAdj: "togolaises",
+    metaDescription: "Audyxa aide les entreprises togolaises à se transformer numériquement : audit, automatisation, IA, CRM/ERP, de Lomé à tout le Togo. Diagnostic sur mesure.",
     cities: makeCities(["Lomé", "Sokodé", "Kara", "Kpalimé", "Atakpamé", "Dapaong", "Tsévié", "Aného", "Bassar", "Mango"]),
+    mobileMoney: {
+      text: "Le marché togolais du mobile money reste partagé entre deux opérateurs : TMoney (Togocom), qui détenait 61 % du marché fin mars 2024, et Flooz (Moov Africa Togo), pour les 39 % restants.",
+      source: "Togo First, 2024",
+    },
+    sectorHighlights: {
+      comptables: "Les cabinets comptables togolais accompagnent une base d'entreprises encore jeune : environ 14 919 entreprises ont été créées au Togo en 2024, un flux que peu de cabinets suivent avec des outils réellement digitalisés.",
+      importExport: "Le port autonome de Lomé, l'un des ports en eau profonde les plus actifs d'Afrique de l'Ouest, structure une grande partie de l'activité d'import-export et de distribution du pays.",
+      education: "Lomé concentre l'essentiel de l'offre d'enseignement supérieur privé togolais, un secteur en demande d'outils de gestion des inscriptions et de suivi pédagogique.",
+    },
     marketContext: {
       intro: "Le Togo dispose d'une stratégie nationale et d'un programme actif de coopération allemande dédié à la digitalisation des PME, mais son propre document de référence qualifie le niveau de digitalisation des PME togolaises hors secteur financier de \"toujours très bas\".",
       stats: [
@@ -97,9 +172,21 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
   {
     slug: "burkina-faso", name: "Burkina Faso", region: "Afrique de l'Ouest", currency: "franc CFA (XOF)",
+    preposition: "au",
+    gentileAdj: "burkinabè",
+    metaDescription: "Audyxa accompagne les entreprises burkinabè dans leur transformation digitale : audit, automatisation, IA, CRM/ERP, de Ouagadougou à tout le Burkina Faso.",
     cities: makeCities(["Ouagadougou", "Bobo-Dioulasso", "Koudougou", "Banfora", "Ouahigouya", "Kaya", "Tenkodogo", "Fada N'Gourma", "Dédougou", "Réo"]),
+    mobileMoney: {
+      text: "Orange Money reste le premier opérateur mobile money du Burkina Faso avec environ 5,2 millions d'utilisateurs actifs, devant Moov Money et ses 2 millions d'utilisateurs actifs.",
+      source: "Presse spécialisée (Fiitsa, Yiri), 2024-2025, à recouper avec les données BCEAO",
+    },
+    sectorHighlights: {
+      comptables: "Les cabinets comptables burkinabè accompagnent un tissu de PME où, selon une thèse récente, la digitalisation reste concentrée sur la communication commerciale plus que sur la gestion interne.",
+      importExport: "Pays enclavé, le Burkina Faso dépend des corridors logistiques vers les ports d'Abidjan, Lomé et Tema pour son commerce extérieur, avec le coton et l'or comme filières d'exportation majeures.",
+      education: "Ouagadougou et Bobo-Dioulasso concentrent l'essentiel de l'offre d'enseignement supérieur privé burkinabè, un secteur en recherche d'outils de gestion adaptés à des budgets contraints.",
+    },
     marketContext: {
-      intro: "Une thèse soutenue en 2026 à l'Université Thomas Sankara, citant un recensement de 2019, situe la part des entreprises burkinabè actives dans le secteur numérique très en dessous des standards mondiaux — un écart qui représente aussi une marge de progression pour les entreprises qui investissent tôt dans leur transformation digitale.",
+      intro: "Une thèse soutenue en 2026 à l'Université Thomas Sankara, citant un recensement de 2019, situe la part des entreprises burkinabè actives dans le secteur numérique très en dessous des standards mondiaux : un écart qui représente aussi une marge de progression pour les entreprises qui investissent tôt dans leur transformation digitale.",
       stats: [
         { value: "2,81 %", label: "des entreprises recensées au Burkina Faso appartenaient au secteur numérique en 2019, contre un objectif mondial estimé à 75 %", source: "Thèse A. S. Kaboré, Université Thomas Sankara, 2026, citée par Burkina24" },
       ],
@@ -108,36 +195,72 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
   {
     slug: "mali", name: "Mali", region: "Afrique de l'Ouest", currency: "franc CFA (XOF)",
+    preposition: "au",
+    gentileAdj: "maliennes",
+    metaDescription: "Audyxa accompagne les entreprises maliennes en transformation digitale : audit, automatisation, IA, CRM/ERP, de Bamako à tout le Mali. Diagnostic sur mesure.",
     cities: makeCities(["Bamako", "Sikasso", "Ségou", "Mopti", "Koutiala", "Kayes", "Gao", "Kati", "Tombouctou", "San"]),
+    mobileMoney: {
+      text: "Orange Money détenait environ 62 % du marché malien du mobile money fin 2023, loin devant Moov Africa Malitel, et a continué de renforcer son leadership depuis.",
+      source: "Agence Ecofin, 2024",
+    },
+    sectorHighlights: {
+      comptables: "Les cabinets comptables maliens accompagnent des PME où la gestion interne (facturation, stocks, suivi client) reste souvent artisanale, malgré une inclusion financière mobile déjà avancée.",
+      importExport: "Pays enclavé, le Mali dépend des corridors vers Dakar et Abidjan pour son commerce extérieur, avec l'or et le coton comme principales filières d'exportation.",
+      education: "Bamako concentre l'essentiel de l'offre d'enseignement supérieur privé malien, un secteur qui gagnerait à mieux exploiter l'inclusion financière mobile déjà présente chez les familles.",
+    },
     marketContext: {
       intro: "Une étude menée auprès de 180 PME du district de Bamako confirme un lien direct entre l'usage d'outils digitaux et la performance commerciale. L'inclusion financière numérique a par ailleurs fortement progressé : les transactions mobiles représentaient 65 % du PIB malien en 2021, contre 21 % en 2015.",
       stats: [
         { value: "180 PME", label: "étudiées à Bamako pour mesurer le lien entre digitalisation et performance", source: "Revue Française d'Économie et de Gestion, vol. 4 n°9, 2023" },
         { value: "65 %", label: "du PIB malien transitait par des transactions mobiles en 2021, contre 21 % en 2015", source: "Banque mondiale, Global Findex" },
       ],
-      obstacle: "L'infrastructure de paiement mobile est bien développée, mais la gestion interne des entreprises (facturation, stocks, suivi client) reste souvent artisanale — c'est le vrai chantier identifié par l'étude de terrain.",
+      obstacle: "L'infrastructure de paiement mobile est bien développée, mais la gestion interne des entreprises (facturation, stocks, suivi client) reste souvent artisanale : c'est le vrai chantier identifié par l'étude de terrain.",
     },
   },
   {
     slug: "niger", name: "Niger", region: "Afrique de l'Ouest", currency: "franc CFA (XOF)",
+    preposition: "au",
+    gentileAdj: "nigériennes",
+    metaDescription: "Audyxa accompagne les entreprises nigériennes dans leur transformation digitale : audit, automatisation, IA, CRM/ERP, de Niamey à tout le Niger. Diagnostic.",
     cities: makeCities(["Niamey", "Zinder", "Maradi", "Agadez", "Tahoua", "Dosso", "Diffa", "Tillabéri", "Arlit", "Birni N'Konni"]),
+    mobileMoney: {
+      text: "Airtel Money et Moov Money (Flooz) sont les portefeuilles mobile money les plus répandus au Niger, aux côtés d'Orange Money, dans un contexte où la fiabilité de la connexion reste le premier frein cité par les acteurs économiques.",
+      source: "Agence Ecofin et Agence Nigérienne de Presse, 2024",
+    },
+    sectorHighlights: {
+      comptables: "Les cabinets comptables nigériens accompagnent des entreprises pour qui la connexion internet elle-même reste souvent le premier obstacle, avant même le choix des outils de gestion.",
+      importExport: "Pays enclavé et vaste, le Niger dépend fortement des corridors routiers vers les ports de la sous-région pour son commerce extérieur, avec l'uranium et l'agriculture parmi les filières structurantes.",
+      education: "Niamey concentre l'essentiel de l'offre d'enseignement supérieur privé nigérien, un secteur encore restreint mais en développement.",
+    },
     marketContext: {
       intro: "Le Niger a bénéficié d'un financement de la Banque mondiale de 100 millions de dollars pour sa transformation numérique et prépare une nouvelle politique nationale du numérique pour la période 2026-2035. Sur le terrain, la fiabilité de la connexion reste le premier irritant cité par les acteurs économiques.",
       stats: [
         { value: "100 M$", label: "financement de la Banque mondiale (IDA) pour la transformation numérique du Niger, annoncé en 2020", source: "Banque mondiale, via FinDev Gateway" },
       ],
-      obstacle: "\"Beaucoup de banques sont fermées car les agences n'ont pas de connexion. Les paiements, les transferts que l'on faisait avant… beaucoup sont bloqués\", résume Adolphe Sagbo, président de la Fédération patronale du Niger — la connexion elle-même reste le premier frein, avant même le choix des outils.",
+      obstacle: "\"Beaucoup de banques sont fermées car les agences n'ont pas de connexion. Les paiements, les transferts que l'on faisait avant… beaucoup sont bloqués\", résume Adolphe Sagbo, président de la Fédération patronale du Niger. La connexion elle-même reste le premier frein, avant même le choix des outils.",
     },
   },
   {
     slug: "guinee", name: "Guinée", region: "Afrique de l'Ouest", currency: "franc guinéen (GNF)",
+    preposition: "en",
+    gentileAdj: "guinéennes",
+    metaDescription: "Audyxa accompagne les entreprises guinéennes en transformation digitale : audit, automatisation, IA, CRM/ERP, de Conakry à toute la Guinée. Diagnostic.",
     cities: makeCities(["Conakry", "Nzérékoré", "Kankan", "Kindia", "Labé", "Mamou", "Boké", "Faranah", "Kissidougou", "Guéckédou"]),
+    mobileMoney: {
+      text: "Orange Money reste le principal opérateur mobile money privé en Guinée. Son concurrent MTN Guinée a été racheté par l'État guinéen fin décembre 2024 (pour un franc symbolique) et opère désormais sous la marque Areeba Guinée.",
+      source: "Agence Ecofin et Guinéenews, décembre 2024",
+    },
+    sectorHighlights: {
+      comptables: "Les cabinets comptables de Conakry accompagnent des entreprises confrontées à une connexion internet jugée coûteuse et instable par plusieurs professionnels du secteur, un frein concret à la digitalisation.",
+      importExport: "La Guinée détient d'importantes réserves de bauxite, ce qui structure une part importante de son commerce extérieur et de sa logistique portuaire autour de Conakry et Boké.",
+      education: "Conakry concentre l'essentiel de l'offre d'enseignement supérieur privé guinéen, un secteur qui reste dépendant de la qualité et du coût de la connexion internet locale.",
+    },
     marketContext: {
       intro: "La Guinée a annoncé un bond d'infrastructure numérique en 2025 (fibre optique, premier data center certifié Tier III) et a lancé fin août 2026 son premier recensement général des entreprises. Sur le terrain, des professionnels de Conakry décrivent une réalité plus contrastée que le discours officiel.",
       stats: [
-        { value: "12 000+ km", label: "de fibre optique déployés selon le bilan du ministère guinéen du numérique (2025)", source: "MPTEN, via Guinéenews, janvier 2026 — communication officielle non auditée par un tiers" },
+        { value: "12 000+ km", label: "de fibre optique déployés selon le bilan du ministère guinéen du numérique (2025)", source: "MPTEN, via Guinéenews, janvier 2026 (communication officielle non auditée par un tiers)" },
       ],
-      obstacle: "\"Le nombre de mégas est très faible. Résultat, une connexion lente, parfois inutilisable […] on ne peut pas rentabiliser nos activités avec de tels prix\", témoigne un informaticien de Conakry auprès de Le360 Afrique — le coût et la qualité de la connexion restent des irritants concrets malgré les annonces d'infrastructure.",
+      obstacle: "\"Le nombre de mégas est très faible. Résultat, une connexion lente, parfois inutilisable […] on ne peut pas rentabiliser nos activités avec de tels prix\", témoigne un informaticien de Conakry auprès de Le360 Afrique. Le coût et la qualité de la connexion restent des irritants concrets malgré les annonces d'infrastructure.",
     },
   },
   {
@@ -158,7 +281,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Le Gabon affiche l'un des taux de pénétration internet les plus élevés d'Afrique centrale, et le gouvernement a plus que doublé son budget numérique national pour 2026. Cette connectivité élevée ne s'est toutefois pas encore traduite en écosystème entrepreneurial numérique dense.",
       stats: [
-        { value: "71,9 %", label: "de pénétration internet au Gabon fin 2025 — l'un des taux les plus hauts d'Afrique centrale", source: "DataReportal (Kepios), Digital 2026: Gabon" },
+        { value: "71,9 %", label: "de pénétration internet au Gabon fin 2025, l'un des taux les plus hauts d'Afrique centrale", source: "DataReportal (Kepios), Digital 2026: Gabon" },
         { value: "82 Md FCFA", label: "budget numérique national gabonais pour 2026, en hausse de plus de 150 % vs 2025", source: "Ministère de l'Économie numérique du Gabon, via Agence Ecofin" },
       ],
       obstacle: "Le Gabon a la connectivité mais pas encore la traction entrepreneuriale : c'est un terrain propice à l'accompagnement post-création (structuration digitale, outillage) plutôt qu'à l'accès de base.",
@@ -168,7 +291,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     slug: "rd-congo", name: "RD Congo", region: "Afrique centrale", currency: "franc congolais (CDF)",
     cities: makeCities(["Kinshasa", "Lubumbashi", "Mbuji-Mayi", "Kananga", "Kisangani", "Bukavu", "Goma", "Kolwezi", "Likasi", "Tshikapa"]),
     marketContext: {
-      intro: "La Banque mondiale estime qu'une hausse de 10 % de l'accès au haut débit en RD Congo pourrait générer environ 2,5 % de croissance additionnelle du PIB et près de 700 000 emplois — un potentiel documenté, mais conditionné à des réformes réglementaires encore à mettre en œuvre.",
+      intro: "La Banque mondiale estime qu'une hausse de 10 % de l'accès au haut débit en RD Congo pourrait générer environ 2,5 % de croissance additionnelle du PIB et près de 700 000 emplois. Un potentiel documenté, mais conditionné à des réformes réglementaires encore à mettre en œuvre.",
       stats: [
         { value: "+2,5 % PIB", label: "gain de croissance estimé pour une hausse de 10 % de l'accès au haut débit en RDC", source: "Banque mondiale, Mise à jour économique de la RDC" },
         { value: "30,5 %", label: "de pénétration internet en RD Congo fin 2025", source: "DataReportal (Kepios), Digital 2026" },
@@ -185,7 +308,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
         { value: "86 % couverts / 19 % utilisateurs", label: "écart entre couverture 4G et usage réel d'internet mobile au Congo-Brazzaville", source: "GSMA, rapport présenté au Digital Africa Summit, juin 2026" },
         { value: "870 Md FCFA", label: "valeur économique additionnelle projetée d'ici 2030 grâce à la transformation numérique", source: "GSMA, 2026" },
       ],
-      obstacle: "Le régulateur télécom local (ARPCE) reconnaît lui-même l'absence d'observatoire statistique dédié à l'usage numérique des entreprises — un vrai angle mort institutionnel, à mentionner honnêtement plutôt qu'à masquer.",
+      obstacle: "Le régulateur télécom local (ARPCE) reconnaît lui-même l'absence d'observatoire statistique dédié à l'usage numérique des entreprises. Un vrai angle mort institutionnel, à mentionner honnêtement plutôt qu'à masquer.",
     },
   },
   {
@@ -209,7 +332,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
         { value: "84 %", label: "des PME belges atteignent un niveau d'intensité numérique de base, contre 71 % en moyenne UE", source: "Eurostat, Digitalisation in Europe, 2025" },
         { value: "1 facture sur 10", label: "seulement est émise en format électronique structuré (UBL/XML) en Belgique à l'automne 2025", source: "Baromètre TPE/PME Moore Belgium x Trends x OECCBB, octobre 2025" },
       ],
-      obstacle: "L'écart de maturité numérique se joue désormais sur les technologies avancées (IA, data, robotique), avec une fracture nette entre PME moyennes et micro-entreprises — pas sur l'équipement de base, déjà largement acquis. Les dispositifs régionaux d'aide à la digitalisation des PME (hub.brussels à Bruxelles, Digital Wallonia en Wallonie, le portefeuille PME en Flandre) existent et méritent d'être vérifiés au cas par cas selon la région et l'éligibilité de chaque entreprise.",
+      obstacle: "L'écart de maturité numérique se joue désormais sur les technologies avancées (IA, data, robotique), avec une fracture nette entre PME moyennes et micro-entreprises, pas sur l'équipement de base, déjà largement acquis. Les dispositifs régionaux d'aide à la digitalisation des PME (hub.brussels à Bruxelles, Digital Wallonia en Wallonie, le portefeuille PME en Flandre) existent et méritent d'être vérifiés au cas par cas selon la région et l'éligibilité de chaque entreprise.",
     },
   },
   {
@@ -220,19 +343,19 @@ export const GEO_COUNTRIES: GeoCountry[] = [
       stats: [
         { value: "82 % vs 36 %", label: "part de la population qui veut trouver les PME en ligne, contre part des PME ayant un site adéquat", source: "Étude PME Digital Pulse 2025, localsearch x HES-SO Lucerne" },
       ],
-      obstacle: "Le cadre de conformité applicable en Suisse est la nLPD (nouvelle loi sur la protection des données, 2023) — à ne pas confondre avec le RGPD européen, une distinction importante pour la clientèle suisse romande. Les acheteurs suisses sont aussi particulièrement exigeants sur la preuve vérifiable (avis Google authentifiables, tarifs affichés) et distinguent nettement les grands cabinets (Deloitte, PwC, Accenture) des consultants indépendants sur le tarif et la vitesse d'exécution.",
+      obstacle: "Le cadre de conformité applicable en Suisse est la nLPD (nouvelle loi sur la protection des données, 2023), à ne pas confondre avec le RGPD européen, une distinction importante pour la clientèle suisse romande. Les acheteurs suisses sont aussi particulièrement exigeants sur la preuve vérifiable (avis Google authentifiables, tarifs affichés) et distinguent nettement les grands cabinets (Deloitte, PwC, Accenture) des consultants indépendants sur le tarif et la vitesse d'exécution.",
     },
   },
   {
     slug: "luxembourg", name: "Luxembourg", region: "Europe francophone", currency: "euro (EUR)",
     cities: makeCities(["Luxembourg-ville", "Esch-sur-Alzette", "Differdange", "Dudelange", "Ettelbruck", "Diekirch", "Wiltz", "Echternach", "Rumelange", "Bettembourg"]),
     marketContext: {
-      intro: "Le Luxembourg conjugue une adoption de l'intelligence artificielle parmi les plus fortes d'Europe du Nord avec un niveau d'intensité numérique de base des PME légèrement sous la moyenne de l'Union européenne — signe d'une digitalisation portée par les grandes structures financières, qui n'a pas encore irrigué toutes les PME.",
+      intro: "Le Luxembourg conjugue une adoption de l'intelligence artificielle parmi les plus fortes d'Europe du Nord avec un niveau d'intensité numérique de base des PME légèrement sous la moyenne de l'Union européenne. Signe d'une digitalisation portée par les grandes structures financières, qui n'a pas encore irrigué toutes les PME.",
       stats: [
         { value: "54 %", label: "niveau d'intensité numérique de base des PME luxembourgeoises, contre 55 % en moyenne UE", source: "Eurostat, Digitalisation in Europe, 2024" },
-        { value: "20-28 %", label: "taux d'adoption de l'IA par les entreprises luxembourgeoises, un des plus élevés d'Europe du Nord", source: "Eurostat / STATEC, 2024 — fourchette à confirmer" },
+        { value: "20-28 %", label: "taux d'adoption de l'IA par les entreprises luxembourgeoises, un des plus élevés d'Europe du Nord", source: "Eurostat / STATEC, 2024 (fourchette à confirmer)" },
       ],
-      obstacle: "L'économie luxembourgeoise très internationalisée (services financiers) crée probablement une fracture entre grandes structures et TPE/PME classiques du commerce local — une hypothèse cohérente avec les données disponibles. Le label \"Fit 4 Digital\" (accréditation publique luxembourgeoise avec cofinancement des missions de conseil) est un signal de confiance recherché localement, à vérifier au cas par cas selon l'éligibilité de chaque entreprise.",
+      obstacle: "L'économie luxembourgeoise très internationalisée (services financiers) crée probablement une fracture entre grandes structures et TPE/PME classiques du commerce local. Une hypothèse cohérente avec les données disponibles. Le label \"Fit 4 Digital\" (accréditation publique luxembourgeoise avec cofinancement des missions de conseil) est un signal de confiance recherché localement, à vérifier au cas par cas selon l'éligibilité de chaque entreprise.",
     },
   },
 ];

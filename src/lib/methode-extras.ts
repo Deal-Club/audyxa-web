@@ -4,7 +4,7 @@
  * Le contenu de fond vit dans `methode-content.ts` (reformulation du cours
  * "Digitalisation des Entreprises"). Ce fichier ajoute la couche de mise en
  * page : question centrale, points clés, à-retenir, pièges, application
- * Audyxa et FAQ. Tout est dérivé du chapitre correspondant — aucun chiffre
+ * Audyxa et FAQ. Tout est dérivé du chapitre correspondant, aucun chiffre
  * ni exemple n'est ajouté qui ne figure pas déjà dans la source.
  */
 
@@ -74,7 +74,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       },
       {
         label: "Une grille en dix dimensions",
-        text: "La maturité se mesure par capacité — stratégie, client, processus, données, sécurité, compétences — et non au nombre de logiciels installés.",
+        text: "La maturité se mesure par capacité (stratégie, client, processus, données, sécurité, compétences) et non au nombre de logiciels installés.",
       },
     ],
     retenir: [
@@ -95,7 +95,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       {
         question: "Quelle différence entre numérisation et transformation digitale ?",
         answer:
-          "La numérisation convertit une information analogique en format numérique. La digitalisation revoit l'exécution d'un processus grâce aux capacités numériques. La transformation fait évoluer ensemble plusieurs capacités — modèle opérationnel, données, compétences, gouvernance — et se mesure en résultat métier.",
+          "La numérisation convertit une information analogique en format numérique. La digitalisation revoit l'exécution d'un processus grâce aux capacités numériques. La transformation fait évoluer ensemble plusieurs capacités (modèle opérationnel, données, compétences, gouvernance) et se mesure en résultat métier.",
       },
       {
         question: "Comment évalue-t-on la maturité numérique d'une PME ?",
@@ -115,7 +115,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
     keyPoints: [
       {
         label: "Six étapes en boucle",
-        text: "Cadrer, diagnostiquer, prioriser, concevoir, déployer, mesurer — les résultats mesurés réalimentent la priorisation suivante.",
+        text: "Cadrer, diagnostiquer, prioriser, concevoir, déployer, mesurer, les résultats mesurés réalimentent la priorisation suivante.",
       },
       {
         label: "Quatre formes de preuve",
@@ -193,7 +193,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       {
         question: "Qu'est-ce qu'une cartographie AS-IS / TO-BE ?",
         answer:
-          "L'AS-IS décrit le processus tel qu'il fonctionne réellement — déclencheur, étapes, rôles, systèmes, données, décisions, exceptions, temps de travail et d'attente. Le TO-BE décrit la version cible simplifiée, conçue après mesure de l'existant.",
+          "L'AS-IS décrit le processus tel qu'il fonctionne réellement, déclencheur, étapes, rôles, systèmes, données, décisions, exceptions, temps de travail et d'attente. Le TO-BE décrit la version cible simplifiée, conçue après mesure de l'existant.",
       },
       {
         question: "Quelles mesures prendre avant de refondre un processus ?",
@@ -213,7 +213,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
     keyPoints: [
       {
         label: "Six couches",
-        text: "Canaux, expérience, métier, intégration, data et IA, infrastructure — sécurité, identité et observabilité restant transversales.",
+        text: "Canaux, expérience, métier, intégration, data et IA, infrastructure, sécurité, identité et observabilité restant transversales.",
       },
       {
         label: "Une source de vérité par donnée",
@@ -266,7 +266,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       },
       {
         label: "Sept dimensions de qualité",
-        text: "Exactitude, complétude, unicité, cohérence, validité, fraîcheur et intégrité référentielle — la complétude seule trompe.",
+        text: "Exactitude, complétude, unicité, cohérence, validité, fraîcheur et intégrité référentielle, la complétude seule trompe.",
       },
       {
         label: "Une gouvernance qui tranche",
@@ -277,7 +277,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       "Pour chaque KPI d'un tableau de bord : définition, formule, source, fréquence, owner, cible, seuil d'alerte et action associée.",
       "Sur les délais, la médiane et les percentiles décrivent mieux la réalité qu'une moyenne unique.",
       "Un RAG ou un agent ne corrige pas une documentation incohérente : le nettoyage précède l'indexation.",
-      "La classification de sensibilité — publique, interne, confidentielle, personnelle, secrets, réglementée — conditionne les droits d'accès.",
+      "La classification de sensibilité (publique, interne, confidentielle, personnelle, secrets, réglementée) conditionne les droits d'accès.",
     ],
     pieges: [
       "Mesurer la complétude sans la validité : 98 % d'emails renseignés dont 20 % invalides restent inexploitables.",
@@ -335,7 +335,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       "Compter le coût d'un projet IA en tokens seulement, en oubliant indexation, stockage, évaluations et validation humaine.",
     ],
     application:
-      "Nous dimensionnons l'infrastructure sur les besoins réels de continuité du client, puis nous documentons RPO, RTO et procédure de restauration — et nous testons cette restauration avant la mise en production.",
+      "Nous dimensionnons l'infrastructure sur les besoins réels de continuité du client, puis nous documentons RPO, RTO et procédure de restauration, et nous testons cette restauration avant la mise en production.",
     faq: [
       {
         question: "Que signifient RPO et RTO ?",
@@ -368,7 +368,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       },
       {
         label: "Un workflow robuste",
-        text: "Déclencheur, validation, enrichissement, logique, actions, journalisation, erreur, retry et escalade — avec reprise manuelle possible.",
+        text: "Déclencheur, validation, enrichissement, logique, actions, journalisation, erreur, retry et escalade, avec reprise manuelle possible.",
       },
     ],
     retenir: [
@@ -417,7 +417,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       },
       {
         label: "Évaluer avant de croire",
-        text: "Un jeu de cas réels — normaux, difficiles, adversariaux, hors périmètre — avec résultat attendu pour chacun.",
+        text: "Un jeu de cas réels (normaux, difficiles, adversariaux, hors périmètre) avec résultat attendu pour chacun.",
       },
     ],
     retenir: [
@@ -560,7 +560,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       },
       {
         label: "SEO et recherche générative",
-        text: "Les fondamentaux — structure technique claire, contenu unique et utile — restent valables pour les AI Overviews et l'AI Mode.",
+        text: "Les fondamentaux (structure technique claire, contenu unique et utile) restent valables pour les AI Overviews et l'AI Mode.",
       },
       {
         label: "L'attribution est une convention",
@@ -595,7 +595,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       {
         question: "Comment gérer le consentement dans la mesure marketing ?",
         answer:
-          "En cartographiant événements, conversions, identifiants, sources, consentement, outils et destinations, puis en testant les scénarios accepter, refuser et aucune action — et en documentant l'impact de chacun sur la mesure.",
+          "En cartographiant événements, conversions, identifiants, sources, consentement, outils et destinations, puis en testant les scénarios accepter, refuser et aucune action, et en documentant l'impact de chacun sur la mesure.",
       },
     ],
   },
@@ -666,7 +666,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       },
     ],
     retenir: [
-      "Les données de stock distinguent physique, disponible, réservé, en transit et théorique — les écarts révèlent un problème de processus.",
+      "Les données de stock distinguent physique, disponible, réservé, en transit et théorique, les écarts révèlent un problème de processus.",
       "Une prévision n'est pas une certitude : les marges de sécurité s'ajustent au coût d'une rupture face au coût de stockage.",
       "Une application mobile qui fonctionne hors connexion vaut mieux qu'un dashboard sophistiqué pour des techniciens sur le terrain.",
       "Chaque KPI opérationnel doit déclencher une routine : un écran temps réel sans action ne change rien.",
@@ -693,7 +693,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       {
         question: "Quels KPI suivre en opérations ?",
         answer:
-          "OTIF, délai de préparation, taux de rupture, rotation, exactitude de l'inventaire, coût de traitement, rendement, taux de défaut, downtime et OEE selon le contexte — chacun rattaché à une action.",
+          "OTIF, délai de préparation, taux de rupture, rotation, exactitude de l'inventaire, coût de traitement, rendement, taux de défaut, downtime et OEE selon le contexte, chacun rattaché à une action.",
       },
     ],
   },
@@ -815,7 +815,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
     retenir: [
       "Priorité = valeur × confiance × urgence / (effort × risque) : la formule ne remplace pas la discussion, elle rend les hypothèses visibles.",
       "La roadmap à 12 mois s'organise par capacités, pas par fournisseurs, avec un résultat observable chaque trimestre.",
-      "Un arbre KPI relie l'action numérique au résultat métier — chaque flèche restant une hypothèse à mesurer.",
+      "Un arbre KPI relie l'action numérique au résultat métier, chaque flèche restant une hypothèse à mesurer.",
       "Après mise en production : comparer baseline, cible et réel, puis documenter la cause des écarts.",
     ],
     pieges: [
@@ -825,7 +825,7 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       "Considérer le business case initial comme acquis au lieu de le traiter comme une hypothèse à vérifier.",
     ],
     application:
-      "Nous livrons le portefeuille sous forme de cartes initiative comparables — valeur, effort, risque, dépendances, KPI — et nous animons la revue mensuelle qui suit la réalisation réelle des bénéfices.",
+      "Nous livrons le portefeuille sous forme de cartes initiative comparables (valeur, effort, risque, dépendances, KPI) et nous animons la revue mensuelle qui suit la réalisation réelle des bénéfices.",
     faq: [
       {
         question: "Que contient une carte initiative dans un portefeuille ?",

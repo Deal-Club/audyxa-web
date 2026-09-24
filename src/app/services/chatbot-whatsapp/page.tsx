@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
@@ -8,11 +7,25 @@ import { CallToAction } from "@/components/call-to-action";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
 
+const CHATBOT_TITLE = "Chatbot WhatsApp pour entreprise";
+const CHATBOT_DESCRIPTION =
+  "Chatbot WhatsApp connecté à votre CRM pour qualifier et router les demandes entrantes, avec sortie systématique vers un humain sur les cas sensibles.";
+
 export const metadata: Metadata = {
-  title: "Chatbot WhatsApp pour entreprise | Audyxa",
-  description:
-    "Mise en place d'un chatbot WhatsApp connecté à votre CRM pour qualifier et router les demandes entrantes, avec sortie systématique vers un humain sur les cas sensibles.",
+  title: CHATBOT_TITLE,
+  description: CHATBOT_DESCRIPTION,
   alternates: { canonical: "/services/chatbot-whatsapp" },
+  openGraph: {
+    title: CHATBOT_TITLE,
+    description: CHATBOT_DESCRIPTION,
+    url: `${SITE_URL}/services/chatbot-whatsapp`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: CHATBOT_TITLE,
+    description: CHATBOT_DESCRIPTION,
+  },
 };
 
 const PROBLEMS = [
@@ -24,7 +37,7 @@ const PROBLEMS = [
 const APPROACH_STEPS = [
   {
     title: "Cadrer les cas d'usage avant l'outil",
-    text: "Comme pour tout cas d'usage IA, nous définissons d'abord ce que le chatbot doit réellement traiter : qualification de demande, réponses aux questions fréquentes, prise de rendez-vous — pas une promesse de tout automatiser.",
+    text: "Comme pour tout cas d'usage IA, nous définissons d'abord ce que le chatbot doit réellement traiter : qualification de demande, réponses aux questions fréquentes, prise de rendez-vous, pas une promesse de tout automatiser.",
   },
   {
     title: "Connecter au CRM, pas créer un silo",
@@ -32,7 +45,7 @@ const APPROACH_STEPS = [
   },
   {
     title: "Une sortie humaine systématique",
-    text: "Toute demande hors périmètre ou sensible bascule vers un humain, avec le contexte de la conversation déjà disponible — jamais un utilisateur bloqué dans une boucle automatisée.",
+    text: "Toute demande hors périmètre ou sensible bascule vers un humain, avec le contexte de la conversation déjà disponible : jamais un utilisateur bloqué dans une boucle automatisée.",
   },
 ];
 
@@ -41,12 +54,12 @@ export default function ChatbotWhatsappPage() {
     {
       question: "Un chatbot WhatsApp convient-il à toutes les entreprises ?",
       answer:
-        "Non. Il est pertinent quand le volume de demandes WhatsApp est significatif et les questions suffisamment récurrentes pour justifier l'automatisation — un diagnostic préalable permet de le vérifier avant d'investir.",
+        "Non. Il est pertinent quand le volume de demandes WhatsApp est significatif et les questions suffisamment récurrentes pour justifier l'automatisation : un diagnostic préalable permet de le vérifier avant d'investir.",
     },
     {
       question: "Le chatbot remplace-t-il notre équipe support ?",
       answer:
-        "Non. Il qualifie et répond aux demandes simples, avec une sortie systématique vers un humain pour les cas qui le nécessitent — l'objectif est de libérer du temps, pas de supprimer le contact humain.",
+        "Non. Il qualifie et répond aux demandes simples, avec une sortie systématique vers un humain pour les cas qui le nécessitent : l'objectif est de libérer du temps, pas de supprimer le contact humain.",
     },
   ];
 
@@ -73,14 +86,14 @@ export default function ChatbotWhatsappPage() {
 
   return (
     <main>
-      <Script
-        id="chatbot-service-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
       />
-      <Script
-        id="chatbot-faq-schema"
+      <script
         type="application/ld+json"
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
@@ -94,7 +107,7 @@ export default function ChatbotWhatsappPage() {
         currentPath="/services/chatbot-whatsapp"
       />
 
-      {/* Réponse directe — asymétrique */}
+      {/* Réponse directe, asymétrique */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap items-center gap-y-8">
@@ -102,15 +115,15 @@ export default function ChatbotWhatsappPage() {
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
                 Un cas d&apos;usage IA parmi d&apos;autres, pas un produit à part
               </span>
-              <h1 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
+              <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 Chatbot WhatsApp pour entreprise
-              </h1>
+              </h2>
             </div>
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-6 text-[19px] leading-9 text-theme-1">
                 Un chatbot WhatsApp connecté à votre CRM permet de qualifier et de router les demandes
                 entrantes automatiquement, tout en gardant une sortie systématique vers un humain sur
-                les cas sensibles — cadré selon la même méthode que nos autres cas d&apos;usage IA.
+                les cas sensibles, cadré selon la même méthode que nos autres cas d&apos;usage IA.
               </p>
               <ThemeBtn href="/contact">Demander un diagnostic</ThemeBtn>
             </div>
@@ -139,7 +152,7 @@ export default function ChatbotWhatsappPage() {
         </div>
       </section>
 
-      {/* Approche — colonne latérale + étapes */}
+      {/* Approche : colonne latérale + étapes */}
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
@@ -165,7 +178,7 @@ export default function ChatbotWhatsappPage() {
         </div>
       </section>
 
-      {/* Lien vers le cœur de l'offre — asymétrique */}
+      {/* Lien vers le cœur de l'offre, asymétrique */}
       <section className="bg-theme-1 pt-[50px] pb-[50px]">
         <div className="auto-container">
           <div className="flex flex-wrap gap-y-8">
@@ -180,8 +193,8 @@ export default function ChatbotWhatsappPage() {
             <div className="w-full lg:w-8/12">
               <p className="mb-6 text-base leading-8 text-white/85">
                 Le chatbot WhatsApp est un cas d&apos;usage IA parmi d&apos;autres, pas le cœur de
-                l&apos;offre Audyxa. Nos services de transformation digitale — audit, automatisation,
-                IA, développement d&apos;outils métier, pilotage — restent notre priorité.
+                l&apos;offre Audyxa. Nos services de transformation digitale (audit, automatisation,
+                IA, développement d&apos;outils métier, pilotage) restent notre priorité.
               </p>
               <Link href="/services" className="font-semibold text-theme-2 hover:underline">
                 Voir tous nos services →
