@@ -39,7 +39,7 @@ export function Footer() {
              (22px, ex-h5) via l'utilitaire text-[22px]. */}
           <h2 className="title flex items-center gap-2 text-[22px] text-white">
             <i className="flaticon-open-envelope text-theme-2" />
-            Echangeons sur vos priorites
+            Échangeons sur vos priorités
             <br />
             de transformation digitale
           </h2>
@@ -89,11 +89,22 @@ export function Footer() {
                 </Link>
               </div>
               <div className="text mb-5 text-[15px] leading-[30px] text-[#8f8f8f]">
-                Audyxa accompagne les entreprises qui veulent structurer leur croissance, mieux piloter leurs operations et transformer les pertes de temps en gains concrets.
+                Audyxa accompagne les entreprises qui veulent structurer leur croissance, mieux piloter leurs opérations et transformer les pertes de temps en gains concrets.
               </div>
               <div className="rounded-[10px] border border-white/10 px-5 py-4 text-sm leading-7 text-[#8f8f8f]">
-                Conseil, automatisation, IA, developpement d&apos;outils metier et accompagnement au deploiement.
+                Conseil, automatisation, IA, développement d&apos;outils métier et accompagnement au déploiement.
               </div>
+              <p className="mt-4 mb-0 text-sm leading-7 text-[#8f8f8f]">
+                <a
+                  href="https://richardsalanon.com"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-white hover:text-theme-2"
+                >
+                  Richard Salanon
+                </a>
+                , cofondateur : développement, automatisation, SEO.
+              </p>
             </div>
           </div>
 
@@ -103,7 +114,7 @@ export function Footer() {
               <ul className="user-links space-y-[10px] text-[15px] text-[#8f8f8f]">
                 {[
                   { label: "Accueil", href: "/" },
-                  { label: "A propos", href: "/about" },
+                  { label: "À propos", href: "/about" },
                   { label: "Services", href: "/services" },
                   { label: "Méthode", href: "/methode" },
                   { label: "Contact", href: "/contact" },
@@ -167,11 +178,11 @@ export function Footer() {
                 </li>
                 <li className="flex items-center gap-2">
                   <i className="fa fa-phone-square text-theme-2" />
-                  <span>Conseil + execution sur la meme mission</span>
+                  <span>Conseil + exécution sur la même mission</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <i className="fa fa-map-marker-alt text-theme-2" />
-                  <span>Intervention a distance et accompagnement structure</span>
+                  <span>Intervention à distance et accompagnement structuré</span>
                 </li>
               </ul>
             </div>

@@ -73,7 +73,7 @@ export function Header() {
                   <i className="fa fa-phone text-theme-2" />
                   <span>
                     <small className="block text-xs text-[#8f8f8f]">Audyxa</small>
-                    2290195241540
+                    +229 01 95 24 15 40
                   </span>
                 </Link>
 
@@ -158,7 +158,7 @@ export function Header() {
             <li className="contact-info-box">
               <i className="lnr-icon-phone-handset mr-2 text-theme-2" />
               <span className="title mr-1 text-white/70">Telephone</span>
-              <a href="tel:+2290195241540" className="text-white">2290195241540</a>
+              <a href="tel:+2290195241540" className="text-white">+229 01 95 24 15 40</a>
             </li>
             <li className="contact-info-box">
               <i className="lnr-icon-envelope1 mr-2 text-theme-2" />

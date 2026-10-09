@@ -96,11 +96,19 @@ const ORGANIZATION_JSON_LD = {
     contactType: "customer service",
     availableLanguage: "French",
   },
-  founder: {
-    "@type": "Person",
-    name: "Paul Maxime Dossou",
-    url: `${SITE_URL}/auteur/paul-maxime-dossou`,
-  },
+  founder: [
+    {
+      "@type": "Person",
+      name: "Paul Maxime Dossou",
+      url: `${SITE_URL}/auteur/paul-maxime-dossou`,
+    },
+    {
+      "@type": "Person",
+      "@id": "https://richardsalanon.com/#person",
+      name: "Richard Salanon",
+      url: "https://richardsalanon.com",
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

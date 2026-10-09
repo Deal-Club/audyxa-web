@@ -30,13 +30,13 @@ interface AboutSectionProps {
 }
 
 export function AboutSection({
-  subTitle = "A propos d'Audyxa",
+  subTitle = "À propos d'Audyxa",
   title = "Une équipe experte pour faire passer votre entreprise à un autre niveau digital",
   text = "Audyxa accompagne les entreprises en France et en Afrique francophone avec une logique simple : comprendre d'abord les blocages métier, puis déployer les solutions qui produisent un vrai impact.",
   listItems = [
     "Nous partons de vos processus, pas d'un catalogue d'outils.",
     "Nous transformons le temps perdu en gains opérationnels mesurables.",
-    "Nous assurons le conseil, l'execution et le suivi des resultats.",
+    "Nous assurons le conseil, l'exécution et le suivi des résultats.",
   ],
   ctaHref = "/about",
   ctaLabel = "Découvrir notre approche",

@@ -51,8 +51,8 @@ export function ContactSection() {
             <ScrollReveal animation="fadeInLeft" className="relative">
               <SectionTitle
                 subTitle="Parlons de votre projet"
-                title="Exposez vos priorites digitales et vos blocages terrain"
-                text="Si vos equipes perdent du temps, ressaisissent la meme information plusieurs fois ou travaillent avec des outils disperses, nous pouvons vous aider a remettre de l'ordre et a prioriser les bons chantiers."
+                title="Exposez vos priorités digitales et vos blocages terrain"
+                text="Si vos équipes perdent du temps, ressaisissent la même information plusieurs fois ou travaillent avec des outils dispersés, nous pouvons vous aider à remettre de l'ordre et à prioriser les bons chantiers."
                 className="pt-[38px]"
               />
 
@@ -103,7 +103,7 @@ export function ContactSection() {
                       className="absolute inset-y-0 left-0 -z-10 w-6 rounded-[10px] bg-theme-2-cta-dark transition-[width] duration-300 ease-[cubic-bezier(0.785,0.135,0.15,0.86)] group-hover:w-full"
                     />
                     <span className="relative z-[2]">
-                      {status === "submitting" ? "Envoi en cours..." : "Demander un echange"}
+                      {status === "submitting" ? "Envoi en cours..." : "Demander un échange"}
                     </span>
                   </button>
                   {status === "success" ? (

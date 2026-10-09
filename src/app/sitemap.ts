@@ -10,46 +10,39 @@ import { HISTOIRES } from "@/lib/histoires-content";
 
 /**
  * Sitemap des pages réelles Audyxa (hors pages de démo du thème non liées
- * au site : shop, team, news, projects, testimonial, faq, 404-preview).
+ * au site : shop, team, news, projects, testimonial, 404-preview).
  *
- * `lastModified` : évite la date de build recalculée à chaque déploiement
- * (signal de fraîcheur trompeur pour le GEO). On fige une date réelle par
- * groupe de contenu :
- * - Pages revues techniquement le 2026-09-24 (corrections Phase 1 : schéma
- *   JSON-LD, titres, H1, canonical) : REVISION_DATE ci-dessous.
- * - Chapitres méthode : date de l'édition mentionnée dans le contenu lui-même
- *   (METHODE_LAST_REVISION).
- * - Contenus gérés par d'autres agents en parallèle (guides, comparatifs,
- *   secteurs, pays/villes) : pas de date de modification réelle disponible
- *   dans le CMS actuel ; à corriger quand chaque module de contenu exposera
- *   son propre champ `lastModified`/`updatedAt` (voir résumé de l'agent 1).
+ * `lastModified` = date de dernière modification réelle du contenu (dernier
+ * commit touchant la source de chaque groupe de pages), jamais la date du
+ * build. `priority` et `changeFrequency` sont omis : Google les ignore.
+ * À remplacer par un champ `updatedAt` par page quand chaque module de
+ * contenu l'exposera.
  */
-const REVISION_DATE = new Date("2026-09-24");
+const CONTENT_DATE = new Date("2026-09-24");
+const HOME_DATE = new Date("2026-10-09");
+const FAQ_DATE = new Date("2026-08-31");
 const METHODE_DATE = new Date(METHODE_LAST_REVISION);
 
-function toSitemapEntries(
-  routes: string[],
-  lastModified: Date,
-  priority: number
-): MetadataRoute.Sitemap {
+function toSitemapEntries(routes: string[], lastModified: Date): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified,
-    changeFrequency: "weekly",
-    priority,
   }));
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const reviewedStaticRoutes = [
+  const staticRoutes = [
     "/about",
     "/services",
     "/contact",
     "/services/chatbot-whatsapp",
     "/glossaire",
     "/histoires",
+    "/guides",
+    "/secteurs",
+    "/comparatifs",
+    "/pays",
   ];
-  const pendingStaticRoutes = ["/guides", "/secteurs", "/comparatifs", "/pays"];
 
   const methodeRoutes = ["/methode", ...getPublishedMethodChapters().map((c) => `/methode/${c.slug}`)];
   const serviceRoutes = SERVICES_DETAIL.map((s) => `/services/${s.slug}`);
@@ -68,16 +61,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   return [
-    ...toSitemapEntries([""], REVISION_DATE, 1),
-    ...toSitemapEntries(reviewedStaticRoutes, REVISION_DATE, 0.8),
-    ...toSitemapEntries(serviceRoutes, REVISION_DATE, 0.8),
-    ...toSitemapEntries(histoireRoutes, REVISION_DATE, 0.8),
-    ...toSitemapEntries(methodeRoutes, METHODE_DATE, 0.8),
-    // Groupes non révisés par cet agent (contenu détenu par d'autres agents
-    // en parallèle) : date de build conservée en l'absence de date réelle.
+    ...toSitemapEntries([""], HOME_DATE),
+    ...toSitemapEntries(["/faq"], FAQ_DATE),
+    ...toSitemapEntries(methodeRoutes, METHODE_DATE),
     ...toSitemapEntries(
       [
-        ...pendingStaticRoutes,
+        ...staticRoutes,
+        ...serviceRoutes,
+        ...histoireRoutes,
         ...guideRoutes,
         ...decisionRoutes,
         ...sectorRoutes,
@@ -85,8 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...secondaryCityRoutes,
         ...flagshipServiceRoutes,
       ],
-      new Date(),
-      0.8
+      CONTENT_DATE
     ),
   ];
 }

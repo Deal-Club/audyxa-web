@@ -95,7 +95,7 @@ function AccordionItem({
 
 export function FaqSection({
   items = FAQ_ITEMS,
-  subTitle = "Questions frequentes",
+  subTitle = "Questions fréquentes",
   title = "Ce que les entreprises nous demandent le plus",
   imageSrc = "/images/resource/faq.jpg",
   layout = "with-image",
@@ -193,7 +193,7 @@ export function FaqSection({
                     label={
                       <>
                         Focus <br />
-                        resultats
+                        résultats
                       </>
                     }
                     speed={2000}

@@ -19,10 +19,14 @@ const DISALLOWED_PATHS = [
   "/projects/",
   "/testimonial",
   "/404-preview",
-  "/faq",
 ];
 
 export default function robots(): MetadataRoute.Robots {
+  // Un seul bloc suffit : les crawlers IA (GPTBot, OAI-SearchBot, PerplexityBot,
+  // ClaudeBot, Google-Extended, Bingbot...) suivent le bloc "*" et sont donc
+  // tous autorisés. Ajouter un bloc dédié seulement pour traiter un robot
+  // différemment (ex. refuser GPTBot / Google-Extended, qui concernent
+  // l'entraînement, sans bloquer OAI-SearchBot / PerplexityBot).
   return {
     rules: [
       {
@@ -30,16 +34,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: DISALLOWED_PATHS,
       },
-      // Crawlers IA à autoriser explicitement (moteurs de réponse GEO/AEO).
-      { userAgent: "GPTBot", allow: "/", disallow: DISALLOWED_PATHS },
-      { userAgent: "ChatGPT-User", allow: "/", disallow: DISALLOWED_PATHS },
-      { userAgent: "PerplexityBot", allow: "/", disallow: DISALLOWED_PATHS },
-      { userAgent: "ClaudeBot", allow: "/", disallow: DISALLOWED_PATHS },
-      { userAgent: "anthropic-ai", allow: "/", disallow: DISALLOWED_PATHS },
-      { userAgent: "CCBot", allow: "/", disallow: DISALLOWED_PATHS },
-      { userAgent: "Google-Extended", allow: "/", disallow: DISALLOWED_PATHS },
-      // ChatGPT s'appuie sur l'index Bing pour ses recherches en temps réel.
-      { userAgent: "Bingbot", allow: "/", disallow: DISALLOWED_PATHS },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

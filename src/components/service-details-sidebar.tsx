@@ -72,7 +72,7 @@ export function ServiceDetailsSidebar() {
               href="tel:+2290195241540"
               className="text-[30px] font-semibold text-white transition-colors duration-500 ease-[ease] hover:text-[#191825]"
             >
-              2290195241540
+              +229 01 95 24 15 40
             </a>
           </div>
         </div>

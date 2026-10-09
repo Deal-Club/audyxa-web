@@ -34,7 +34,7 @@ export function ContactDetailsSection() {
                 <div className="ml-[30px]">
                   <h6>Numéro direct</h6>
                   <a href="tel:+2290195241540" className="text-[20px] text-theme-1">
-                    2290195241540
+                    +229 01 95 24 15 40
                   </a>
                 </div>
               </li>
