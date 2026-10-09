@@ -15,11 +15,13 @@ export interface ContactEmailData {
   message: string;
 }
 
-const BRAND_RED = "#c8322a";
-const BRAND_DARK = "#0f0f0f";
-const BODY_TEXT = "#4a4a4a";
-const BORDER = "#e6e6e6";
-const BG = "#f4f4f2";
+const BRAND_NAVY = "#17398a";
+const TEXT = "#1b2433";
+const MUTED = "#6b7487";
+const BORDER = "#e8ebf1";
+const BG = "#f3f5f9";
+const LOGO_URL = "https://www.audyxa.com/images/logo-full.png";
+const FONT = "Arial,Helvetica,sans-serif";
 
 /**
  * Template email transactionnel (table-based, styles inline) : compatibilité
@@ -31,21 +33,15 @@ export function renderContactEmail(data: ContactEmailData): string {
 
   const fieldRow = (label: string, value: string) => `
     <tr>
-      <td style="padding:14px 0;border-bottom:1px solid ${BORDER};">
-        <p style="margin:0 0 4px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${BRAND_RED};">
-          ${label}
-        </p>
-        <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:22px;color:${BRAND_DARK};font-weight:600;">
-          ${value}
-        </p>
-      </td>
+      <td width="90" valign="top" style="padding:7px 0;font-family:${FONT};font-size:12px;color:${MUTED};">${label}</td>
+      <td valign="top" style="padding:7px 0;font-family:${FONT};font-size:14px;line-height:20px;color:${TEXT};font-weight:600;">${value}</td>
     </tr>`;
 
   const rows = [
     fieldRow("Nom", escapeHtml(name || "Non renseigné")),
-    fieldRow("Email", `<a href="mailto:${escapeHtml(email)}" style="color:${BRAND_DARK};text-decoration:none;">${escapeHtml(email)}</a>`),
+    fieldRow("Email", `<a href="mailto:${escapeHtml(email)}" style="color:${BRAND_NAVY};text-decoration:none;">${escapeHtml(email)}</a>`),
   ];
-  if (phone) rows.push(fieldRow("Téléphone", escapeHtml(phone)));
+  if (phone) rows.push(fieldRow("Téléphone", `<a href="tel:${escapeHtml(phone)}" style="color:${TEXT};text-decoration:none;">${escapeHtml(phone)}</a>`));
   if (subject) rows.push(fieldRow("Sujet", escapeHtml(subject)));
 
   return `<!doctype html>
@@ -56,47 +52,55 @@ export function renderContactEmail(data: ContactEmailData): string {
     <title>Nouvelle demande de contact</title>
   </head>
   <body style="margin:0;padding:0;background-color:${BG};">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${BG};padding:32px 16px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${BG};padding:24px 12px;">
       <tr>
         <td align="center">
-          <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+          <table role="presentation" width="520" cellpadding="0" cellspacing="0" style="max-width:520px;width:100%;background-color:#ffffff;border-radius:12px;border:1px solid ${BORDER};overflow:hidden;">
 
             <!-- En-tête -->
             <tr>
-              <td style="background-color:${BRAND_DARK};padding:28px 32px;">
-                <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:800;color:#ffffff;letter-spacing:-0.02em;">
-                  Audyxa
-                </p>
-                <p style="margin:6px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:${BRAND_RED};font-weight:600;letter-spacing:0.04em;text-transform:uppercase;">
-                  Nouvelle demande de contact
-                </p>
+              <td style="padding:20px 28px;border-bottom:3px solid ${BRAND_NAVY};">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td valign="middle">
+                      <img src="${LOGO_URL}" alt="Audyxa" width="120" style="display:block;width:120px;height:auto;border:0;" />
+                    </td>
+                    <td valign="middle" align="right" style="font-family:${FONT};font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${BRAND_NAVY};">
+                      Nouveau contact
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
 
             <!-- Corps -->
             <tr>
-              <td style="padding:32px;">
+              <td style="padding:20px 28px 8px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   ${rows.join("")}
                 </table>
+              </td>
+            </tr>
 
-                <div style="margin-top:24px;">
-                  <p style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${BRAND_RED};">
-                    Message
-                  </p>
-                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${BG};border-radius:8px;border-left:3px solid ${BRAND_RED};">
-                    <tr>
-                      <td style="padding:16px 20px;">
-                        <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:24px;color:${BODY_TEXT};white-space:pre-line;">${escapeHtml(message)}</p>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-
-                <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:28px;">
+            <tr>
+              <td style="padding:8px 28px 4px;">
+                <p style="margin:0 0 6px;font-family:${FONT};font-size:12px;color:${MUTED};">Message</p>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${BG};border-radius:8px;">
                   <tr>
-                    <td style="border-radius:8px;background-color:${BRAND_RED};">
-                      <a href="mailto:${escapeHtml(email)}" style="display:inline-block;padding:12px 28px;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;color:#ffffff;text-decoration:none;">
+                    <td style="padding:14px 16px;">
+                      <p style="margin:0;font-family:${FONT};font-size:14px;line-height:22px;color:${TEXT};white-space:pre-line;">${escapeHtml(message)}</p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="padding:20px 28px 24px;">
+                <table role="presentation" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td style="border-radius:8px;background-color:${BRAND_NAVY};">
+                      <a href="mailto:${escapeHtml(email)}" style="display:inline-block;padding:10px 22px;font-family:${FONT};font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;">
                         Répondre à ${escapeHtml(name || "ce contact")}
                       </a>
                     </td>
@@ -107,9 +111,9 @@ export function renderContactEmail(data: ContactEmailData): string {
 
             <!-- Pied -->
             <tr>
-              <td style="padding:20px 32px;background-color:${BG};border-top:1px solid ${BORDER};">
-                <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#9a9a9a;">
-                  Reçu via le formulaire de contact sur audyxa.com, France et Afrique francophone.
+              <td style="padding:14px 28px;background-color:${BG};border-top:1px solid ${BORDER};">
+                <p style="margin:0;font-family:${FONT};font-size:11px;line-height:16px;color:${MUTED};">
+                  Reçu via le formulaire de contact sur <a href="https://www.audyxa.com" style="color:${MUTED};">audyxa.com</a>
                 </p>
               </td>
             </tr>
