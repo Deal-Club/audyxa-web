@@ -6,6 +6,7 @@ import { DECISION_PAGES } from "@/lib/decision-content";
 import { SECTOR_PAGES } from "@/lib/sector-content";
 import { GEO_COUNTRIES, getFlagshipCity } from "@/lib/geo-content";
 import { GUIDES } from "@/lib/guide-content";
+import { getVilleContent } from "@/app/pays/[pays]/[ville]/villes-content";
 import { HISTOIRES } from "@/lib/histoires-content";
 
 /**
@@ -53,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sectorRoutes = SECTOR_PAGES.map((s) => `/secteurs/${s.slug}`);
   const countryHubRoutes = GEO_COUNTRIES.map((c) => `/pays/${c.slug}`);
   const secondaryCityRoutes = GEO_COUNTRIES.flatMap((country) =>
-    country.cities.filter((c) => !c.isFlagship).map((city) => `/pays/${country.slug}/${city.slug}`)
+    country.cities.filter((c) => !c.isFlagship || getVilleContent(country.slug, c.slug)).map((city) => `/pays/${country.slug}/${city.slug}`)
   );
   const flagshipServiceRoutes = GEO_COUNTRIES.flatMap((country) => {
     const flagship = getFlagshipCity(country);

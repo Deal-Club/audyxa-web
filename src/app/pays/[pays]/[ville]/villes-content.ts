@@ -15,6 +15,12 @@
  * masquée par un chiffre inventé.
  */
 
+import { VILLES_BENIN } from "./villes-content-benin";
+import { VILLES_TOGO } from "./villes-content-togo";
+import { VILLES_COTE_DIVOIRE } from "./villes-content-cote-divoire";
+import { VILLES_SENEGAL } from "./villes-content-senegal";
+import { VILLES_BELGIQUE } from "./villes-content-belgique";
+
 export interface VilleFait {
   /** Chiffre affiché ("679 012", "3 407 327 habitants"...) */
   value: string;
@@ -975,6 +981,18 @@ export const VILLES_CONTENT: VilleContent[] = [
   },
 ];
 
+/** Contenu enrichi des villes des pays conservés (une entrée par ville). */
+const VILLES_CONTENT_ALL: VilleContent[] = [
+  ...VILLES_CONTENT,
+  ...VILLES_BENIN,
+  ...VILLES_TOGO,
+  ...VILLES_COTE_DIVOIRE,
+  ...VILLES_SENEGAL,
+  ...VILLES_BELGIQUE,
+];
+
 export function getVilleContent(paysSlug: string, villeSlug: string): VilleContent | undefined {
-  return VILLES_CONTENT.find((v) => v.paysSlug === paysSlug && v.villeSlug === villeSlug);
+  return VILLES_CONTENT_ALL.find((v) => v.paysSlug === paysSlug && v.villeSlug === villeSlug);
 }
+
+export { VILLES_CONTENT_ALL };

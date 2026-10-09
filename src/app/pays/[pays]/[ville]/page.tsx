@@ -10,7 +10,7 @@ import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
 import { truncateForMeta } from "@/lib/text-utils";
-import { VILLES_CONTENT, getVilleContent } from "./villes-content";
+import { VILLES_CONTENT_ALL, getVilleContent } from "./villes-content";
 
 /**
  * Page ville `/pays/[pays]/[ville]` : Phase 4 du plan SEO/GEO/AEO (Agent 3).
@@ -35,7 +35,7 @@ export function generateStaticParams() {
     country.cities.filter((c) => !c.isFlagship).map((city) => ({ pays: country.slug, ville: city.slug }))
   );
   const seen = new Set(generic.map((g) => `${g.pays}/${g.ville}`));
-  const curated = VILLES_CONTENT.map((v) => ({ pays: v.paysSlug, ville: v.villeSlug })).filter(
+  const curated = VILLES_CONTENT_ALL.map((v) => ({ pays: v.paysSlug, ville: v.villeSlug })).filter(
     (v) => !seen.has(`${v.pays}/${v.ville}`)
   );
   return [...generic, ...curated];
