@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { CONTACT_EMAIL, getMailer } from "@/lib/mailer";
 
-const CONTACT_EMAIL = "contact@audyxa.com";
+export const runtime = "nodejs";
 
 function escapeHtml(value: string): string {
   return value
@@ -13,9 +13,9 @@ function escapeHtml(value: string): string {
 }
 
 export async function POST(request: Request) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.error("RESEND_API_KEY manquante : impossible d'envoyer la notification d'inscription.");
+  const mailer = getMailer();
+  if (!mailer) {
+    console.error("SMTP_USER/SMTP_PASS manquantes : impossible d'envoyer la notification d'inscription.");
     return NextResponse.json({ error: "server_misconfigured" }, { status: 500 });
   }
 
@@ -32,21 +32,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_email" }, { status: 400 });
   }
 
-  const resend = new Resend(apiKey);
-
   try {
-    const { error } = await resend.emails.send({
-      from: "Newsletter Audyxa <contact@audyxa.com>",
+    await mailer.sendMail({
+      from: `Newsletter Audyxa <${CONTACT_EMAIL}>`,
       to: CONTACT_EMAIL,
       replyTo: email,
       subject: "Nouvelle inscription newsletter",
       html: `<p>Nouvelle inscription à la newsletter depuis le site :</p><p><strong>${escapeHtml(email)}</strong></p>`,
     });
-
-    if (error) {
-      console.error("Erreur d'envoi Resend (newsletter) :", error);
-      return NextResponse.json({ error: "send_failed" }, { status: 502 });
-    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {

@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { renderContactEmail } from "@/lib/contact-email-template";
+import { CONTACT_EMAIL, getMailer } from "@/lib/mailer";
 
-const CONTACT_EMAIL = "contact@audyxa.com";
+export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.error("RESEND_API_KEY manquante : impossible d'envoyer l'email de contact.");
+  const mailer = getMailer();
+  if (!mailer) {
+    console.error("SMTP_USER/SMTP_PASS manquantes : impossible d'envoyer l'email de contact.");
     return NextResponse.json({ error: "server_misconfigured" }, { status: 500 });
   }
 
@@ -29,21 +29,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid_fields" }, { status: 400 });
   }
 
-  const resend = new Resend(apiKey);
-
   try {
-    const { error } = await resend.emails.send({
-      from: "Formulaire Audyxa <contact@audyxa.com>",
+    await mailer.sendMail({
+      from: `Formulaire Audyxa <${CONTACT_EMAIL}>`,
       to: CONTACT_EMAIL,
       replyTo: email,
       subject: subject ? `Nouveau contact : ${subject}` : "Nouvelle demande depuis le site Audyxa",
       html: renderContactEmail({ name, email, phone, subject, message }),
     });
-
-    if (error) {
-      console.error("Erreur d'envoi Resend :", error);
-      return NextResponse.json({ error: "send_failed" }, { status: 502 });
-    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
