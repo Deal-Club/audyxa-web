@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -115,6 +116,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-FJ5SLWWRNW" />
     </html>
   );
 }
