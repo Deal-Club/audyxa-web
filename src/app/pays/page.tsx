@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
-import { GEO_COUNTRIES, getCountriesByRegion } from "@/lib/geo-content";
+import { KEPT_COUNTRIES, getCountriesByRegion } from "@/lib/geo-content";
 import { SITE_URL } from "@/lib/site-config";
 import { truncateForMeta } from "@/lib/text-utils";
 
@@ -49,7 +49,7 @@ export default function CountriesHubPage() {
           <div className="flex flex-wrap items-center gap-y-8">
             <div className="w-full lg:w-4/12 lg:pr-[30px]">
               <span className="mb-4 inline-block text-[13px] font-bold tracking-[0.2em] text-theme-2 uppercase">
-                {GEO_COUNTRIES.length} pays couverts
+                {KEPT_COUNTRIES.length} pays détaillés
               </span>
               <h2 className="mb-0 text-[24px] font-extrabold leading-[1.25em] text-theme-1 [@media(min-width:768px)]:text-[30px]">
                 France, Afrique francophone et Europe francophone
@@ -65,7 +65,7 @@ export default function CountriesHubPage() {
         </div>
       </section>
 
-      {REGIONS.map((region, index) => {
+      {REGIONS.filter((region) => getCountriesByRegion(region).length > 0).map((region, index) => {
         const countries = getCountriesByRegion(region);
         return (
           <section key={region} className={index % 2 === 0 ? "bg-theme-3 pt-[50px] pb-[50px]" : "pt-[50px] pb-[50px]"}>

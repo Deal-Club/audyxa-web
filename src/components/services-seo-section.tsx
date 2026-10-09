@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { DECISION_PAGES } from "@/lib/decision-content";
 import { SECTOR_PAGES } from "@/lib/sector-content";
-import { GEO_COUNTRIES } from "@/lib/geo-content";
+import { KEPT_COUNTRIES } from "@/lib/geo-content";
 
 interface ServiceDetail {
   id: string;
@@ -21,7 +21,7 @@ const SERVICE_SLUG_MAP: Record<string, string> = {
 
 const DECISION_LINKS = DECISION_PAGES.slice(0, 4).map((d) => ({ slug: d.slug, title: d.title }));
 const SECTOR_LINKS = SECTOR_PAGES.slice(0, 8).map((s) => ({ slug: s.slug, name: s.name }));
-const COUNTRY_LINKS = GEO_COUNTRIES.map((c) => ({ slug: c.slug, name: c.name }));
+const COUNTRY_LINKS = KEPT_COUNTRIES.map((c) => ({ slug: c.slug, name: c.name }));
 
 const SERVICE_DETAILS: ServiceDetail[] = [
   {
