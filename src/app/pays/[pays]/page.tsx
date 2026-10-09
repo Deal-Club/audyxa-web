@@ -6,7 +6,7 @@ import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
 import { CallToAction } from "@/components/call-to-action";
 import {
-  KEPT_COUNTRIES,
+  GEO_COUNTRIES,
   getCountry,
   getFlagshipCity,
   getCountriesByRegion,
@@ -17,7 +17,7 @@ import { buildFaqJsonLd } from "@/lib/faq-schema";
 import { truncateForMeta } from "@/lib/text-utils";
 
 export function generateStaticParams() {
-  return KEPT_COUNTRIES.map((c) => ({ pays: c.slug }));
+  return GEO_COUNTRIES.map((c) => ({ pays: c.slug }));
 }
 
 export async function generateMetadata({
@@ -76,6 +76,7 @@ export default async function CountryPage({
     `Audyxa accompagne les entreprises ${preposition} ${country.name} en conseil, automatisation, IA et développement d'outils métier.`;
 
   const flagship = getFlagshipCity(country);
+  const secondaryCities = country.cities.filter((c) => !c.isFlagship);
   const sameRegion = getCountriesByRegion(country.region).filter((c) => c.slug !== country.slug);
 
   const serviceJsonLd = {
@@ -337,21 +338,44 @@ export default async function CountryPage({
       <section className={country.sectorHighlights ? "pt-[60px] pb-[50px]" : "bg-theme-3 pt-[50px] pb-[50px]"}>
         <div className="auto-container">
           <SectionTitle
-            subTitle="Nos services"
-            title={`Nos services ${preposition} ${country.name}`}
+            subTitle="Ville principale"
+            title={`Nos services à ${flagship.name}`}
             className="mb-[40px] max-w-[760px]"
           />
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES_DETAIL.map((service) => (
               <Link
                 key={service.slug}
-                href={`/services/${service.slug}`}
+                href={`/services/${service.slug}/${country.slug}/${flagship.slug}`}
                 className="group flex items-center gap-4 rounded-[14px] border border-[#e2e2e2] bg-white p-5 transition-all duration-300 hover:-translate-y-[4px] hover:border-theme-2 hover:shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-theme-3 transition-colors group-hover:bg-theme-2">
                   <i className={`${service.icon} text-[20px] text-theme-2 transition-colors group-hover:text-white`} />
                 </div>
                 <span className="font-semibold text-theme-1 group-hover:text-theme-2">{service.title}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Villes d'intervention (autres villes du pays) */}
+      <section className="bg-theme-1 pt-[50px] pb-[50px]">
+        <div className="auto-container">
+          <SectionTitle
+            light
+            subTitle="Villes d'intervention"
+            title={`Les autres villes ${articleDu} ${country.name} que nous couvrons`}
+            className="mb-[40px] max-w-[760px]"
+          />
+          <div className="flex flex-wrap gap-3">
+            {secondaryCities.map((city) => (
+              <Link
+                key={city.slug}
+                href={`/pays/${country.slug}/${city.slug}`}
+                className="rounded-full border border-white/15 px-5 py-2 text-sm font-semibold text-white/85 transition-colors hover:border-theme-2 hover:text-theme-2"
+              >
+                {city.name}
               </Link>
             ))}
           </div>

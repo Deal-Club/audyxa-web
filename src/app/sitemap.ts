@@ -4,7 +4,7 @@ import { getPublishedMethodChapters } from "@/lib/methode-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { DECISION_PAGES } from "@/lib/decision-content";
 import { SECTOR_PAGES } from "@/lib/sector-content";
-import { KEPT_COUNTRIES } from "@/lib/geo-content";
+import { GEO_COUNTRIES, getFlagshipCity } from "@/lib/geo-content";
 import { GUIDES } from "@/lib/guide-content";
 import { HISTOIRES } from "@/lib/histoires-content";
 
@@ -51,7 +51,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const guideRoutes = GUIDES.map((g) => `/guides/${g.slug}`);
   const decisionRoutes = DECISION_PAGES.map((d) => `/comparatifs/${d.slug}`);
   const sectorRoutes = SECTOR_PAGES.map((s) => `/secteurs/${s.slug}`);
-  const countryHubRoutes = KEPT_COUNTRIES.map((c) => `/pays/${c.slug}`);
+  const countryHubRoutes = GEO_COUNTRIES.map((c) => `/pays/${c.slug}`);
+  const secondaryCityRoutes = GEO_COUNTRIES.flatMap((country) =>
+    country.cities.filter((c) => !c.isFlagship).map((city) => `/pays/${country.slug}/${city.slug}`)
+  );
+  const flagshipServiceRoutes = GEO_COUNTRIES.flatMap((country) => {
+    const flagship = getFlagshipCity(country);
+    return SERVICES_DETAIL.map((s) => `/services/${s.slug}/${country.slug}/${flagship.slug}`);
+  });
 
   return [
     ...toSitemapEntries([""], HOME_DATE),
@@ -66,6 +73,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...decisionRoutes,
         ...sectorRoutes,
         ...countryHubRoutes,
+        ...secondaryCityRoutes,
+        ...flagshipServiceRoutes,
       ],
       CONTENT_DATE
     ),

@@ -372,17 +372,6 @@ export function getCity(country: GeoCountry, citySlug: string): GeoCity | undefi
   return country.cities.find((c) => c.slug === citySlug);
 }
 
-/**
- * Pays qui conservent une page dédiée (marchés où Audyxa a des éléments
- * réels). Les autres pays, toutes les pages ville et toutes les pages
- * service x ville sont redirigées en 301 (voir next.config.ts).
- */
-export const KEPT_COUNTRY_SLUGS = ["benin", "cote-divoire", "senegal", "togo", "belgique"];
-
-export const KEPT_COUNTRIES: GeoCountry[] = GEO_COUNTRIES.filter((c) =>
-  KEPT_COUNTRY_SLUGS.includes(c.slug)
-);
-
 export function getCountriesByRegion(region: GeoCountry["region"]): GeoCountry[] {
-  return KEPT_COUNTRIES.filter((c) => c.region === region);
+  return GEO_COUNTRIES.filter((c) => c.region === region);
 }
