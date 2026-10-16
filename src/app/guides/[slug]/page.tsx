@@ -8,8 +8,9 @@ import { RichText } from "@/components/rich-text";
 import { GUIDES, getGuide } from "@/lib/guide-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
-import { SITE_URL } from "@/lib/site-config";
-import { truncateForMeta } from "@/lib/text-utils";
+import { seoTitle } from "@/lib/seo-title";
+import { AUTHOR_URL, CONTENT_LAST_MODIFIED, SITE_LOGO_URL, SITE_URL } from "@/lib/site-config";
+import { buildMetaDescription } from "@/lib/text-utils";
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }));
@@ -24,10 +25,10 @@ export async function generateMetadata({
   const guide = getGuide(slug);
   if (!guide) return {};
 
-  const title = guide.title;
-  const metaDescription = truncateForMeta(guide.summary);
+  const title = seoTitle(guide.title, `/guides/${guide.slug}`);
+  const metaDescription = buildMetaDescription(guide.summary, guide.sections[0]?.paragraphs[0]);
   return {
-    title,
+    title: { absolute: title },
     description: metaDescription,
     alternates: { canonical: `/guides/${guide.slug}` },
     openGraph: {
@@ -66,9 +67,11 @@ export default async function GuidePage({
     "@type": "Article",
     headline: guide.title,
     description: guide.summary,
-    author: { "@type": "Person", name: "Paul Maxime Dossou" },
-    publisher: { "@type": "Organization", name: "Audyxa" },
-    mainEntityOfPage: `${SITE_URL}/guides/${guide.slug}`,
+    author: { "@type": "Person", name: "Paul Maxime Dossou", url: AUTHOR_URL },
+    publisher: { "@type": "Organization", name: "Audyxa", url: SITE_URL, logo: { "@type": "ImageObject", url: SITE_LOGO_URL } },
+    dateModified: CONTENT_LAST_MODIFIED,
+    inLanguage: "fr",
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/guides/${guide.slug}` },
   };
 
   const faqJsonLd = {

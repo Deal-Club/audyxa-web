@@ -9,7 +9,8 @@ import { CallToAction } from "@/components/call-to-action";
 import { BoldText } from "@/components/bold-text";
 import { HISTOIRES, getHistoire, getHistoirePhoto } from "@/lib/histoires-content";
 import { getServiceDetail } from "@/lib/services-content";
-import { SITE_URL } from "@/lib/site-config";
+import { seoTitle } from "@/lib/seo-title";
+import { CONTENT_LAST_MODIFIED, SITE_LOGO_URL, SITE_URL } from "@/lib/site-config";
 
 export function generateStaticParams() {
   return HISTOIRES.map((h) => ({ slug: h.slug }));
@@ -23,10 +24,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const histoire = getHistoire(slug);
   if (!histoire) return {};
-  const title = `${histoire.title} | Histoires`;
+  const title = seoTitle([histoire.title, "Histoires"], `/histoires/${histoire.slug}`);
 
   return {
-    title,
+    title: { absolute: title },
     description: histoire.metaDescription,
     alternates: { canonical: `/histoires/${histoire.slug}` },
     // openGraph/twitter par page ; image générée dynamiquement par
@@ -65,7 +66,9 @@ export default async function HistoireDetailPage({
     description: histoire.summary,
     about: { "@type": "Organization", name: histoire.company },
     author: { "@type": "Organization", name: "Audyxa", url: SITE_URL },
-    publisher: { "@type": "Organization", name: "Audyxa", url: SITE_URL },
+    publisher: { "@type": "Organization", name: "Audyxa", url: SITE_URL, logo: { "@type": "ImageObject", url: SITE_LOGO_URL } },
+    dateModified: CONTENT_LAST_MODIFIED,
+    inLanguage: "fr",
     url: `${SITE_URL}/histoires/${histoire.slug}`,
     citation: histoire.sources.map((s) => s.url),
   };

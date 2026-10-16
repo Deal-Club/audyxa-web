@@ -6,9 +6,9 @@ import { CallToAction } from "@/components/call-to-action";
 import { GUIDES } from "@/lib/guide-content";
 import { SITE_URL } from "@/lib/site-config";
 
-const GUIDES_TITLE = "Guides transformation digitale";
+const GUIDES_TITLE = "Guides pratiques de transformation digitale";
 const GUIDES_DESCRIPTION =
-  "Guides pratiques sur la transformation digitale : maturité numérique, ROI, gouvernance IA, sécurité, conduite du changement, KPI et priorisation de portefeuille.";
+  "Guides pratiques sur la transformation digitale : maturité numérique, ROI, gouvernance IA, sécurité, conduite du changement, KPI et priorisation.";
 
 export const metadata: Metadata = {
   title: GUIDES_TITLE,

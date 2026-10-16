@@ -47,7 +47,7 @@ export interface GeoCountry {
   /** Contexte marché sourcé, issu de la veille seo/veille-*.md (optionnel tant que non vérifié) */
   marketContext?: CountryMarketContext;
   /** "au Bénin", "en Côte d'Ivoire"... (par défaut "au" si absent, pays non prioritaires) */
-  preposition?: "au" | "en";
+  preposition?: "au" | "en" | "à";
   /** Adjectif de nationalité, accordé au féminin pluriel ("entreprises béninoises") */
   gentileAdj?: string;
   /** Meta description dédiée 150-160 caractères, jamais un gabarit identique d'un pays à l'autre */
@@ -289,6 +289,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
   {
     slug: "rd-congo", name: "RD Congo", region: "Afrique centrale", currency: "franc congolais (CDF)",
+    preposition: "en",
     cities: makeCities(["Kinshasa", "Lubumbashi", "Mbuji-Mayi", "Kananga", "Kisangani", "Bukavu", "Goma", "Kolwezi", "Likasi", "Tshikapa"]),
     marketContext: {
       intro: "La Banque mondiale estime qu'une hausse de 10 % de l'accès au haut débit en RD Congo pourrait générer environ 2,5 % de croissance additionnelle du PIB et près de 700 000 emplois. Un potentiel documenté, mais conditionné à des réformes réglementaires encore à mettre en œuvre.",
@@ -313,6 +314,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
   {
     slug: "madagascar", name: "Madagascar", region: "Afrique centrale", currency: "ariary (MGA)",
+    preposition: "à",
     cities: makeCities(["Antananarivo", "Toamasina", "Antsirabe", "Fianarantsoa", "Mahajanga", "Toliara", "Antsiranana", "Ambovombe", "Morondava", "Ambatondrazaka"]),
     marketContext: {
       intro: "Madagascar met en avant la digitalisation de ses services publics comme point d'entrée de sa transformation numérique, avec des économies déjà chiffrées, plutôt qu'un narratif centré sur l'écosystème privé des PME.",
@@ -325,6 +327,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
   {
     slug: "belgique", name: "Belgique", region: "Europe francophone", currency: "euro (EUR)",
+    preposition: "en",
     cities: makeCities(["Bruxelles", "Liège", "Charleroi", "Namur", "Mons", "Tournai", "La Louvière", "Verviers", "Mouscron", "Seraing"]),
     marketContext: {
       intro: "Les PME belges sont globalement au-dessus de la moyenne européenne sur les fondamentaux numériques, mais un chantier réglementaire daté et concret les attend : la facturation électronique structurée (e-invoicing B2B), obligatoire à partir de 2026, alors que son adoption reste très en retard aujourd'hui.",
@@ -337,6 +340,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
   {
     slug: "suisse", name: "Suisse", region: "Europe francophone", currency: "franc suisse (CHF)",
+    preposition: "en",
     cities: makeCities(["Genève", "Lausanne", "Fribourg", "Neuchâtel", "Sion", "La Chaux-de-Fonds", "Vevey", "Montreux", "Yverdon-les-Bains", "Nyon"]),
     marketContext: {
       intro: "La Suisse affiche un paradoxe net : une population connectée à la quasi-totalité, mais une présence en ligne des PME nettement en retard par rapport à la demande réelle des consommateurs.",

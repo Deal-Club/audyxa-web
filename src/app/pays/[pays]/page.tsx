@@ -12,6 +12,7 @@ import {
   getCountriesByRegion,
 } from "@/lib/geo-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
+import { seoTitle } from "@/lib/seo-title";
 import { SITE_URL } from "@/lib/site-config";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
 import { truncateForMeta } from "@/lib/text-utils";
@@ -35,9 +36,9 @@ export async function generateMetadata({
       `Audyxa accompagne les entreprises ${preposition} ${country.name} en conseil, automatisation, IA et développement d'outils métier, avec la même méthode appliquée partout en Afrique francophone.`
   );
 
-  const title = `Transformation digitale ${preposition} ${country.name} | Conseil, audit et automatisation`;
+  const title = seoTitle([`Transformation digitale ${preposition} ${country.name}`, "Conseil, audit et automatisation"]);
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: `/pays/${country.slug}` },
     openGraph: {
@@ -69,8 +70,8 @@ export default async function CountryPage({
   const preposition = country.preposition ?? "au";
   // Heuristique valable pour les 8 pays d'Afrique de l'Ouest francophone couverts :
   // les noms précédés de "en" (Côte d'Ivoire, Guinée) sont féminins, les autres masculins.
-  const articleLe = preposition === "en" ? "la" : "le";
-  const articleDu = preposition === "en" ? "de la" : "du";
+  const leCountry = preposition === "en" ? `la ${country.name}` : preposition === "à" ? country.name : `le ${country.name}`;
+  const duCountry = preposition === "en" ? `de la ${country.name}` : preposition === "à" ? `de ${country.name}` : `du ${country.name}`;
   const metaDescription =
     country.metaDescription ??
     `Audyxa accompagne les entreprises ${preposition} ${country.name} en conseil, automatisation, IA et développement d'outils métier.`;
@@ -114,12 +115,12 @@ export default async function CountryPage({
         "Non, nous intervenons à distance depuis notre équipe centrale, avec la même méthode que sur nos autres marchés. Cela nous permet de garantir une qualité constante sans multiplier les partenaires locaux.",
     },
     {
-      question: `Dans quelle monnaie sont établis les devis pour ${articleLe} ${country.name} ?`,
-      answer: `Nous en discutons directement avec vous selon votre contexte : ${articleLe} ${country.name} utilise le ${country.currency}, ce point est cadré dès le premier échange.`,
+      question: `Dans quelle monnaie sont établis les devis pour ${leCountry} ?`,
+      answer: `Nous en discutons directement avec vous selon votre contexte : ${leCountry} utilise le ${country.currency}, ce point est cadré dès le premier échange.`,
     },
     {
-      question: `Intervenez-vous dans toutes les villes ${articleDu} ${country.name} ?`,
-      answer: `Notre intervention à distance couvre l'ensemble ${articleDu} ${country.name}, avec un point de référence sur ${flagship.name} où se concentre le plus de demandes.`,
+      question: `Intervenez-vous dans toutes les villes ${duCountry} ?`,
+      answer: `Notre intervention à distance couvre l'ensemble ${duCountry}, avec un point de référence sur ${flagship.name} où se concentre le plus de demandes.`,
     },
     {
       question: "Par quel service commencer ?",
@@ -214,7 +215,7 @@ export default async function CountryPage({
               <div className="w-full lg:w-4/12 lg:pr-[40px]">
                 <SectionTitle
                   subTitle="Contexte digital"
-                  title={`Ce que disent les études sur ${articleLe} ${country.name}`}
+                  title={`Ce que disent les études sur ${leCountry}`}
                   className="mb-0"
                 />
               </div>
@@ -274,7 +275,7 @@ export default async function CountryPage({
             </div>
             <div className="w-full lg:w-8/12">
               <p className="mb-0 text-base leading-8 text-body-text">
-                {preposition === "en" ? "En" : "Au"} {country.name} comme sur nos autres marchés, notre
+                {preposition.charAt(0).toUpperCase() + preposition.slice(1)} {country.name} comme sur nos autres marchés, notre
                 accompagnement couvre l&apos;{" "}
                 <Link href="/services/audit-diagnostic-digital" className="font-semibold text-theme-2 hover:underline">audit et diagnostic digital</Link>,
                 {" "}la <Link href="/services/refonte-processus" className="font-semibold text-theme-2 hover:underline">refonte des processus métier</Link>,
@@ -365,7 +366,7 @@ export default async function CountryPage({
           <SectionTitle
             light
             subTitle="Villes d'intervention"
-            title={`Les autres villes ${articleDu} ${country.name} que nous couvrons`}
+            title={`Les autres villes ${duCountry} que nous couvrons`}
             className="mb-[40px] max-w-[760px]"
           />
           <div className="flex flex-wrap gap-3">

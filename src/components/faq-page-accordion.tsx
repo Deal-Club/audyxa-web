@@ -4,37 +4,7 @@ import { useState } from "react";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { cn } from "@/lib/utils";
 
-interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-/**
- * Contenu verbatim de `page-faq.html` (source Amiso) : 4 questions, réponse
- * de démo identique pour chacune — contenu réel du thème, non inventé.
- */
-const FAQ_ITEMS: FaqItem[] = [
-  {
-    question: "How to soft launch your business?",
-    answer:
-      "There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.",
-  },
-  {
-    question: "Is my technology allowed on tech?",
-    answer:
-      "There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.",
-  },
-  {
-    question: "How to turn visitors into contributors",
-    answer:
-      "There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.",
-  },
-  {
-    question: "How can i find my solutions?",
-    answer:
-      "There are many variations of passages the majority have suffered alteration in some fo injected humour or random ised words believ able lorem Ipsum generators on the internet tend to repeat predefined chunks as necessary.",
-  },
-];
+import type { FaqItem } from "@/lib/faq-schema";
 
 /**
  * Accordéon de la page `/faq` (`page-faq.html`, section `.accordion-box`
@@ -55,14 +25,14 @@ const FAQ_ITEMS: FaqItem[] = [
  * chevron pivoté à 180° utilisé par la teaser home. Reproduit ici par un
  * changement de classe FontAwesome plutôt qu'une rotation CSS.
  */
-export function FaqPageAccordion() {
+export function FaqPageAccordion({ items }: { items: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
     <section className="relative">
       <div className="auto-container py-[120px]">
         <ScrollReveal as="ul" animation="fadeInRight" className="accordion-box relative">
-          {FAQ_ITEMS.map((item, index) => {
+          {items.map((item, index) => {
             const isActive = openIndex === index;
             return (
               <li

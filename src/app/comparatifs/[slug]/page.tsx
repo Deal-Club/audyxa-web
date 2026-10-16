@@ -8,7 +8,8 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { CallToAction } from "@/components/call-to-action";
 import { DECISION_PAGES, getDecisionPage } from "@/lib/decision-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
-import { SITE_URL } from "@/lib/site-config";
+import { seoTitle } from "@/lib/seo-title";
+import { AUTHOR_URL, CONTENT_LAST_MODIFIED, SITE_LOGO_URL, SITE_URL } from "@/lib/site-config";
 import { truncateForMeta } from "@/lib/text-utils";
 
 export function generateStaticParams() {
@@ -24,10 +25,10 @@ export async function generateMetadata({
   const page = getDecisionPage(slug);
   if (!page) return {};
 
-  const title = page.title;
+  const title = seoTitle(page.title, `/comparatifs/${page.slug}`);
   const metaDescription = truncateForMeta(page.conclusion);
   return {
-    title,
+    title: { absolute: title },
     description: metaDescription,
     alternates: { canonical: `/comparatifs/${page.slug}` },
     openGraph: {
@@ -78,9 +79,11 @@ export default async function DecisionPage({
     "@type": "Article",
     headline: page.title,
     description: page.conclusion,
-    author: { "@type": "Person", name: "Paul Maxime Dossou" },
-    publisher: { "@type": "Organization", name: "Audyxa" },
-    mainEntityOfPage: `${SITE_URL}/comparatifs/${page.slug}`,
+    author: { "@type": "Person", name: "Paul Maxime Dossou", url: AUTHOR_URL },
+    publisher: { "@type": "Organization", name: "Audyxa", url: SITE_URL, logo: { "@type": "ImageObject", url: SITE_LOGO_URL } },
+    dateModified: CONTENT_LAST_MODIFIED,
+    inLanguage: "fr",
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/comparatifs/${page.slug}` },
   };
 
   return (

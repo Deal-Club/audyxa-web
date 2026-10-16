@@ -22,8 +22,9 @@ import {
   slugifyHeading,
 } from "@/lib/methode-content";
 import { METHOD_EXTRAS, PILLARS } from "@/lib/methode-extras";
+import { seoTitle } from "@/lib/seo-title";
 import { SITE_URL, METHODE_LAST_REVISION } from "@/lib/site-config";
-import { truncateForMeta } from "@/lib/text-utils";
+import { buildMetaDescription } from "@/lib/text-utils";
 
 export function generateStaticParams() {
   return getPublishedMethodChapters().map((chapter) => ({ slug: chapter.slug }));
@@ -39,14 +40,17 @@ export async function generateMetadata({
   if (!chapter || !chapter.sections) return {};
   const readingMinutes = estimateReadingMinutes(chapter);
 
-  const title = `${chapter.title} | Méthode`;
+  const title = seoTitle([chapter.title, "Méthode"], `/methode/${chapter.slug}`);
   // Description courte pour les moteurs de recherche (~160 caractères) :
   // le résumé complet reste affiché sur la page (intro du bloc "résumé"),
   // seule la version tronquée sert aux balises meta/OG/Twitter.
-  const metaDescription = truncateForMeta(chapter.summary);
+  const metaDescription = buildMetaDescription(
+    chapter.summary,
+    chapter.sections?.[0]?.paragraphs[0] ?? `Chapitre ${chapter.number} de la méthode Audyxa de transformation digitale.`
+  );
 
   return {
-    title,
+    title: { absolute: title },
     description: metaDescription,
     alternates: { canonical: `/methode/${chapter.slug}` },
     // openGraph/twitter par page (pas de valeurs copiées de la home, cf.

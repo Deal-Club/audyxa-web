@@ -7,6 +7,7 @@ import { ThemeBtn } from "@/components/theme-btn";
 import { CallToAction } from "@/components/call-to-action";
 import { GEO_COUNTRIES, getCountry, getFlagshipCity } from "@/lib/geo-content";
 import { SERVICES_DETAIL, getServiceDetail } from "@/lib/services-content";
+import { seoTitle } from "@/lib/seo-title";
 import { SITE_URL } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -30,11 +31,11 @@ export async function generateMetadata({
   const service = getServiceDetail(slug);
   if (!country || !service) return {};
   const city = getFlagshipCity(country);
-  const title = `${service.title} à ${city.name}`;
+  const title = seoTitle(`${service.title} à ${city.name}`);
   const description = `${service.title} à ${city.name} (${country.name}) : intervention à distance avec la méthode Audyxa, diagnostic sur mesure.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: `/services/${service.slug}/${country.slug}/${city.slug}` },
     openGraph: {

@@ -8,6 +8,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { CallToAction } from "@/components/call-to-action";
 import { SERVICES_DETAIL, getServiceDetail } from "@/lib/services-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
+import { seoTitle } from "@/lib/seo-title";
 import { SITE_URL } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -52,10 +53,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getServiceDetail(slug);
   if (!service) return {};
-  const title = `${service.title} pour entreprises`;
+  const title = seoTitle(/entreprise/i.test(service.title) ? service.title : `${service.title} pour entreprises`);
 
   return {
-    title,
+    title: { absolute: title },
     description: service.metaDescription,
     alternates: { canonical: `/services/${service.slug}` },
     // openGraph/twitter par page (pas de valeurs copiées de la home, cf.

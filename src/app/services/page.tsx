@@ -5,7 +5,7 @@ import { ServicesSeoSection } from "@/components/services-seo-section";
 import { CallToAction } from "@/components/call-to-action";
 import { SITE_URL } from "@/lib/site-config";
 
-const SERVICES_TITLE = "Services";
+const SERVICES_TITLE = "Services : audit, processus, automatisation, IA";
 const SERVICES_DESCRIPTION =
   "Audyxa propose des services de diagnostic, automatisation, IA, développement d'outils métier et pilotage de transformation digitale.";
 

@@ -12,7 +12,7 @@ const manrope = Manrope({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const DEFAULT_TITLE = "Audyxa | Cabinet de conseil en transformation digitale en Afrique de l'Ouest";
+const DEFAULT_TITLE = "Audyxa | Conseil en transformation digitale en Afrique";
 const DEFAULT_DESCRIPTION =
   "Audyxa accompagne les entreprises en France et en Afrique francophone avec une approche conseil + services pour transformer les pertes de temps en gains réels.";
 
@@ -71,7 +71,17 @@ export const viewport: Viewport = {
 const ORGANIZATION_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
+  inLanguage: "fr",
+  knowsAbout: [
+    "Transformation digitale",
+    "Audit et diagnostic digital",
+    "Refonte des processus métier",
+    "Automatisation et intégrations",
+    "Intelligence artificielle en entreprise",
+    "Développement d'outils métier",
+  ],
   url: SITE_URL,
   logo: `${SITE_URL}/images/logo-full.png`,
   description:
@@ -111,6 +121,16 @@ const ORGANIZATION_JSON_LD = {
   ],
 };
 
+const WEBSITE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: SITE_NAME,
+  inLanguage: "fr",
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" className={`${manrope.variable} antialiased`}>
@@ -119,6 +139,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
+        />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_JSON_LD) }}
         />
         <Header />
         {children}

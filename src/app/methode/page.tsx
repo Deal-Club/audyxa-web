@@ -12,7 +12,7 @@ import { METHOD_CHAPTERS, getPublishedMethodChapters } from "@/lib/methode-conte
 import { METHOD_EXTRAS, PILLARS } from "@/lib/methode-extras";
 import { SITE_NAME, SITE_URL } from "@/lib/site-config";
 
-const METHODE_TITLE = "Notre méthode";
+const METHODE_TITLE = "Méthode de transformation digitale en 17 chapitres";
 const METHODE_DESCRIPTION =
   "La méthode Audyxa de transformation digitale : diagnostic de maturité, business case, architecture, automatisation, IA et pilotage, en 17 chapitres.";
 

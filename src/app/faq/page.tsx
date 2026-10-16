@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { PageTitle } from "@/components/page-title";
 import { FaqPageAccordion } from "@/components/faq-page-accordion";
+import { FAQ_PAGE_ITEMS } from "@/lib/faq-data";
+import { buildFaqJsonLd } from "@/lib/faq-schema";
 
 export const metadata: Metadata = {
-  title: "FAQ | Audyxa",
+  title: "FAQ : questions fréquentes sur Audyxa",
   description:
-    "Audyxa — agence de transformation digitale. Transformer, innover, exceller.",
+    "Réponses aux questions fréquentes sur Audyxa : conseil, audit, automatisation, IA, déroulé d'une mission et zones d'intervention.",
+  alternates: { canonical: "/faq" },
 };
 
 /**
@@ -18,11 +21,17 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqJsonLd(FAQ_PAGE_ITEMS)) }}
+      />
       <PageTitle
         title="FAQ"
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Pages" }, { label: "FAQ" }]}
+        breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "FAQ" }]}
+        currentPath="/faq"
       />
-      <FaqPageAccordion />
+      <FaqPageAccordion items={FAQ_PAGE_ITEMS} />
     </main>
   );
 }

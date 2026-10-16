@@ -58,7 +58,7 @@ export default function CountriesHubPage() {
             <div className="w-full lg:w-8/12 lg:pl-[40px]">
               <p className="mb-0 text-[19px] leading-9 text-theme-1">
                 Audyxa intervient à distance sur l&apos;ensemble de ces marchés, avec la même méthode
-                de transformation digitale partout, sans dépendre d'un partenaire local différent selon le pays.
+                de transformation digitale partout, sans dépendre d&apos;un partenaire local différent selon le pays.
               </p>
             </div>
           </div>

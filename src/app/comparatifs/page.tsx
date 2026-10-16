@@ -6,9 +6,9 @@ import { CallToAction } from "@/components/call-to-action";
 import { DECISION_PAGES } from "@/lib/decision-content";
 import { SITE_URL } from "@/lib/site-config";
 
-const COMPARATIFS_TITLE = "Comparatifs et guides de décision";
+const COMPARATIFS_TITLE = "Comparatifs : choisir son approche digitale";
 const COMPARATIFS_DESCRIPTION =
-  "Consultant vs agence, freelance vs cabinet, automatisation vs IA : des comparatifs transparents pour vous aider à choisir votre approche de transformation digitale.";
+  "Consultant vs agence, freelance vs cabinet, automatisation vs IA : des comparatifs transparents pour choisir votre approche digitale.";
 
 export const metadata: Metadata = {
   title: COMPARATIFS_TITLE,

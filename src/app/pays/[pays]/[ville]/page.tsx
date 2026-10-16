@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoTitle } from "@/lib/seo-title";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { PageTitle } from "@/components/page-title";
@@ -54,10 +55,10 @@ export async function generateMetadata({
   const curated = getVilleContent(pays, ville);
 
   if (curated) {
-    const title = `Consultant en transformation digitale à ${city.name} | Audit, automatisation, IA`;
+    const title = seoTitle([`Consultant en transformation digitale à ${city.name}`, "Audit, automatisation, IA"]);
     const metaDescription = truncateForMeta(curated.metaDescription);
     return {
-      title,
+      title: { absolute: title },
       description: metaDescription,
       alternates: { canonical: `/pays/${country.slug}/${city.slug}` },
       openGraph: {
@@ -76,7 +77,7 @@ export async function generateMetadata({
 
   const genericTitle = `Transformation digitale à ${city.name}`;
   const genericDescription = truncateForMeta(
-    `Audyxa accompagne les entreprises à ${city.name} (${country.name}) en conseil, automatisation, IA et développement d'outils métier, à distance, avec la même méthode qu'ailleurs.`
+    `Audyxa accompagne les entreprises à ${city.name} (${country.name}) en conseil, automatisation, IA et outils métier, à distance, avec la même méthode qu'ailleurs.`
   );
   return {
     title: genericTitle,

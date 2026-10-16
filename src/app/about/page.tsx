@@ -9,9 +9,10 @@ import { WhyChooseUs } from "@/components/why-choose-us";
 import { FaqSection } from "@/components/faq-section";
 import { CallToAction } from "@/components/call-to-action";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
+import { ABOUT_FAQ_ITEMS } from "@/lib/faq-data";
 import { SITE_URL } from "@/lib/site-config";
 
-const TITLE = "Notre approche";
+const TITLE = "Notre approche : conseil et exécution digitale";
 const DESCRIPTION =
   "Découvrez l'approche Audyxa : diagnostic, priorisation, déploiement et mesure pour réussir la transformation digitale des entreprises.";
 
@@ -35,38 +36,6 @@ export const metadata: Metadata = {
   },
 };
 
-const ABOUT_FAQ_ITEMS = [
-  {
-    question: "Comment se déroule une première prise de contact ?",
-    answer:
-      "Nous échangeons d'abord sur votre contexte, vos priorités et vos irritants du quotidien. Cet échange permet de savoir si un diagnostic plus poussé est pertinent, sans engagement de votre part.",
-  },
-  {
-    question: "Combien de temps dure un diagnostic ?",
-    answer:
-      "Cela dépend de la taille de l'organisation et du nombre de processus concernés. Le diagnostic reste ciblé : il vise à identifier rapidement les priorités, pas à produire un audit exhaustif interminable.",
-  },
-  {
-    question: "Restez-vous impliqués après le déploiement d'une solution ?",
-    answer:
-      "Oui. Une transformation qui n'est pas suivie finit souvent par ne pas être adoptée. Nous accompagnons la période d'adoption et ajustons ce qui doit l'être une fois la solution en usage réel.",
-  },
-  {
-    question: "Votre approche s'adapte-t-elle aux petites structures ?",
-    answer:
-      "Oui, notre méthode est pensée pour rester proportionnée : on ne propose pas la même ampleur d'intervention à une PME et à un grand groupe, mais la même rigueur de diagnostic s'applique à toutes les tailles.",
-  },
-  {
-    question: "Que se passe-t-il si le diagnostic ne révèle pas de besoin clair ?",
-    answer:
-      "Nous le disons simplement. Si aucun chantier ne justifie un investissement à ce moment-là, nous préférons le dire plutôt que de proposer une solution qui ne servirait pas votre activité.",
-  },
-  {
-    question: "Faut-il déjà avoir des outils en place pour vous solliciter ?",
-    answer:
-      "Non. Nous intervenons aussi bien pour structurer une organisation qui démarre que pour clarifier un environnement déjà équipé mais devenu difficile à piloter.",
-  },
-];
 
 export default function AboutPage() {
   return (

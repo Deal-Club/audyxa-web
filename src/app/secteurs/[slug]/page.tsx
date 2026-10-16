@@ -9,8 +9,9 @@ import { CallToAction } from "@/components/call-to-action";
 import { RichText } from "@/components/rich-text";
 import { SECTOR_PAGES, getSectorPage } from "@/lib/sector-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
+import { seoTitle } from "@/lib/seo-title";
 import { SITE_URL } from "@/lib/site-config";
-import { truncateForMeta } from "@/lib/text-utils";
+import { buildMetaDescription } from "@/lib/text-utils";
 
 export function generateStaticParams() {
   return SECTOR_PAGES.map((s) => ({ slug: s.slug }));
@@ -25,10 +26,10 @@ export async function generateMetadata({
   const sector = getSectorPage(slug);
   if (!sector) return {};
 
-  const title = `Transformation digitale ${sector.name}`;
-  const metaDescription = truncateForMeta(sector.directAnswer);
+  const title = seoTitle(`Transformation digitale ${sector.name}`);
+  const metaDescription = buildMetaDescription(sector.directAnswer, sector.tagline);
   return {
-    title,
+    title: { absolute: title },
     description: metaDescription,
     alternates: { canonical: `/secteurs/${sector.slug}` },
     openGraph: {

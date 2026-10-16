@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL, METHODE_LAST_REVISION } from "@/lib/site-config";
+import { SITE_URL, METHODE_LAST_REVISION, CONTENT_LAST_MODIFIED } from "@/lib/site-config";
 import { getPublishedMethodChapters } from "@/lib/methode-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { DECISION_PAGES } from "@/lib/decision-content";
@@ -19,7 +19,7 @@ import { HISTOIRES } from "@/lib/histoires-content";
  * À remplacer par un champ `updatedAt` par page quand chaque module de
  * contenu l'exposera.
  */
-const CONTENT_DATE = new Date("2026-09-24");
+const CONTENT_DATE = new Date(CONTENT_LAST_MODIFIED);
 const HOME_DATE = new Date("2026-10-09");
 const FAQ_DATE = new Date("2026-08-31");
 const METHODE_DATE = new Date(METHODE_LAST_REVISION);
