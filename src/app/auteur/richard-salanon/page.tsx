@@ -94,6 +94,13 @@ const DATA: FounderData = {
     { title: "Visibilité et conseil", items: ["Référencement naturel SEO et GEO", "SEO local et Google Business", "Audit SEO complet", "Consultant en digitalisation"] },
     { title: "ERP et gestion", items: ["Intégration Odoo", "Intégration Dolibarr", "Réservation en ligne", "Audit et étude de projet"] },
   ],
+  tools: [
+    { name: "n8n", logo: "/images/logos/n8n.svg" },
+    { name: "Make", logo: "/images/logos/make.svg" },
+    { name: "Odoo", logo: "/images/logos/odoo.svg" },
+    { name: "Dolibarr", logo: "/images/logos/dolibarr.svg" },
+    { name: "WhatsApp", logo: "/images/logos/whatsapp.svg" },
+  ],
   zones: [
     {
       region: "Afrique de l'Ouest",

@@ -18,7 +18,7 @@ export interface FounderData {
   stats: { value: string; label: string }[];
   about: string[];
   services: { title: string; items: string[] }[];
-  tools?: string[];
+  tools?: { name: string; logo?: string }[];
   highlights: { label: string; text: string }[];
   links: { label: string; href: string; external?: boolean }[];
   zones?: { region: string; countries: { name: string; code: string; base?: boolean }[] }[];
@@ -185,13 +185,20 @@ export function FounderProfile({ data }: { data: FounderData }) {
             ))}
           </div>
           {data.tools ? (
-            <ul className="m-0 mt-8 flex list-none flex-wrap gap-2 p-0">
+            <ul className="m-0 mt-10 grid list-none grid-cols-2 gap-3 p-0 min-[600px]:grid-cols-3 min-[992px]:grid-cols-5">
               {data.tools.map((t) => (
                 <li
-                  key={t}
-                  className="rounded-full border border-[#e6e3dc] px-4 py-1.5 text-[13px] font-semibold text-theme-1"
+                  key={t.name}
+                  className="flex items-center gap-3 rounded-[12px] border border-[#e6e3dc] bg-white px-4 py-3 transition-colors duration-300 hover:border-theme-2"
                 >
-                  {t}
+                  {t.logo ? (
+                    <Image src={t.logo} alt="" width={28} height={28} className="h-[28px] w-[28px] shrink-0 object-contain" />
+                  ) : (
+                    <span aria-hidden className="flex h-[28px] w-[28px] shrink-0 items-center justify-center rounded-[6px] bg-theme-1 text-[13px] font-extrabold text-white">
+                      {t.name[0]}
+                    </span>
+                  )}
+                  <span className="text-[14px] font-semibold text-theme-1">{t.name}</span>
                 </li>
               ))}
             </ul>
