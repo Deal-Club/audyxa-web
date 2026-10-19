@@ -112,6 +112,8 @@ export function Footer() {
                   { label: "À propos", href: "/about" },
                   { label: "Services", href: "/services" },
                   { label: "Méthode", href: "/methode" },
+                  { label: "Paul Maxime Dossou", href: "/auteur/paul-maxime-dossou" },
+                  { label: "Richard Salanon", href: "/auteur/richard-salanon" },
                   { label: "Contact", href: "/contact" },
                 ].map((item) => (
                   <li key={item.label}>

@@ -5,6 +5,7 @@ import { AboutStorySection } from "@/components/about-story-section";
 import { AboutMethodSection } from "@/components/about-method-section";
 import { AboutServicesContentSection } from "@/components/about-services-content-section";
 import { AboutApproachSection } from "@/components/about-approach-section";
+import { FoundersSection } from "@/components/founders-section";
 import { WhyChooseUs } from "@/components/why-choose-us";
 import { FaqSection } from "@/components/faq-section";
 import { CallToAction } from "@/components/call-to-action";
@@ -64,6 +65,7 @@ export default function AboutPage() {
         logoMode
       />
       <AboutStorySection />
+      <FoundersSection />
       <AboutMethodSection />
       <AboutServicesContentSection />
       <AboutApproachSection />
