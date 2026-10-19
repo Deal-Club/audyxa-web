@@ -251,8 +251,9 @@ export function FounderProfile({ data }: { data: FounderData }) {
       <section className="bg-light-bg py-[80px]">
         <div className="auto-container">
           <SectionHead kicker="Questions fréquentes" title={`Sur ${data.name}`} />
-          <div className="max-w-[880px]">
-            <FaqAccordion items={data.faq} />
+          <div className="grid grid-cols-1 items-start gap-x-8 min-[992px]:grid-cols-2">
+            <FaqAccordion items={data.faq.slice(0, Math.ceil(data.faq.length / 2))} />
+            <FaqAccordion items={data.faq.slice(Math.ceil(data.faq.length / 2))} />
           </div>
         </div>
       </section>

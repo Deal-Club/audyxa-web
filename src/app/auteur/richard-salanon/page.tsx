@@ -58,6 +58,11 @@ const FAQ = [
     answer:
       "Sur place à Cotonou et à distance partout ailleurs : Afrique francophone, Europe et Canada, dans 34 pays au total.",
   },
+  {
+    question: "Quels services propose Richard Salanon ?",
+    answer:
+      "Sites vitrines et e-commerce, applications web et mobiles, automatisation n8n et Make, agents IA et chatbot WhatsApp, référencement SEO et GEO, intégration d'Odoo et de Dolibarr, et formations pour les équipes.",
+  },
 ];
 
 const DATA: FounderData = {

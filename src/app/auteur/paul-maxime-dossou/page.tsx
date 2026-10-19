@@ -73,6 +73,11 @@ const AUTEUR_FAQ = [
     answer:
       "Les 17 chapitres de la méthode publiée sur /methode sont issus et reformulés du cours professionnel « Digitalisation des Entreprises » de Paul Maxime Dossou, édition août 2026, structuré du diagnostic de maturité jusqu'à la restitution devant un comité de direction.",
   },
+  {
+    question: "Quels services propose Paul Maxime Dossou ?",
+    answer:
+      "Automatisation des processus (n8n, Make, Zapier), développement web full stack (Laravel, Next.js), intégration de l'IA et d'Odoo, audit de maturité digitale, formation des équipes et acquisition client digitale (SEO local, Google Ads).",
+  },
 ];
 
 const DATA: FounderData = {
