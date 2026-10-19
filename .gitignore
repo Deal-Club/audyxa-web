@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 .playwright-mcp/
 .claude/scheduled_tasks.lock
+
+# Graphe de code local (graphify), regenerable via `graphify extract . --code-only`.
+graphify-out/
