@@ -153,7 +153,7 @@ export const VILLES_SENEGAL: VilleContent[] = [
   // --------------------------------------------------------------- M'BOUR
   {
     paysSlug: "senegal",
-    villeSlug: "mbour",
+    villeSlug: "m-bour",
     villeName: "M'bour",
     metaDescription:
       "Audyxa accompagne à distance hôtels, mareyeurs et PME de M'bour sur la Petite-Côte : réservations, suivi des ventes de poisson et outils métier sur mesure.",

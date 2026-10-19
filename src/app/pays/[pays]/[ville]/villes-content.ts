@@ -20,6 +20,15 @@ import { VILLES_TOGO } from "./villes-content-togo";
 import { VILLES_COTE_DIVOIRE } from "./villes-content-cote-divoire";
 import { VILLES_SENEGAL } from "./villes-content-senegal";
 import { VILLES_BELGIQUE } from "./villes-content-belgique";
+import { VILLES_CAMEROUN } from "./villes-content-cameroun";
+import { VILLES_CONGO_BRAZZAVILLE } from "./villes-content-congo-brazzaville";
+import { VILLES_GUINEE } from "./villes-content-guinee";
+import { VILLES_LUXEMBOURG } from "./villes-content-luxembourg";
+import { VILLES_MADAGASCAR } from "./villes-content-madagascar";
+import { VILLES_MALI } from "./villes-content-mali";
+import { VILLES_NIGER } from "./villes-content-niger";
+import { VILLES_RD_CONGO } from "./villes-content-rd-congo";
+import { VILLES_SUISSE } from "./villes-content-suisse";
 
 export interface VilleFait {
   /** Chiffre affiché ("679 012", "3 407 327 habitants"...) */
@@ -989,6 +998,15 @@ const VILLES_CONTENT_ALL: VilleContent[] = [
   ...VILLES_COTE_DIVOIRE,
   ...VILLES_SENEGAL,
   ...VILLES_BELGIQUE,
+  ...VILLES_CAMEROUN,
+  ...VILLES_CONGO_BRAZZAVILLE,
+  ...VILLES_GUINEE,
+  ...VILLES_LUXEMBOURG,
+  ...VILLES_MADAGASCAR,
+  ...VILLES_MALI,
+  ...VILLES_NIGER,
+  ...VILLES_RD_CONGO,
+  ...VILLES_SUISSE,
 ];
 
 export function getVilleContent(paysSlug: string, villeSlug: string): VilleContent | undefined {
