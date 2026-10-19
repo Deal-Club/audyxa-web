@@ -94,7 +94,38 @@ const DATA: FounderData = {
     { title: "Visibilité et conseil", items: ["Référencement naturel SEO et GEO", "SEO local et Google Business", "Audit SEO complet", "Consultant en digitalisation"] },
     { title: "ERP et gestion", items: ["Intégration Odoo", "Intégration Dolibarr", "Réservation en ligne", "Audit et étude de projet"] },
   ],
-  zones: ["Bénin", "Côte d'Ivoire", "Sénégal", "Togo", "Cameroun", "Burkina Faso", "Mali", "Niger", "France", "Belgique", "Suisse", "Canada", "Luxembourg", "Maroc", "Madagascar"],
+  zones: [
+    {
+      region: "Afrique de l'Ouest",
+      countries: [
+        { name: "Bénin", code: "bj", base: true },
+        { name: "Côte d'Ivoire", code: "ci" },
+        { name: "Sénégal", code: "sn" },
+        { name: "Togo", code: "tg" },
+        { name: "Burkina Faso", code: "bf" },
+        { name: "Mali", code: "ml" },
+        { name: "Niger", code: "ne" },
+      ],
+    },
+    {
+      region: "Afrique centrale, nord et océan Indien",
+      countries: [
+        { name: "Cameroun", code: "cm" },
+        { name: "Maroc", code: "ma" },
+        { name: "Madagascar", code: "mg" },
+      ],
+    },
+    {
+      region: "Europe et Canada",
+      countries: [
+        { name: "France", code: "fr" },
+        { name: "Belgique", code: "be" },
+        { name: "Suisse", code: "ch" },
+        { name: "Luxembourg", code: "lu" },
+        { name: "Canada", code: "ca" },
+      ],
+    },
+  ],
   links: [
     { label: "richardsalanon.com", href: "https://richardsalanon.com", external: true },
     { label: "contact@richardsalanon.com", href: "mailto:contact@richardsalanon.com" },

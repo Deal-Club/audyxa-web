@@ -21,7 +21,7 @@ export interface FounderData {
   tools?: string[];
   highlights: { label: string; text: string }[];
   links: { label: string; href: string; external?: boolean }[];
-  zones?: string[];
+  zones?: { region: string; countries: { name: string; code: string; base?: boolean }[] }[];
   faq: { question: string; answer: string }[];
   readMore: { kicker: string; title: string; href: string }[];
   ctaTitle: string;
@@ -209,16 +209,37 @@ export function FounderProfile({ data }: { data: FounderData }) {
               title="Où il intervient"
               intro="Sur place à Cotonou, à distance partout ailleurs."
             />
-            <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
+            <div className="grid grid-cols-1 gap-5 min-[768px]:grid-cols-3">
               {data.zones.map((z) => (
-                <li
-                  key={z}
-                  className="rounded-full border border-white/15 px-4 py-1.5 text-[14px] text-[#d6d6d6]"
+                <div
+                  key={z.region}
+                  className="rounded-[16px] border border-white/10 bg-white/[0.03] p-6"
                 >
-                  {z}
-                </li>
+                  <h3 className="mb-5 text-[13px] font-bold uppercase tracking-[0.14em] text-theme-2">
+                    {z.region}
+                  </h3>
+                  <ul className="m-0 flex list-none flex-col gap-3 p-0">
+                    {z.countries.map((c) => (
+                      <li key={c.code} className="flex items-center gap-3">
+                        <Image
+                          src={`/images/flags/${c.code}.svg`}
+                          alt=""
+                          width={36}
+                          height={24}
+                          className="h-[24px] w-[36px] rounded-[4px] object-cover ring-1 ring-white/20"
+                        />
+                        <span className="text-[16px] font-semibold text-white">{c.name}</span>
+                        {c.base ? (
+                          <span className="ml-auto rounded-full bg-theme-2 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-[0.08em] text-white">
+                            Base
+                          </span>
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
       ) : null}
