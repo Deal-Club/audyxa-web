@@ -1,31 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { PageTitle } from "@/components/page-title";
-import { CallToAction } from "@/components/call-to-action";
-import {
-  CheckList,
-  FaqAccordion,
-  MetaRail,
-  SectionHead,
-} from "@/components/methode/method-ui";
+import { FounderProfile, type FounderData } from "@/components/founder-profile";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
 import { SITE_NAME, SITE_URL } from "@/lib/site-config";
 import { truncateForMeta } from "@/lib/text-utils";
 
 /**
- * Page auteur de Paul Maxime Dossou, fondateur d'Audyxa : page qui porte le
- * signal E-E-A-T du site (Expérience, Expertise, Autorité, Fiabilité).
- *
- * Règle de contenu stricte appliquée ici : chaque fait biographique visible
- * sur cette page provient d'une mention déjà publiée ailleurs sur le site
- * (voir `src/app/methode/page.tsx` : PERSON_JSON_LD, section FAQ et section
- * « La source », ainsi que `src/app/methode/[slug]/page.tsx`). Aucune
- * certification, aucun diplôme, aucune année d'expérience précise et aucun
- * nombre de missions n'est avancé : ces informations restent marquées
- * `[À COMPLÉTER PAR L'UTILISATEUR]` tant qu'elles ne sont pas confirmées.
- * Le JSON-LD Person est injecté via une balise <script> native (pas le
- * composant <Script> de next/script) pour rester visible aux robots qui
- * n'exécutent pas JavaScript.
+ * Page auteur de Paul Maxime Dossou, fondateur d'Audyxa (signal E-E-A-T).
+ * Faits issus de son site officiel https://www.paulmaximedossou.com/ et des
+ * pages Audyxa : aucune certification ni chiffre non publié n'est avancé.
+ * JSON-LD via <script> natif pour rester visible aux robots sans JavaScript.
  */
 
 const AUTEUR_TITLE = "Paul Maxime Dossou | Consultant en transformation digitale";
@@ -70,19 +53,9 @@ const PERSON_JSON_LD = {
     "Architecture de système d'information",
     "SEO / GEO / AEO",
   ],
-  // sameAs : à compléter avec les URLs de profils sociaux réels une fois
-  // confirmées (LinkedIn notamment). Voir le placeholder visible dans le
-  // contenu de la page ci-dessous. Ne jamais construire une URL par
-  // supposition (règle anti-invention).
+  image: `${SITE_URL}/images/fondateurs/paul-maxime-dossou.jpg`,
+  sameAs: ["https://www.paulmaximedossou.com/"],
 };
-
-const COMPETENCES = [
-  "Transformation digitale : diagnostic de maturité, cadrage, business case",
-  "Automatisation de processus avec n8n et Make",
-  "Intégration de l'intelligence artificielle en entreprise",
-  "SEO / SEA et référencement pour PME",
-  "Architecture de système d'information et intégrations",
-];
 
 const AUTEUR_FAQ = [
   {
@@ -102,11 +75,76 @@ const AUTEUR_FAQ = [
   },
 ];
 
+const DATA: FounderData = {
+  name: "Paul Maxime Dossou",
+  role: "Fondateur d'Audyxa",
+  tagline: "Expert en automatisation et digitalisation d'entreprise, basé à Cotonou.",
+  intro:
+    "Workflows n8n et Make, développement web full stack (Laravel, Next.js) et accompagnement de l'audit de maturité à la mise en production, pour les PME d'Afrique francophone, de France et du Canada.",
+  photo: { src: "/images/fondateurs/paul-maxime-dossou.jpg", alt: "Portrait de Paul Maxime Dossou" },
+  stats: [
+    { value: "5+", label: "Années d'expérience" },
+    { value: "50+", label: "Projets réalisés" },
+    { value: "48", label: "Clients" },
+    { value: "20 h", label: "Gagnées / semaine" },
+  ],
+  about: [
+    "Paul Maxime Dossou est consultant en transformation digitale et fondateur du cabinet Audyxa. Développeur full stack, il est spécialisé dans l'automatisation des processus métier, le SEO/SEA et l'intégration de l'intelligence artificielle en entreprise.",
+    "Depuis 2019, il a livré plus de 50 projets pour 48 clients en Afrique francophone, en France et au Canada. Ses clients gagnent en moyenne 20 heures par semaine sur les tâches répétitives.",
+    "Il est l'auteur du cours professionnel « Digitalisation des Entreprises » (édition août 2026), qui sert de base à la méthode Audyxa publiée sur ce site, du diagnostic de maturité à la restitution devant un comité de direction.",
+  ],
+  highlights: [
+    {
+      label: "Vision orientée ROI",
+      text: "Chaque développement et chaque automatisation sert un objectif commercial mesurable, fixé avant le démarrage de la mission.",
+    },
+    {
+      label: "Expertise multi-facettes",
+      text: "Du code (Laravel, Next.js) à l'automatisation (n8n, Make) jusqu'à l'acquisition client (SEO local, Google Ads).",
+    },
+    {
+      label: "Accompagnement sur mesure",
+      text: "Audit de maturité, feuille de route sur 12 mois, déploiement du socle technique puis transfert de compétences aux équipes.",
+    },
+  ],
+  services: [
+    {
+      title: "Automatisation des processus",
+      items: ["Workflows n8n auto-hébergés", "Scénarios Make.com et Zapier", "Synchronisation CRM / ERP", "Relances et notifications WhatsApp"],
+    },
+    {
+      title: "Développement web full stack",
+      items: ["Applications Laravel / PHP", "Interfaces React / Next.js", "APIs REST et GraphQL", "Sites et boutiques e-commerce"],
+    },
+    {
+      title: "IA, Odoo et transformation digitale",
+      items: ["Audit des opportunités IA, agents sur mesure", "Déploiement Odoo, comptabilité OHADA", "Audit de maturité digitale", "Formation des équipes, vibe coding"],
+    },
+    {
+      title: "Acquisition client digitale",
+      items: ["SEO local et Google Business", "Campagnes Google Ads", "Avis Google automatisés", "Référencement dans les moteurs génératifs"],
+    },
+  ],
+  tools: ["n8n", "Make", "Laravel", "Next.js", "React", "Vue.js", "TypeScript", "PostgreSQL", "Docker", "Odoo", "Shopify", "WordPress", "Twilio", "ElevenLabs"],
+  links: [
+    { label: "paulmaximedossou.com", href: "https://www.paulmaximedossou.com/", external: true },
+    { label: "contact@paulmaximedossou.com", href: "mailto:contact@paulmaximedossou.com" },
+    { label: "contact@audyxa.com", href: "mailto:contact@audyxa.com" },
+  ],
+  faq: AUTEUR_FAQ,
+  readMore: [
+    { kicker: "La méthode", title: "Les 17 chapitres de la méthode Audyxa", href: "/methode" },
+    { kicker: "Chapitre 1", title: "Fondements et maturité numérique", href: "/methode/fondements-et-maturite-numerique" },
+    { kicker: "Cofondateur", title: "Richard Salanon", href: "/auteur/richard-salanon" },
+  ],
+  ctaTitle: "Envie d'échanger directement avec Paul Maxime Dossou ?",
+};
+
 export default function AuteurPaulMaximeDossouPage() {
   const faqJsonLd = buildFaqJsonLd(AUTEUR_FAQ);
 
   return (
-    <main>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
@@ -115,172 +153,7 @@ export default function AuteurPaulMaximeDossouPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <PageTitle
-        title="Paul Maxime Dossou"
-        breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Paul Maxime Dossou" }]}
-        currentPath="/auteur/paul-maxime-dossou"
-      />
-
-      {/* 1. En résumé */}
-      <section className="bg-white pt-[70px] pb-[60px]">
-        <div className="auto-container">
-          <MetaRail
-            items={[
-              { label: "Rôle", value: "Fondateur d'Audyxa" },
-              { label: "Cours", value: "Digitalisation des Entreprises" },
-              { label: "Chapitres", value: "17" },
-              { label: "Édition", value: "Août 2026" },
-            ]}
-          />
-          <SectionHead
-            kicker="En résumé"
-            title="Consultant en transformation digitale, fondateur d'Audyxa"
-            intro={
-              <>
-                Paul Maxime Dossou est consultant en transformation digitale et fondateur
-                d&apos;Audyxa, cabinet de conseil en transformation digitale pour les entreprises
-                d&apos;Afrique de l&apos;Ouest francophone. Développeur full stack, spécialiste de
-                l&apos;automatisation (n8n, Make), du SEO/SEA et de l&apos;intégration de
-                l&apos;intelligence artificielle en entreprise, il est l&apos;auteur du cours
-                professionnel « Digitalisation des Entreprises », qui sert de base à la{" "}
-                <Link href="/methode" className="font-semibold text-theme-2 hover:underline">
-                  méthode Audyxa
-                </Link>{" "}
-                publiée sur ce site.
-              </>
-            }
-          />
-        </div>
-      </section>
-
-      {/* 2. Domaines de compétence */}
-      <section className="bg-light-bg py-[60px]">
-        <div className="auto-container">
-          <SectionHead
-            kicker="Expertise"
-            title="Domaines de compétence"
-            intro="Les domaines listés ici correspondent à ceux déjà documentés sur les pages du site consacrées à la méthode Audyxa."
-          />
-          <CheckList items={COMPETENCES} />
-        </div>
-      </section>
-
-      {/* 3. Parcours */}
-      <section className="bg-white py-[70px]">
-        <div className="auto-container max-w-[820px]">
-          <SectionHead kicker="Parcours" title="Formation, expérience et certifications" />
-          <p className="mb-4 text-[15px] leading-8 text-body-text">
-            Les années d&apos;expérience précises, les diplômes, les certifications et le nombre de
-            missions réalisées ne sont pas encore documentés de façon vérifiable sur ce site.
-            Conformément à la règle anti-invention appliquée à l&apos;ensemble du contenu Audyxa,
-            aucun chiffre ni aucune certification n&apos;est avancé ici tant qu&apos;il n&apos;est
-            pas confirmé.
-          </p>
-          <p className="mb-0 text-[15px] leading-8 text-body-text">
-            [À COMPLÉTER PAR L&apos;UTILISATEUR : parcours détaillé, formations suivies,
-            certifications, années d&apos;expérience précises, nombre de missions réalisées.]
-          </p>
-        </div>
-      </section>
-
-      {/* 4. Autres activités professionnelles */}
-      <section className="bg-light-bg py-[70px]">
-        <div className="auto-container max-w-[820px]">
-          <SectionHead
-            kicker="Autres activités"
-            title="Lien avec d'autres activités professionnelles"
-          />
-          <p className="mb-0 text-[15px] leading-8 text-body-text">
-            [DÉCISION UTILISATEUR REQUISE : relier ou non à Dossou Dev]
-          </p>
-        </div>
-      </section>
-
-      {/* 5. Profils et vérifiabilité */}
-      <section className="bg-white py-[70px]">
-        <div className="auto-container max-w-[820px]">
-          <SectionHead
-            kicker="Vérifiabilité"
-            title="Profils professionnels"
-            intro="Seuls des profils réels et vérifiés sont listés ici : aucune URL n'est construite par supposition."
-          />
-          <ul className="mb-0 flex flex-col gap-3 text-[15px] leading-8 text-body-text">
-            <li>
-              LinkedIn : [À COMPLÉTER PAR L&apos;UTILISATEUR : URL LinkedIn réelle]
-            </li>
-            <li>
-              Contact professionnel :{" "}
-              <a href="mailto:contact@audyxa.com" className="font-semibold text-theme-2 hover:underline">
-                contact@audyxa.com
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      {/* 6. FAQ */}
-      <section className="bg-light-bg py-[70px]">
-        <div className="auto-container">
-          <SectionHead kicker="Questions fréquentes" title="Ce qu'on nous demande sur l'auteur" />
-          <div className="max-w-[880px]">
-            <FaqAccordion items={AUTEUR_FAQ} />
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Poursuivre la lecture */}
-      <section className="bg-white py-[70px]">
-        <div className="auto-container">
-          <SectionHead kicker="Poursuivre" title="En lire plus" />
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            <Link
-              href="/methode"
-              className="group rounded-[12px] border border-[#e6e3dc] bg-white px-7 py-6 transition-colors duration-300 hover:border-theme-2"
-            >
-              <span className="mb-2 block text-[12px] font-bold uppercase tracking-[0.14em] text-theme-2">
-                La méthode
-              </span>
-              <span className="text-[17px] font-extrabold text-theme-1 group-hover:text-theme-2">
-                Les 17 chapitres de la méthode Audyxa
-              </span>
-            </Link>
-            <Link
-              href="/methode/fondements-et-maturite-numerique"
-              className="group rounded-[12px] border border-[#e6e3dc] bg-white px-7 py-6 transition-colors duration-300 hover:border-theme-2"
-            >
-              <span className="mb-2 block text-[12px] font-bold uppercase tracking-[0.14em] text-theme-2">
-                Chapitre 1
-              </span>
-              <span className="text-[17px] font-extrabold text-theme-1 group-hover:text-theme-2">
-                Fondements et maturité numérique
-              </span>
-            </Link>
-            <Link
-              href="/about"
-              className="group rounded-[12px] border border-[#e6e3dc] bg-white px-7 py-6 transition-colors duration-300 hover:border-theme-2"
-            >
-              <span className="mb-2 block text-[12px] font-bold uppercase tracking-[0.14em] text-theme-2">
-                Audyxa
-              </span>
-              <span className="text-[17px] font-extrabold text-theme-1 group-hover:text-theme-2">
-                Qui est derrière Audyxa
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <CallToAction
-        title={
-          <>
-            Envie d&apos;échanger directement
-            <br className="hidden min-[600px]:block" />
-            avec Paul Maxime Dossou ?
-          </>
-        }
-        ctaHref="/contact"
-        ctaLabel="Prendre contact"
-      />
-    </main>
+      <FounderProfile data={DATA} />
+    </>
   );
 }

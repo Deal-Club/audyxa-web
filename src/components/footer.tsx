@@ -95,14 +95,9 @@ export function Footer() {
                 Conseil, automatisation, IA, développement d&apos;outils métier et accompagnement au déploiement.
               </div>
               <p className="mt-4 mb-0 text-sm leading-7 text-[#8f8f8f]">
-                <a
-                  href="https://richardsalanon.com"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-white hover:text-theme-2"
-                >
+                <Link href="/auteur/richard-salanon" className="text-white hover:text-theme-2">
                   Richard Salanon
-                </a>
+                </Link>
                 , cofondateur : développement, automatisation, SEO.
               </p>
             </div>

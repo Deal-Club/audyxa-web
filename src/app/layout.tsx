@@ -116,7 +116,8 @@ const ORGANIZATION_JSON_LD = {
       "@type": "Person",
       "@id": "https://richardsalanon.com/#person",
       name: "Richard Salanon",
-      url: "https://richardsalanon.com",
+      url: `${SITE_URL}/auteur/richard-salanon`,
+      sameAs: ["https://richardsalanon.com"],
     },
   ],
 };

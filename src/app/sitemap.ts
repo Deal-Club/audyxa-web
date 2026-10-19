@@ -43,6 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/secteurs",
     "/comparatifs",
     "/pays",
+    "/auteur/paul-maxime-dossou",
+    "/auteur/richard-salanon",
   ];
 
   const methodeRoutes = ["/methode", ...getPublishedMethodChapters().map((c) => `/methode/${c.slug}`)];
