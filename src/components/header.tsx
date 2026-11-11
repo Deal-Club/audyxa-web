@@ -57,7 +57,7 @@ export function Header() {
             <div className="main-box flex h-[68px] items-center justify-between [@media(min-width:1440px)]:h-[80px]">
               <div className="logo-box">
                 <Link href="/" className="logo block w-[154px] transition-transform duration-[400ms] ease-[ease] hover:scale-105">
-                  <Image src="/images/logo-full-white.png" alt="Audyxa" width={154} height={40} priority className="h-[40px] w-[154px]" />
+                  <Image src="/images/logo-full-white-308.webp" unoptimized alt="Audyxa" width={154} height={40} priority className="h-[40px] w-[154px]" />
                 </Link>
               </div>
 
@@ -100,7 +100,7 @@ export function Header() {
           <div className="auto-container">
             <div className="inner-container flex items-center justify-between py-[6px]">
               <Link href="/" className="logo block w-[154px] transition-transform duration-[400ms] ease-[ease] hover:scale-105">
-                <Image src="/images/logo-full.png" alt="Audyxa" width={154} height={40} className="h-[40px] w-[154px]" />
+                <Image src="/images/logo-full-308.webp" unoptimized alt="Audyxa" width={154} height={40} className="h-[40px] w-[154px]" />
               </Link>
               <div className="hidden [@media(min-width:1440px)]:block">
                 <StickyNav />
@@ -140,7 +140,7 @@ export function Header() {
         >
           <div className="upper-box mb-6 flex items-center justify-between">
             <Link href="/" className="nav-logo block w-[123px] transition-transform duration-[400ms] ease-[ease] hover:scale-105" onClick={() => setMobileOpen(false)}>
-              <Image src="/images/logo-full-white.png" alt="Audyxa" width={123} height={32} className="h-[32px] w-[123px]" />
+              <Image src="/images/logo-full-white-308.webp" unoptimized alt="Audyxa" width={123} height={32} className="h-[32px] w-[123px]" />
             </Link>
             <button
               type="button"

@@ -62,11 +62,23 @@ export function MainSlider() {
 
   const goTo = (i: number) => setIndex((i + SLIDES.length) % SLIDES.length);
   const slide = SLIDES[index];
+  // Seule la 1re diapositive est chargée au démarrage : les autres attendent la fin du chargement
+  // pour ne pas concurrencer le LCP sur réseau lent.
+  const [loadAll, setLoadAll] = useState(false);
+  useEffect(() => {
+    const onLoad = () => setLoadAll(true);
+    if (document.readyState === "complete") {
+      const t = setTimeout(onLoad, 0);
+      return () => clearTimeout(t);
+    }
+    window.addEventListener("load", onLoad, { once: true });
+    return () => window.removeEventListener("load", onLoad);
+  }, []);
 
   return (
     <section className="main-slider relative overflow-hidden bg-[#0f0f0f]">
       <div className="relative min-h-[480px] w-full h-screen">
-        {SLIDES.map((slide, i) => (
+        {SLIDES.map((slide, i) => (i === 0 || loadAll || i === index) && (
           <div
             key={i}
             className={cn(
@@ -88,18 +100,18 @@ export function MainSlider() {
 
         <div className="auto-container relative z-20 flex h-full items-center">
           <div key={index} className="main-slider-caption max-w-[780px]">
-            <span className="animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)] mb-4 inline-block text-sm font-semibold tracking-[0.2em] text-white/80 uppercase">
+            <span className="animate-[heroCaptionIn_0.9s_0.2s_both_cubic-bezier(0.19,1,0.22,1)] mb-4 inline-block text-sm font-semibold tracking-[0.2em] text-white/80 uppercase">
               {slide.kicker}
             </span>
-            <h1 className="animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)] text-[44px] leading-[1.1] font-bold text-white [@media(min-width:1200px)]:text-[72px] [@media(min-width:1200px)]:leading-[1.05em]">
+            <h1 className="animate-[heroCaptionIn_0.9s_0.2s_both_cubic-bezier(0.19,1,0.22,1)] text-[44px] leading-[1.1] font-bold text-white [@media(min-width:1200px)]:text-[72px] [@media(min-width:1200px)]:leading-[1.05em]">
               <span className="text-theme-2">{slide.keyword}</span> <br />
               {slide.lines[0]} <br />
               {slide.lines[1]}
             </h1>
-            <p className="mt-6 max-w-[640px] animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)] text-lg leading-8 text-white/90">
+            <p className="mt-6 max-w-[640px] animate-[heroCaptionIn_0.9s_0.2s_both_cubic-bezier(0.19,1,0.22,1)] text-lg leading-8 text-white/90">
               {slide.text}
             </p>
-            <div className="btn-box mt-8 animate-[heroCaptionIn_1.5s_1s_both_cubic-bezier(0.19,1,0.22,1)]">
+            <div className="btn-box mt-8 animate-[heroCaptionIn_0.9s_0.2s_both_cubic-bezier(0.19,1,0.22,1)]">
               <ThemeBtn href="/contact" light className="theme-btn min-w-[220px]!">
                 Demander un diagnostic
               </ThemeBtn>

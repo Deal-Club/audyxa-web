@@ -85,7 +85,7 @@ export function Footer() {
                   href="/"
                   className="inline-block transition-transform duration-[400ms] ease-[ease] hover:scale-105"
                 >
-                  <Image src="/images/logo-full-white.png" alt="Audyxa" width={154} height={40} className="h-[40px] w-[154px]" />
+                  <Image src="/images/logo-full-white-308.webp" unoptimized alt="Audyxa" width={154} height={40} className="h-[40px] w-[154px]" />
                 </Link>
               </div>
               <div className="text mb-5 text-[15px] leading-[30px] text-[#8f8f8f]">

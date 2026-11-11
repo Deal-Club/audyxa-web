@@ -9,7 +9,7 @@ import { truncateForMeta } from "@/lib/text-utils";
  * site officiel https://richardsalanon.com/ : aucun chiffre non publié.
  */
 
-const TITLE = "Richard Salanon | Cofondateur d'Audyxa, développement et IA";
+const TITLE = "Richard Salanon | Cofondateur, développement et IA";
 const DESCRIPTION = truncateForMeta(
   "Richard Salanon, cofondateur d'Audyxa : consultant en digitalisation et développeur logiciel à Cotonou. Sites, applications, automatisation, IA, Odoo et formations."
 );

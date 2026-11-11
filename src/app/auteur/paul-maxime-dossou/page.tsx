@@ -11,7 +11,7 @@ import { truncateForMeta } from "@/lib/text-utils";
  * JSON-LD via <script> natif pour rester visible aux robots sans JavaScript.
  */
 
-const AUTEUR_TITLE = "Paul Maxime Dossou | Consultant en transformation digitale";
+const AUTEUR_TITLE = "Paul Maxime Dossou | Consultant en digitalisation";
 const AUTEUR_DESCRIPTION = truncateForMeta(
   "Paul Maxime Dossou, consultant en transformation digitale et fondateur d'Audyxa : développeur full stack, spécialiste automatisation et IA, auteur du cours Digitalisation des Entreprises."
 );

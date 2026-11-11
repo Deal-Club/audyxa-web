@@ -35,6 +35,12 @@ export function truncateForMeta(text: string, maxLength = 160): string {
   if (lastComma >= MIN_USEFUL) {
     return clean.slice(0, lastComma).trim() + ".";
   }
+  // Pas de virgule exploitable : on garde une description utile en coupant à
+  // un mot entier (avec points de suspension) plutôt qu'une phrase trop courte.
+  const lastWordEnd = window.slice(0, maxLength - 1).lastIndexOf(" ");
+  if (lastWordEnd >= MIN_USEFUL) {
+    return clean.slice(0, lastWordEnd).trim().replace(/[,;:.]$/, "") + "…";
+  }
   if (sentenceCut) return sentenceCut;
   if (lastComma > 40) {
     return clean.slice(0, lastComma).trim() + ".";
