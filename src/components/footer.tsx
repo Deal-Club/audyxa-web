@@ -112,6 +112,7 @@ export function Footer() {
                   { label: "À propos", href: "/about" },
                   { label: "Services", href: "/services" },
                   { label: "Méthode", href: "/methode" },
+                  { label: "Audyxa Formation", href: "https://formation.audyxa.com/" },
                   { label: "Paul Maxime Dossou", href: "/auteur/paul-maxime-dossou" },
                   { label: "Richard Salanon", href: "/auteur/richard-salanon" },
                   { label: "Contact", href: "/contact" },
@@ -146,6 +147,7 @@ export function Footer() {
               <h3 className="widget-title mb-[15px] text-[20px] leading-[1.4em] font-semibold text-white">Ressources</h3>
               <ul className="user-links space-y-[10px] text-[15px] text-[#8f8f8f]">
                 {[
+                  { label: "Formations professionnelles", href: "https://formation.audyxa.com/formations/" },
                   { label: "Glossaire", href: "/glossaire" },
                   { label: "Guides pratiques", href: "/guides" },
                   { label: "Comparatifs", href: "/comparatifs" },
