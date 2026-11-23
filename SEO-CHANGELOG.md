@@ -28,6 +28,8 @@ Requêtes avec le plus d'impressions : crm omnicanal (95), maturité numérique 
 
 Manque : la colonne Position par requête et par page (à exporter) pour isoler les positions 5 à 20.
 
+Base de départ Bing Webmaster Tools (2026-11-24, rapport AI Performance, 3 mois) : 0 citation Microsoft Copilot, 0 page citée, aucune grounding query. Propriétés ajoutées : www.audyxa.com et formation.audyxa.com.
+
 Base de départ PageSpeed mobile (rapport de l'utilisateur, 2026-11-11) : performance 75, LCP 5,6 s, accessibilité 100, bonnes pratiques 100, SEO 100.
 
 ## Lot 0 (hors skill, déjà en ligne)
@@ -56,3 +58,9 @@ Mesures (audit local, 374 pages) :
 | Pages avec réponse ou résumé en tête | 292 | 300 |
 
 Points de contrôle : 2, 4 et 12 semaines après mise en ligne (comparer clics, impressions, position dans Search Console).
+
+## IndexNow (branche seo/indexnow, préparé, pas encore envoyé)
+
+- Clé publique `public/d78b11e0018a739c8cc892842a75b68a.txt` (preuve de propriété du domaine pour Bing et partenaires).
+- `scripts/indexnow.mjs` + `npm run indexnow` : simulation par défaut (affiche les URLs, n'envoie rien). `-- --send` envoie vraiment, après vérification que la clé est en ligne. Chemins précis possibles : `npm run indexnow -- --send /faq /guides/x`.
+- Ordre : déployer d'abord le fichier clé, puis lancer l'envoi.
