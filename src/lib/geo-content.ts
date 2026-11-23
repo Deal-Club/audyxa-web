@@ -364,6 +364,17 @@ export const GEO_COUNTRIES: GeoCountry[] = [
   },
 ];
 
+/** "au Bénin", "en Belgique", "à Madagascar" : préposition correcte devant le nom du pays. */
+export function countryLocative(country: GeoCountry): string {
+  return `${country.preposition ?? "au"} ${country.name}`;
+}
+
+/** "du Bénin", "de la Belgique", "de Madagascar" : article correct devant le nom du pays. */
+export function countryDe(country: GeoCountry): string {
+  const p = country.preposition ?? "au";
+  return p === "en" ? `de la ${country.name}` : p === "à" ? `de ${country.name}` : `du ${country.name}`;
+}
+
 export function getCountry(slug: string): GeoCountry | undefined {
   return GEO_COUNTRIES.find((c) => c.slug === slug);
 }

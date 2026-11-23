@@ -23,6 +23,8 @@ import {
 } from "@/lib/methode-content";
 import { METHOD_EXTRAS, PILLARS } from "@/lib/methode-extras";
 import { seoTitle } from "@/lib/seo-title";
+import { RelatedLinks } from "@/components/related-links";
+import { decisionPagesForChapter, guidesForChapter } from "@/lib/related-content";
 import { SITE_URL, METHODE_LAST_REVISION } from "@/lib/site-config";
 import { buildMetaDescription } from "@/lib/text-utils";
 
@@ -407,6 +409,23 @@ export default async function MethodChapterPage({
           </div>
         </div>
       </section>
+
+      <RelatedLinks
+        subTitle="Pour aller plus loin"
+        title="Guides et comparatifs liés"
+        items={[
+          ...guidesForChapter(chapter.slug).map((g) => ({
+            href: `/guides/${g.slug}`,
+            title: g.title,
+            label: "Guide pratique",
+          })),
+          ...decisionPagesForChapter(chapter.slug).map((d) => ({
+            href: `/comparatifs/${d.slug}`,
+            title: d.title,
+            label: "Comparatif",
+          })),
+        ].slice(0, 6)}
+      />
 
       <CallToAction
         title={

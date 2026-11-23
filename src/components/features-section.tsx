@@ -74,9 +74,9 @@ export function FeaturesSection() {
                         <span className="absolute left-0 top-[2px] flex h-[48px] w-[48px] items-center justify-center rounded-full bg-theme-2 text-base text-white transition-all duration-300 group-hover:bg-white group-hover:text-theme-2 group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
                           <i className="fa fa-check" aria-hidden="true" />
                         </span>
-                        <h5 className="mb-[10px] font-extrabold text-theme-1">
+                        <h3 className="text-[22px] mb-[10px] font-extrabold text-theme-1">
                           {feature.title}
-                        </h5>
+                        </h3>
                         <div className="mb-0 text-base leading-[30px]">{feature.text}</div>
                       </div>
                     </div>

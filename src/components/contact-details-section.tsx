@@ -32,7 +32,7 @@ export function ContactDetailsSection() {
                   <span className="lnr-icon-phone-plus text-[25px] text-white" aria-hidden />
                 </div>
                 <div className="ml-[30px]">
-                  <h6>Numéro direct</h6>
+                  <h3 className="text-[20px] leading-[var(--line-height-heading-small)]">Numéro direct</h3>
                   <a href="tel:+2290195241540" className="text-[20px] text-theme-1">
                     +229 01 95 24 15 40
                   </a>
@@ -43,7 +43,7 @@ export function ContactDetailsSection() {
                   <span className="lnr-icon-envelope1 text-[25px] text-white" aria-hidden />
                 </div>
                 <div className="ml-[30px]">
-                  <h6>Email</h6>
+                  <h3 className="text-[20px] leading-[var(--line-height-heading-small)]">Email</h3>
                   <a href="mailto:contact@audyxa.com" className="text-[20px] text-theme-1">
                     contact@audyxa.com
                   </a>
@@ -54,7 +54,7 @@ export function ContactDetailsSection() {
                   <span className="lnr-icon-location text-[25px] text-white" aria-hidden />
                 </div>
                 <div className="ml-[30px]">
-                  <h6>Approche</h6>
+                  <h3 className="text-[20px] leading-[var(--line-height-heading-small)]">Approche</h3>
                   <span className="text-[18px]">Conseil, exécution et pilotage sur la même mission</span>
                 </div>
               </li>

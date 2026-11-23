@@ -1,3 +1,4 @@
+import { QuickAnswer } from "@/components/quick-answer";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -98,6 +99,7 @@ export default function HistoiresHubPage() {
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Histoires" }]}
         currentPath="/histoires"
       />
+      <QuickAnswer text={HISTOIRES_DESCRIPTION} />
 
       {/* Intro + disclaimer explicite */}
       <section className="pt-[60px] pb-[40px]">

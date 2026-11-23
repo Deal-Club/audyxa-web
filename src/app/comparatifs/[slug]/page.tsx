@@ -7,6 +7,9 @@ import { ThemeBtn } from "@/components/theme-btn";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { CallToAction } from "@/components/call-to-action";
 import { DECISION_PAGES, getDecisionPage } from "@/lib/decision-content";
+import { GUIDES } from "@/lib/guide-content";
+import { RelatedLinks } from "@/components/related-links";
+import { relatedDecisionPages } from "@/lib/related-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
 import { seoTitle } from "@/lib/seo-title";
 import { AUTHOR_URL, CONTENT_LAST_MODIFIED, SITE_LOGO_URL, SITE_URL } from "@/lib/site-config";
@@ -54,7 +57,12 @@ export default async function DecisionPage({
   const page = getDecisionPage(slug);
   if (!page) notFound();
 
-  const otherPages = DECISION_PAGES.filter((d) => d.slug !== page.slug).slice(0, 3);
+  const otherPages = relatedDecisionPages(page);
+  const relatedGuideItems = GUIDES.filter((g) =>
+    g.relatedMethodSlugs.some((s) => (page.relatedMethodSlugs ?? []).includes(s))
+  )
+    .slice(0, 3)
+    .map((g) => ({ href: `/guides/${g.slug}`, title: g.title, label: "Guide pratique" }));
   const relatedChapters = (page.relatedMethodSlugs ?? [])
     .map((s) => METHOD_CHAPTERS.find((c) => c.slug === s))
     .filter((c): c is NonNullable<typeof c> => Boolean(c?.sections?.length));
@@ -342,6 +350,8 @@ export default async function DecisionPage({
       </section>
 
       {/* 9. CTA final */}
+      <RelatedLinks subTitle="Pour aller plus loin" title="Guides pratiques liés" items={relatedGuideItems} />
+
       <CallToAction
         title={
           <>

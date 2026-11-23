@@ -6,7 +6,7 @@ import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
 import { CallToAction } from "@/components/call-to-action";
-import { GEO_COUNTRIES, getCountry, getCity, getFlagshipCity } from "@/lib/geo-content";
+import { GEO_COUNTRIES, getCountry, getCity, getFlagshipCity, countryDe, countryLocative } from "@/lib/geo-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { SITE_URL } from "@/lib/site-config";
 import { buildFaqJsonLd } from "@/lib/faq-schema";
@@ -124,6 +124,20 @@ export default async function CityHubPage({
       item: `${SITE_URL}${crumb.href ?? `/pays/${country.slug}/${city.slug}`}`,
     })),
   };
+
+  // Voisines dans l'ordre circulaire de la liste (et non toujours les 6 premières) : répartit les liens internes.
+  const secondaryCities = country.cities.filter((c) => !c.isFlagship);
+  const cityIndex = secondaryCities.findIndex((c) => c.slug === city.slug);
+  const hubCity = getFlagshipCity(country);
+  // La ville principale du pays reçoit ainsi un lien depuis chaque page ville (si sa page existe).
+  const hubLink = hubCity.slug !== city.slug && getVilleContent(country.slug, hubCity.slug) ? [hubCity] : [];
+  const otherCities = [
+    ...hubLink,
+    ...secondaryCities.slice(cityIndex + 1),
+    ...secondaryCities.slice(0, Math.max(cityIndex, 0)),
+  ]
+    .filter((c) => c.slug !== city.slug)
+    .slice(0, 6);
 
   // ------------------------------------------------------------ GABARIT RICHE
   if (curated) {
@@ -301,7 +315,7 @@ export default async function CityHubPage({
                   Notre approche pour {city.name} s&apos;inscrit dans notre zone de couverture{" "}
                   {country.name}, présentée en détail sur notre page{" "}
                   <Link href={`/pays/${country.slug}`} className="font-semibold text-theme-2 hover:underline">
-                    transformation digitale au {country.name}
+                    transformation digitale {countryLocative(country)}
                   </Link>
                   , avec un service par service et le reste des villes couvertes dans le pays.
                 </p>
@@ -317,6 +331,29 @@ export default async function CityHubPage({
             </div>
           </div>
         </section>
+
+      {otherCities.length > 0 ? (
+        <section className="pt-[50px] pb-[50px]">
+          <div className="auto-container">
+            <SectionTitle
+              subTitle="Zone desservie"
+              title={`D'autres villes ${countryDe(country)}`}
+              className="mb-[40px] max-w-[760px]"
+            />
+            <div className="flex flex-wrap gap-3">
+              {otherCities.map((other) => (
+                <Link
+                  key={other.slug}
+                  href={`/pays/${country.slug}/${other.slug}`}
+                  className="rounded-full border border-[#e2e2e2] bg-white px-5 py-2 text-sm font-semibold text-theme-1 transition-colors hover:text-theme-2"
+                >
+                  {other.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
         <CallToAction
           title={
@@ -338,7 +375,6 @@ export default async function CityHubPage({
   // le plan) : contenu inchangé, uniquement le vecteur JSON-LD est corrigé
   // (balise <script> native au lieu de next/script, cf. règle non négociable).
   const flagship = getFlagshipCity(country);
-  const otherCities = country.cities.filter((c) => c.slug !== city.slug && !c.isFlagship).slice(0, 6);
 
   const genericServiceJsonLd = {
     "@context": "https://schema.org",
@@ -495,7 +531,7 @@ export default async function CityHubPage({
           <div className="auto-container">
             <SectionTitle
               subTitle="Zone desservie"
-              title={`D'autres villes du ${country.name}`}
+              title={`D'autres villes ${countryDe(country)}`}
               className="mb-[40px] max-w-[760px]"
             />
             <div className="flex flex-wrap gap-3">

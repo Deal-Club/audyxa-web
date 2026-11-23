@@ -1,3 +1,4 @@
+import { QuickAnswer } from "@/components/quick-answer";
 import type { Metadata } from "next";
 import { PageTitle } from "@/components/page-title";
 import { ServicesListSection } from "@/components/services-list-section";
@@ -33,6 +34,7 @@ export default function ServicesPage() {
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Services" }]}
         currentPath="/services"
       />
+      <QuickAnswer text={SERVICES_DESCRIPTION} />
       <ServicesListSection />
       <ServicesSeoSection />
       <CallToAction />

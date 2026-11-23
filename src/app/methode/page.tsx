@@ -1,3 +1,4 @@
+import { QuickAnswer } from "@/components/quick-answer";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTitle } from "@/components/page-title";
@@ -161,6 +162,7 @@ export default function MethodePage() {
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Méthode" }]}
         currentPath="/methode"
       />
+      <QuickAnswer text={METHODE_DESCRIPTION} />
 
       {/* 1. Le principe directeur */}
       <section className="bg-white pt-[70px] pb-[60px]">

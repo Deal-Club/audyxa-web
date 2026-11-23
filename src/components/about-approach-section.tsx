@@ -56,9 +56,9 @@ export function AboutApproachSection() {
                   aria-hidden="true"
                 />
               </div>
-              <h5 className="mb-3 font-extrabold text-white transition-colors duration-300 group-hover:text-theme-1">
+              <h3 className="text-[22px] mb-3 font-extrabold text-white transition-colors duration-300 group-hover:text-theme-1">
                 {item.title}
-              </h5>
+              </h3>
               <p className="mb-0 text-base leading-7 text-white/70 transition-colors duration-300 group-hover:text-body-text">
                 {item.text}
               </p>

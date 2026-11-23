@@ -116,14 +116,14 @@ export function ServicesListSection() {
                   />
                 </div>
 
-                <h5 className="relative mb-[14px] font-extrabold">
+                <h3 className="text-[22px] relative mb-[14px] font-extrabold">
                   <Link
                     href={`/services/${service.slug}`}
                     className="transition-colors hover:text-theme-2"
                   >
                     {service.title}
                   </Link>
-                </h5>
+                </h3>
                 <div className="relative mb-5 text-body-text">
                   {service.text}
                 </div>

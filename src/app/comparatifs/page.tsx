@@ -1,3 +1,4 @@
+import { QuickAnswer } from "@/components/quick-answer";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageTitle } from "@/components/page-title";
@@ -35,6 +36,7 @@ export default function DecisionsHubPage() {
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Comparatifs" }]}
         currentPath="/comparatifs"
       />
+      <QuickAnswer text={COMPARATIFS_DESCRIPTION} />
 
       <section className="pt-[60px] pb-[50px]">
         <div className="auto-container">

@@ -63,7 +63,7 @@ export function AboutMethodSection() {
                 <span className="mb-3 block text-[40px] font-bold leading-none text-theme-2">
                   {pillar.number}
                 </span>
-                <h5 className="mb-3 font-extrabold text-theme-1">{pillar.title}</h5>
+                <h3 className="text-[22px] mb-3 font-extrabold text-theme-1">{pillar.title}</h3>
                 <p className="mb-0 text-base leading-7 text-body-text">{pillar.text}</p>
               </div>
             </ScrollReveal>

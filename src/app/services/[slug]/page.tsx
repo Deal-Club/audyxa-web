@@ -9,6 +9,8 @@ import { CallToAction } from "@/components/call-to-action";
 import { SERVICES_DETAIL, getServiceDetail } from "@/lib/services-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
 import { seoTitle } from "@/lib/seo-title";
+import { RelatedLinks } from "@/components/related-links";
+import { guidesForService } from "@/lib/related-content";
 import { SITE_URL } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -358,6 +360,14 @@ export default async function ServiceDetailPage({
           </div>
         </section>
       ) : null}
+
+      <RelatedLinks
+        subTitle="Guides pratiques"
+        title="Guides liés à ce service"
+        items={guidesForService(service.slug)
+          .slice(0, 6)
+          .map((g) => ({ href: `/guides/${g.slug}`, title: g.title, label: "Guide pratique" }))}
+      />
 
       {/* 8. FAQ, deux colonnes */}
       <section className="bg-theme-3 pt-[60px] pb-[50px]">

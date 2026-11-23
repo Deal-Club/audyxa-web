@@ -1,3 +1,4 @@
+import { QuickAnswer } from "@/components/quick-answer";
 import { MainSlider } from "@/components/main-slider";
 import { AboutSection } from "@/components/about-section";
 import { ServicesSection } from "@/components/services-section";
@@ -19,6 +20,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqJsonLd(FAQ_ITEMS)) }}
       />
       <MainSlider />
+      <QuickAnswer text="Audyxa accompagne les entreprises en France et en Afrique francophone avec une approche conseil + services pour transformer les pertes de temps en gains réels." />
       <AboutSection logoMode />
       <ServicesSection />
       <FeaturesSection />

@@ -5,7 +5,7 @@ import { PageTitle } from "@/components/page-title";
 import { SectionTitle } from "@/components/section-title";
 import { ThemeBtn } from "@/components/theme-btn";
 import { CallToAction } from "@/components/call-to-action";
-import { GEO_COUNTRIES, getCountry, getFlagshipCity } from "@/lib/geo-content";
+import { GEO_COUNTRIES, getCountry, getFlagshipCity, countryDe, countryLocative } from "@/lib/geo-content";
 import { SERVICES_DETAIL, getServiceDetail } from "@/lib/services-content";
 import { seoTitle } from "@/lib/seo-title";
 import { SITE_URL } from "@/lib/site-config";
@@ -201,10 +201,10 @@ export default async function ServiceCityPage({
                 d&apos;intervention.
               </p>
               <p className="mb-0 text-base leading-8 text-body-text">
-                Pour {city.name} comme pour le reste du {country.name}, ce service s&apos;inscrit dans
+                Pour {city.name} comme pour le reste {countryDe(country)}, ce service s&apos;inscrit dans
                 notre méthode complète de transformation digitale, voir aussi{" "}
                 <Link href={`/pays/${country.slug}`} className="font-semibold text-theme-2 hover:underline">
-                  notre couverture au {country.name}
+                  notre couverture {countryLocative(country)}
                 </Link>{" "}
                 et{" "}
                 <Link href={`/services/${service.slug}`} className="font-semibold text-theme-2 hover:underline">
@@ -297,7 +297,7 @@ export default async function ServiceCityPage({
           </div>
           <div className="mt-8">
             <Link href={`/pays/${country.slug}`} className="font-semibold text-theme-2 hover:underline">
-              Voir toute notre couverture au {country.name} →
+              Voir toute notre couverture {countryLocative(country)} →
             </Link>
           </div>
         </div>

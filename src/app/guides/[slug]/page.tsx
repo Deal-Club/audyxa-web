@@ -6,6 +6,7 @@ import { SectionTitle } from "@/components/section-title";
 import { CallToAction } from "@/components/call-to-action";
 import { RichText } from "@/components/rich-text";
 import { GUIDES, getGuide } from "@/lib/guide-content";
+import { relatedGuides } from "@/lib/related-content";
 import { METHOD_CHAPTERS } from "@/lib/methode-content";
 import { SERVICES_DETAIL } from "@/lib/services-content";
 import { seoTitle } from "@/lib/seo-title";
@@ -60,7 +61,7 @@ export default async function GuidePage({
   const relatedServices = guide.relatedServiceSlugs
     .map((s) => SERVICES_DETAIL.find((service) => service.slug === s))
     .filter((s): s is NonNullable<typeof s> => Boolean(s));
-  const otherGuides = GUIDES.filter((g) => g.slug !== guide.slug).slice(0, 3);
+  const otherGuides = relatedGuides(guide);
 
   const articleJsonLd = {
     "@context": "https://schema.org",
