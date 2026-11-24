@@ -1,3 +1,4 @@
+import { SourceLink } from "@/components/source-link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -174,7 +175,9 @@ export default async function SectorPage({
                     <div key={stat.label} className="rounded-[14px] border border-[#e2e2e2] bg-theme-3 p-5">
                       <div className="mb-2 text-[26px] font-extrabold leading-none text-theme-2">{stat.value}</div>
                       <p className="mb-2 text-sm leading-6 text-theme-1">{stat.label}</p>
-                      <p className="mb-0 text-xs italic text-body-text">{stat.source}</p>
+                      <p className="mb-0 text-xs italic text-body-text">
+                        <SourceLink source={stat.source} url={stat.sourceUrl} />
+                      </p>
                     </div>
                   ))}
                 </div>

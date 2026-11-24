@@ -994,7 +994,7 @@ export const GUIDES: Guide[] = [
         paragraphs: [
           "Le mobile money est devenu le principal outil d'inclusion financière numérique de la région. Selon le GSMA State of the Industry Report on Mobile Money 2026 (24 mars 2026), l'Afrique subsaharienne concentre plus de la moitié des 2,3 milliards de comptes mobile money actifs dans le monde et 66 % de la valeur totale transactée en 2025.",
           "Dans plusieurs pays de la zone (Bénin, Côte d'Ivoire, Sénégal, Guinée, entre autres), le mobile money contribue à plus de 5 % du produit intérieur brut national (GSMA, Mobile Economy Africa 2026). WhatsApp, de son côté, reste l'un des canaux de messagerie les plus utilisés pour la relation client, informelle comme formelle, dans la région. Le modèle de référence reste [M-Pesa au Kenya](/histoires/mpesa-safaricom), lancé dès 2007 et devenu depuis une infrastructure économique à part entière.",
-          "Automatiser ces canaux n'est donc pas un choix marginal : c'est aligner l'outil sur les habitudes réelles des clients plutôt que de leur imposer un canal qu'ils n'utilisent pas.",
+          "Automatiser ces canaux n'est donc pas un choix marginal : c'est aligner l'outil sur les habitudes réelles des clients plutôt que de leur imposer un canal qu'ils n'utilisent pas. Pour un accompagnement concret sur WhatsApp, voir notre page [Chatbot WhatsApp pour entreprise](/services/chatbot-whatsapp).",
         ],
       },
       {

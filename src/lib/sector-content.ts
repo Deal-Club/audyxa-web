@@ -10,6 +10,8 @@ export interface SectorMarketStat {
   label: string;
   /** Organisme + année, tel qu'à citer */
   source: string;
+  /** Page d'origine vérifiée (jamais devinée) */
+  sourceUrl?: string;
 }
 
 export interface SectorMarketContext {
@@ -71,7 +73,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       intro:
         "La zone UEMOA a généralisé en 2025 une plateforme de paiement instantané interopérable entre banques et établissements de monnaie électronique, tandis que le mobile money reste le principal moteur de l'inclusion financière digitale en Afrique francophone, porté davantage par les opérateurs télécom que par les banques elles-mêmes.",
       stats: [
-        { value: "80 participants", label: "connectés à la plateforme de paiement instantané PI-SPI en zone UEMOA au 2 avril 2026 (59 banques, 9 établissements de monnaie électronique, 11 IMF)", source: "BCEAO, généralisation prévue au 30 juin 2026" },
+        { value: "80 participants", label: "connectés à la plateforme de paiement instantané PI-SPI en zone UEMOA au 2 avril 2026 (59 banques, 9 établissements de monnaie électronique, 11 IMF)", source: "BCEAO, généralisation prévue au 30 juin 2026", sourceUrl: "https://www.bceao.int/sites/default/files/2026-04/Communiqu%C3%A9_Connexion_%C3%A0_PI-SPI_2_avril_2026.pdf" },
         { value: "1,2 milliard", label: "de comptes mobile money enregistrés en Afrique (subsaharienne et du Nord), 66 % de la valeur mondiale mobile money", source: "GSMA, State of the Industry Report on Mobile Money, 2025" },
       ],
       obstacle: "Le mobile money, souvent porté par les opérateurs télécom plutôt que par les banques, crée une concurrence inédite ailleurs entre banques traditionnelles et telcos sur la digitalisation des paiements.",
@@ -107,7 +109,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       intro:
         "Le e-commerce français continue sa progression régulière mais reste minoritaire dans le commerce de détail global, porté de plus en plus par les marketplaces plutôt que par les boutiques en ligne classiques. La vraie bataille du secteur se joue dans la cohérence omnicanale, pas dans la simple présence en ligne.",
       stats: [
-        { value: "196,4 Md€", label: "de chiffre d'affaires e-commerce en France en 2025 (+7 % vs 2024)", source: "FEVAD, Chiffres clés du e-commerce, édition 2025" },
+        { value: "196,4 Md€", label: "de chiffre d'affaires e-commerce en France en 2025 (+7 % vs 2024)", source: "FEVAD, Chiffres clés du e-commerce, édition 2025", sourceUrl: "https://www.fevad.com/bilan-du-e-commerce-en-france-les-francais-ont-depense-pres-de-200-milliards-deuros-sur-internet-en-2025/" },
         { value: "11 %", label: "seulement : part du e-commerce dans le commerce de détail français en 2024 (hors carburant, pharmacie, dispositifs médicaux)", source: "FEVAD, 2025" },
         { value: "31 %", label: "du volume de ventes produits en ligne passe désormais par les marketplaces (vs 29 % en 2023)", source: "FEVAD, 2025" },
       ],
@@ -144,7 +146,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       intro:
         "En France, la téléconsultation reste un usage minoritaire malgré sa forte médiatisation post-Covid, et profite surtout à un public urbain, jeune et diplômé. L'inverse de l'objectif initial de désenclavement médical. Le frein n'est pas technologique mais relationnel et réglementaire : confidentialité des données, confiance dans l'écran.",
       stats: [
-        { value: "15 %", label: "des Français de 18 ans et plus ont eu recours à la téléconsultation au moins une fois en 2024", source: "DREES/Insee, Études et Résultats n°1366, février 2026" },
+        { value: "15 %", label: "des Français de 18 ans et plus ont eu recours à la téléconsultation au moins une fois en 2024", source: "DREES/Insee, Études et Résultats n°1366, février 2026", sourceUrl: "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/etudes-et-resultats/260212-recours-aux-t%C3%A9l%C3%A9consultations" },
         { value: "8 sur 10", label: "Français jugent que l'écran \"déshumanise\" la relation médecin-patient ; 60 % craignent pour la confidentialité des données", source: "DREES/Insee, février 2026" },
       ],
       obstacle: "La téléconsultation profite 4 fois plus aux moins de 45 ans et 2 fois plus aux diplômés du supérieur. Elle n'a pas encore comblé la fracture d'accès aux soins qu'elle était censée réduire.",
@@ -467,7 +469,7 @@ export const SECTOR_PAGES: SectorPage[] = [
         "Le secteur associatif français progresse lentement mais réellement en maturité numérique, porté par la nécessité opérationnelle plus que par une contrainte réglementaire. Le vrai frein n'est pas la volonté mais le fait que le numérique associatif repose trop souvent sur une seule personne.",
       stats: [
         { value: "47 % / 23 %", label: "des dirigeants associatifs se disent \"en bonne voie\" numériquement, contre 23 % \"encore éloignés\" du sujet", source: "Baromètre Solidatech x Recherches & Solidarités, 5ᵉ édition, novembre 2025 (2 285 responsables interrogés)" },
-        { value: "18 %", label: "des associations utilisent déjà des outils d'intelligence artificielle en 2025", source: "Baromètre Solidatech x Recherches & Solidarités, novembre 2025" },
+        { value: "18 %", label: "des associations utilisent déjà des outils d'intelligence artificielle en 2025", source: "Baromètre Solidatech x Recherches & Solidarités, novembre 2025", sourceUrl: "https://recherches-solidarites.org/wp-content/uploads/2025/11/CP-RS-Solidatech-2025.pdf" },
       ],
       obstacle: "Le numérique associatif dépend très souvent d'une seule personne (bénévole ou salariée), ce qui rend les pratiques fragiles en cas de départ. L'enjeu est la pérennisation, pas l'ajout d'outils.",
     },
@@ -679,7 +681,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       intro:
         "Le commerce extérieur ouest-africain s'appuie sur une infrastructure douanière commune historique : le système ASYCUDA, né dans les années 1980 d'une demande de la CEDEAO à la CNUCED, reste aujourd'hui une base logicielle de référence des douanes dans la région, complété localement par des guichets uniques du commerce extérieur.",
       stats: [
-        { value: "102 pays", label: "utilisent le système douanier ASYCUDA dans le monde, contre une cinquantaine en 2004", source: "CNUCED (UNCTAD), chiffres ASYCUDA" },
+        { value: "102 pays", label: "utilisent le système douanier ASYCUDA dans le monde, contre une cinquantaine en 2004", source: "CNUCED (UNCTAD), chiffres ASYCUDA", sourceUrl: "https://unctad.org/publication/asycuda-report-20222023" },
         { value: "depuis 2000", label: "le Tarif extérieur commun (TEC) UEMOA harmonise les droits de douane entre pays membres, base du TEC CEDEAO plus récent", source: "UEMOA, e-docucenter" },
       ],
       obstacle: "L'harmonisation douanière régionale (TEC UEMOA puis CEDEAO) avance, mais son application reste inégale d'un pays à l'autre, ce qui impose de vérifier les règles réellement en vigueur pays par pays plutôt que de supposer une application uniforme.",

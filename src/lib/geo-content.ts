@@ -27,6 +27,8 @@ export interface CountryMobileMoney {
   text: string;
   /** Organisme/média + année, tel qu'à citer */
   source: string;
+  /** Page d'origine vérifiée (jamais devinée) */
+  sourceUrl?: string;
 }
 
 export interface CountrySectorHighlights {
@@ -90,7 +92,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Selon une étude de terrain menée en 2023 auprès de 98 entreprises digitales béninoises, seule une minorité d'entre elles a déjà collaboré avec l'administration publique : la majorité souhaite le faire mais n'y parvient pas, freinée par l'accès au financement et la capacité fiduciaire de l'entreprise. Une étude complémentaire recense 102 entreprises digitales dans l'écosystème national, très concentrées sur Cotonou.",
       stats: [
-        { value: "37 %", label: "des entreprises digitales béninoises ont déjà fourni un service à l'administration publique", source: "GIZ / Centre de Transformation Digitale du Bénin, 2023" },
+        { value: "37 %", label: "des entreprises digitales béninoises ont déjà fourni un service à l'administration publique", source: "GIZ / Centre de Transformation Digitale du Bénin, 2023", sourceUrl: "https://www.bmz-digital.global/wp-content/uploads/2025/11/Rapport-Transformation-numerique-au-Benin-3105-0942ZG.pdf" },
         { value: "48 %", label: "des entreprises digitales du pays sont concentrées à Cotonou", source: "ADPME Bénin, étude ACED-ACUMEN 2023" },
         { value: "93 %", label: "des entreprises digitales se financent uniquement sur fonds propres", source: "ADPME Bénin, étude ACED-ACUMEN 2023" },
       ],
@@ -115,9 +117,9 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Selon DataReportal, la Côte d'Ivoire comptait 12,8 millions d'internautes en janvier 2025, soit un taux de pénétration de 39,6 % de la population. La maturité numérique des entreprises reste, elle, nettement en retrait par rapport aux marchés européens. Abidjan est devenue un pôle régional d'événements dédiés à la transformation digitale des entreprises, comme le B2B Digital Day.",
       stats: [
-        { value: "12,8 M", label: "internautes en Côte d'Ivoire en janvier 2025, soit 39,6 % de la population", source: "DataReportal, Digital 2025: Côte d'Ivoire" },
-        { value: "28 %", label: "de maturité numérique estimée en Côte d'Ivoire, contre 72 % en France", source: "Smart Africa / agences onusiennes, cité par CIOMAG" },
-        { value: "90 %", label: "des PME ivoiriennes sont conscientes du risque cyber, mais 67 % d'entre elles ne l'anticipent pas", source: "CIOMAG" },
+        { value: "12,8 M", label: "internautes en Côte d'Ivoire en janvier 2025, soit 39,6 % de la population", source: "DataReportal, Digital 2025: Côte d'Ivoire", sourceUrl: "https://datareportal.com/reports/digital-2025-cote-divoire" },
+        { value: "28 %", label: "de maturité numérique estimée en Côte d'Ivoire, contre 72 % en France", source: "Smart Africa / agences onusiennes, cité par CIOMAG", sourceUrl: "https://cio-mag.com/entreprise-4-0-accelerer-vers-le-futur-numerique-en-cote-divoire/" },
+        { value: "90 %", label: "des PME ivoiriennes sont conscientes du risque cyber, mais 67 % d'entre elles ne l'anticipent pas", source: "CIOMAG", sourceUrl: "https://cio-mag.com/transformation-digitale-90-des-pme-ivoiriennes-sont-conscientes-du-risque-cyber-mais/" },
       ],
       obstacle: "Le manque de compétences internes et les tensions entre DSI et responsables de la transformation digitale sont cités comme des freins majeurs à l'adoption du numérique en entreprise.",
     },
@@ -164,8 +166,8 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Le Togo dispose d'une stratégie nationale et d'un programme actif de coopération allemande dédié à la digitalisation des PME, mais son propre document de référence qualifie le niveau de digitalisation des PME togolaises hors secteur financier de \"toujours très bas\".",
       stats: [
-        { value: "120 PME", label: "ciblées par le programme ProDigiT (GIZ/BMZ), sur une enveloppe de 5 M€, 2022-2025", source: "GIZ, fiche projet ProDigiT, 2022" },
-        { value: "14 919", label: "entreprises créées au Togo en 2024, en recul de près de 5 % vs 2023", source: "Togo First" },
+        { value: "120 PME", label: "ciblées par le programme ProDigiT (GIZ/BMZ), sur une enveloppe de 5 M€, 2022-2025", source: "GIZ, fiche projet ProDigiT, 2022", sourceUrl: "https://www.giz.de/de/downloads/giz2022-fr-prodigit-togo.pdf" },
+        { value: "14 919", label: "entreprises créées au Togo en 2024, en recul de près de 5 % vs 2023", source: "Togo First", sourceUrl: "https://www.togofirst.com/fr/gouvernance-economique/0701-15488-togo-pres-de-15-000-entreprises-creees-en-2024-sur-fond-de-baisse" },
       ],
       obstacle: "L'écart entre le nombre d'entreprises accompagnées par les programmes existants (quelques centaines) et le rythme de création d'entreprises (environ 15 000 par an) montre une couverture encore très partielle.",
     },
@@ -211,7 +213,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Une étude menée auprès de 180 PME du district de Bamako confirme un lien direct entre l'usage d'outils digitaux et la performance commerciale. L'inclusion financière numérique a par ailleurs fortement progressé : les transactions mobiles représentaient 65 % du PIB malien en 2021, contre 21 % en 2015.",
       stats: [
-        { value: "180 PME", label: "étudiées à Bamako pour mesurer le lien entre digitalisation et performance", source: "Revue Française d'Économie et de Gestion, vol. 4 n°9, 2023" },
+        { value: "180 PME", label: "étudiées à Bamako pour mesurer le lien entre digitalisation et performance", source: "Revue Française d'Économie et de Gestion, vol. 4 n°9, 2023", sourceUrl: "https://www.revuefreg.fr/index.php/home/en/article/view/1270" },
         { value: "65 %", label: "du PIB malien transitait par des transactions mobiles en 2021, contre 21 % en 2015", source: "Banque mondiale, Global Findex" },
       ],
       obstacle: "L'infrastructure de paiement mobile est bien développée, mais la gestion interne des entreprises (facturation, stocks, suivi client) reste souvent artisanale : c'est le vrai chantier identifié par l'étude de terrain.",
@@ -235,7 +237,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Le Niger a bénéficié d'un financement de la Banque mondiale de 100 millions de dollars pour sa transformation numérique et prépare une nouvelle politique nationale du numérique pour la période 2026-2035. Sur le terrain, la fiabilité de la connexion reste le premier irritant cité par les acteurs économiques.",
       stats: [
-        { value: "100 M$", label: "financement de la Banque mondiale (IDA) pour la transformation numérique du Niger, annoncé en 2020", source: "Banque mondiale, via FinDev Gateway" },
+        { value: "100 M$", label: "financement de la Banque mondiale (IDA) pour la transformation numérique du Niger, annoncé en 2020", source: "Banque mondiale, via FinDev Gateway", sourceUrl: "https://www.worldbank.org/en/news/press-release/2020/07/08/world-bank-provides-100-million-to-help-accelerate-digital-transformation-in-niger" },
       ],
       obstacle: "\"Beaucoup de banques sont fermées car les agences n'ont pas de connexion. Les paiements, les transferts que l'on faisait avant… beaucoup sont bloqués\", résume Adolphe Sagbo, président de la Fédération patronale du Niger. La connexion elle-même reste le premier frein, avant même le choix des outils.",
     },
@@ -258,7 +260,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "La Guinée a annoncé un bond d'infrastructure numérique en 2025 (fibre optique, premier data center certifié Tier III) et a lancé fin août 2026 son premier recensement général des entreprises. Sur le terrain, des professionnels de Conakry décrivent une réalité plus contrastée que le discours officiel.",
       stats: [
-        { value: "12 000+ km", label: "de fibre optique déployés selon le bilan du ministère guinéen du numérique (2025)", source: "MPTEN, via Guinéenews, janvier 2026 (communication officielle non auditée par un tiers)" },
+        { value: "12 000+ km", label: "de fibre optique déployés selon le bilan du ministère guinéen du numérique (2025)", source: "MPTEN, via Guinéenews, janvier 2026 (communication officielle non auditée par un tiers)", sourceUrl: "https://guineenews.org/2026/01/13/transformation-numerique-de-la-guinee-2025-annee-du-basculement-technologique/" },
       ],
       obstacle: "\"Le nombre de mégas est très faible. Résultat, une connexion lente, parfois inutilisable […] on ne peut pas rentabiliser nos activités avec de tels prix\", témoigne un informaticien de Conakry auprès de Le360 Afrique. Le coût et la qualité de la connexion restent des irritants concrets malgré les annonces d'infrastructure.",
     },
@@ -269,7 +271,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Le Cameroun bénéficie d'un projet d'accélération de la transformation numérique financé à hauteur de 100 millions de dollars par la Banque mondiale, avec pour objectif de tripler l'accès rural à internet d'ici 2027. Une fracture d'usage nette sépare toutefois les zones urbaines des zones rurales.",
       stats: [
-        { value: "100 M$", label: "financement Banque mondiale du projet PATNuC, lancé en 2023", source: "Banque mondiale, via Agence Ecofin" },
+        { value: "100 M$", label: "financement Banque mondiale du projet PATNuC, lancé en 2023", source: "Banque mondiale, via Agence Ecofin", sourceUrl: "https://ecofinagency.com/telecom/2508-44801-cameroon-launches-world-bank-supported-digital-transformation-project-patnuc" },
         { value: "57 % vs 23 %", label: "taux d'usage d'internet en zone urbaine contre zone rurale au Cameroun", source: "Données ITU Afrique 2025, recoupées par plusieurs médias" },
       ],
       obstacle: "L'infrastructure (fibre, couverture mobile) progresse plus vite que l'adoption réelle par les entreprises, en particulier hors des deux grandes métropoles Douala et Yaoundé.",
@@ -281,7 +283,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Le Gabon affiche l'un des taux de pénétration internet les plus élevés d'Afrique centrale, et le gouvernement a plus que doublé son budget numérique national pour 2026. Cette connectivité élevée ne s'est toutefois pas encore traduite en écosystème entrepreneurial numérique dense.",
       stats: [
-        { value: "71,9 %", label: "de pénétration internet au Gabon fin 2025, l'un des taux les plus hauts d'Afrique centrale", source: "DataReportal (Kepios), Digital 2026: Gabon" },
+        { value: "71,9 %", label: "de pénétration internet au Gabon fin 2025, l'un des taux les plus hauts d'Afrique centrale", source: "DataReportal (Kepios), Digital 2026: Gabon", sourceUrl: "https://datareportal.com/reports/digital-2026-gabon" },
         { value: "82 Md FCFA", label: "budget numérique national gabonais pour 2026, en hausse de plus de 150 % vs 2025", source: "Ministère de l'Économie numérique du Gabon, via Agence Ecofin" },
       ],
       obstacle: "Le Gabon a la connectivité mais pas encore la traction entrepreneuriale : c'est un terrain propice à l'accompagnement post-création (structuration digitale, outillage) plutôt qu'à l'accès de base.",
@@ -294,8 +296,8 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "La Banque mondiale estime qu'une hausse de 10 % de l'accès au haut débit en RD Congo pourrait générer environ 2,5 % de croissance additionnelle du PIB et près de 700 000 emplois. Un potentiel documenté, mais conditionné à des réformes réglementaires encore à mettre en œuvre.",
       stats: [
-        { value: "+2,5 % PIB", label: "gain de croissance estimé pour une hausse de 10 % de l'accès au haut débit en RDC", source: "Banque mondiale, Mise à jour économique de la RDC" },
-        { value: "30,5 %", label: "de pénétration internet en RD Congo fin 2025", source: "DataReportal (Kepios), Digital 2026" },
+        { value: "+2,5 % PIB", label: "gain de croissance estimé pour une hausse de 10 % de l'accès au haut débit en RDC", source: "Banque mondiale, Mise à jour économique de la RDC", sourceUrl: "https://www.banquemondiale.org/fr/news/press-release/2022/10/07/democratic-republic-of-congo-economic-update" },
+        { value: "30,5 %", label: "de pénétration internet en RD Congo fin 2025", source: "DataReportal (Kepios), Digital 2026", sourceUrl: "https://datareportal.com/reports/digital-2026-democratic-republic-of-the-congo" },
       ],
       obstacle: "Les rapports institutionnels (Banque mondiale, GSMA) identifient la réforme de la fiscalité télécom et des procédures administratives comme condition préalable à la réalisation de ce potentiel économique.",
     },
@@ -306,8 +308,8 @@ export const GEO_COUNTRIES: GeoCountry[] = [
     marketContext: {
       intro: "Un rapport GSMA présenté à Brazzaville en 2026 documente un écart frappant entre couverture réseau et usage réel au Congo : la grande majorité de la population vit en zone couverte 4G sans pour autant utiliser internet mobile. C'est un signal clair que la barrière est l'adoption, pas la disponibilité du réseau.",
       stats: [
-        { value: "86 % couverts / 19 % utilisateurs", label: "écart entre couverture 4G et usage réel d'internet mobile au Congo-Brazzaville", source: "GSMA, rapport présenté au Digital Africa Summit, juin 2026" },
-        { value: "870 Md FCFA", label: "valeur économique additionnelle projetée d'ici 2030 grâce à la transformation numérique", source: "GSMA, 2026" },
+        { value: "86 % couverts / 19 % utilisateurs", label: "écart entre couverture 4G et usage réel d'internet mobile au Congo-Brazzaville", source: "GSMA, rapport présenté au Digital Africa Summit, juin 2026", sourceUrl: "https://www.gsma.com/newsroom/press-release/new-gsma-report-digital-reforms-could-unlock-fcfa-870-billion-and-connect-over-540000-more-people-in-the-republic-of-the-congo-by-2030/" },
+        { value: "870 Md FCFA", label: "valeur économique additionnelle projetée d'ici 2030 grâce à la transformation numérique", source: "GSMA, 2026", sourceUrl: "https://www.gsma.com/newsroom/press-release/new-gsma-report-digital-reforms-could-unlock-fcfa-870-billion-and-connect-over-540000-more-people-in-the-republic-of-the-congo-by-2030/" },
       ],
       obstacle: "Le régulateur télécom local (ARPCE) reconnaît lui-même l'absence d'observatoire statistique dédié à l'usage numérique des entreprises. Un vrai angle mort institutionnel, à mentionner honnêtement plutôt qu'à masquer.",
     },
@@ -320,7 +322,7 @@ export const GEO_COUNTRIES: GeoCountry[] = [
       intro: "Madagascar met en avant la digitalisation de ses services publics comme point d'entrée de sa transformation numérique, avec des économies déjà chiffrées, plutôt qu'un narratif centré sur l'écosystème privé des PME.",
       stats: [
         { value: "18 Md ariary", label: "économisés entre 2021 et 2023 en digitalisant le paiement des bourses étudiantes universitaires", source: "Unité de Gouvernance Digitale malgache, via L'Express Madagascar" },
-        { value: "20,4 %", label: "de pénétration internet à Madagascar fin 2025", source: "DataReportal (Kepios), Digital 2026" },
+        { value: "20,4 %", label: "de pénétration internet à Madagascar fin 2025", source: "DataReportal (Kepios), Digital 2026", sourceUrl: "https://datareportal.com/reports/digital-2026-madagascar" },
       ],
       obstacle: "La digitalisation publique malgache avance de façon documentée, mais le relais vers l'écosystème des PME privées reste largement à construire.",
     },

@@ -1,3 +1,4 @@
+import { SourceLink } from "@/components/source-link";
 import type { Metadata } from "next";
 import { seoTitle } from "@/lib/seo-title";
 import { notFound } from "next/navigation";
@@ -215,7 +216,9 @@ export default async function CityHubPage({
                       <div key={fait.label} className="rounded-[14px] border border-[#e2e2e2] bg-white p-5">
                         <div className="mb-2 text-[26px] font-extrabold leading-none text-theme-2">{fait.value}</div>
                         <p className="mb-2 text-sm leading-6 text-theme-1">{fait.label}</p>
-                        <p className="mb-0 text-xs italic text-body-text">{fait.source}</p>
+                        <p className="mb-0 text-xs italic text-body-text">
+                          <SourceLink source={fait.source} url={fait.sourceUrl} />
+                        </p>
                       </div>
                     ))}
                   </div>

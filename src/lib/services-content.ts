@@ -15,6 +15,8 @@ export interface ServiceMarketStat {
   label: string;
   /** Organisme + année, tel qu'à citer */
   source: string;
+  /** Page d'origine vérifiée (jamais devinée) */
+  sourceUrl?: string;
 }
 
 export interface ServiceMarketContext {
@@ -104,8 +106,8 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
       intro:
         "En France, la majorité des dirigeants de TPE-PME perçoivent déjà un bénéfice concret du numérique, mais une part significative reste préoccupée par la sécurité des données sans en avoir forcément fait le diagnostic, un signal clair que l'audit doit précéder l'investissement, pas le suivre.",
       stats: [
-        { value: "79 %", label: "des dirigeants de TPE-PME françaises jugent le digital bénéfique pour leur activité", source: "Baromètre France Num, DGE, 2024 (10 125 entreprises interrogées)" },
-        { value: "49 %", label: "des TPE-PME françaises s'inquiètent du piratage de leurs données ; 81 % disposent déjà d'une solution de cybersécurité", source: "Baromètre France Num, DGE, 2024" },
+        { value: "79 %", label: "des dirigeants de TPE-PME françaises jugent le digital bénéfique pour leur activité", source: "Baromètre France Num, DGE, 2024 (10 125 entreprises interrogées)", sourceUrl: "https://www.entreprises.gouv.fr/la-dge/actualites/publication-du-barometre-2024-de-la-transformation-numerique-des-tpe-et-pme" },
+        { value: "49 %", label: "des TPE-PME françaises s'inquiètent du piratage de leurs données ; 81 % disposent déjà d'une solution de cybersécurité", source: "Baromètre France Num, DGE, 2024", sourceUrl: "https://www.entreprises.gouv.fr/la-dge/actualites/publication-du-barometre-2024-de-la-transformation-numerique-des-tpe-et-pme" },
       ],
     },
   },

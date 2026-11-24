@@ -1,3 +1,4 @@
+import { SourceLink } from "@/components/source-link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -237,7 +238,9 @@ export default async function CountryPage({
                         <tr key={stat.label} className={i % 2 === 0 ? "bg-white" : "bg-theme-3"}>
                           <td className="px-5 py-4 align-top text-theme-1">{stat.label}</td>
                           <td className="px-5 py-4 align-top font-extrabold whitespace-nowrap text-theme-2">{stat.value}</td>
-                          <td className="px-5 py-4 align-top text-xs italic text-body-text">{stat.source}</td>
+                          <td className="px-5 py-4 align-top text-xs italic text-body-text">
+                          <SourceLink source={stat.source} url={stat.sourceUrl} />
+                        </td>
                         </tr>
                       ))}
                     </tbody>
@@ -253,7 +256,7 @@ export default async function CountryPage({
                 {country.mobileMoney ? (
                   <p className="mt-6 mb-0 text-base leading-8 text-body-text">
                     <strong className="text-theme-1">Mobile money : </strong>
-                    {country.mobileMoney.text} (Source : {country.mobileMoney.source}.)
+                    {country.mobileMoney.text} (Source : <SourceLink source={country.mobileMoney.source} url={country.mobileMoney.sourceUrl} />.)
                   </p>
                 ) : null}
               </div>

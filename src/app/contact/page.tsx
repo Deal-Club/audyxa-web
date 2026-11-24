@@ -1,3 +1,4 @@
+import { RichText } from "@/components/rich-text";
 import type { Metadata } from "next";
 import { PageTitle } from "@/components/page-title";
 import { ContactDetailsSection } from "@/components/contact-details-section";
@@ -17,6 +18,13 @@ export default function ContactPage() {
         breadcrumbs={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
         currentPath="/contact"
       />
+      <section className="pt-[40px] pb-[10px]">
+        <div className="auto-container">
+          <p className="mb-0 text-center text-[17px] leading-8 text-theme-1">
+            <RichText text="Une question avant de nous écrire ? Consultez la [FAQ](/faq) ou nos [services](/services)." />
+          </p>
+        </div>
+      </section>
       <ContactDetailsSection />
       <ContactPageForm />
     </main>

@@ -37,6 +37,8 @@ export interface VilleFait {
   label: string;
   /** Organisme + date, tel qu'à citer */
   source: string;
+  /** Page d'origine vérifiée (jamais devinée) */
+  sourceUrl?: string;
 }
 
 export interface VilleUseCase {
