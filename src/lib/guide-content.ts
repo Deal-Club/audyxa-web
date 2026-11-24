@@ -34,7 +34,7 @@ export const GUIDES: Guide[] = [
     slug: "mesurer-maturite-numerique-entreprise",
     title: "Comment mesurer la maturité numérique de votre entreprise",
     summary:
-      "La maturité numérique ne se résume pas au nombre de logiciels utilisés. Voici comment la mesurer sur plusieurs dimensions, avec une échelle claire et des preuves vérifiables.",
+      "La maturité numérique mesure le niveau réel de digitalisation d'une entreprise, et ne se résume pas au nombre de logiciels utilisés. Voici comment la mesurer sur dix dimensions, avec une échelle de 0 à 5 et des preuves vérifiables.",
     relatedMethodSlugs: ["fondements-et-maturite-numerique"],
     relatedServiceSlugs: ["audit-diagnostic-digital"],
     sections: [
@@ -57,10 +57,31 @@ export const GUIDES: Guide[] = [
         paragraphs: [
           "Avant de noter quoi que ce soit, il faut clarifier : quel résultat métier voulons-nous modifier ? Comment ce résultat est-il produit aujourd'hui ? Quelles données permettent de mesurer la situation actuelle ? Quelles contraintes limitent les options possibles ? Qui devra changer sa façon de travailler ?",
           "Une demande formulée comme \"nous voulons un CRM\" est incomplète tant que ces questions n'ont pas de réponse. Le bon diagnostic cherche la cause (leads perdus, absence de suivi, doublons) avant de discuter d'un outil.",
+          "Pour réaliser ce diagnostic avec un expert, voir notre [service d'audit et diagnostic digital](/services/audit-diagnostic-digital) et le chapitre [Fondements et maturité numérique](/methode/fondements-et-maturite-numerique) de la méthode.",
         ],
       },
     ],
     faq: [
+      {
+        question: "Qu'est-ce que la maturité numérique d'une entreprise ?",
+        answer:
+          "C'est le niveau réel auquel une entreprise maîtrise ses processus, ses données et ses outils numériques, évalué sur plusieurs dimensions et appuyé par des preuves. Elle ne se résume pas au nombre de logiciels utilisés.",
+      },
+      {
+        question: "Maturité numérique ou maturité digitale : quelle différence ?",
+        answer:
+          "Dans l'usage courant, les deux expressions désignent la même idée : le degré de digitalisation d'une organisation. Ce guide les traite ensemble et s'applique aussi bien à l'une qu'à l'autre.",
+      },
+      {
+        question: "Comment faire un test de maturité numérique ?",
+        answer:
+          "Répondez d'abord aux cinq questions de cadrage, puis notez chaque dimension de 0 à 5 avec au moins une preuve concrète (temps de cycle, taux d'erreur, couverture MFA, taux d'adoption CRM). Un outil acheté ne justifie jamais un niveau maximal.",
+      },
+      {
+        question: "Quelles dimensions évaluer dans un diagnostic de maturité numérique ?",
+        answer:
+          "Stratégie, client, processus, applications, intégrations, données, automatisation et IA, cybersécurité, compétences et gouvernance. Les examiner séparément évite qu'un score global masque l'essentiel.",
+      },
       {
         question: "Combien de temps prend un diagnostic de maturité numérique ?",
         answer:

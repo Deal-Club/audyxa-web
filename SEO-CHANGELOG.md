@@ -64,3 +64,25 @@ Points de contrôle : 2, 4 et 12 semaines après mise en ligne (comparer clics, 
 - Clé publique `public/d78b11e0018a739c8cc892842a75b68a.txt` (preuve de propriété du domaine pour Bing et partenaires).
 - `scripts/indexnow.mjs` + `npm run indexnow` : simulation par défaut (affiche les URLs, n'envoie rien). `-- --send` envoie vraiment, après vérification que la clé est en ligne. Chemins précis possibles : `npm run indexnow -- --send /faq /guides/x`.
 - Ordre : déployer d'abord le fichier clé, puis lancer l'envoi.
+
+## Lot 2 : quick wins sur 3 pages à impressions sans clic (branche seo/lot-2-quick-wins)
+
+Pages ciblées (impressions Search Console, 0 clic) et requêtes réelles visées :
+
+| Page | Impressions | Requêtes visées |
+|---|---|---|
+| /guides/mesurer-maturite-numerique-entreprise | 236 | maturité numérique, test maturité numérique, diagnostic maturité numérique, maturité digitale |
+| /services/audit-diagnostic-digital | 189 | diagnostic digital entreprise, audit numérique entreprise, diagnostic transformation digitale |
+| /methode/crm-vente-service-client-omnicanal | 142 | crm omnicanal, système omnicanal ia, interaction client omnicanale ia |
+
+Changements (aucun chiffre ni fait ajouté : chaque réponse reprend un contenu déjà présent sur la page) :
+
+- Title SEO réécrit autour de la requête exacte (H1 inchangé) : « Maturité numérique : comment la mesurer en entreprise », « Audit numérique et diagnostic digital d'entreprise », « CRM omnicanal : vente, service client et IA ».
+- Réponse en tête : définition explicite de « maturité numérique » (guide), « audit numérique » et « diagnostic digital d'entreprise » (service), « CRM omnicanal » (résumé du chapitre).
+- FAQ : 6 questions par page (3 à 4 ajoutées, formulées comme les requêtes réelles), visibles sur la page et dans le schema FAQPage.
+- Maillage : le guide renvoie vers le service d'audit et le chapitre « Fondements et maturité numérique ».
+- Description du service réécrite avec « audit et diagnostic digital d'entreprise ».
+
+Vérifié en local : 374 pages sans title au-dessus de 60 caractères ni description hors de 70 à 160 caractères.
+
+À mesurer : clics, impressions et position de ces 3 pages et de leurs requêtes à 2, 4 et 12 semaines (base : 0 clic ; 236, 189 et 142 impressions).

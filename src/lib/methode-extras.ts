@@ -632,6 +632,21 @@ export const METHOD_EXTRAS: Record<string, MethodChapterExtras> = {
       "Nous commençons par écrire le modèle de données et les critères d'étape avec les commerciaux, puis nous automatisons l'enrichissement et le routage. L'outil arrive en dernier, pas en premier.",
     faq: [
       {
+        question: "Qu'est-ce qu'un CRM omnicanal ?",
+        answer:
+          "Un CRM omnicanal conserve le contexte de la relation client d'un canal à l'autre : un client qui commence sur WhatsApp puis appelle n'a pas à raconter à nouveau son histoire. Cela suppose de centraliser l'identité, les consentements, l'historique pertinent et le statut, dans les limites des règles de confidentialité.",
+      },
+      {
+        question: "Peut-on utiliser l'IA dans un service client omnicanal ?",
+        answer:
+          "Oui, pour des usages raisonnables : transcription et résumé, suggestion de réponse, recherche documentaire, classification, préparation de compte rendu. Un chatbot externe doit informer l'utilisateur lorsque nécessaire, offrir une sortie vers un humain et limiter l'accès aux données.",
+      },
+      {
+        question: "Par où commencer un projet de CRM omnicanal ?",
+        answer:
+          "Par le modèle de données et les critères d'étape, écrits avec les commerciaux, avant de choisir l'outil. L'automatisation de l'enrichissement et du routage vient ensuite, et le choix du logiciel en dernier.",
+      },
+      {
         question: "Quelles étapes définir dans un pipeline commercial ?",
         answer:
           "Une séquence type va de Lead à Qualifié, Découverte réalisée, Proposition, Négociation puis Gagné ou Perdu, avec des critères d'entrée et de sortie objectivables à chaque étape. C'est cette discipline qui rend les prévisions fiables.",

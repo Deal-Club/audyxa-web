@@ -55,7 +55,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = getServiceDetail(slug);
   if (!service) return {};
-  const title = seoTitle(/entreprise/i.test(service.title) ? service.title : `${service.title} pour entreprises`);
+  const title = seoTitle(
+    /entreprise/i.test(service.title) ? service.title : `${service.title} pour entreprises`,
+    `/services/${service.slug}`
+  );
 
   return {
     title: { absolute: title },

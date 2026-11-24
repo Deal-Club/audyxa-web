@@ -49,9 +49,9 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     title: "Audit et diagnostic digital",
     tagline: "Le point de départ de toute transformation digitale sérieuse",
     directAnswer:
-      "L'audit et diagnostic digital Audyxa consiste à cartographier vos processus, outils et données réels avant toute recommandation, pour identifier les chantiers de transformation digitale qui produisent un impact mesurable, pas une liste générique de logiciels à acheter.",
+      "L'audit et diagnostic digital (ou audit numérique) d'une entreprise, tel que le pratique Audyxa, consiste à cartographier vos processus, outils et données réels avant toute recommandation, pour identifier les chantiers de transformation digitale qui produisent un impact mesurable, pas une liste générique de logiciels à acheter.",
     metaDescription:
-      "Audit et diagnostic digital Audyxa : cartographie de vos processus et outils pour identifier les chantiers de transformation à impact mesurable.",
+      "Audit et diagnostic digital d'entreprise : maturité numérique sur dix dimensions, cartographie des processus et priorisation des chantiers à impact mesurable.",
     problems: [
       "Vous ne savez pas par où commencer votre transformation digitale, tout semble prioritaire.",
       "Vous avez déjà investi dans des outils numériques sans gain de temps visible.",
@@ -69,6 +69,21 @@ export const SERVICES_DETAIL: ServiceDetail[] = [
     ],
     relatedMethodSlugs: ["fondements-et-maturite-numerique", "mission-de-lexpert"],
     faq: [
+      {
+        question: "Qu'est-ce qu'un diagnostic digital d'entreprise ?",
+        answer:
+          "C'est un état des lieux des processus, outils et données d'une entreprise, avec une notation de sa maturité numérique sur dix dimensions, avant toute recommandation. Il sert à identifier les chantiers qui produisent un impact mesurable, pas à dresser une liste de logiciels à acheter.",
+      },
+      {
+        question: "Audit numérique, audit digital et audit informatique : quelle différence ?",
+        answer:
+          "Un audit informatique classique évalue principalement l'infrastructure technique (sécurité, performance, conformité). Un audit digital, tel que pratiqué par Audyxa, part des résultats métier et de la maturité organisationnelle avant d'examiner la technique.",
+      },
+      {
+        question: "Que contient un diagnostic de transformation digitale ?",
+        answer:
+          "Il repose sur cinq questions de cadrage, quatre formes de preuve (entretien, observation, données, documentation) et une notation sur dix dimensions. Chaque constat suit une structure vérifiable : fait, impact, cause probable, preuve, risque, action de vérification.",
+      },
       {
         question: "Combien de temps dure un audit digital ?",
         answer:

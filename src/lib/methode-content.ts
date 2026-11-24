@@ -444,7 +444,7 @@ export const METHOD_CHAPTERS: MethodChapter[] = [
     number: 12,
     title: "CRM, vente et service client omnicanal",
     summary:
-      "Concevoir un modèle CRM et un pipeline commercial disciplinés, organiser un service client omnicanal réel, et connecter IA et agents sans perdre le contrôle.",
+      "CRM omnicanal : concevoir un modèle CRM et un pipeline commercial disciplinés, organiser un service client omnicanal réel, et connecter IA et agents sans perdre le contrôle.",
     sections: [
       {
         heading: "Le CRM est une discipline avant d'être un logiciel",

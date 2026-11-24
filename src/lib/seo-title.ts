@@ -11,7 +11,6 @@ const BRAND_SUFFIX = ` | ${SITE_NAME}`;
  * reste inchangé sur la page : seule la balise <title> est raccourcie.
  */
 const SEO_TITLE_OVERRIDES: Record<string, string> = {
-  "/guides/mesurer-maturite-numerique-entreprise": "Mesurer la maturité numérique de votre entreprise",
   "/guides/cartographier-processus-as-is-to-be": "Cartographier un processus métier : AS-IS / TO-BE",
   "/guides/calculer-roi-tco-payback-projet-digital": "Calculer ROI, TCO et payback d'un projet digital",
   "/guides/gouvernance-ia-entreprise-guide": "Gouvernance de l'IA en entreprise : guide pratique",
@@ -41,6 +40,9 @@ const SEO_TITLE_OVERRIDES: Record<string, string> = {
   "/histoires/jumia": "Jumia : l'e-commerce panafricain et son redressement",
   "/histoires/mpesa-safaricom": "M-Pesa : le mobile money devenu infrastructure",
   "/histoires/anip-benin": "ANIP Bénin : digitaliser l'identité",
+  "/guides/mesurer-maturite-numerique-entreprise": "Maturité numérique : comment la mesurer en entreprise",
+  "/services/audit-diagnostic-digital": "Audit numérique et diagnostic digital d'entreprise",
+  "/methode/crm-vente-service-client-omnicanal": "CRM omnicanal : vente, service client et IA",
   "/methode/mission-de-lexpert": "Mission de l'expert : du 1er rendez-vous au suivi",
   "/methode/ia-rag-agents-mcp": "IA, RAG, agents, MCP et gouvernance en entreprise",
 };
