@@ -270,3 +270,10 @@ Non traité dans ce lot : les 160 citations des pages villes (90 sources uniques
 | 147 | suisse | 2009 | UNESCO, Comité du patrimoine mondial, session de Séville, ju | Page UNESCO (whc.unesco.org/fr/list/1302) renvoie 403, non vérifié. |
 | 148 | suisse | 1867 | Wikipédia (article Nestlé), consulté le 9 octobre 2026 | Page Wikipédia Nestlé ouverte (partiellement): ne mentionne pas 1867 dans la partie lue (infobox 1866, vente 1873); non vérifié. |
 | 151 | suisse | 250 000 | Keystone-SDA, relayé par blue News, bilan de l'édition 2024, | Article Keystone-SDA/blue News introuvable; 250 000 visiteurs seulement vu dans des résumés de recherche (RTS), pages non ouvertes. |
+
+## sameAs : profils officiels dans le schema (branche seo/sameas)
+
+- Action 7 du plan (confiance A). 14 profils fournis par le propriétaire ajoutés au `sameAs` du schema Organization (`@id` …/#organization) : LinkedIn, YouTube, Facebook, Instagram, TikTok, X, Threads, Bluesky, Mastodon, Pinterest, Tumblr, about.me, Gravatar, Stack Overflow.
+- Constante `SOCIAL_PROFILES` dans `src/lib/site-config.ts` (réutilisable pour le pied de page).
+- Contrôle : 11 des 14 adresses répondent 200 ; LinkedIn (999) et Stack Overflow (403) refusent les robots, ce qui est attendu. Les URLs sont celles données par le propriétaire.
+- Vérifié dans le HTML : 14 profils dans le schema sur l'accueil, un service et une page pays.

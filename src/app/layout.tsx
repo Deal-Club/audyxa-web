@@ -4,7 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { SITE_NAME, SITE_URL, SOCIAL_PROFILES } from "@/lib/site-config";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -63,10 +63,7 @@ export const viewport: Viewport = {
  * Schema.org ProfessionalService (site entier). `areaServed` reprend la
  * zone cible prioritaire d'Audyxa (Afrique de l'Ouest francophone + France).
  *
- * `sameAs` : aucun profil social officiel confirmé n'a été trouvé dans le
- * dépôt (pas de lien LinkedIn/réseaux dans le header, le footer ou ailleurs)
- * : le champ est omis plutôt qu'inventé, conformément à la règle anti-
- * invention. À ajouter dès qu'une URL de profil réelle est disponible.
+ * `sameAs` : profils officiels fournis par le propriétaire (SOCIAL_PROFILES).
  */
 const ORGANIZATION_JSON_LD = {
   "@context": "https://schema.org",
@@ -74,6 +71,7 @@ const ORGANIZATION_JSON_LD = {
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
   inLanguage: "fr",
+  sameAs: [...SOCIAL_PROFILES],
   knowsAbout: [
     "Transformation digitale",
     "Audit et diagnostic digital",

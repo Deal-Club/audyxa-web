@@ -6,6 +6,27 @@
  */
 export const SITE_URL = "https://www.audyxa.com";
 export const SITE_NAME = "Audyxa";
+/**
+ * Profils officiels d'Audyxa (fournis par le propriétaire). Utilisés dans le
+ * schema `sameAs` de l'organisation pour relier l'entité à ses comptes.
+ */
+export const SOCIAL_PROFILES = [
+  "https://www.linkedin.com/in/audyxa-transformation-digitale-288241445/",
+  "https://www.youtube.com/@AudyxaTransformationdigitale",
+  "https://www.facebook.com/profile.php?id=61595472573878",
+  "https://www.instagram.com/audyxatransforme",
+  "https://www.tiktok.com/@audyxa.transforma",
+  "https://x.com/AudyxaTransform",
+  "https://www.threads.com/@audyxatransforme",
+  "https://bsky.app/profile/audyxa.bsky.social",
+  "https://mastodon.social/@audyxa",
+  "https://fr.pinterest.com/atransformationdigitale",
+  "https://www.tumblr.com/audyxa",
+  "https://about.me/audyxa",
+  "https://gravatar.com/policeclassy78b1c37d05",
+  "https://stackoverflow.com/users/33218219/audyxa-transformation-digitale",
+] as const;
+
 export const SITE_LOGO_URL = `${SITE_URL}/images/logo-full.png`;
 export const AUTHOR_URL = `${SITE_URL}/auteur/paul-maxime-dossou`;
 
