@@ -236,7 +236,7 @@ export const VILLES_COTE_DIVOIRE: VilleContent[] = [
       {
         value: "7 023 763 tonnes",
         label: "de marchandises traitées par le port autonome de San-Pédro en 2023, soit environ 13 % de plus qu'en 2022",
-        source: "Port autonome de San-Pédro, relayé par l'Agence ivoirienne de presse (AIP), 27 février 2024",
+        source: "Port autonome de San-Pédro, relayé par l'Agence ivoirienne de presse (AIP), 27 février 2024", sourceUrl: "https://www.aip.ci/35494/cote-divoire-aip-plus-de-sept-millions-de-tonnes-de-trafic-global-realisees-au-port-autonome-de-san-pedro-en-2023/",
       },
     ],
     casUsage: [

@@ -30,7 +30,7 @@ export const VILLES_CAMEROUN: VilleContent[] = [
       {
         value: "12 920 299 tonnes",
         label: "de marchandises à l'import et à l'export traitées par le port de Douala en 2024, soit environ 6 % de plus qu'en 2023",
-        source: "Autorité portuaire nationale (APN), chiffres 2024 relayés par EcoMatin",
+        source: "Autorité portuaire nationale (APN), chiffres 2024 relayés par EcoMatin", sourceUrl: "https://ecomatin.net/avec-27-millions-de-tonnes-de-marchandises-traitees-en-2024-les-ports-camerounais-marquent-le-pas",
       },
       {
         value: "4,2 millions",
@@ -107,7 +107,7 @@ export const VILLES_CAMEROUN: VilleContent[] = [
       {
         value: "28 856 127",
         label: "habitants estimés au Cameroun en 2023, le dernier recensement complet remontant à 2005",
-        source: "BUCREP, estimations 2023 relayées par EcoMatin, août 2025",
+        source: "BUCREP, estimations 2023 relayées par EcoMatin, août 2025", sourceUrl: "https://ecomatin.net/cameroun-la-population-estimee-a-29-millions-dhabitants-selon-de-nouvelles-estimations-du-bucrep",
       },
     ],
     casUsage: [
@@ -174,7 +174,7 @@ export const VILLES_CAMEROUN: VilleContent[] = [
       {
         value: "284 613 tonnes",
         label: "de coton graine produites lors de la campagne 2024-2025, en recul d'environ 28 % par rapport aux 395 000 tonnes de la campagne précédente, sous l'effet d'aléas climatiques et de retards d'intrants",
-        source: "Sodecoton, chiffres de campagne relayés par EcoMatin",
+        source: "Sodecoton, chiffres de campagne relayés par EcoMatin", sourceUrl: "https://ecomatin.net/cameroun-la-sodecoton-perd-pres-de-14-milliards-fcfa-en-2024-a-cause-des-changements-climatiques",
       },
     ],
     casUsage: [
@@ -370,13 +370,13 @@ export const VILLES_CAMEROUN: VilleContent[] = [
       {
         value: "189 800",
         label: "habitants à Ngaoundéré au recensement de 2005 (230 000 estimés en 2020)",
-        source: "Wikipédia FR, article Ngaoundéré, d'après le recensement de 2005 (consulté en 2026)",
+        source: "Wikipédia FR, article Ngaoundéré, d'après le recensement de 2005 (consulté en 2026)", sourceUrl: "https://fr.wikipedia.org/wiki/Ngaoundéré",
       },
       {
         value: "≈ 38 %",
         label:
           "de la production nationale de viande de bœuf provient du cheptel de l'Adamaoua, estimé à près de deux millions de têtes",
-        source: "Cameroon Tribune, d'après le Minepia, article sur le prix de la viande de bœuf, 2022",
+        source: "Cameroon Tribune, d'après le Minepia, article sur le prix de la viande de bœuf, 2022", sourceUrl: "https://cameroon-tribune.cm/article.html/47776/fr.html/details_2",
       },
       {
         value: "1993",
@@ -454,17 +454,17 @@ export const VILLES_CAMEROUN: VilleContent[] = [
       {
         value: "88 462",
         label: "habitants à Bertoua au dernier recensement général, celui de 2005 (43 402 en 1987), dans une ville qui a depuis continué de croître",
-        source: "BUCREP / INS Cameroun, recensements de 1987 et 2005, tels que compilés par citypopulation.de",
+        source: "BUCREP / INS Cameroun, recensements de 1987 et 2005, tels que compilés par citypopulation.de", sourceUrl: "https://www.citypopulation.de/en/cameroon/cities/",
       },
       {
         value: "1 283 800",
         label: "habitants projetés dans la région de l'Est au 1er janvier 2025, contre 771 755 au recensement de 2005 (projection statistique, non un recensement)",
-        source: "BUCREP / INS Cameroun, projections de population, compilées par citypopulation.de",
+        source: "BUCREP / INS Cameroun, projections de population, compilées par citypopulation.de", sourceUrl: "https://www.citypopulation.de/en/cameroon/cities/",
       },
       {
         value: "75 %",
         label: "de première transformation locale du bois, avec un objectif de 100 % après l'interdiction d'exporter les grumes dans la zone CEMAC",
-        source: "Ministère des Forêts et de la Faune (MINFOF), atelier de Bertoua rapporté par EcoMatin, mai 2021",
+        source: "Ministère des Forêts et de la Faune (MINFOF), atelier de Bertoua rapporté par EcoMatin, mai 2021", sourceUrl: "https://ecomatin.net/filiere-bois-une-zone-economique-specialee-en-gestationn-a-bertoua",
       },
     ],
     casUsage: [
@@ -544,7 +544,7 @@ export const VILLES_CAMEROUN: VilleContent[] = [
         value: "384 MW",
         label:
           "de puissance installée à Songloulou, huit groupes sur la Sanaga en amont d'Édéa, soit 35 % de l'énergie du réseau Sud au 1er trimestre 2025",
-        source: "Business in Cameroon, article sur le barrage de Songloulou, mai 2025",
+        source: "Business in Cameroon, article sur le barrage de Songloulou, mai 2025", sourceUrl: "https://www.businessincameroon.com/public-management/1505-14658-eneo-seeks-cfaf54bln-to-secure-future-for-vital-songloulou-dam",
       },
       {
         value: "73 759 t → 34 431 t",
@@ -623,7 +623,7 @@ export const VILLES_CAMEROUN: VilleContent[] = [
       {
         value: "555 398 EVP",
         label: "de conteneurs traités par le port de Kribi en 2025, soit 37,5 % du trafic conteneurisé national",
-        source: "Port autonome de Kribi, bilan 2025 relayé par EcoMatin",
+        source: "Port autonome de Kribi, bilan 2025 relayé par EcoMatin", sourceUrl: "https://ecomatin.net/au-cameroun-le-port-de-kribi-revendique-la-place-de-premier-terminal-a-conteneurs",
       },
       {
         value: "12,7 millions de tonnes",
@@ -711,7 +711,7 @@ export const VILLES_CAMEROUN: VilleContent[] = [
       {
         value: "23 000 étudiants",
         label: "régulièrement inscrits à l'Université de Dschang en 2022-2023, dont environ 2 000 étrangers, notamment tchadiens",
-        source: "Cameroon Tribune, article sur la rentrée universitaire, 16 octobre 2023",
+        source: "Cameroon Tribune, article sur la rentrée universitaire, 16 octobre 2023", sourceUrl: "https://cameroon-tribune.cm/article.html/60836/fr.html/details_2",
       },
       {
         value: "5 548 à 26 829 tonnes",

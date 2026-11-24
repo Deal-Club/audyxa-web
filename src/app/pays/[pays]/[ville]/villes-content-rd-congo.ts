@@ -297,7 +297,7 @@ export const VILLES_RD_CONGO: VilleContent[] = [
       {
         value: "environ 1 700 km",
         label: "de voie fluviale navigable entre Kisangani et Kinshasa, sans chute sur ce tronçon",
-        source: "étude de navigation Artelia pour l'Union européenne, 2017-2018 (1 734 km)",
+        source: "étude de navigation Artelia pour l'Union européenne, 2017-2018 (1 734 km)", sourceUrl: "https://www.arteliagroup.com/project/congo-river/",
       },
     ],
     casUsage: [
@@ -498,7 +498,7 @@ export const VILLES_RD_CONGO: VilleContent[] = [
       {
         value: "73 %",
         label: "part estimée de la RD Congo dans la production minière mondiale de cobalt (niveau national, pas propre à Kolwezi)",
-        source: "USGS, Mineral Commodity Summaries 2026, chapitre cobalt",
+        source: "USGS, Mineral Commodity Summaries 2026, chapitre cobalt", sourceUrl: "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-cobalt.pdf",
       },
     ],
     casUsage: [

@@ -600,7 +600,7 @@ export const VILLES_GUINEE: VilleContent[] = [
       {
         value: "170 cas et 121 décès",
         label: "bilan d'Ebola pour la préfecture de Guéckédou au 23 mai 2014, le plus élevé parmi les préfectures touchées à cette date",
-        source: "Centre européen de prévention et de contrôle des maladies (ECDC), mise à jour du 28 mai 2014",
+        source: "Centre européen de prévention et de contrôle des maladies (ECDC), mise à jour du 28 mai 2014", sourceUrl: "https://www.ecdc.europa.eu/en/news-events/epidemiological-update-outbreak-ebola-virus-disease-west-africa-28-may-2014",
       },
     ],
     casUsage: [

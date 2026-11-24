@@ -164,3 +164,109 @@ Vérifié en local : 374 pages sans title au-dessus de 60 caractères ni descrip
 | 81 | 24 % / 26 % | Cour des comptes, 2024 | 24 %/26 % non retrouvés. Un document Sénat cite retard moyen 26,6 % et dépassement 36,6 % (autre valeur, non daté 2024); rapport Cour des comptes non ouvert. |
 
 Non traité dans ce lot : les 160 citations des pages villes (90 sources uniques), à vérifier dans un lot suivant.
+
+## Lot 4 : sources des pages villes (branche seo/lot-4-sources-villes)
+
+160 chiffres de pages villes (90 sources uniques), recherchés par 7 agents (un groupe de pays chacun). Même règle que le lot 3 : lien seulement si la page a été ouverte, contient le chiffre exact et correspond à la source nommée.
+
+- **33 liens appliqués.**
+- **40 chiffres confirmés sur une page de relais sans réserve, non liés** : la citation nomme un institut (INSEED, INS, ANSD, INSAE...) mais le chiffre n'a été retrouvé que sur citypopulation.de (53 cas) ou un autre relais. Option à décider : afficher « via citypopulation.de » avec le lien.
+- **54 chiffres avec une réserve ou un écart** (tableau 1).
+- **33 chiffres non vérifiés** (tableau 2).
+
+### Tableau 1 : réserves et écarts constatés (non liés)
+
+| Id | Pays | Chiffre | Source citée | Réserve |
+|---|---|---|---|---|
+| 1 | belgique | 1 255 795 | Statbel (Registre national), population au 1er janvier 2025 | Mini-Bru 2026 (IBSA/perspective.brussels), chiffre de la RBC au 1er janvier 2025 ; reprend Statbel. Page Statbel inaccessible (captcha). |
+| 3 | belgique | 197 323 | Statbel (Registre national), population au 1er janvier 2025, | Fiche IWEPS T003-POP.URB (juin 2026) reprenant Statbel ; chiffre de la commune centrale. Page Statbel directe inaccessible (captcha). |
+| 5 | belgique | 205 763 | Statbel (Registre national), population au 1er janvier 2025, | Fiche IWEPS T003-POP.URB (juin 2026) reprenant Statbel ; chiffre de la commune centrale. Page Statbel directe inaccessible (captcha). |
+| 6 | belgique | 54,8 % | IWEPS (Walstat) pour Charleroi 2023, cité par La Dernière He | 54,8 % en 2023 confirmé (L'Avenir, 28/02/2025, chiffres IWEPS) ; ce n'est PAS l'article DH de juillet 2025 cité par le site (introuvable). Tranche 20-64 ans non confirmée par  |
+| 7 | belgique | 115 029 | Statbel (Registre national), population au 1er janvier 2025, | Fiche IWEPS T003-POP.URB (juin 2026) reprenant Statbel ; chiffre de la commune centrale. Page Statbel directe inaccessible (captcha). |
+| 8 | belgique | 97 120 | Statbel (Registre national), population au 1er janvier 2025, | Fiche IWEPS T003-POP.URB (juin 2026) reprenant Statbel ; chiffre de la commune centrale. Page Statbel directe inaccessible (captcha). |
+| 9 | belgique | 68 991 | Statbel (Registre national), population au 1er janvier 2025, | Fiche IWEPS T003-POP.URB (juin 2026) reprenant Statbel ; chiffre de la commune centrale. Page Statbel directe inaccessible (captcha). |
+| 11 | belgique | 81 060 | chiffre du 1er janvier 2024 rapporté par L'Avenir, à vérifie | Chiffre de presse ; UVCW/IWEPS donnent 81 241 au 1.1.2024, donc écart avec les sources officielles. Libellé du site déjà prudent. |
+| 12 | belgique | 56 127 | Statbel (Registre national), population au 1er janvier 2025, | Fiche IWEPS T003-POP.URB (juin 2026) reprenant Statbel ; chiffre de la commune centrale. Page Statbel directe inaccessible (captcha). |
+| 15 | benin | 267 812 | recensement RGPH4, Institut National de la Statistique et de | Recensement 2013 (RGPH4) confirmé sur citypopulation.de (source INSAE) ; page INSAE non ouverte. Autres éléments du libellé (taux de croissance, part départementale, rang) non |
+| 16 | benin | 171 781 | recensement RGPH4, INSAE, 2013 (plaquette du département du  | Recensement 2013 (RGPH4) confirmé sur citypopulation.de (source INSAE) ; page INSAE non ouverte. Autres éléments du libellé (taux de croissance, part départementale, rang) non |
+| 17 | benin | 179 290 | recensement RGPH4, INSAE, 2013 | Recensement 2013 (RGPH4) confirmé sur citypopulation.de (source INSAE) ; page INSAE non ouverte. Autres éléments du libellé (taux de croissance, part départementale, rang) non |
+| 18 | benin | 104 961 | recensement RGPH4, INSAE, 2013 (plaquette du département du  | Recensement 2013 (RGPH4) confirmé sur citypopulation.de (source INSAE) ; page INSAE non ouverte. Autres éléments du libellé (taux de croissance, part départementale, rang) non |
+| 19 | benin | 162 034 | recensement RGPH4, INSAE, 2013 (plaquette du département de  | Recensement 2013 (RGPH4) confirmé sur citypopulation.de (source INSAE) ; page INSAE non ouverte. Autres éléments du libellé (taux de croissance, part départementale, rang) non |
+| 20 | benin | 92 266 | recensement RGPH4, INSAE, 2013 (plaquette du département du  | Recensement 2013 (RGPH4) confirmé sur citypopulation.de (source INSAE) ; page INSAE non ouverte. Autres éléments du libellé (taux de croissance, part départementale, rang) non |
+| 29 | cameroun | 1993 | Wikipédia EN, article University of Ngaoundéré (consulté en  | L'infobox indique 19 July 1993 (incohérent) mais le texte et la référence donnent bien 1993 / décret 93/028. |
+| 33 | cameroun | 78 300 | BUCREP, 3e recensement général de la population et de l'habi | 64 761 + 13 539 = 78 300 ; relais citypopulation.de du recensement 2005 BUCREP (page BUCREP primaire non ouverte). |
+| 35 | cameroun | 73 759 t → 34 431 t | Chambre des comptes de la Cour suprême, rapport d'audit sur  | Chiffres présents dans EcoMatin mais l'article ne les attribue pas explicitement à la Chambre des comptes ; page de l'audit sur chambredescomptes.cm ouverte sans ces chiffres. |
+| 38 | cameroun | 70 565 habitants | BUCREP/INS Cameroun, recensement général 2005, via Wikipédia | 29 886 + 40 679 = 70 565 (recensement 2005) ; citypopulation.de, pas la page Wikipédia citée par le site (non ouverte). |
+| 39 | cameroun | 101 385 habitants | Bureau central des recensements et des études de population  | 101 385 confirmé. ATTENTION : 63 161 (zone urbaine) introuvable ; citypopulation (page villes) donne 63 838 pour la ville de Dschang en 2005. |
+| 41 | cameroun | 5 548 à 26 829 tonnes | AGRI-STATS (annuaire des statistiques agricoles du Cameroun) | Mémoire sur la tomate à Dschang (memoireonline) ; la mention AGRI-STATS et l'appartenance ENS Yaoundé non confirmées dans le texte lu (début de page seulement). |
+| 42 | congo-brazzaville | 2 138 236 | Institut National de la Statistique (INS) du Congo, recensem | Chiffres commune et departement presents. Part nationale 34,9 % et relais DG Tresor non verifies. |
+| 43 | congo-brazzaville | 1 398 812 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Commune verifiee. Le chiffre departement 1 420 612 et la part 23,1 % non retrouves explicitement. |
+| 87 | luxembourg | +222 | STATEC, population en chiffres 2025 (données 2024) | Parmi les soldes migratoires les plus élevés (Hesperange +280, Differdange +269, Sanem +262, Mersch +253, Strassen +240, Ettelbruck +222...), STATEC 2025, données 2024. |
+| 101 | mali | environ 435 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 434 717 ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 102 | mali | environ 194 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 194 273 ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 104 | mali | environ 133 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 132 668 (statut 'USett' pour Mopti) ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 105 | mali | environ 214 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 214 271 ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 107 | mali | environ 218 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 217 943 ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 109 | mali | environ 142 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 141 929 ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 110 | mali | environ 186 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 185 954 ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 111 | mali | environ 85 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 84 821 ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 112 | mali | environ 120 000 | estimation citypopulation.de, fondée sur les résultats corri | Page citypopulation.de (villes du Mali), estimation 2023 = 119 681 ; le site arrondit ('environ'). Relais, pas la page INSTAT. |
+| 121 | rd-congo | 2 892 000 | CIA World Factbook, estimation 2023, relayée par l'article W | Page Wikipedia de Mbuji-Mayi ; relais du CIA World Factbook (page CIA non ouverte). |
+| 131 | senegal | 298 904 | recensement RGPH-5, ANSD, 2023 | Relais citypopulation.de (recensement 2023, commune) ; page ANSD inaccessible. |
+| 132 | senegal | 284 189 | recensement RGPH-5, ANSD, 2023 | Relais citypopulation.de (recensement 2023, commune) ; page ANSD inaccessible. |
+| 133 | senegal | 254 171 | recensement RGPH-5, ANSD, 2023 | Relais citypopulation.de (recensement 2023, commune) ; page ANSD inaccessible. |
+| 135 | senegal | 295 459 | recensement RGPH-5, ANSD, 2023 | Relais citypopulation.de (recensement 2023, commune) ; page ANSD inaccessible. |
+| 136 | senegal | 214 874 | recensement RGPH-5, ANSD, 2023 | Relais citypopulation.de (recensement 2023, commune) ; page ANSD inaccessible. |
+| 137 | senegal | 157 554 | recensement RGPH-5, ANSD, 2023 | Relais citypopulation.de (recensement 2023, commune) ; page ANSD inaccessible. |
+| 139 | senegal | 113 365 | recensement RGPH-5, ANSD, 2023 | Relais citypopulation.de (recensement 2023, commune) ; page ANSD inaccessible. |
+| 144 | suisse | 45 305 | Service de statistique du canton de Neuchâtel, Mémento stati | Communiqué de la Ville de Neuchâtel (titre); la source du site cite le Mémento du Service de statistique, non ouvert. |
+| 145 | suisse | 179 449 | Service de statistique du canton de Neuchâtel, communiqué su | Article RTN relayant le recensement cantonal; communiqué ne.ch d'origine non retrouvé (ne.ch/medias liste sans 2024). |
+| 149 | suisse | 1967 | Britannica et Wikipédia (article Montreux Jazz Festival), co | Année 1967 et trois jours confirmés; le Casino de Montreux pour 1967 n'est PAS mentionné dans la page; Britannica non ouvert. |
+| 150 | suisse | 30 332 | Statistique Vaud, VD en chiffres 2024-2026 ; Ville d'Yverdon | 30'332 confirmé (Ville); le 30 755 du registre communal n'apparaît nulle part; Statistique Vaud non ouvert. |
+| 152 | togo | 240 360 | recensement RGPH-5, Institut National de la Statistique et d | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+| 153 | togo | 283 738 | recensement RGPH-5, INSEED, 2022 | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+| 154 | togo | 145 986 | recensement RGPH-5, INSEED, 2022 | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+| 155 | togo | 253 467 | recensement RGPH-5, INSEED, 2022 | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+| 156 | togo | 388 775 | recensement RGPH-5, INSEED, 2022 | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+| 157 | togo | 500 032 | recensement RGPH-5, INSEED, 2022 | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+| 158 | togo | 241 247 | recensement RGPH-5, INSEED, 2022 | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+| 159 | togo | 152 065 | recensement RGPH-5, INSEED, 2022 | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+| 160 | togo | 124 848 | recensement RGPH-5, INSEED, 2022 | citypopulation.de relaie le RGPH-5 (INSEED); page INSEED primaire non ouverte. |
+
+### Tableau 2 : non vérifiés (aucune URL ajoutée)
+
+| Id | Pays | Chiffre | Source citée | Pourquoi |
+|---|---|---|---|---|
+| 37 | cameroun | 12,7 millions de tonnes | Port autonome de Kribi, comptes 2024 relayés par EcoMatin et | Le chiffre 12,7 Mt est celui de 2025 (+19 % vs 2024), pas 2024. Pour 2024, EcoMatin donne 10 844 415 t (2023 : 10 837 304 t). L'affirmation du site (12,7 Mt en 2024 vs 10,7 Mt |
+| 45 | congo-brazzaville | 178 172 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Chiffre communal introuvable sur citypopulation.de (pages pays et departements ouvertes) ; seul le total du district incluant la commune est publie : 209,889 (Louvakou). Valeu |
+| 46 | congo-brazzaville | 104 083 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Chiffre communal introuvable sur citypopulation.de (pages pays et departements ouvertes) ; seul le total du district incluant la commune est publie : 114,622 (Kayes). Valeur d |
+| 47 | congo-brazzaville | 75 095 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Chiffre communal introuvable sur citypopulation.de (pages pays et departements ouvertes) ; seul le total du district incluant la commune est publie : 108,808 (Mokeko). Valeur  |
+| 48 | congo-brazzaville | 48 642 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Chiffre communal introuvable sur citypopulation.de (pages pays et departements ouvertes) ; seul le total du district incluant la commune est publie : 64,358 (district Owando ; |
+| 49 | congo-brazzaville | 33 887 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Chiffre communal introuvable sur citypopulation.de (pages pays et departements ouvertes) ; seul le total du district incluant la commune est publie : 54,254 (district Sibiti ; |
+| 50 | congo-brazzaville | 38 240 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Chiffre communal introuvable sur citypopulation.de (pages pays et departements ouvertes) ; seul le total du district incluant la commune est publie : 54,789. Valeur du site no |
+| 51 | congo-brazzaville | 43 787 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Chiffre communal introuvable sur citypopulation.de (pages pays et departements ouvertes) ; seul le total du district incluant la commune est publie : 81,254 (departement Bouen |
+| 52 | congo-brazzaville | 15 003 | INS Congo, recensement RGPH-5, 2023, relayé par citypopulati | Chiffre communal introuvable sur citypopulation.de (pages pays et departements ouvertes) ; seul le total du district incluant la commune est publie : 22,936 (Moutamba). Valeur |
+| 86 | luxembourg | 10 149 | STATEC, population au 1er janvier 2025 | Ettelbruck 10 149 non retrouvé sur une page ouverte (le PDF STATEC 2025 ne liste pas ces communes en texte; la carte PDF par commune n'est pas extractible). Recherche web: Wik |
+| 88 | luxembourg | 7 336 | STATEC, population au 1er janvier 2025 | Diekirch 7 336 non retrouvé sur une page ouverte (le PDF STATEC 2025 ne liste pas ces communes en texte; la carte PDF par commune n'est pas extractible). citypopulation.de act |
+| 89 | luxembourg | 8 310 | STATEC, population au 1er janvier 2025 | Wiltz 8 310 non retrouvé sur une page ouverte (le PDF STATEC 2025 ne liste pas ces communes en texte; la carte PDF par commune n'est pas extractible). citypopulation.de actuel |
+| 90 | luxembourg | 5 936 | STATEC, population au 1er janvier 2025 | Echternach 5 936 non retrouvé sur une page ouverte (le PDF STATEC 2025 ne liste pas ces communes en texte; la carte PDF par commune n'est pas extractible). citypopulation.de a |
+| 92 | luxembourg | 5 735 | STATEC, population au 1er janvier 2025 | Rumelange 5 735 non retrouvé sur une page ouverte (le PDF STATEC 2025 ne liste pas ces communes en texte; la carte PDF par commune n'est pas extractible). citypopulation.de ac |
+| 93 | luxembourg | 11 628 | STATEC, population au 1er janvier 2025 | Bettembourg 11 628 non retrouvé sur une page ouverte (le PDF STATEC 2025 ne liste pas ces communes en texte; la carte PDF par commune n'est pas extractible). citypopulation.de |
+| 97 | madagascar | près de 80 % | L'Express de Madagascar, février 2026 | Citation L'Express de Madagascar non recherchée/ouverte ; estimation média non vérifiée. |
+| 103 | mali | environ 100 000 ha | ministère malien de l'Agriculture, selon les sources consult | Source vague (ministère, 'selon les sources consultées') ; non vérifiée. |
+| 106 | mali | 656 679 t | ministère malien de l'Agriculture, annonce rapportée par Reu | 656 679 t trouvé seulement via un relais presse FR non ouvert ; d'autres sources (PR-PICA) donnent 656 751 t ; aucune page Reuters/ministère retrouvée avec ce chiffre. |
+| 108 | mali | 32 % | étude de l'IRD sur la diaspora malienne, ancienneté à vérifi | Étude IRD non identifiée, ancienneté signalée à vérifier ; non vérifiée. |
+| 113 | niger | 20 000 | presse économique nigériane (TheCable, ICIR), citant le mini | Non recherchée ; sources presse nigériane non ouvertes. |
+| 114 | niger | 2013 | UNESCO, Centre du patrimoine mondial, bien n° 1268 | UNESCO whc.unesco.org renvoie 403 au fetch ; résultats de recherche indiquent 2013 (décision 37 COM 8B.22, bien 1268) mais page non ouverte, donc non vérifié par ouverture. |
+| 115 | niger | 3 327 260 | Tahoua en chiffres, édition 2013, INS Niger (direction régio | PDF stat-niger.org/wp-content/uploads/tahoua/Tahoua_en_chiffres_edition_2013.pdf existe mais texte illisible (PDF compressé), chiffre 3 327 260 non retrouvé. Éditions ultérieu |
+| 116 | niger | 39 % | HCR Niger, carte de la population relevant de la compétence  | Carte HCR Diffa juillet 2026 non recherchée ; non vérifié. |
+| 117 | niger | 2 722 482 | Dépliant démographique Tillabéri, INS Niger, d'après le rece | PDF stat-niger.org/wp-content/uploads/tillaberi/Depliant_Demographique_Tillaberi_2014.pdf existe (une recherche le dit contenir 2 722 482) mais texte du PDF illisible chez moi |
+| 118 | niger | 1968 | Orano, communiqué relayé par World Nuclear News, 2025 | Communiqué Orano / World Nuclear News non recherché ; non vérifié. |
+| 119 | rd-congo | environ 17 millions | projections des Nations unies (World Urbanization Prospects) | Page Macrotrends Kinshasa inaccessible (403). Recherche : ~17,03 M en 2024 (17 032 000) sur Macrotrends, mais page non ouverte. |
+| 120 | rd-congo | 1 158 051 | Jean Omasombo Tshonda, Haut-Katanga, tome 2, Musée royal de  | Livre Omasombo (MRAC 2018) non consultable en ligne ; chiffre 1 158 051 introuvable. |
+| 134 | senegal | 2 décembre 2000 | Centre du patrimoine mondial de l'UNESCO, 24e session du Com | Page UNESCO whc.unesco.org/en/list/956 renvoie 403 ; Wikipedia donne 2000 sans le jour. |
+| 140 | suisse | 530 246 | OCSTAT (Office cantonal de la statistique de Genève), situat | 530 246 confirmé par 20min.ch (relais de l'OCSTAT: 'comptait très exactement 530'246 habitants à la fin de l'année passée') mais la part 41,5 % d'étrangers n'y figure pas; la  |
+| 143 | suisse | 346 674 | Service de la statistique et de la donnée du canton de Fribo | 346 674 non trouvé sur une page ouverte: fr.ch affiche 350'918 fin 2025 (+4244, +1,2 %), 346 674 n'est qu'implicite par soustraction; OFS provisoire 346 589, population légale |
+| 147 | suisse | 2009 | UNESCO, Comité du patrimoine mondial, session de Séville, ju | Page UNESCO (whc.unesco.org/fr/list/1302) renvoie 403, non vérifié. |
+| 148 | suisse | 1867 | Wikipédia (article Nestlé), consulté le 9 octobre 2026 | Page Wikipédia Nestlé ouverte (partiellement): ne mentionne pas 1867 dans la partie lue (infobox 1866, vente 1873); non vérifié. |
+| 151 | suisse | 250 000 | Keystone-SDA, relayé par blue News, bilan de l'édition 2024, | Article Keystone-SDA/blue News introuvable; 250 000 visiteurs seulement vu dans des résumés de recherche (RTS), pages non ouvertes. |

@@ -101,7 +101,7 @@ export const VILLES_CONGO_BRAZZAVILLE: VilleContent[] = [
       {
         value: "1 219 164",
         label: "conteneurs EVP manipulés par le terminal à conteneurs du port en 2025",
-        source: "concessionnaire du terminal, relayé par Les Dépêches de Brazzaville via AllAfrica, janvier 2026",
+        source: "concessionnaire du terminal, relayé par Les Dépêches de Brazzaville via AllAfrica, janvier 2026", sourceUrl: "https://fr.allafrica.com/stories/202601220096.html",
       },
     ],
     casUsage: [

@@ -28,12 +28,12 @@ export const VILLES_LUXEMBOURG: VilleContent[] = [
       {
         value: "136 161",
         label: "habitants dans la commune de Luxembourg au 1er janvier 2025",
-        source: "STATEC, population au 1er janvier 2025",
+        source: "STATEC, population au 1er janvier 2025", sourceUrl: "https://statistiques.public.lu/dam-assets/catalogue-publications/en-chiffres/2025/population-chiffres-2025.pdf",
       },
       {
         value: "73 272",
         label: "personnes employées directement dans le secteur financier luxembourgeois fin 2024",
-        source: "Luxembourg for Finance, chiffres de fin 2024",
+        source: "Luxembourg for Finance, chiffres de fin 2024", sourceUrl: "https://www.luxembourgforfinance.com/en/news/a-decade-of-growth-and-diversification/",
       },
     ],
     casUsage: [
@@ -100,12 +100,12 @@ export const VILLES_LUXEMBOURG: VilleContent[] = [
       {
         value: "37 922",
         label: "habitants à Esch-sur-Alzette au 1er janvier 2025, deuxième commune du pays",
-        source: "STATEC, population au 1er janvier 2025",
+        source: "STATEC, population au 1er janvier 2025", sourceUrl: "https://statistiques.public.lu/dam-assets/catalogue-publications/en-chiffres/2025/population-chiffres-2025.pdf",
       },
       {
         value: "1 633",
         label: "arrivées d'immigrants internationaux à Esch-sur-Alzette en 2024, plus que dans toute autre commune hors capitale",
-        source: "STATEC, population en chiffres 2025 (données 2024)",
+        source: "STATEC, population en chiffres 2025 (données 2024)", sourceUrl: "https://statistiques.public.lu/dam-assets/catalogue-publications/en-chiffres/2025/population-chiffres-2025.pdf",
       },
     ],
     casUsage: [
@@ -172,12 +172,12 @@ export const VILLES_LUXEMBOURG: VilleContent[] = [
       {
         value: "30 789",
         label: "habitants à Differdange au 1er janvier 2025, troisième commune du pays",
-        source: "STATEC, population au 1er janvier 2025",
+        source: "STATEC, population au 1er janvier 2025", sourceUrl: "https://statistiques.public.lu/dam-assets/catalogue-publications/en-chiffres/2025/population-chiffres-2025.pdf",
       },
       {
         value: "1 188",
         label: "arrivées d'immigrants internationaux à Differdange en 2024",
-        source: "STATEC, population en chiffres 2025 (données 2024)",
+        source: "STATEC, population en chiffres 2025 (données 2024)", sourceUrl: "https://statistiques.public.lu/dam-assets/catalogue-publications/en-chiffres/2025/population-chiffres-2025.pdf",
       },
     ],
     casUsage: [
@@ -242,7 +242,7 @@ export const VILLES_LUXEMBOURG: VilleContent[] = [
       {
         value: "22 203",
         label: "habitants à Dudelange au 1er janvier 2025, quatrième commune du pays",
-        source: "STATEC, population au 1er janvier 2025",
+        source: "STATEC, population au 1er janvier 2025", sourceUrl: "https://statistiques.public.lu/dam-assets/catalogue-publications/en-chiffres/2025/population-chiffres-2025.pdf",
       },
     ],
     casUsage: [
@@ -520,7 +520,7 @@ export const VILLES_LUXEMBOURG: VilleContent[] = [
       {
         value: "2010",
         label: "année d'inscription de la procession dansante au patrimoine culturel immatériel de l'humanité",
-        source: "UNESCO, liste représentative du patrimoine culturel immatériel",
+        source: "UNESCO, liste représentative du patrimoine culturel immatériel", sourceUrl: "https://ich.unesco.org/fr/RL/la-procession-dansante-d-echternach-00392",
       },
     ],
     casUsage: [
@@ -659,7 +659,7 @@ export const VILLES_LUXEMBOURG: VilleContent[] = [
       {
         value: "85 821",
         label: "unités de transport intermodal acheminées sur trains combinés en 2022 par CFL multimodal",
-        source: "Chambre de commerce du Luxembourg (revue Merkur, janvier-février 2024)",
+        source: "Chambre de commerce du Luxembourg (revue Merkur, janvier-février 2024)", sourceUrl: "https://www.cc.lu/en/all-information/news/detail/cfl-multimodal-la-performance-logistique-durable",
       },
     ],
     casUsage: [

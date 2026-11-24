@@ -33,7 +33,7 @@ export const VILLES_BELGIQUE: VilleContent[] = [
       {
         value: "53 109",
         label: "personnes employées dans les institutions européennes et internationales, ambassades et écoles européennes présentes à Bruxelles",
-        source: "IBSA, Perspective.brussels (Mini-Bru 2026), situation au 31 décembre 2024",
+        source: "IBSA, Perspective.brussels (Mini-Bru 2026), situation au 31 décembre 2024", sourceUrl: "https://ibsa.brussels/sites/default/files/publication/documents/Perspective%20Brussels-Mini-Bru%202026%20FR.pdf",
       },
     ],
     casUsage: [
@@ -105,7 +105,7 @@ export const VILLES_BELGIQUE: VilleContent[] = [
       {
         value: "1,16 million de tonnes",
         label: "de fret traitées par Liège Airport en 2024",
-        source: "IWEPS, fiche M005-TRANSP.AIR, données 2024",
+        source: "IWEPS, fiche M005-TRANSP.AIR, données 2024", sourceUrl: "https://www.iweps.be/wp-content/uploads/2025/09/M005-TRANSP.AIR-092025_Full1.pdf",
       },
     ],
     casUsage: [
@@ -383,7 +383,7 @@ export const VILLES_BELGIQUE: VilleContent[] = [
       {
         value: "+ 445",
         label: "habitants supplémentaires à Tournai entre 2024 et 2025",
-        source: "SPF Intérieur, population au 1er janvier 2025, relayé par L'Avenir (12 mars 2025)",
+        source: "SPF Intérieur, population au 1er janvier 2025, relayé par L'Avenir (12 mars 2025)", sourceUrl: "https://www.lavenir.net/regions/wallonie-picarde/tournai/2025/03/12/1142-habitants-de-plus-en-wallonie-picarde-dont-40-de-tournaisiens-entre-2024-et-2025-STYSXAGSB5GATGHZIAKWX6UMVY/",
       },
     ],
     casUsage: [
@@ -584,12 +584,12 @@ export const VILLES_BELGIQUE: VilleContent[] = [
       {
         value: "Plus de 60 000",
         label: "habitants à Mouscron au 1er janvier 2025 (seuil franchi, chiffre exact non vérifié)",
-        source: "SPF Intérieur, population au 1er janvier 2025, relayé par L'Avenir (12 mars 2025)",
+        source: "SPF Intérieur, population au 1er janvier 2025, relayé par L'Avenir (12 mars 2025)", sourceUrl: "https://www.lavenir.net/regions/wallonie-picarde/tournai/2025/03/12/1142-habitants-de-plus-en-wallonie-picarde-dont-40-de-tournaisiens-entre-2024-et-2025-STYSXAGSB5GATGHZIAKWX6UMVY/",
       },
       {
         value: "4,7 %",
         label: "des emplois salariés de l'arrondissement de Mouscron dans le textile",
-        source: "INSEE, analyse publiée en 2021 sur données 2015",
+        source: "INSEE, analyse publiée en 2021 sur données 2015", sourceUrl: "https://www.insee.fr/fr/statistiques/5422513",
       },
     ],
     casUsage: [
